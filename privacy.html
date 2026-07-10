@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — SpoolPilot</title>
+  <meta name="description" content="SpoolPilot's privacy policy.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand-mark" href="/">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 7h16M4 12h16M4 17h10" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>SpoolPilot</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="/support.html">Support</a>
+        <a class="nav-link" href="/privacy.html">Privacy</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">Privacy</p>
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated <span id="today"></span></p>
+
+    <div class="policy">
+      <p>SpoolPilot is built to run entirely on your device. This page
+        explains what that means in practice.</p>
+
+      <h3>What's stored, and where</h3>
+      <p>Your filament, product, production, and sales records are stored
+        locally on your device using Apple's on-device SwiftData storage.
+        None of it is uploaded to us — we don't operate a server that
+        holds your inventory data, and we can't see it.</p>
+
+      <h3>Etsy sync</h3>
+      <p>If you connect an Etsy shop, SpoolPilot uses Etsy's official
+        sign-in flow to get permission to read your own shop's orders.
+        The access token is stored in your device's Keychain and is used
+        only to fetch your own sales data on your request. That data is
+        subject to Etsy's own privacy policy as well as this one.</p>
+
+      <h3>Camera</h3>
+      <p>The barcode scanner uses your device's camera to read barcodes
+        on-device. No camera images or video are stored or sent
+        anywhere.</p>
+
+      <h3>Notifications</h3>
+      <p>Low-stock alerts are local notifications generated on your
+        device. They don't involve a push notification server or any
+        data leaving your device.</p>
+
+      <h3>What we don't do</h3>
+      <ul>
+        <li>No analytics or tracking SDKs</li>
+        <li>No advertising, and no ad networks</li>
+        <li>No selling or sharing your data with third parties</li>
+      </ul>
+
+      <h3>Exporting your data</h3>
+      <p>The CSV export feature in More writes files to your device and
+        hands them to Apple's standard share sheet, so you choose where
+        they go. We never see them.</p>
+
+      <h3>Questions</h3>
+      <p>Email <a href="mailto:hello@opusdesigncompany.com">hello@opusdesigncompany.com</a>
+        and we'll get back to you.</p>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <span>&copy; <span id="year"></span> Opus Design Group LLC</span>
+    <span><a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a></span>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
+</body>
+</html>

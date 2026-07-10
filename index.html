@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpoolPilot</title>
+  <meta name="description" content="SpoolPilot is a filament, production, and sales tracker for small 3D-printing shops.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand-mark" href="/">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 7h16M4 12h16M4 17h10" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>SpoolPilot</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="/support.html">Support</a>
+        <a class="nav-link" href="/privacy.html">Privacy</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">For 3D-printing shops</p>
+    <h1>Know exactly what's on the shelf, and what it's worth.</h1>
+    <p class="lede">
+      SpoolPilot tracks filament stock, production, and sales in one place —
+      built for small shops running real print farms, not hobby inventories.
+    </p>
+
+    <div class="badge-row">
+      <span class="status-chip">Coming soon to the App Store</span>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h2>Filament inventory</h2>
+        <p>Spools grouped by brand, material, and color, with low-stock
+          alerts and reorder predictions from real usage history.</p>
+      </div>
+      <div class="feature-card">
+        <h2>Products &amp; production</h2>
+        <p>Multi-filament bills of materials, production logging, and
+          failed-print tracking that doesn't touch finished-goods stock.</p>
+      </div>
+      <div class="feature-card">
+        <h2>Cost &amp; profit reports</h2>
+        <p>Per-unit cost breakdowns and sales history across custom time
+          frames, so pricing is a calculation, not a guess.</p>
+      </div>
+      <div class="feature-card">
+        <h2>Barcode scan &amp; Etsy sync</h2>
+        <p>Scan a spool to identify it instantly, and pull Etsy sales into
+          the shop's records automatically.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <span>&copy; <span id="year"></span> Opus Design Group LLC</span>
+    <span><a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a></span>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
