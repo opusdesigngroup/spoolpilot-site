@@ -104,9 +104,9 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .form-note { font-size: 13px; color: var(--muted); margin: 12px 2px 0; }
 
 /* Phone mockup */
-.phone { width: 100%; max-width: 300px; margin: 0 auto; background: #0F0B08; border-radius: 46px; padding: 11px; box-shadow: 0 46px 90px -44px rgba(23, 19, 15, .62), 0 0 0 1px rgba(23, 19, 15, .05); }
-.phone img { display: block; width: 100%; border-radius: 35px; }
-.hero .phone { max-width: 322px; }
+.phone { width: 100%; max-width: 340px; margin: 0 auto; background: #0F0B08; border-radius: 46px; padding: 11px; box-shadow: 0 46px 90px -44px rgba(23, 19, 15, .62), 0 0 0 1px rgba(23, 19, 15, .05); }
+.phone img { display: block; width: 100%; height: auto; border-radius: 35px; }
+.hero .phone { max-width: 360px; }
 
 /* Section heads */
 .lp-head { text-align: center; max-width: 660px; margin: 0 auto 10px; }
@@ -161,6 +161,6 @@ table.compare .col-sp b { font-weight: 700; }
   .roadmap { padding: 34px 24px; }
 }
 @media (max-width: 560px) {
-  .hero .phone, .phone { max-width: 260px; }
+  .hero .phone, .phone { max-width: 300px; }
   .waitlist button { flex: 1 1 100%; }
 }
