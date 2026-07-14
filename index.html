@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <title>SpoolPilot — Filament inventory, cost &amp; profit for 3D-print shops</title>
   <meta name="description" content="SpoolPilot tracks filament inventory, true cost per print, and profit per product for Etsy sellers and print farms. Join the waitlist.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #faf9f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -205,20 +209,28 @@ document.addEventListener('DOMContentLoaded', async function() {
   </script>
 
 <script>
-/* SpoolPilot post-render fixes: responsive CSS (injected via JS so the runtime's head-rebuild
-   doesn't wipe it), MailerLite form wiring, footer links, mobile nav. Idempotent. */
+/* SpoolPilot post-render fixes: favicons, responsive CSS, MailerLite form, footer links, mobile nav.
+   Injected via JS because the design runtime rebuilds <head> and wipes static tags. Idempotent. */
 (function () {
   var ACTION = "https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe";
+  function head(){ return document.head || document.documentElement; }
+  function injectFavicons() {
+    if (document.getElementById('sp-favicon')) return;
+    function add(rel, href, type, sizes, id) {
+      var l = document.createElement('link'); l.rel = rel; l.href = href;
+      if (type) l.type = type; if (sizes) l.setAttribute('sizes', sizes); if (id) l.id = id;
+      head().appendChild(l);
+    }
+    add('icon', '/favicon.ico', '', 'any', 'sp-favicon');
+    add('icon', '/favicon-32.png', 'image/png', '32x32');
+    add('icon', '/favicon-16.png', 'image/png', '16x16');
+    add('apple-touch-icon', '/apple-touch-icon.png', '', '');
+  }
   function injectCSS() {
     if (document.getElementById('spoolpilot-responsive')) return;
-    var st = document.createElement('style');
-    st.id = 'spoolpilot-responsive';
-    st.textContent =
-      '@media (max-width:760px){' +
-      '[style*="grid-template-columns"]{grid-template-columns:1fr !important;}' +
-      '[style*="max-width: 1180px"],[style*="max-width:1180px"]{padding-left:20px !important;padding-right:20px !important;}' +
-      '}';
-    (document.head || document.documentElement).appendChild(st);
+    var st = document.createElement('style'); st.id = 'spoolpilot-responsive';
+    st.textContent = '@media (max-width:760px){[style*="grid-template-columns"]{grid-template-columns:1fr !important;}[style*="max-width: 1180px"],[style*="max-width:1180px"]{padding-left:20px !important;padding-right:20px !important;}}';
+    head().appendChild(st);
   }
   function fixLinks() {
     try { document.title = "SpoolPilot — Filament inventory, cost & profit for 3D-print shops"; } catch (e) {}
@@ -229,44 +241,34 @@ document.addEventListener('DOMContentLoaded', async function() {
       if (t === 'Support') hasSupport = true;
       if (/TestFlight/i.test(t)) a.setAttribute('href', '#download');
     });
-    if (!hasSupport) {
-      links.forEach(function (a) {
-        if ((a.textContent || '').trim() === 'Privacy') {
-          var s = a.cloneNode(true); s.textContent = 'Support'; s.setAttribute('href', '/support.html');
-          a.parentNode.insertBefore(s, a.nextSibling);
-        }
-      });
-    }
+    if (!hasSupport) links.forEach(function (a) {
+      if ((a.textContent || '').trim() === 'Privacy') {
+        var s = a.cloneNode(true); s.textContent = 'Support'; s.setAttribute('href', '/support.html');
+        a.parentNode.insertBefore(s, a.nextSibling);
+      }
+    });
   }
   function wireForm() {
-    var input = document.querySelector('form input[type="email"]');
-    if (!input) return;
-    var form = input.closest('form');
-    if (!form || form.getAttribute('action') === ACTION) return;
+    var input = document.querySelector('form input[type="email"]'); if (!input) return;
+    var form = input.closest('form'); if (!form || form.getAttribute('action') === ACTION) return;
     var clone = form.cloneNode(true);
     clone.setAttribute('action', ACTION); clone.setAttribute('method', 'post'); clone.setAttribute('target', '_blank');
     clone.removeAttribute('sc-camel-on-submit');
     var em = clone.querySelector('input[type="email"]');
     em.setAttribute('name', 'fields[email]'); em.setAttribute('autocomplete', 'email');
     em.removeAttribute('value'); em.removeAttribute('sc-camel-on-input');
-    [['ml-submit', '1'], ['anticsrf', 'true']].forEach(function (kv) {
-      var h = document.createElement('input'); h.type = 'hidden'; h.name = kv[0]; h.value = kv[1]; clone.appendChild(h);
+    [['ml-submit','1'],['anticsrf','true']].forEach(function (kv) {
+      var h = document.createElement('input'); h.type='hidden'; h.name=kv[0]; h.value=kv[1]; clone.appendChild(h);
     });
     form.parentNode.replaceChild(clone, form);
   }
   function mobileNav() {
     var mobile = window.matchMedia('(max-width: 760px)').matches, nav = null, all = document.querySelectorAll('*');
-    for (var i = 0; i < all.length; i++) {
-      var e = all[i];
-      if (e.style && e.style.maxWidth === '1180px' && getComputedStyle(e).display === 'flex') { nav = e; break; }
-    }
-    if (nav) {
-      nav.style.justifyContent = mobile ? 'space-between' : '';
-      if (nav.children[1]) nav.children[1].style.display = mobile ? 'none' : '';
-    }
+    for (var i=0;i<all.length;i++){ var e=all[i]; if (e.style && e.style.maxWidth==='1180px' && getComputedStyle(e).display==='flex'){ nav=e; break; } }
+    if (nav) { nav.style.justifyContent = mobile ? 'space-between' : ''; if (nav.children[1]) nav.children[1].style.display = mobile ? 'none' : ''; }
   }
-  function run() { injectCSS(); fixLinks(); wireForm(); mobileNav(); }
-  var n = 0, iv = setInterval(function () { run(); if (++n > 40) clearInterval(iv); }, 150);
+  function run(){ injectFavicons(); injectCSS(); fixLinks(); wireForm(); mobileNav(); }
+  var n=0, iv=setInterval(function(){ run(); if (++n>40) clearInterval(iv); }, 150);
   document.addEventListener('DOMContentLoaded', run);
   window.addEventListener('load', run);
   window.addEventListener('resize', mobileNav);
