@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — SpoolPilot</title>
-  <meta name="description" content="SpoolPilot's privacy policy.">
+  <meta name="description" content="SpoolPilot's privacy policy: your inventory, product, and sales data stays on your device.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,8 +16,10 @@
     <nav class="wrap">
       <a class="brand-mark" href="/">
         <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 7h16M4 12h16M4 17h10" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#F97316"/>
+            <circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="9"/>
+            <circle cx="50" cy="50" r="7" fill="#17130F"/>
           </svg>
         </span>
         <span>SpoolPilot</span>
@@ -31,31 +37,19 @@
     <p class="updated">Last updated <span id="today"></span></p>
 
     <div class="policy">
-      <p>SpoolPilot is built to run entirely on your device. This page
-        explains what that means in practice.</p>
+      <p>SpoolPilot is built to run entirely on your device. This page explains what that means in practice.</p>
 
       <h3>What's stored, and where</h3>
-      <p>Your filament, product, production, and sales records are stored
-        locally on your device using Apple's on-device SwiftData storage.
-        None of it is uploaded to us — we don't operate a server that
-        holds your inventory data, and we can't see it.</p>
+      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't operate a server that holds your inventory data, and we can't see it.</p>
 
       <h3>Etsy sync</h3>
-      <p>If you connect an Etsy shop, SpoolPilot uses Etsy's official
-        sign-in flow to get permission to read your own shop's orders.
-        The access token is stored in your device's Keychain and is used
-        only to fetch your own sales data on your request. That data is
-        subject to Etsy's own privacy policy as well as this one.</p>
+      <p>If you connect an Etsy shop, SpoolPilot uses Etsy's official sign-in flow to get permission to read your own shop's listings and orders. The access token is stored in your device's Keychain and is used only to fetch your own shop data on your request. That data is subject to Etsy's own privacy policy as well as this one.</p>
 
       <h3>Camera</h3>
-      <p>The barcode scanner uses your device's camera to read barcodes
-        on-device. No camera images or video are stored or sent
-        anywhere.</p>
+      <p>The barcode scanner uses your device's camera to read barcodes on-device. No camera images or video are stored or sent anywhere.</p>
 
       <h3>Notifications</h3>
-      <p>Low-stock alerts are local notifications generated on your
-        device. They don't involve a push notification server or any
-        data leaving your device.</p>
+      <p>Low-stock alerts are local notifications generated on your device. They don't involve a push notification server or any data leaving your device.</p>
 
       <h3>What we don't do</h3>
       <ul>
@@ -65,19 +59,18 @@
       </ul>
 
       <h3>Exporting your data</h3>
-      <p>The CSV export feature in More writes files to your device and
-        hands them to Apple's standard share sheet, so you choose where
-        they go. We never see them.</p>
+      <p>The backup and CSV export features write files to your device and hand them to Apple's standard share sheet, so you choose where they go. We never see them.</p>
 
       <h3>Questions</h3>
-      <p>Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a>
-        and we'll get back to you.</p>
+      <p>Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a> and we'll get back to you.</p>
     </div>
   </main>
 
-  <footer class="wrap">
-    <span>&copy; <span id="year"></span> Opus Design Group LLC</span>
-    <span><a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a></span>
+  <footer>
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Opus Design Group LLC</span>
+      <span><a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a></span>
+    </div>
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
