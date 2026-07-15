@@ -217,6 +217,39 @@
       <span><a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a></span>
     </div>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Waitlist: submit to MailerLite in the background (no-cors) and show an in-page success state,
+    // so people never see the raw {"success":true} JSON and stay on the page feeling done.
+    (function () {
+      function showSuccess(form) {
+        var note = form.nextElementSibling;
+        if (note && note.classList.contains('form-note')) note.remove();
+        var box = document.createElement('div');
+        box.className = 'waitlist-success';
+        box.setAttribute('role', 'status');
+        box.innerHTML =
+          '<div class="ws-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
+          '<div class="ws-badge" aria-hidden="true"><svg viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg">' +
+          '<circle class="ws-ring" cx="29" cy="29" r="26"/><path class="ws-check" d="M17 30 l8 8 l16-17"/></svg></div>' +
+          '<h3>You’re on the list! 🎉</h3>' +
+          '<p>Thanks for being early — we’ll email you the moment the SpoolPilot beta opens.</p>' +
+          '<p class="ws-sub">Keep an eye on your inbox.</p>';
+        form.replaceWith(box);
+      }
+      document.querySelectorAll('form.waitlist').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          var btn = form.querySelector('button[type="submit"]');
+          if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
+          fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)), mode: 'no-cors' })
+            .catch(function () {})
+            .then(function () { showSuccess(form); });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
