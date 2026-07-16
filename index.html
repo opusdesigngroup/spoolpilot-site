@@ -220,8 +220,9 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Waitlist: submit to MailerLite in the background (no-cors) and show an in-page success state,
-    // so people never see the raw {"success":true} JSON and stay on the page feeling done.
+    // Waitlist: submit to MailerLite and read the response. MailerLite's subscribe endpoint sends
+    // proper CORS headers and returns {"success":true}, so we only celebrate on a genuine success
+    // and show a real error otherwise — no more pretending it worked when it didn't.
     (function () {
       function showSuccess(form) {
         var note = form.nextElementSibling;
@@ -239,15 +240,37 @@
           '<p class="ws-sub">Keep an eye on your inbox.</p>';
         form.replaceWith(box);
       }
+      function clearError(form) {
+        var next = form.nextElementSibling;
+        if (next && next.classList.contains('waitlist-error')) next.remove();
+      }
+      function showError(form, btn, label) {
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+        clearError(form);
+        var msg = document.createElement('p');
+        msg.className = 'waitlist-error';
+        msg.setAttribute('role', 'alert');
+        msg.style.cssText = 'margin:10px 0 0;font-size:14px;font-weight:600;color:#DC2626;';
+        msg.textContent = 'That didn’t go through — please check your email and try again.';
+        form.insertAdjacentElement('afterend', msg);
+      }
       document.querySelectorAll('form.waitlist').forEach(function (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           if (!form.reportValidity()) return;
           var btn = form.querySelector('button[type="submit"]');
+          var label = btn ? btn.textContent : 'Join the waitlist';
           if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
-          fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)), mode: 'no-cors' })
-            .catch(function () {})
-            .then(function () { showSuccess(form); });
+          clearError(form);
+          fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+            .then(function (r) {
+              return r.json().then(function (j) { return { ok: r.ok, data: j }; }, function () { return { ok: r.ok, data: {} }; });
+            })
+            .then(function (res) {
+              if (res.ok && res.data && res.data.success) { showSuccess(form); }
+              else { showError(form, btn, label); }
+            })
+            .catch(function () { showError(form, btn, label); });
         });
       });
     })();
