@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpoolPilot — Profit tracking for 3D-print shops</title>
-  <meta name="description" content="SpoolPilot syncs your Etsy orders, subtracts seller fees and your true cost of goods, and shows the net profit on every sale — from your phone, next to the printer.">
+  <meta name="description" content="SpoolPilot syncs your Etsy orders, subtracts the exact fees Etsy charged and your true cost of goods, and shows the net profit on every sale — from your phone, next to the printer.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -12,14 +12,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SpoolPilot">
   <meta property="og:title" content="SpoolPilot — Profit tracking for 3D-print shops">
-  <meta property="og:description" content="Sync your Etsy orders, subtract fees and true cost of goods, and see net profit on every sale — from your phone.">
+  <meta property="og:description" content="Sync your Etsy orders, subtract the exact fees Etsy charged, and see true net profit on every sale — from your phone.">
   <meta property="og:url" content="https://spoolpilot.app/">
   <meta property="og:image" content="https://spoolpilot.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SpoolPilot — Profit tracking for 3D-print shops">
-  <meta name="twitter:description" content="Sync your Etsy orders, subtract fees and true cost of goods, and see net profit on every sale — from your phone.">
+  <meta name="twitter:description" content="Sync your Etsy orders, subtract the exact fees Etsy charged, and see true net profit on every sale — from your phone.">
   <meta name="twitter:image" content="https://spoolpilot.app/og-image.png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -50,7 +50,7 @@
       <p class="eyebrow">Made for 3D-print shops</p>
       <h1>Know your real profit on every order.</h1>
       <p class="lede">
-        Your filament tracker knows how much plastic is left. SpoolPilot knows how much money you made — it syncs your Etsy sales, subtracts the seller fees and your true cost of goods, and shows the net profit and margin on each one.
+        Your filament tracker knows how much plastic is left. SpoolPilot knows how much money you made — it syncs your Etsy sales, subtracts the <em>exact</em> fees Etsy charged and your true cost of goods, and shows the net profit and margin on each one.
       </p>
       <form class="waitlist" id="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
         <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
@@ -73,13 +73,13 @@
   <section class="lp pillar">
     <div class="pillar-copy">
       <p class="pillar-num">01 · Profit engine</p>
-      <h2>See your profit, not just your filament.</h2>
+      <h2>The exact fees Etsy charged. Not an estimate.</h2>
       <p>
-        Connect your Etsy shop and SpoolPilot pulls in each order, then runs it through your own cost recipe — filament weight, electricity, packaging, and seller fees — to show true net profit and margin per sale. The bookkeeping spreadsheet goes away.
+        Connect your Etsy shop and SpoolPilot reads each order's real fees — transaction, processing, listing renewal — straight from your Etsy payment account, handles coupons and shipping, then subtracts your own cost recipe: filament weight, electricity, packaging. What's left is your true net profit per sale, built to line up with what Etsy actually deposits.
       </p>
       <div class="tags">
         <span class="tag">Etsy order sync</span>
-        <span class="tag">COGS recipe</span>
+        <span class="tag">Real fees, from your ledger</span>
         <span class="tag">Net profit &amp; margin</span>
       </div>
     </div>
@@ -171,6 +171,12 @@
             <td class="col-sp"><b>Native iOS, shop-floor mobile</b></td>
           </tr>
           <tr>
+            <td>Seller fees</td>
+            <td>—</td>
+            <td>Estimated percentages</td>
+            <td class="col-sp"><b>The exact fees Etsy charged, from your payment account</b></td>
+          </tr>
+          <tr>
             <td>Financials</td>
             <td>None</td>
             <td>Basic manual COGS</td>
@@ -185,10 +191,10 @@
   <section class="lp lp-section tight">
     <div class="roadmap">
       <h2>Built for what you do today — here's what's next.</h2>
-      <p class="sub">SpoolPilot already syncs Etsy, computes your COGS, and tracks variations. These are on the roadmap:</p>
+      <p class="sub">SpoolPilot already syncs Etsy with the exact fees charged, computes your COGS, and tracks variations. These are on the roadmap:</p>
       <div class="rgrid">
         <div class="rchip"><b>Shopify order sync</b><span>The same automatic order import, for Shopify shops.</span></div>
-        <div class="rchip"><b>Automatic Etsy fee reconciliation</b><span>Pull your exact fees straight from Etsy instead of estimating them.</span></div>
+        <div class="rchip"><b>Automatic cloud backup</b><span>Your catalog and sales history backed up off-device, automatically.</span></div>
         <div class="rchip"><b>Hands-off variant deduction</b><span>Auto-deduct the right filament for each variation as orders come in.</span></div>
         <div class="rchip"><b>App Store release</b><span>Public download on the iOS App Store — join the waitlist for early access.</span></div>
       </div>
