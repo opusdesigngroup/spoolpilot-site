@@ -80,8 +80,8 @@ footer .attribution { padding-top: 16px; padding-bottom: 26px; font-size: 12px; 
 
 /* ===================== Landing page ===================== */
 .lp { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-.lp-section { padding: 52px 0; }
-.lp-section.tight { padding: 30px 0; }
+.lp-section { padding-top: 52px; padding-bottom: 52px; }
+.lp-section.tight { padding-top: 30px; padding-bottom: 30px; }
 hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .nav-cta { background: var(--orange); color: #fff !important; padding: 9px 16px; border-radius: 10px; font-size: 14px; white-space: nowrap; }
 .nav-cta:hover { background: #ea6a0d; color: #fff !important; }
@@ -91,7 +91,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 }
 
 /* Hero */
-.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 52px; align-items: center; padding: 60px 0 44px; }
+.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 52px; align-items: center; padding-top: 60px; padding-bottom: 44px; }
 .hero h1 { font-size: clamp(40px, 6vw, 64px); letter-spacing: -1.6px; }
 .hero .lede { font-size: 20px; margin-bottom: 8px; max-width: 40ch; }
 
@@ -116,7 +116,7 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .lp-head p { color: var(--muted); font-size: 19px; margin: 0; }
 
 /* Pillars */
-.pillar { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; padding: 46px 0; }
+.pillar { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; padding-top: 46px; padding-bottom: 46px; }
 .pillar.flip .pillar-media { order: -1; }
 .pillar-num { font-family: 'JetBrains Mono', monospace; color: var(--orange); font-weight: 700; font-size: 14px; letter-spacing: .12em; }
 .pillar h2 { font-size: clamp(26px, 3.3vw, 34px); font-weight: 800; letter-spacing: -.6px; margin: 8px 0 14px; }
@@ -150,11 +150,11 @@ table.compare .col-sp b { font-weight: 700; }
 .cta-band .form-note { text-align: center; }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; gap: 34px; text-align: center; padding: 40px 0 30px; }
+  .hero { grid-template-columns: 1fr; gap: 34px; text-align: center; padding-top: 40px; padding-bottom: 30px; }
   .hero .lede { margin-left: auto; margin-right: auto; }
   .hero .eyebrow { }
   .waitlist { margin-left: auto; margin-right: auto; }
-  .pillar { grid-template-columns: 1fr; gap: 26px; text-align: center; padding: 34px 0; }
+  .pillar { grid-template-columns: 1fr; gap: 26px; text-align: center; padding-top: 34px; padding-bottom: 34px; }
   .pillar .pillar-media { order: -1 !important; }
   .pillar p { margin-left: auto; margin-right: auto; }
   .tags { justify-content: center; }
