@@ -66,6 +66,7 @@ footer { background: var(--ink); color: #B8AFA6; margin-top: 24px; }
 footer .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 26px; padding-bottom: 26px; flex-wrap: wrap; gap: 10px; font-size: 14px; }
 footer a { color: #B8AFA6; }
 footer a:hover { color: #fff; }
+footer .attribution { padding-top: 16px; padding-bottom: 26px; font-size: 12px; color: #857C72; justify-content: flex-start; border-top: 1px solid rgba(255,255,255,.08); }
 
 @media (max-width: 560px) {
   body { font-size: 16px; }
