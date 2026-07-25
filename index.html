@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpoolPilot — Profit tracking for 3D-print shops</title>
-  <meta name="description" content="SpoolPilot syncs your whole Etsy sales history, itemizes the exact fees Etsy charged on each order, subtracts your true cost of goods, and shows the net profit on every sale — from your phone, next to the printer.">
+  <meta name="description" content="SpoolPilot syncs your whole Etsy sales history, itemizes the exact fees Etsy charged on each order, and shows the net profit on every sale.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -22,7 +22,6 @@
   <meta name="twitter:title" content="SpoolPilot — Profit tracking for 3D-print shops">
   <meta name="twitter:description" content="Sync your whole Etsy history, see the exact fees Etsy charged itemized per order, and true net profit on every sale — from your phone.">
   <meta name="twitter:image" content="https://spoolpilot.app/og-image.png">
-  <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,314 +33,303 @@
     "url": "https://spoolpilot.app/",
     "image": "https://spoolpilot.app/og-image.png",
     "releaseNotes": "In beta — join the waitlist for early access.",
-    "author": {
-      "@type": "Organization",
-      "name": "Opus Design Group LLC"
-    }
+    "author": { "@type": "Organization", "name": "Opus Design Group LLC" }
   }
   </script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#8B857F;
+      --rule:rgba(17,16,16,.08); --orange:#F97316; --profit:#177245;
+      /* credential: used only for the maker-proof line. Not an interactive colour. */
+      --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:18px;line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit}
+    ::selection{background:rgba(249,115,22,.16)}
+
+    .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+    .narrow{max-width:640px;margin-inline:auto}
+
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--rule)}
+    header .bar{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;max-width:1000px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.02em}
+    .brand svg{width:26px;height:26px;border-radius:7px;display:block}
+    nav{display:flex;align-items:center;gap:24px}
+    nav a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500}
+    nav a:hover{color:var(--ink)}
+    .btn{
+      background:var(--orange);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;
+      padding:8px 16px;border-radius:980px;transition:background .16s ease;
+    }
+    .btn:hover{background:#E4650C}
+
+    /* ---- hero: centred, the device large ---- */
+    .hero{text-align:center;padding-top:96px;padding-bottom:0}
+    .kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:14px;font-weight:600;color:var(--credential);
+      background:var(--credential-tint);border-radius:980px;
+      padding:7px 15px 7px 12px;margin:0 0 26px;letter-spacing:.005em;
+    }
+    .kicker svg{width:15px;height:15px;display:block;flex:0 0 auto}
+    h1{
+      margin:0 auto 24px;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.04em;
+      font-weight:700;max-width:14ch;text-wrap:balance;
+    }
+    .lede{margin:0 auto 40px;font-size:20px;line-height:1.55;color:var(--body);max-width:44ch}
+
+    .waitlist{display:flex;gap:9px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .waitlist input[type=email]{
+      flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:16px;
+      border:1px solid rgba(17,16,16,.16);border-radius:980px;background:#fff;color:var(--ink);text-align:center;
+      transition:border-color .16s ease,box-shadow .16s ease;
+    }
+    .waitlist input[type=email]::placeholder{color:#AFA9A3}
+    .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
+    .waitlist button{
+      border:0;background:var(--orange);color:#fff;font:inherit;font-weight:600;font-size:16px;
+      padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease,transform .16s ease;
+    }
+    .waitlist button:hover{background:#E4650C}
+    .note{margin:16px auto 0;font-size:13.5px;color:var(--muted);max-width:46ch}
+    .waitlist-error{margin:12px auto 0;font-size:14px;font-weight:600;color:#B4231B;text-align:center}
+    .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
+    .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
+    .waitlist-success p{margin:0;font-size:14.5px;color:var(--body)}
+
+    .hero-device{margin:74px auto 0;max-width:326px}
+    .hero-device img{border-radius:34px;box-shadow:0 42px 80px -40px rgba(17,16,16,.42), 0 0 0 1px rgba(17,16,16,.07)}
+
+    /* ---- stage: one idea per viewport ---- */
+    .stage{padding-top:118px;padding-bottom:118px;text-align:center}
+    .stage.tint{background:var(--bg-alt)}
+    .stage h2{
+      margin:0 auto 18px;font-size:clamp(28px,3.8vw,42px);line-height:1.14;letter-spacing:-.035em;
+      font-weight:700;max-width:18ch;text-wrap:balance;
+    }
+    .stage p{margin:0 auto;font-size:18px;line-height:1.6;color:var(--body);max-width:50ch}
+    .stage .device{margin:60px auto 0;max-width:296px}
+    .stage .device img{border-radius:32px;box-shadow:0 36px 70px -38px rgba(17,16,16,.4), 0 0 0 1px rgba(17,16,16,.07)}
+
+    /* the one place data is shown flat, because it is the claim */
+    .proof{
+      max-width:430px;margin:56px auto 0;background:#fff;border:1px solid var(--rule);
+      border-radius:18px;overflow:hidden;text-align:left;
+      box-shadow:0 26px 52px -34px rgba(17,16,16,.34);
+    }
+    .proof-hd{padding:14px 20px;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--muted);display:flex;justify-content:space-between}
+    .proof-body{padding:8px 20px 16px}
+    .pl{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:15.5px}
+    .pl + .pl{border-top:1px solid var(--rule)}
+    .pl.child{padding-left:16px;color:var(--muted);font-size:14px;border-top:0;padding-top:3px;padding-bottom:3px}
+    .pl.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:8px;padding-top:13px;font-weight:600;align-items:center}
+    .pl.sum b{font-size:22px;letter-spacing:-.03em;color:var(--profit)}
+    .pl .n{color:#C2540C}
+
+    /* ---- three quiet facts ---- */
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:left;padding:20px 0 0}
+    .facts h3{margin:0 0 8px;font-size:17px;font-weight:600;letter-spacing:-.02em}
+    .facts p{margin:0;font-size:15.5px;color:var(--body);line-height:1.55;max-width:none}
+
+    /* ---- compare ---- */
+    .tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:16px;background:#fff;text-align:left}
+    table{width:100%;border-collapse:collapse;font-size:15px}
+    th,td{padding:14px 17px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+    tbody tr:last-child td{border-bottom:0}
+    thead th{font-size:12.5px;font-weight:600;color:var(--muted)}
+    tbody td:first-child{color:var(--muted);font-size:14px}
+    .sp{background:#FDFAF7;font-weight:600}
+
+    .road{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left;padding-top:12px}
+    .road b{display:block;font-size:16px;font-weight:600;margin-bottom:5px}
+    .road span{font-size:14.5px;color:var(--body);line-height:1.55}
+
+    footer{border-top:1px solid var(--rule);padding:34px 0 50px;color:var(--muted);font-size:14px;text-align:center}
+    footer a{color:var(--muted);text-decoration:none}
+    footer a:hover{color:var(--ink)}
+    .fine{margin:12px auto 0;font-size:12px;line-height:1.55;max-width:64ch}
+
+    @media (prefers-reduced-motion:no-preference){
+      .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+      .reveal.in{opacity:1;transform:none}
+    }
+    @media (max-width:760px){
+      .facts,.road{grid-template-columns:1fr;gap:30px}
+      .stage{padding-top:80px;padding-bottom:80px}
+      .hero{padding-top:64px}
+      nav a:not(.btn){display:none}
+    }
+
+    /* Every interactive target keeps a 44px press area regardless of its visual height. */
+    nav a,.btn,footer a,.foot a{position:relative}
+    nav a::after,.btn::after,footer a::after,.foot a::after{
+      content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+      height:44px;min-height:100%;
+    }
+
+    /* Emphasis carries meaning, not decoration: it marks the words a skimmer must catch.
+       Body copy sits at --body grey, so emphasis steps up to full ink — the contrast does the
+       work without introducing another hue. Italic is reserved for terms of art. */
+    .lede strong,.stage p strong,.facts p strong,.road span strong{color:var(--ink);font-weight:600}
+    .lede em,.stage p em,.facts p em,.road span em{font-style:italic;color:var(--ink)}
+  </style>
 </head>
 <body>
+
   <header>
-    <nav class="wrap">
-      <a class="brand-mark" href="/">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" fill="#F97316"/>
-            <circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="9"/>
-            <circle cx="50" cy="50" r="7" fill="#17130F"/>
-          </svg>
-        </span>
-        <span>SpoolPilot</span>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" fill="#F97316"/><circle cx="50" cy="50" r="26" fill="none" stroke="#fff" stroke-width="9"/><circle cx="50" cy="50" r="7" fill="#111010"/></svg>
+        SpoolPilot
       </a>
-      <div class="nav-links lp-nav">
-        <a class="nav-link" href="/support.html">Support</a>
-        <a class="nav-link" href="/privacy.html">Privacy</a>
-        <a class="nav-link nav-cta" href="#waitlist">Join waitlist</a>
-      </div>
-    </nav>
+      <nav>
+        <a href="/support.html">Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a class="btn" href="#waitlist">Join waitlist</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section class="lp hero">
-    <div class="hero-copy">
-      <p class="eyebrow">Built by an Etsy seller with 3,000+&nbsp;sales</p>
-      <h1>Know your real profit on every order.</h1>
-      <p class="lede">
-        Your filament tracker knows how much plastic is left. SpoolPilot knows how much money you made — it syncs your whole Etsy history, itemizes the <em>exact</em> fees Etsy charged on each order, subtracts your true cost of goods, and shows the net profit and margin on every sale.
-      </p>
-      <form class="waitlist" id="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
-        <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
-        <button type="submit">Join the waitlist</button>
-      </form>
-      <p class="form-note">Early access on iOS. We'll email when the beta opens — no spam, and a person reads every reply.</p>
-    </div>
-    <div class="hero-media">
-      <div class="phone">
-        <img src="shot-home.png" width="1206" height="2622" alt="SpoolPilot home screen showing today's revenue, monthly profit, a tappable revenue chart, and recent Etsy orders.">
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- Pillar 1 -->
-  <section class="lp pillar">
-    <div class="pillar-copy">
-      <p class="pillar-num">01 · Profit engine</p>
-      <h2>The exact fees Etsy charged. Itemized.</h2>
-      <p>
-        Connect your Etsy shop and SpoolPilot reads each order's real fees straight from your Etsy payment account — then breaks them down line by line: transaction fee, payment processing, listing fee, even Offsite Ads. Coupons and buyer-paid shipping handled, your own cost recipe subtracted — filament weight, electricity, packaging. What's left is true net profit per sale, built to line up with what Etsy actually deposits.
-      </p>
-      <div class="tags">
-        <span class="tag">Real fees, from your ledger</span>
-        <span class="tag">Itemized per order</span>
-        <span class="tag">Net profit &amp; margin</span>
-      </div>
-    </div>
-    <div class="pillar-media">
-      <div class="phone">
-        <img src="shot-sale.png" width="1206" height="2622" alt="A sale detail screen itemizing the actual Etsy fees — Offsite Ads, transaction fee, payment processing, and listing fee — with net profit and margin.">
-      </div>
-    </div>
-  </section>
-
-  <!-- Pillar 2 -->
-  <section class="lp pillar flip">
-    <div class="pillar-copy">
-      <p class="pillar-num">02 · Your whole history</p>
-      <h2>Import every sale you've ever made.</h2>
-      <p>
-        One tap pulls your complete Etsy history — the last 90 days, 12 months, or all time — so Finances shows your real business, not just the weeks since you installed. Tap any month on the revenue chart and the full P&amp;L follows: revenue, cost of materials, operating expenses, net profit and margin for exactly that month.
-      </p>
-      <div class="tags">
-        <span class="tag">Full history import</span>
-        <span class="tag">Tap a month to inspect it</span>
-        <span class="tag">P&amp;L that reconciles</span>
-      </div>
-    </div>
-    <div class="pillar-media">
-      <div class="phone">
-        <img src="shot-finances.png" width="1206" height="2622" alt="SpoolPilot Finances screen: a full profit-and-loss for a tapped month, a six-month revenue chart, and a breakdown of where costs go.">
-      </div>
-    </div>
-  </section>
-
-  <!-- Pillar 3 -->
-  <section class="lp pillar">
-    <div class="pillar-copy">
-      <p class="pillar-num">03 · Shop-floor mobile</p>
-      <h2>Count sealed spools. Skip the grams.</h2>
-      <p>
-        A native iOS app built for someone moving between machines, not sitting at a desk. Scan a spool's barcode to add it to the shelf — or take one off — with quick plus-minus counts made for restock day. SpoolPilot watches your sales pace and tells you how many weeks each filament will last, so you reorder before you run out instead of weighing spools.
-      </p>
-      <div class="tags">
-        <span class="tag">Barcode scan, add or remove</span>
-        <span class="tag">Sealed-spool counts</span>
-        <span class="tag">Weeks-of-stock forecast</span>
-      </div>
-    </div>
-    <div class="pillar-media">
-      <div class="phone">
-        <img src="shot-inventory.png" width="1206" height="2622" alt="SpoolPilot filament inventory grouped by color, each line showing sealed spool counts and a weeks-of-stock estimate.">
-      </div>
-    </div>
-  </section>
-
-  <!-- Pillar 4 -->
-  <section class="lp pillar flip">
-    <div class="pillar-copy">
-      <p class="pillar-num">04 · Variant mapping</p>
-      <h2>Etsy variations, handled — and kept in sync.</h2>
-      <p>
-        Listings are rarely simple — a stand comes in four colors. SpoolPilot imports a listing with options as one clean row, then splits it into per-variant products with a single tap when you want per-color costs and margins. Edit the listing on Etsy later — retitle it, reprice a variant, rename an option — and a pull-to-refresh brings your catalog along, without losing any history.
-      </p>
-      <div class="tags">
-        <span class="tag">Import as one row</span>
-        <span class="tag">Split into variants</span>
-        <span class="tag">Listing edits sync back</span>
-      </div>
-    </div>
-    <div class="pillar-media">
-      <div class="phone">
-        <img src="shot-variants.png" width="1206" height="2622" alt="SpoolPilot Products screen showing an Etsy listing split into a family of four color variants, each with its own stock and margin.">
-      </div>
-    </div>
-  </section>
-
-  <!-- Pillar 5 -->
-  <section class="lp pillar">
-    <div class="pillar-copy">
-      <p class="pillar-num">05 · Inventory that thinks</p>
-      <h2>Stock counts, inferred from your sales.</h2>
-      <p>
-        Products are made-to-order until you say otherwise — no nagging about counts you don't keep. Track stock on the items you do shelve and SpoolPilot flags what's running low at your actual sales pace and queues what to print next. Sell kits? A bundle pulls from pre-assembled stock first, then assembles itself from parts — with the combined cost itemized live.
-      </p>
-      <div class="tags">
-        <span class="tag">Made to order by default</span>
-        <span class="tag">Print-next queue</span>
-        <span class="tag">Bundles built from parts</span>
-      </div>
-    </div>
-    <div class="pillar-media">
-      <div class="phone">
-        <img src="shot-products.png" width="1206" height="2622" alt="SpoolPilot Products screen showing made-to-order items, in-stock counts, profit margins, and a bundle with five ready to ship.">
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- Comparison -->
-  <section class="lp lp-section">
-    <div class="lp-head">
-      <p class="eyebrow">Where SpoolPilot fits</p>
-      <h2>Not another filament tracker.</h2>
-      <p>Most tools stop at how much plastic is left. SpoolPilot is built around the money.</p>
-    </div>
-    <div class="compare-wrap">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Filament trackers <br><small>(Spoolman, etc.)</small></th>
-            <th>Craftybase / spreadsheets</th>
-            <th class="col-sp">SpoolPilot</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Primary focus</td>
-            <td>Remaining filament weight</td>
-            <td>General handmade tracking</td>
-            <td class="col-sp"><b>3D-print business profit</b></td>
-          </tr>
-          <tr>
-            <td>Data entry</td>
-            <td>Manual or local print server</td>
-            <td>Manual spreadsheet typing</td>
-            <td class="col-sp"><b>Automatic Etsy order sync</b></td>
-          </tr>
-          <tr>
-            <td>Form factor</td>
-            <td>Desktop / local web</td>
-            <td>Desktop web</td>
-            <td class="col-sp"><b>Native iOS, shop-floor mobile</b></td>
-          </tr>
-          <tr>
-            <td>Seller fees</td>
-            <td>—</td>
-            <td>Estimated percentages</td>
-            <td class="col-sp"><b>The exact fees Etsy charged, itemized per order</b></td>
-          </tr>
-          <tr>
-            <td>Financials</td>
-            <td>None</td>
-            <td>Basic manual COGS</td>
-            <td class="col-sp"><b>Full P&amp;L — any month, across your whole sales history</b></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Roadmap -->
-  <section class="lp lp-section tight">
-    <div class="roadmap">
-      <h2>Built for what you do today — here's what's next.</h2>
-      <p class="sub">SpoolPilot already syncs your whole Etsy history with the exact fees itemized, computes your COGS, tracks variations and bundles, and forecasts filament stock from your sales pace. These are on the roadmap:</p>
-      <div class="rgrid">
-        <div class="rchip"><b>Shopify order sync</b><span>The same automatic order import, for Shopify shops.</span></div>
-        <div class="rchip"><b>Automatic cloud backup</b><span>Your catalog and sales history backed up off-device, automatically.</span></div>
-        <div class="rchip"><b>App Store release</b><span>Public download on the iOS App Store — join the waitlist for early access.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="lp lp-section cta-band">
-    <div class="lp-head">
-      <p class="eyebrow">Early access</p>
-      <h2>See the profit on your next print.</h2>
-      <p>Join the waitlist and we'll email you when the iOS beta opens.</p>
-    </div>
-    <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+  <div class="hero wrap">
+    <p class="kicker">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Built by an Etsy seller with 3,000+ sales
+    </p>
+    <h1>Know your real profit on every order.</h1>
+    <p class="lede">Your filament tracker knows how much plastic is left. SpoolPilot knows <strong>how much money you made</strong>.</p>
+    <form class="waitlist" id="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
       <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
       <input type="hidden" name="ml-submit" value="1">
       <input type="hidden" name="anticsrf" value="true">
       <button type="submit">Join the waitlist</button>
     </form>
-    <p class="form-note">No spam. A person reads every reply.</p>
+    <p class="note">Early access on iOS. We'll email when the beta opens — no spam, and a person reads every reply.</p>
+    <div class="hero-device">
+      <img src="shot-home.png" width="1206" height="2622" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
+    </div>
+  </div>
+
+  <section class="stage tint">
+    <div class="wrap">
+      <h2 class="reveal">Every fee Etsy charged. No estimating.</h2>
+      <p class="reveal">Read from your Etsy payment account, order by order, and reconciled against <strong>what Etsy actually deposits</strong>. Buyer-paid shipping is treated as <em>pass-through</em>; when you ship free, the label is counted as the real cost it is.</p>
+      <div class="proof reveal">
+        <div class="proof-hd"><span>Desk Organizer · Jul 22</span><span>Reconciled</span></div>
+        <div class="proof-body">
+          <div class="pl"><span>Sold · 1 × $28.00</span><span>$28.00</span></div>
+          <div class="pl"><span>Postage (free shipping)</span><span class="n">−$4.50</span></div>
+          <div class="pl"><span>Etsy fees (actual)</span><span class="n">−$6.74</span></div>
+          <div class="pl child"><span>Offsite Ads</span><span>−$3.40</span></div>
+          <div class="pl child"><span>Transaction fee</span><span>−$1.82</span></div>
+          <div class="pl child"><span>Payment processing</span><span>−$1.32</span></div>
+          <div class="pl child"><span>Listing fee</span><span>−$0.20</span></div>
+          <div class="pl"><span>Product cost</span><span class="n">−$5.90</span></div>
+          <div class="pl sum"><span>Net profit · 55% margin</span><b>$15.36</b></div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
+  <section class="stage">
     <div class="wrap">
-      <span>&copy; <span id="year"></span> Opus Design Group LLC</span>
-      <span><a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a></span>
+      <h2 class="reveal">Your whole history, in one tap.</h2>
+      <p class="reveal">Import <strong>every sale you've ever made</strong> — 90 days, 12 months, or all time. Tap any month and the full profit-and-loss follows it.</p>
+      <div class="device reveal"><img src="shot-finances.png" width="1206" height="2622" alt="Finances screen showing a full profit-and-loss for a selected month."></div>
     </div>
-    <div class="wrap attribution">
-      <span>The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</span>
-    </div>
-  </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  </section>
 
-    // Waitlist: submit to MailerLite and read the response. MailerLite's subscribe endpoint sends
-    // proper CORS headers and returns {"success":true}, so we only celebrate on a genuine success
-    // and show a real error otherwise — no more pretending it worked when it didn't.
-    (function () {
-      function showSuccess(form) {
-        var note = form.nextElementSibling;
-        if (note && note.classList.contains('form-note')) note.remove();
-        var box = document.createElement('div');
-        box.className = 'waitlist-success';
-        box.setAttribute('role', 'status');
-        box.innerHTML =
-          '<div class="ws-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' +
-          '<div class="ws-badge" aria-hidden="true"><svg viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg">' +
-          '<circle class="ws-ring" cx="29" cy="29" r="26" fill="rgba(249,115,22,0.12)" stroke="#F97316" stroke-width="2.5"/>' +
-          '<path class="ws-check" d="M17 30 l8 8 l16-17" fill="none" stroke="#F97316" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
-          '<h3>You’re on the list! 🎉</h3>' +
-          '<p>Thanks for being early — we’ll email you the moment the SpoolPilot beta opens.</p>' +
-          '<p class="ws-sub">Keep an eye on your inbox.</p>';
-        form.replaceWith(box);
-      }
-      function clearError(form) {
-        var next = form.nextElementSibling;
-        if (next && next.classList.contains('waitlist-error')) next.remove();
-      }
-      function showError(form, btn, label) {
-        if (btn) { btn.disabled = false; btn.textContent = label; }
-        clearError(form);
-        var msg = document.createElement('p');
-        msg.className = 'waitlist-error';
-        msg.setAttribute('role', 'alert');
-        msg.style.cssText = 'margin:10px 0 0;font-size:14px;font-weight:600;color:#DC2626;';
-        msg.textContent = 'That didn’t go through — please check your email and try again.';
-        form.insertAdjacentElement('afterend', msg);
-      }
-      document.querySelectorAll('form.waitlist').forEach(function (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          if (!form.reportValidity()) return;
-          var btn = form.querySelector('button[type="submit"]');
-          var label = btn ? btn.textContent : 'Join the waitlist';
-          if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
-          clearError(form);
-          fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
-            .then(function (r) {
-              return r.json().then(function (j) { return { ok: r.ok, data: j }; }, function () { return { ok: r.ok, data: {} }; });
-            })
-            .then(function (res) {
-              if (res.ok && res.data && res.data.success) { showSuccess(form); }
-              else { showError(form, btn, label); }
-            })
-            .catch(function () { showError(form, btn, label); });
-        });
+  <section class="stage tint">
+    <div class="wrap">
+      <h2 class="reveal">Count sealed spools. Skip the grams.</h2>
+      <p class="reveal">Scan a barcode to put a spool on the shelf or take one off. SpoolPilot forecasts <strong>how many weeks each filament lasts</strong> from your real sales pace.</p>
+      <div class="device reveal"><img src="shot-inventory.png" width="1206" height="2622" alt="Filament inventory with sealed spool counts and weeks-of-stock estimates."></div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="wrap">
+      <h2 class="reveal">The busywork it takes off you.</h2>
+      <div class="facts reveal">
+        <div><h3>Made to order</h3><p>Products <strong>don't demand a stock count you don't keep</strong>. Low-stock flags appear only where you actually shelve inventory.</p></div>
+        <div><h3>Print next</h3><p>A queue of what's running out at your real sales pace — tap a row to log the print run when it's done.</p></div>
+        <div><h3>Bundles</h3><p>Kits sell from pre-assembled stock first, then <strong>assemble themselves from component parts</strong>, with the cost itemized live.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage tint">
+    <div class="wrap">
+      <h2 class="reveal">Where it fits</h2>
+      <p class="reveal" style="margin-bottom:44px">Most tools stop at how much plastic is left.</p>
+      <div class="tbl reveal">
+        <table>
+          <thead><tr><th></th><th>Filament trackers</th><th>Craftybase / spreadsheets</th><th class="sp">SpoolPilot</th></tr></thead>
+          <tbody>
+            <tr><td>Primary focus</td><td>Remaining filament weight</td><td>General handmade tracking</td><td class="sp">3D-print business profit</td></tr>
+            <tr><td>Data entry</td><td>Manual or local print server</td><td>Manual spreadsheet typing</td><td class="sp">Automatic Etsy order sync</td></tr>
+            <tr><td>Form factor</td><td>Desktop / local web</td><td>Desktop web</td><td class="sp">Native iOS, shop-floor mobile</td></tr>
+            <tr><td>Seller fees</td><td>—</td><td>Estimated percentages</td><td class="sp">The exact fees Etsy charged, itemized per order</td></tr>
+            <tr><td>Financials</td><td>None</td><td>Basic manual COGS</td><td class="sp">Full P&amp;L — any month, whole history</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="wrap narrow">
+      <h2 class="reveal">On the roadmap</h2>
+      <p class="reveal" style="margin-bottom:40px">Everything above <strong>ships today</strong>. Get excited for these.</p>
+      <div class="road reveal">
+        <div><b>Shopify sync</b><span>The same automatic order import, for Shopify shops.</span></div>
+        <div><b>Cloud backup</b><span>Your catalog and sales history backed up off-device.</span></div>
+        <div><b>App Store</b><span>Public download on iOS — join the waitlist for early access.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage tint">
+    <div class="wrap">
+      <h2>See the profit on your next print.</h2>
+      <p style="margin-bottom:36px">Join the waitlist and we'll email you when the iOS beta opens.</p>
+      <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+        <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit">Join the waitlist</button>
+      </form>
+      <p class="note">No spam. A person reads every reply.</p>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    &copy; <span id="year"></span> Opus Design Group LLC · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a>
+    <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+  </footer>
+
+  <script src="waitlist.js"></script>
+  <script>
+    // One authored moment: sections settle into place as they arrive. Content is visible by
+    // default and the observer only adds motion, so nothing depends on JS to be readable.
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -12% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el, i) {
+        el.style.transitionDelay = (i % 3) * 70 + 'ms';
+        io.observe(el);
       });
-    })();
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
   </script>
 </body>
 </html>

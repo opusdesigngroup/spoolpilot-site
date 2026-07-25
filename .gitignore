@@ -1,0 +1,13 @@
+# Design context — internal strategy (Etsy/Apple status, unshipped pricing). Must never be
+# served from a Pages site; kept on disk only.
+PRODUCT.md
+DESIGN.md
+
+# Impeccable tooling and live-mode state
+.claude/
+.impeccable/
+
+# Unshipped design candidates
+v-ledger.html
+v-console.html
+v-quiet.html
