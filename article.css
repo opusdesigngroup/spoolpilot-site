@@ -1,0 +1,151 @@
+/* ============================================================================
+   SpoolPilot — shared styles for reading pages (support, privacy, comparisons,
+   the fee calculator).
+
+   Same visual world as the homepage, different job. The homepage is Persuade and
+   is paced as full-width stages; these pages are Read, so they use a single
+   measured column and structure for comprehension instead. Tokens, nav, footer,
+   buttons and emphasis are identical, so moving between them feels continuous.
+   ========================================================================== */
+
+:root{
+  --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#8B857F;
+  --rule:rgba(17,16,16,.08); --rule-2:rgba(17,16,16,.16);
+  --orange:#F97316; --orange-deep:#E4650C; --profit:#177245; --loss:#B4231B;
+  /* credential: the maker-proof hue. Never interactive, never a money value. */
+  --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+  font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+::selection{background:rgba(249,115,22,.16)}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--rule)}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;max-width:1000px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.02em}
+.brand svg{width:26px;height:26px;border-radius:7px;display:block}
+nav{display:flex;align-items:center;gap:24px}
+nav a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;position:relative}
+nav a:hover{color:var(--ink)}
+/* every target keeps a 44px press area regardless of its visual height */
+nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;min-height:100%}
+.btn{
+  background:var(--orange);color:#fff !important;text-decoration:none;font-weight:600;font-size:14.5px;
+  padding:8px 16px;border-radius:980px;transition:background .16s ease;
+}
+.btn:hover{background:var(--orange-deep)}
+
+/* ---------- reading column ---------- */
+.doc{max-width:660px;margin:0 auto;padding:64px 24px 30px}
+.crumb{font-size:14px;color:var(--muted);margin:0 0 14px}
+.crumb a{color:var(--orange);text-decoration:none;font-weight:600}
+h1{
+  margin:0 0 20px;font-size:clamp(32px,4.6vw,46px);line-height:1.1;letter-spacing:-.035em;
+  font-weight:700;text-wrap:balance;
+}
+.lede{margin:0 0 8px;font-size:19.5px;line-height:1.55;color:var(--body)}
+h2{margin:52px 0 14px;font-size:26px;letter-spacing:-.03em;font-weight:700;line-height:1.22;text-wrap:balance}
+h3{margin:32px 0 8px;font-size:18px;letter-spacing:-.02em;font-weight:600}
+p{margin:0 0 16px;color:var(--body)}
+ul{margin:0 0 16px;padding-left:22px;color:var(--body)}
+li{margin:7px 0}
+/* Emphasis marks the claim words and steps grey body copy up to full ink —
+   the contrast does the work, no extra hue required. */
+strong{color:var(--ink);font-weight:600}
+em{font-style:italic;color:var(--ink)}
+.fine{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- credential badge ---------- */
+.credential{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;color:var(--credential);
+  background:var(--credential-tint);border-radius:980px;padding:7px 15px 7px 12px;margin:0 0 22px;
+}
+.credential svg{width:15px;height:15px;display:block;flex:0 0 auto}
+
+/* ---------- compare table ---------- */
+.tbl{overflow-x:auto;border:1px solid var(--rule-2);border-radius:16px;background:#fff;margin:22px 0 8px;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:0}
+thead th{font-size:12.5px;font-weight:600;color:var(--muted)}
+tbody td:first-child{color:var(--muted);font-size:14px}
+.sp{background:#FDFAF7;font-weight:600;color:var(--ink)}
+
+/* ---------- callout / CTA ---------- */
+.cta{background:var(--bg-alt);border-radius:20px;padding:30px 28px;margin:44px 0 0}
+.cta h2{margin:0 0 10px;font-size:23px}
+.cta p{margin:0 0 20px;font-size:16.5px}
+
+/* ---------- waitlist ---------- */
+.waitlist{display:flex;gap:9px;max-width:440px;flex-wrap:wrap}
+.waitlist input[type=email]{
+  flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:16px;
+  border:1px solid var(--rule-2);border-radius:980px;background:#fff;color:var(--ink);
+  transition:border-color .16s ease,box-shadow .16s ease;
+}
+.waitlist input[type=email]::placeholder{color:#AFA9A3}
+.waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
+.waitlist button{
+  border:0;background:var(--orange);color:#fff;font:inherit;font-weight:600;font-size:16px;
+  padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease;
+}
+.waitlist button:hover{background:var(--orange-deep)}
+.note{margin:14px 0 0;font-size:13.5px;color:var(--muted)}
+.waitlist-error{margin:12px 0 0;font-size:14px;font-weight:600;color:var(--loss)}
+.waitlist-success{max-width:440px;padding:20px 22px;border:1px solid var(--rule-2);border-radius:18px;background:#fff}
+.waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
+.waitlist-success p{margin:0;font-size:14.5px;color:var(--body)}
+
+/* ---------- contact plate (support) ---------- */
+.plate{
+  display:inline-block;background:var(--ink);color:#fff !important;text-decoration:none;
+  font-weight:600;font-size:19px;padding:16px 26px;border-radius:14px;margin:4px 0 6px;
+  transition:transform .16s ease,background .16s ease;
+}
+.plate:hover{background:#000;transform:translateY(-1px)}
+
+/* ---------- cards (support topics) ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 8px}
+.card{background:var(--bg-alt);border-radius:16px;padding:20px 22px}
+.card h3{margin:0 0 6px;font-size:16.5px}
+.card p{margin:0;font-size:15px;line-height:1.55}
+
+/* ---------- fee calculator ---------- */
+.calc{background:var(--bg-alt);border-radius:20px;padding:24px;margin:24px 0 10px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
+.field input{
+  width:100%;padding:11px 13px;border:1px solid var(--rule-2);border-radius:10px;
+  font:inherit;font-size:15.5px;background:#fff;color:var(--ink);
+}
+.field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.13)}
+.check{display:flex;align-items:center;gap:9px;grid-column:1/-1;font-size:15px;font-weight:500;color:var(--body)}
+.check input{width:auto;accent-color:var(--orange)}
+.out{margin-top:22px;border-top:1px solid var(--rule-2);padding-top:16px}
+.orow{display:flex;justify-content:space-between;gap:14px;padding:6px 0;font-size:15.5px;color:var(--body)}
+.orow.child{padding-left:16px;font-size:14px;color:var(--muted);padding-top:3px;padding-bottom:3px}
+.orow.total{border-top:1px solid var(--rule-2);margin-top:10px;padding-top:13px;font-weight:700;color:var(--ink);font-size:17px}
+.orow .v{font-variant-numeric:tabular-nums}
+.neg{color:var(--orange-deep)}
+.pos{color:var(--profit);font-weight:700}
+
+footer{border-top:1px solid var(--rule);margin-top:56px}
+footer .in{max-width:660px;margin:0 auto;padding:28px 24px 46px;color:var(--muted);font-size:14px}
+footer a{color:var(--muted);text-decoration:none;position:relative}
+footer a:hover{color:var(--ink)}
+
+@media (max-width:700px){
+  body{font-size:17px}
+  .doc{padding-top:44px}
+  .cards,.calc-grid{grid-template-columns:1fr}
+  nav a:not(.btn){display:none}
+}
