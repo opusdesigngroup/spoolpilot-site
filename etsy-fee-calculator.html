@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Free Etsy Fee Calculator for 3D Printing (2026) — SpoolPilot</title>
-  <meta name="description" content="Free calculator for Etsy's real fee stack on a 3D print sale — transaction, processing, listing, Offsite Ads — plus filament and power. No signup.">
+  <title>Etsy Fee &amp; Pricing Calculator for 3D Printing — SpoolPilot</title>
+  <meta name="description" content="Free calculator for 3D-print sellers: work out what an Etsy sale really nets you, or what to charge a new listing to hit your target margin. No signup.">
   <link rel="canonical" href="https://spoolpilot.app/etsy-fee-calculator.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SpoolPilot">
-  <meta property="og:title" content="Free Etsy Fee Calculator for 3D Printing (2026) — SpoolPilot">
-  <meta property="og:description" content="Free calculator for Etsy's real fee stack on a 3D print sale — transaction, processing, listing, Offsite Ads — plus filament and power. No signup.">
+  <meta property="og:title" content="Etsy Fee & Pricing Calculator for 3D Printing">
+  <meta property="og:description" content="Free calculator for 3D-print sellers: work out what an Etsy sale really nets you, or what to charge a new listing to hit your target margin. No signup.">
   <meta property="og:url" content="https://spoolpilot.app/etsy-fee-calculator.html">
   <meta property="og:image" content="https://spoolpilot.app/og-image.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -55,21 +55,32 @@
         Built by an Etsy seller with 3,000+ sales
       </p>
     <h1>What is your actual profit?</h1>
-    <p class="lede">A free <strong>Etsy fee calculator for 3D printing</strong>. Type in one listing and see the fee stack most sellers never itemize — transaction, processing, listing, Offsite Ads — then what's really left after filament, electricity, and packaging. <strong>No signup, nothing stored.</strong></p>
+    <p class="lede">A free <strong>Etsy fee and pricing calculator for 3D printing</strong>. Work out what a sale really nets you — or what to charge a new listing to hit the margin you want. See the fee stack most sellers never itemize — transaction, processing, listing, Offsite Ads — then what's really left after filament, electricity, and packaging. <strong>No signup, nothing stored.</strong></p>
 
     <div class="calc">
+      <div class="modes" role="tablist" aria-label="Calculator mode">
+        <button type="button" class="mode on" id="mode-profit" role="tab" aria-selected="true">What did I make?</button>
+        <button type="button" class="mode" id="mode-price" role="tab" aria-selected="false">What should I charge?</button>
+      </div>
       <div class="calc-grid">
-        <div class="field"><label for="c-price">Item price ($)</label><input id="c-price" type="number" inputmode="decimal" value="28" min="0" step="0.01"></div>
-        <div class="field"><label for="c-ship">Buyer-paid shipping ($)</label><input id="c-ship" type="number" inputmode="decimal" value="5" min="0" step="0.01"></div>
+        <div class="field" id="f-price"><label for="c-price">Item price ($)</label><input id="c-price" type="number" inputmode="decimal" value="28" min="0" step="0.01"></div>
+        <div class="field" id="f-margin" style="display:none"><label for="c-margin">Target profit margin (%)</label><input id="c-margin" type="number" inputmode="decimal" value="35" min="0" max="95" step="1"></div>
+        <div class="field" id="f-ship"><label for="c-ship">Buyer-paid shipping ($)</label><input id="c-ship" type="number" inputmode="decimal" value="5" min="0" step="0.01"></div>
         <div class="field"><label for="c-grams">Filament used (g)</label><input id="c-grams" type="number" inputmode="decimal" value="45" min="0" step="1"></div>
         <div class="field"><label for="c-kg">Filament cost ($/kg)</label><input id="c-kg" type="number" inputmode="decimal" value="22" min="0" step="0.01"></div>
         <div class="field"><label for="c-hours">Print time (hours)</label><input id="c-hours" type="number" inputmode="decimal" value="3" min="0" step="0.1"></div>
         <div class="field"><label for="c-elec">Electricity ($/print-hour)</label><input id="c-elec" type="number" inputmode="decimal" value="0.21" min="0" step="0.01"></div>
         <div class="field"><label for="c-pack">Packaging per order ($)</label><input id="c-pack" type="number" inputmode="decimal" value="0.50" min="0" step="0.01"></div>
+        <div class="field"><label for="c-labor">Your labor per order ($)</label><input id="c-labor" type="number" inputmode="decimal" value="0" min="0" step="0.25"></div>
         <div class="check"><input id="c-osa" type="checkbox"><label for="c-osa" style="margin:0">Order came from an Offsite Ad (12% fee)</label></div>
       </div>
       <div class="out" aria-live="polite">
-        <div class="orow"><span>Revenue (item + shipping)</span><span class="v" id="o-rev">$0.00</span></div>
+        <div class="suggest" id="suggest" style="display:none">
+          <span class="suggest-label">List it at</span>
+          <span class="suggest-price" id="o-suggest">$0.00</span>
+          <span class="suggest-note" id="o-suggest-note">to keep 35% after fees and costs</span>
+        </div>
+        <div class="orow"><span id="lbl-rev">Revenue (item + shipping)</span><span class="v" id="o-rev">$0.00</span></div>
         <div class="orow child"><span>Transaction fee (6.5%)</span><span class="v neg" id="o-txn">−$0.00</span></div>
         <div class="orow child"><span>Payment processing (3% + $0.25)</span><span class="v neg" id="o-proc">−$0.00</span></div>
         <div class="orow child"><span>Listing fee</span><span class="v neg" id="o-list">−$0.20</span></div>
@@ -78,6 +89,7 @@
         <div class="orow"><span>Filament</span><span class="v neg" id="o-fil">−$0.00</span></div>
         <div class="orow"><span>Electricity</span><span class="v neg" id="o-el">−$0.00</span></div>
         <div class="orow"><span>Packaging</span><span class="v neg" id="o-pk">−$0.00</span></div>
+        <div class="orow" id="row-labor" style="display:none"><span>Your labor</span><span class="v neg" id="o-lab">−$0.00</span></div>
         <div class="orow total"><span>Estimated net profit</span><span class="v pos" id="o-net">$0.00</span></div>
         <div class="orow"><span>Margin</span><span class="v" id="o-margin">0%</span></div>
       </div>
@@ -115,13 +127,52 @@
     (function () {
       var $ = function (id) { return document.getElementById(id); };
       var money = function (n) { return (n < 0 ? '-$' : '$') + Math.abs(n).toFixed(2); };
-      var ids = ['c-price','c-ship','c-grams','c-kg','c-hours','c-elec','c-pack','c-osa'];
+      var ids = ['c-price','c-ship','c-grams','c-kg','c-hours','c-elec','c-pack','c-labor','c-margin','c-osa'];
+      var priceMode = false;
       function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v : 0; }
+      // Solve for the ITEM price that leaves a target margin after Etsy's cut and every cost.
+      //
+      // Buyer-paid shipping is deliberately excluded here, matching how SpoolPilot itself
+      // treats it: what the buyer pays for postage is assumed to cover the label, so counting
+      // it as revenue would inflate the price. (Including it also broke the math outright —
+      // with shipping counted as income, generous shipping made the solved price negative.)
+      // Ship free and your postage is a real cost: the note under the result says to fold it
+      // into packaging.
+      //
+      // Margin is profit ÷ item price, and price appears on both sides, so rearranged:
+      //   price = (costs + fixedFees) / (1 - pctFees - margin)
+      // The denominator approaches zero as fees + margin approach 100%, where no finite price
+      // satisfies the goal — reported honestly rather than printing a fantasy number.
+      function solvePrice(costs, pct, margin) {
+        var denom = 1 - pct - margin;
+        if (denom <= 0.02) return null;
+        return (costs + 0.25 + 0.20) / denom;
+      }
+
       function recalc() {
         // Round each line to whole cents first, then sum the rounded values, so the itemised
         // rows always add up exactly to the totals shown.
         var c = function (n) { return Math.round(n * 100) / 100; };
-        var rev = c(num('c-price') + num('c-ship'));
+
+        if (priceMode) {
+          var costsOnly = c(num('c-grams') / 1000 * num('c-kg')) + c(num('c-hours') * num('c-elec'))
+                        + c(num('c-pack')) + c(num('c-labor'));
+          var pct = 0.065 + 0.03 + ($('c-osa').checked ? 0.12 : 0);
+          var target = Math.min(Math.max(num('c-margin'), 0), 95) / 100;
+          var solved = solvePrice(costsOnly, pct, target);
+          if (solved === null || solved <= 0) {
+            $('o-suggest').textContent = '—';
+            $('o-suggest-note').textContent = "That margin isn't reachable once Etsy's cut is covered. Try a lower target.";
+          } else {
+            var rounded = Math.max(0.20, Math.ceil(solved * 100) / 100);
+            $('c-price').value = rounded.toFixed(2);
+            $('o-suggest').textContent = money(rounded);
+            $('o-suggest-note').textContent = 'to keep ' + (target * 100).toFixed(0)
+              + '% after fees and costs. Assumes buyer-paid shipping covers your postage \u2014 if you ship free, add postage to packaging.';
+          }
+        }
+
+        var rev = c(num('c-price') + (priceMode ? 0 : num('c-ship')));
         var txn = c(rev * 0.065);
         var proc = rev > 0 ? c(rev * 0.03 + 0.25) : 0;
         var list = rev > 0 ? 0.20 : 0;
@@ -130,7 +181,9 @@
         var fil = c(num('c-grams') / 1000 * num('c-kg'));
         var el = c(num('c-hours') * num('c-elec'));
         var pk = c(num('c-pack'));
-        var net = c(rev - fees - fil - el - pk);
+        var lab = c(num('c-labor'));
+        var net = c(rev - fees - fil - el - pk - lab);
+        $('lbl-rev').textContent = priceMode ? 'Item price' : 'Revenue (item + shipping)';
         $('o-rev').textContent = money(rev);
         $('o-txn').textContent = '\u2212' + money(txn);
         $('o-proc').textContent = '\u2212' + money(proc);
@@ -141,10 +194,28 @@
         $('o-fil').textContent = '\u2212' + money(fil);
         $('o-el').textContent = '\u2212' + money(el);
         $('o-pk').textContent = '\u2212' + money(pk);
+        $('row-labor').style.display = lab > 0 ? 'flex' : 'none';
+        $('o-lab').textContent = '\u2212' + money(lab);
         $('o-net').textContent = money(net);
         $('o-net').className = 'v ' + (net >= 0 ? 'pos' : 'neg');
         $('o-margin').textContent = (rev > 0 ? (net / rev * 100) : 0).toFixed(0) + '%';
       }
+      function setMode(toPrice) {
+        priceMode = toPrice;
+        $('mode-price').classList.toggle('on', toPrice);
+        $('mode-profit').classList.toggle('on', !toPrice);
+        $('mode-price').setAttribute('aria-selected', String(toPrice));
+        $('mode-profit').setAttribute('aria-selected', String(!toPrice));
+        // Price is an OUTPUT when solving for it, so its input is swapped for the margin goal.
+        $('f-price').style.display = toPrice ? 'none' : '';
+        $('f-margin').style.display = toPrice ? '' : 'none';
+        $('f-ship').style.display = toPrice ? 'none' : '';
+        $('suggest').style.display = toPrice ? '' : 'none';
+        recalc();
+      }
+      $('mode-price').addEventListener('click', function () { setMode(true); });
+      $('mode-profit').addEventListener('click', function () { setMode(false); });
+
       ids.forEach(function (id) { $(id).addEventListener('input', recalc); $(id).addEventListener('change', recalc); });
       recalc();
     })();
