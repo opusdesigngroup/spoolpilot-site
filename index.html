@@ -66,6 +66,18 @@
     nav{display:flex;align-items:center;gap:24px}
     nav a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500}
     nav a:hover{color:var(--ink)}
+
+    /* ---- free-tool nav action ----
+       Secondary to the orange waitlist CTA but deliberately not a plain link: it survives the
+       mobile breakpoint that hides Support/Privacy, because a free tool nobody sees on a phone
+       is a free tool nobody uses. Named rather than teased — navs get scanned, and "calculator"
+       alone left people asking what kind. */
+    .tool{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:14.5px;
+      font-weight:600;padding:8px 15px;border-radius:980px;white-space:nowrap;color:var(--ink);
+      background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.22);
+      transition:background .16s ease}
+    .tool:hover{background:rgba(249,115,22,.16)}
+    .tool svg{width:15px;height:15px;display:block;flex:0 0 auto;color:var(--orange)}
     .btn{
       background:var(--orange);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;
       padding:8px 16px;border-radius:980px;transition:background .16s ease;
@@ -167,7 +179,14 @@
       .facts,.road{grid-template-columns:1fr;gap:30px}
       .stage{padding-top:80px;padding-bottom:80px}
       .hero{padding-top:64px}
-      nav a:not(.btn){display:none}
+      nav a:not(.btn):not(.tool){display:none}
+      .brand .brandtext{display:none}
+      .brand{gap:0}
+      .tool{padding:8px 12px;font-size:14px}
+      .bar{padding-left:16px;padding-right:16px}
+      nav{gap:12px}
+      .bar{padding-left:16px;padding-right:16px}
+      .freeword{display:none}
     }
 
     /* Every interactive target keeps a 44px press area regardless of its visual height. */
@@ -190,11 +209,12 @@
     <div class="bar">
       <a class="brand" href="/">
         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
-        SpoolPilot
+        <span class="brandtext">SpoolPilot</span>
       </a>
       <nav>
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
+        <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="freeword">Free </span>profit calculator</a>
         <a class="btn" href="#waitlist">Join waitlist</a>
       </nav>
     </div>

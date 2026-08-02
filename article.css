@@ -37,6 +37,19 @@ nav a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;p
 nav a:hover{color:var(--ink)}
 /* every target keeps a 44px press area regardless of its visual height */
 nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;min-height:100%}
+/* ---- free-tool nav action ----
+   Secondary to the orange waitlist CTA but deliberately not a plain link: it survives the
+   mobile breakpoint that hides the other nav links, because a free tool nobody sees on a
+   phone is a free tool nobody uses. */
+.tool{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:14.5px;
+  font-weight:600;padding:8px 15px;border-radius:980px;white-space:nowrap;color:var(--ink);
+  background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.22);transition:background .16s ease}
+.tool:hover{background:rgba(249,115,22,.16)}
+/* On the calculator page itself the button marks position rather than offering a trip to
+   where you already are — kept in the nav so the header stays identical across pages. */
+.tool-current{background:rgba(249,115,22,.18);border-color:rgba(249,115,22,.4);cursor:default}
+.tool svg{width:15px;height:15px;display:block;flex:0 0 auto;color:var(--orange)}
+
 .btn{
   background:var(--orange);color:#fff !important;text-decoration:none;font-weight:600;font-size:14.5px;
   padding:8px 16px;border-radius:980px;transition:background .16s ease;
@@ -147,7 +160,14 @@ footer a:hover{color:var(--ink)}
   body{font-size:17px}
   .doc{padding-top:44px}
   .cards,.calc-grid{grid-template-columns:1fr}
-  nav a:not(.btn){display:none}
+  nav a:not(.btn):not(.tool){display:none}
+  .brand .brandtext{display:none}
+  .brand{gap:0}
+  .tool{padding:8px 12px;font-size:14px}
+  header .bar{padding-left:16px;padding-right:16px}
+  nav{gap:12px}
+  header .bar{padding-left:16px;padding-right:16px}
+  .freeword{display:none}
 }
 
 /* ---------- calculator mode toggle ---------- */
