@@ -55,7 +55,7 @@
         Built by an Etsy seller with 3,000+ sales
       </p>
     <h1>What is your actual profit?</h1>
-    <p class="lede">A free <strong>Etsy fee and pricing calculator for 3D printing</strong>. Work out what a sale really nets you — or what to charge a new listing to hit the margin you want. See the fee stack most sellers never itemize — transaction, processing, listing, Offsite Ads — then what's really left after filament, electricity, packaging and your own time. Buyer-paid shipping is treated as pass-through, not profit — the same way the app does it. <strong>No signup, nothing stored.</strong></p>
+    <p class="lede">A free <strong>Etsy fee and pricing calculator for 3D printing</strong>. Work out what a sale really nets you — or what to charge a new listing to hit the margin you want. See the fee stack most sellers never itemize — transaction, processing, listing, Offsite Ads — then what's really left after filament, electricity, packaging and your own time. <strong>No signup, nothing stored.</strong></p>
 
     <div class="calc">
       <div class="modes" role="tablist" aria-label="Calculator mode">
@@ -65,7 +65,6 @@
       <div class="calc-grid">
         <div class="field" id="f-price"><label for="c-price">Item price ($)</label><input id="c-price" type="number" inputmode="decimal" value="28" min="0" step="0.01"></div>
         <div class="field" id="f-margin" style="display:none"><label for="c-margin">Target profit margin (%)</label><input id="c-margin" type="number" inputmode="decimal" value="35" min="0" max="95" step="1"></div>
-        <div class="field" id="f-ship"><label for="c-ship" id="lbl-ship">Buyer-paid shipping ($)</label><input id="c-ship" type="number" inputmode="decimal" value="5" min="0" step="0.01"></div>
         <div class="field"><label for="c-grams">Filament used (g)</label><input id="c-grams" type="number" inputmode="decimal" value="45" min="0" step="1"></div>
         <div class="field"><label for="c-kg">Filament cost ($/kg)</label><input id="c-kg" type="number" inputmode="decimal" value="22" min="0" step="0.01"></div>
         <div class="field"><label for="c-hours">Print time (hours)</label><input id="c-hours" type="number" inputmode="decimal" value="3" min="0" step="0.1"></div>
@@ -73,7 +72,6 @@
         <div class="field"><label for="c-pack">Packaging per order ($)</label><input id="c-pack" type="number" inputmode="decimal" value="0.50" min="0" step="0.01"></div>
         <div class="field"><label for="c-labormin">Your labor per order (minutes)</label><input id="c-labormin" type="number" inputmode="decimal" value="10" min="0" step="1"></div>
         <div class="field"><label for="c-laborrate">Your labor rate ($/hour)</label><input id="c-laborrate" type="number" inputmode="decimal" value="25" min="0" step="1"></div>
-        <div class="check"><input id="c-free" type="checkbox"><label for="c-free" style="margin:0">I offer free shipping (I pay the postage)</label></div>
         <div class="check"><input id="c-osa" type="checkbox"><label for="c-osa" style="margin:0">Order came from an Offsite Ad (12% fee)</label></div>
       </div>
       <div class="out" aria-live="polite">
@@ -92,11 +90,10 @@
         <div class="orow"><span>Electricity</span><span class="v neg" id="o-el">−$0.00</span></div>
         <div class="orow"><span>Packaging</span><span class="v neg" id="o-pk">−$0.00</span></div>
         <div class="orow" id="row-labor" style="display:none"><span>Your labor</span><span class="v neg" id="o-lab">−$0.00</span></div>
-        <div class="orow" id="row-post" style="display:none"><span>Postage you paid</span><span class="v neg" id="o-post">−$0.00</span></div>
         <div class="orow total"><span>Estimated net profit</span><span class="v pos" id="o-net">$0.00</span></div>
         <div class="orow"><span>Margin</span><span class="v" id="o-margin">0%</span></div>
       </div>
-      <p class="note">Shipping a buyer pays for is assumed to cover the label, so it counts as neither revenue nor cost; offer free shipping and your postage becomes a real cost. Based on Etsy's published US rates as of July 2026 (transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 12–15%). Sales tax excluded — Etsy collects and remits it.</p>
+      <p class="note">Shipping is left out on purpose: what a buyer pays for postage goes straight back out on the label, so this prices the item itself. Note that Etsy also charges its percentage on shipping you collect, so real fees run a little above the figure here. Based on Etsy's published US rates as of July 2026 (transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 12–15%). Sales tax excluded — Etsy collects and remits it.</p>
     </div>
 
     <h2>The honest caveat: this is an estimate</h2>
@@ -131,8 +128,8 @@
       var $ = function (id) { return document.getElementById(id); };
       var money = function (n) { return (n < 0 ? '-$' : '$') + Math.abs(n).toFixed(2); };
       var c = function (n) { return Math.round(n * 100) / 100; };
-      var ids = ['c-price','c-ship','c-grams','c-kg','c-hours','c-elec','c-pack',
-                 'c-labormin','c-laborrate','c-margin','c-osa','c-free'];
+      var ids = ['c-price','c-grams','c-kg','c-hours','c-elec','c-pack',
+                 'c-labormin','c-laborrate','c-margin','c-osa'];
       var priceMode = false;
       function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v : 0; }
 
@@ -142,47 +139,39 @@
       function laborCost() { return c(num('c-labormin') / 60 * num('c-laborrate')); }
 
       // Everything that leaves your pocket to make and pack one order, before Etsy's cut.
-      // Postage only counts when you're the one paying it (free shipping).
       function productCosts() {
-        var base = c(num('c-grams') / 1000 * num('c-kg')) + c(num('c-hours') * num('c-elec'))
-                 + c(num('c-pack')) + laborCost();
-        return c(base + ($('c-free').checked ? c(num('c-ship')) : 0));
+        return c(c(num('c-grams') / 1000 * num('c-kg')) + c(num('c-hours') * num('c-elec'))
+               + c(num('c-pack')) + laborCost());
       }
 
-      // SHIPPING IS PASS-THROUGH — the same rule the app applies.
+      // SHIPPING IS OUT OF SCOPE ENTIRELY.
       //
-      // What a buyer pays for postage is assumed to cover the label, so it is neither revenue
-      // nor cost: counting it as income overstates profit by roughly a whole label on every
-      // order. Free shipping is the case that doesn't net out — there the seller paid postage
-      // and collected nothing, so it becomes a real cost above.
-      //
-      // Etsy still charges its percentage on (item + shipping) even though the shipping half
-      // isn't yours to keep, so fees are computed on the full amount while margin is measured
-      // against the item price alone.
-      function feeBase(itemPrice) {
-        return c(itemPrice + ($('c-free').checked ? 0 : num('c-ship')));
-      }
+      // The app treats buyer-paid postage as pass-through — it covers the label, so it is
+      // neither revenue nor cost — which left an input that changed almost nothing while
+      // inviting people to read it as income. Removing it makes the question exact: this
+      // page prices the ITEM. The one thing given up is that Etsy also charges its
+      // percentage on shipping you collect, so fees here run slightly under a real
+      // paid-shipping order. The caveat section says so rather than adding a field back.
       function pctRate() { return 0.065 + 0.03 + ($('c-osa').checked ? 0.12 : 0); }
 
       // Solve for the item price leaving a target margin. Rearranged from
-      //   margin = (P - fees(P + S) - costs) / P
-      // giving  P = (costs + fixed + S*pct) / (1 - pct - margin).
+      //   margin = (P - fees(P) - costs) / P
+      // giving  P = (costs + fixed) / (1 - pct - margin).
       // The denominator approaches zero as fees + margin approach 100%, where no finite price
       // works — reported honestly rather than printing a fantasy number.
-      function solvePrice(costs, ship, pct, margin) {
+      function solvePrice(costs, pct, margin) {
         var denom = 1 - pct - margin;
         if (denom <= 0.02) return null;
-        return (costs + 0.25 + 0.20 + ship * pct) / denom;
+        return (costs + 0.25 + 0.20) / denom;
       }
 
       function recalc() {
         var costs = productCosts();
         var pct = pctRate();
-        var shipForFees = $('c-free').checked ? 0 : num('c-ship');
 
         if (priceMode) {
           var target = Math.min(Math.max(num('c-margin'), 0), 95) / 100;
-          var solved = solvePrice(costs, shipForFees, pct, target);
+          var solved = solvePrice(costs, pct, target);
           if (solved === null || solved <= 0) {
             $('o-suggest').textContent = '\u2014';
             $('o-suggest-note').textContent = "That margin isn't reachable once Etsy's cut is covered. Try a lower target.";
@@ -191,13 +180,12 @@
             $('c-price').value = rounded.toFixed(2);
             $('o-suggest').textContent = money(rounded);
             $('o-suggest-note').textContent = 'to keep ' + (target * 100).toFixed(0)
-              + '% of the item price after Etsy\u2019s fees and every cost.';
+              + '% after Etsy\u2019s fees and every cost of making it.';
           }
         }
 
-        // Item price is the revenue base in both modes — buyer-paid shipping never counts.
         var item = c(num('c-price'));
-        var base = feeBase(item);
+        var base = item;
         var txn = c(base * 0.065);
         var proc = base > 0 ? c(base * 0.03 + 0.25) : 0;
         var list = base > 0 ? 0.20 : 0;
@@ -208,8 +196,7 @@
         var el = c(num('c-hours') * num('c-elec'));
         var pk = c(num('c-pack'));
         var lab = laborCost();
-        var post = $('c-free').checked ? c(num('c-ship')) : 0;
-        var net = c(item - fees - fil - el - pk - lab - post);
+        var net = c(item - fees - fil - el - pk - lab);
 
         $('o-rev').textContent = money(item);
         $('o-txn').textContent = '\u2212' + money(txn);
@@ -223,15 +210,10 @@
         $('o-pk').textContent = '\u2212' + money(pk);
         $('row-labor').style.display = lab > 0 ? 'flex' : 'none';
         $('o-lab').textContent = '\u2212' + money(lab);
-        $('row-post').style.display = post > 0 ? 'flex' : 'none';
-        $('o-post').textContent = '\u2212' + money(post);
         $('o-net').textContent = money(net);
         $('o-net').className = 'v ' + (net >= 0 ? 'pos' : 'neg');
         $('o-margin').textContent = (item > 0 ? (net / item * 100) : 0).toFixed(0) + '%';
 
-        // The shipping field changes meaning with the free-shipping toggle: normally it only
-        // affects what Etsy charges, but under free shipping it is money you actually spent.
-        $('lbl-ship').textContent = $('c-free').checked ? 'Your postage cost ($)' : 'Buyer-paid shipping ($)';
       }
 
       function setMode(toPrice) {
