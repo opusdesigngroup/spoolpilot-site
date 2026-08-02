@@ -49,6 +49,7 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
    where you already are — kept in the nav so the header stays identical across pages. */
 .tool-current{background:rgba(249,115,22,.18);border-color:rgba(249,115,22,.4);cursor:default}
 .tool svg{width:15px;height:15px;display:block;flex:0 0 auto;color:var(--orange)}
+.toollabel-short{display:none}
 
 .btn{
   background:var(--orange);color:#fff !important;text-decoration:none;font-weight:600;font-size:14.5px;
@@ -167,7 +168,6 @@ footer a:hover{color:var(--ink)}
   header .bar{padding-left:16px;padding-right:16px}
   nav{gap:12px}
   header .bar{padding-left:16px;padding-right:16px}
-  .freeword{display:none}
 }
 
 /* ---------- calculator mode toggle ---------- */
@@ -186,3 +186,16 @@ footer a:hover{color:var(--ink)}
 .suggest-label{font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .suggest-price{font-size:34px;font-weight:700;letter-spacing:-.03em;color:var(--profit);font-variant-numeric:tabular-nums;line-height:1.1}
 .suggest-note{font-size:13.5px;color:var(--body)}
+
+/* "Free" earns its place wherever it fits — swap to a complete shorter label only on
+   genuinely narrow phones, never by hiding a word (that reads as truncation). */
+@media (max-width:385px){
+  .toollabel-full{display:none}
+  .toollabel-short{display:inline}
+}
+@media (max-width:340px){
+  .tool svg{display:none}
+  .tool{gap:0;padding:7px 10px;font-size:13.5px}
+  nav .btn{padding:7px 12px;font-size:13.5px}
+  nav{gap:8px}
+}
