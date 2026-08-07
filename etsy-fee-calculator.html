@@ -44,7 +44,7 @@
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
         <a class="tool tool-current" aria-current="page" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
-        <a class="btn" href="/#waitlist">Join waitlist</a>
+        <a class="btn" href="/#waitlist">Get the beta</a>
       </nav>
     </div>
   </header>
@@ -103,12 +103,13 @@
 
     <div class="cta">
       <h2>See your real fees, not estimates</h2>
-      <p>SpoolPilot is a native iOS app for 3D-print shops: it syncs your whole Etsy history, itemizes the exact fees Etsy charged on every order, and shows true net profit per sale. In beta — join the waitlist for early access.</p>
+      <p class="cta-live" id="cta-live" aria-live="polite"></p>
+      <p>SpoolPilot is a native iOS app for 3D-print shops: it syncs your whole Etsy history, itemizes the exact fees Etsy charged on every order, and shows true net profit per sale. The beta is open — free while it lasts.</p>
       <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
         <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
         <input type="hidden" name="ml-submit" value="1">
         <input type="hidden" name="anticsrf" value="true">
-        <button type="submit">Join the waitlist</button>
+        <button type="submit">Email me the link</button>
       </form>
       <p class="note">No spam, and a person reads every reply.</p>
     </div>
@@ -215,6 +216,19 @@
         $('o-net').className = 'v ' + (net >= 0 ? 'pos' : 'neg');
         $('o-margin').textContent = (item > 0 ? (net / item * 100) : 0).toFixed(0) + '%';
 
+        // Quote their own figure back at the point of decision. Someone who has just watched
+        // a $28 listing shrink to $9 is at peak motivation; a generic pitch wastes that, and
+        // the honest gap — estimate versus what Etsy actually charged — is the whole product.
+        var live = $('cta-live');
+        if (live) {
+          if (item > 0) {
+            var marginPct = (net / item * 100).toFixed(0);
+            live.textContent = 'By this estimate a ' + money(item) + ' listing leaves you '
+              + money(net) + ' — a ' + marginPct + '% margin. Real orders rarely land exactly there.';
+          } else {
+            live.textContent = '';
+          }
+        }
       }
 
       function setMode(toPrice) {

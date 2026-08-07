@@ -7,7 +7,7 @@
     var box = document.createElement('div');
     box.className = 'waitlist-success';
     box.setAttribute('role', 'status');
-    box.innerHTML = '<h3>You’re on the list</h3><p>Thanks for being early — we’ll email you the moment the SpoolPilot beta opens.</p>';
+    box.innerHTML = '<h3>Check your inbox</h3><p>Your TestFlight link is on its way — open it on your iPhone and you’re in.</p>';
     form.replaceWith(box);
   }
   function clearError(form) {

@@ -33,7 +33,7 @@
     "description": "SpoolPilot syncs your whole Etsy sales history, itemizes the exact fees Etsy charged on each order, subtracts your true cost of goods, and shows the net profit on every sale — built for 3D-print shops.",
     "url": "https://spoolpilot.app/",
     "image": "https://spoolpilot.app/og-image.png",
-    "releaseNotes": "In beta — join the waitlist for early access.",
+    "releaseNotes": "Open beta on TestFlight — free while in beta.",
     "author": { "@type": "Organization", "name": "Opus Design Group LLC" }
   }
   </script>
@@ -114,6 +114,16 @@
     }
     .waitlist button:hover{background:#E4650C}
     .note{margin:16px auto 0;font-size:13.5px;color:var(--muted);max-width:46ch}
+    /* The beta is live, so the install IS the call to action and the email list is the
+       fallback for anyone reading on a desktop. The button carries the weight the waitlist
+       form used to; the list below it is deliberately quieter. */
+    .btn-beta{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;
+      font-weight:600;font-size:17px;padding:15px 30px;border-radius:980px;
+      transition:background .16s ease}
+    .btn-beta:hover{background:#E4650C}
+    .orlist{margin-top:30px;padding-top:22px;border-top:1px solid var(--rule);max-width:440px;
+      margin-inline:auto}
+    .orlabel{margin:0 0 12px;font-size:13.5px;font-weight:600;color:var(--body)}
     .waitlist-error{margin:12px auto 0;font-size:14px;font-weight:600;color:#B4231B;text-align:center}
     .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
     .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
@@ -164,6 +174,14 @@
     .sp{background:#FDFAF7;font-weight:600}
 
     .road{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left;padding-top:12px}
+    /* A list of things you don't have reads as absence. Splitting it into what already
+       landed and what's next turns the same facts into evidence the thing is being worked
+       on — which is the actual question a sceptical buyer is asking. */
+    /* Qualified with .stage so it outranks `.stage p`, which otherwise re-centres this with
+       its own margin:0 auto and max-width:50ch and knocks the label out of line with the
+       grid underneath it. */
+    .stage p.roadlabel{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+      color:var(--muted);text-align:left;margin:0 0 14px;max-width:none}
     .road b{display:block;font-size:16px;font-weight:600;margin-bottom:5px}
     .road span{font-size:14.5px;color:var(--body);line-height:1.55}
 
@@ -236,7 +254,7 @@
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
         <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
-        <a class="btn" href="#waitlist">Join waitlist</a>
+        <a class="btn" href="#waitlist">Get the beta</a>
       </nav>
     </div>
   </header>
@@ -248,13 +266,20 @@
     </p>
     <h1>Know your real profit on every order.</h1>
     <p class="lede">Your filament tracker knows how much plastic is left. SpoolPilot knows <strong>how much money you made</strong>.</p>
-    <form class="waitlist" id="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
-      <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
-      <input type="hidden" name="ml-submit" value="1">
-      <input type="hidden" name="anticsrf" value="true">
-      <button type="submit">Join the waitlist</button>
-    </form>
-    <p class="note">Early access on iOS. We'll email when the beta opens — no spam, and a person reads every reply.</p>
+    <div id="waitlist" class="getbeta">
+      <a class="btn-beta" href="https://testflight.apple.com/join/84v38ypW">Get the beta &mdash; it&rsquo;s free</a>
+      <p class="note">Open this on your iPhone. You&rsquo;ll need Apple&rsquo;s free TestFlight app first.</p>
+    </div>
+    <div class="orlist">
+      <p class="orlabel">On a laptop right now?</p>
+      <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+        <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit">Email me the link</button>
+      </form>
+      <p class="note">We&rsquo;ll send the TestFlight link straight over. No spam, and a person reads every reply.</p>
+    </div>
     <div class="hero-device">
       <img src="shot-home.png" width="1206" height="2622" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
     </div>
@@ -354,12 +379,18 @@
 
   <section class="stage">
     <div class="wrap narrow">
-      <h2 class="reveal">On the roadmap</h2>
-      <p class="reveal" style="margin-bottom:40px">Everything above <strong>ships today</strong>. Get excited for these.</p>
+      <h2 class="reveal">Where it's going</h2>
+      <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here's what landed recently, and what's next.</p>
+      <p class="roadlabel reveal">Shipped during the beta</p>
+      <div class="road reveal" style="margin-bottom:34px">
+        <div><b>Monday recap</b><span>Last week's profit and your top sellers, ranked — with a card worth posting.</span></div>
+        <div><b>Slicer scan</b><span>Point your phone at the slicer; print time and grams land in the cost.</span></div>
+        <div><b>iCloud backup</b><span>Your catalog and sales history back up to your own iCloud automatically.</span></div>
+      </div>
+      <p class="roadlabel reveal">Next</p>
       <div class="road reveal">
         <div><b>Shopify sync</b><span>The same automatic order import, for Shopify shops.</span></div>
-        <div><b>Cloud backup</b><span>Your catalog and sales history backed up off-device.</span></div>
-        <div><b>App Store</b><span>Public download on iOS — join the waitlist for early access.</span></div>
+        <div><b>App Store release</b><span>Public download on iOS. Until then the beta is open to anyone.</span></div>
       </div>
     </div>
   </section>
@@ -367,14 +398,21 @@
   <section class="stage tint">
     <div class="wrap">
       <h2>See the profit on your next print.</h2>
-      <p style="margin-bottom:36px">Join the waitlist and we'll email you when the iOS beta opens.</p>
-      <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
-        <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
-        <button type="submit">Join the waitlist</button>
-      </form>
-      <p class="note">No spam. A person reads every reply.</p>
+      <p style="margin-bottom:32px">The beta is open. It takes about two minutes to be looking at your own numbers.</p>
+      <div class="getbeta">
+        <a class="btn-beta" href="https://testflight.apple.com/join/84v38ypW">Get the beta &mdash; it&rsquo;s free</a>
+        <p class="note">Open this on your iPhone. You&rsquo;ll need Apple&rsquo;s free TestFlight app first.</p>
+      </div>
+      <div class="orlist">
+        <p class="orlabel">On a laptop right now?</p>
+        <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+          <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+          <button type="submit">Email me the link</button>
+        </form>
+        <p class="note">No spam. A person reads every reply.</p>
+      </div>
     </div>
   </section>
 

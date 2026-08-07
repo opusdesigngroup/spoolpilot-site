@@ -98,6 +98,11 @@ tbody td:first-child{color:var(--muted);font-size:14px}
 .cta{background:var(--bg-alt);border-radius:20px;padding:30px 28px;margin:44px 0 0}
 .cta h2{margin:0 0 10px;font-size:23px}
 .cta p{margin:0 0 20px;font-size:16.5px}
+/* The reader's own number, echoed back. Heavier and inked-up so it reads as a finding rather
+   than more body copy; empty until the calculator has produced something, so it never shows
+   a placeholder. */
+.cta p.cta-live{font-weight:600;color:var(--ink);margin-bottom:12px}
+.cta p.cta-live:empty{display:none}
 
 /* ---------- waitlist ---------- */
 .waitlist{display:flex;gap:9px;max-width:440px;flex-wrap:wrap}
