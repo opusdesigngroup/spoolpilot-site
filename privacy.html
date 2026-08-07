@@ -33,13 +33,13 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated August 3, 2026</p>
+    <p class="updated">Last updated August 7, 2026</p>
 
     <div >
       <p>SpoolPilot is built to keep your shop's data on your device. This page explains what that means in practice.</p>
 
       <h3>What's stored, and where</h3>
-      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't operate a server that holds your inventory data, and we can't see it.</p>
+      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't operate a server that holds your inventory data, and we can't see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below.</p>
 
       <h3>Etsy sync</h3>
       <p>If you connect an Etsy shop, SpoolPilot uses Etsy's official sign-in flow to get permission to read your own shop's listings and orders. The access token is stored in your device's Keychain and is used only to fetch your own shop data on your request. That data is subject to Etsy's own privacy policy as well as this one.</p>
@@ -60,8 +60,13 @@
         <li>No selling or sharing your data with third parties</li>
       </ul>
 
+      <h3 id="backups">Backups</h3>
+      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud — a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds what you'd expect a backup to hold: your settings, filament, products, and sales history.</p>
+      <p>This happens on its own — once when the app opens and again when you leave it, and at most once a day unless something actually changed. It goes to your Apple account, not to us: we have no access to that folder and never receive a copy. If a fresh install finds a backup there, SpoolPilot offers to restore it and waits for you to say yes.</p>
+      <p>To turn it off, switch SpoolPilot off under iCloud Drive in the iOS Settings app. The app has no separate toggle — it simply uses iCloud if you've allowed it to.</p>
+
       <h3>Exporting your data</h3>
-      <p>The backup and CSV export features write files to your device and hand them to Apple's standard share sheet, so you choose where they go. We never see them.</p>
+      <p>Manual backups and CSV exports write files to your device and hand them to Apple's standard share sheet, so you choose where they go. We never see them.</p>
 
       <h3>Questions</h3>
       <p>Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a> and we'll get back to you.</p>
