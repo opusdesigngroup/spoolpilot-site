@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connecting your Shopify shop — SpoolPilot</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#F7F6F4;--ink:#111010;--body:#55504B;--muted:#8B857F;--orange:#F97316}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;
+      padding:24px;text-align:center}
+    .card{max-width:26rem}
+    svg{width:56px;height:56px;border-radius:14px;display:block;margin:0 auto 22px}
+    h1{margin:0 0 12px;font-size:24px;letter-spacing:-.02em;font-weight:700}
+    p{margin:0 0 10px;font-size:16px;line-height:1.6;color:var(--body)}
+    .quiet{font-size:13.5px;color:var(--muted)}
+    a{color:var(--orange);font-weight:600}
+  </style>
+</head>
+<body>
+  <!--
+    Shopify will only redirect to a public HTTPS URL, so it cannot hand the authorization code
+    straight to the app the way Etsy's custom-scheme redirect does. This page is the bounce:
+    it forwards to spoolpilot:// immediately, and ASWebAuthenticationSession delivers that only
+    to the app that started the flow.
+
+    It carries the CODE, never a token — the code is single-use and worthless without the client
+    secret, which lives in the broker. A token in a URL can end up in history and logs.
+  -->
+  <div class="card">
+    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" rx="180" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+    <h1 id="title">Sending you back to SpoolPilot…</h1>
+    <p id="detail">This page should close on its own.</p>
+    <p class="quiet" id="fallback" hidden>
+      If nothing happened, open SpoolPilot and try connecting again from Settings &rarr; Sales channels.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get('code');
+      var shop = params.get('shop');
+
+      if (!code || !shop) {
+        document.getElementById('title').textContent = 'Something went wrong';
+        document.getElementById('detail').textContent =
+          'Shopify didn’t send back what SpoolPilot needs to finish connecting.';
+        document.getElementById('fallback').hidden = false;
+        return;
+      }
+
+      // Forward every parameter Shopify sent — the app verifies hmac and state itself, so
+      // dropping any of them here would make that check impossible.
+      window.location.replace('spoolpilot://shopify?' + params.toString());
+
+      // If the app never took the hand-off, say so rather than leaving a spinner forever.
+      setTimeout(function () {
+        document.getElementById('fallback').hidden = false;
+      }, 2500);
+    })();
+  </script>
+</body>
+</html>
