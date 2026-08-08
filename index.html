@@ -114,16 +114,6 @@
     }
     .waitlist button:hover{background:#E4650C}
     .note{margin:16px auto 0;font-size:13.5px;color:var(--muted);max-width:46ch}
-    /* The beta is live, so the install IS the call to action and the email list is the
-       fallback for anyone reading on a desktop. The button carries the weight the waitlist
-       form used to; the list below it is deliberately quieter. */
-    .btn-beta{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;
-      font-weight:600;font-size:17px;padding:15px 30px;border-radius:980px;
-      transition:background .16s ease}
-    .btn-beta:hover{background:#E4650C}
-    .orlist{margin-top:30px;padding-top:22px;border-top:1px solid var(--rule);max-width:440px;
-      margin-inline:auto}
-    .orlabel{margin:0 0 12px;font-size:13.5px;font-weight:600;color:var(--body)}
     .waitlist-error{margin:12px auto 0;font-size:14px;font-weight:600;color:#B4231B;text-align:center}
     .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
     .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
@@ -266,19 +256,14 @@
     </p>
     <h1>Know your real profit on every order.</h1>
     <p class="lede">Your filament tracker knows how much plastic is left. SpoolPilot knows <strong>how much money you made</strong>.</p>
-    <div id="waitlist" class="getbeta">
-      <a class="btn-beta" href="https://testflight.apple.com/join/84v38ypW">Get the beta &mdash; it&rsquo;s free</a>
-      <p class="note">Open this on your iPhone. You&rsquo;ll need Apple&rsquo;s free TestFlight app first.</p>
-    </div>
-    <div class="orlist">
-      <p class="orlabel">On a laptop right now?</p>
+    <div id="waitlist">
       <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
         <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
         <input type="hidden" name="ml-submit" value="1">
         <input type="hidden" name="anticsrf" value="true">
-        <button type="submit">Email me the link</button>
+        <button type="submit">Send me the beta link</button>
       </form>
-      <p class="note">We&rsquo;ll send the TestFlight link straight over. No spam, and a person reads every reply.</p>
+      <p class="note">The beta is open &mdash; your TestFlight link arrives by email in a minute or two. No spam, and a person reads every reply.</p>
     </div>
     <div class="hero-device">
       <img src="shot-home.png" width="1206" height="2622" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
@@ -398,21 +383,14 @@
   <section class="stage tint">
     <div class="wrap">
       <h2>See the profit on your next print.</h2>
-      <p style="margin-bottom:32px">The beta is open. It takes about two minutes to be looking at your own numbers.</p>
-      <div class="getbeta">
-        <a class="btn-beta" href="https://testflight.apple.com/join/84v38ypW">Get the beta &mdash; it&rsquo;s free</a>
-        <p class="note">Open this on your iPhone. You&rsquo;ll need Apple&rsquo;s free TestFlight app first.</p>
-      </div>
-      <div class="orlist">
-        <p class="orlabel">On a laptop right now?</p>
-        <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
-          <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
-          <input type="hidden" name="ml-submit" value="1">
-          <input type="hidden" name="anticsrf" value="true">
-          <button type="submit">Email me the link</button>
-        </form>
-        <p class="note">No spam. A person reads every reply.</p>
-      </div>
+      <p style="margin-bottom:32px">The beta is open. Leave your email and the link is with you in a minute.</p>
+      <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+        <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit">Send me the beta link</button>
+      </form>
+      <p class="note">The beta is open. Your link arrives by email in a minute or two.</p>
     </div>
   </section>
 
