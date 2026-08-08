@@ -25,8 +25,10 @@
   <!--
     Shopify will only redirect to a public HTTPS URL, so it cannot hand the authorization code
     straight to the app the way Etsy's custom-scheme redirect does. This page is the bounce:
-    it forwards to spoolpilot:// immediately, and ASWebAuthenticationSession delivers that only
-    to the app that started the flow.
+    it forwards to filamenttrackerapp:// immediately, and ASWebAuthenticationSession delivers
+    that only to the app that started the flow. The scheme is the app's original bundle name,
+    kept because it is what's registered in Info.plist and what the Etsy flow already uses —
+    renaming it would break every existing install's callback.
 
     It carries the CODE, never a token — the code is single-use and worthless without the client
     secret, which lives in the broker. A token in a URL can end up in history and logs.
@@ -56,7 +58,7 @@
 
       // Forward every parameter Shopify sent — the app verifies hmac and state itself, so
       // dropping any of them here would make that check impossible.
-      window.location.replace('spoolpilot://shopify?' + params.toString());
+      window.location.replace('filamenttrackerapp://shopify?' + params.toString());
 
       // If the app never took the hand-off, say so rather than leaving a spinner forever.
       setTimeout(function () {
