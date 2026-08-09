@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — SpoolPilot for 3D Print Shops</title>
-  <meta name="description" content="What SpoolPilot stores and where. Your shop data lives on your device — no account, no server, and nothing sold or shared with anyone.">
+  <meta name="description" content="What SpoolPilot stores and where. Your shop data lives on your device — no account, nothing uploaded to us, and nothing sold or shared with anyone.">
   <link rel="canonical" href="https://spoolpilot.app/privacy.html">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -33,16 +33,24 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated August 7, 2026</p>
+    <p class="updated">Last updated August 9, 2026</p>
 
     <div >
       <p>SpoolPilot is built to keep your shop's data on your device. This page explains what that means in practice.</p>
 
       <h3>What's stored, and where</h3>
-      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't operate a server that holds your inventory data, and we can't see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below.</p>
+      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't run a server that stores your shop data, and we can't see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in connecting Shopify, described under <a href="#signin-service">Connecting Shopify</a>; it stores nothing and never receives your shop data.</p>
 
       <h3>Etsy sync</h3>
       <p>If you connect an Etsy shop, SpoolPilot uses Etsy's official sign-in flow to get permission to read your own shop's listings and orders. The access token is stored in your device's Keychain and is used only to fetch your own shop data on your request. That data is subject to Etsy's own privacy policy as well as this one.</p>
+
+      <h3>Shopify sync</h3>
+      <p>If you connect a Shopify store, SpoolPilot uses Shopify's official sign-in to get permission to read your own store's orders and products. It reads the parts of an order that decide profit: the items sold, their quantities and prices, any discounts, the shipping charged, the currency, and the date.</p>
+      <p><strong>It does not read your customers.</strong> SpoolPilot asks Shopify for no customer names, email addresses, phone numbers, or shipping or billing addresses — none of it is requested, received, stored, or shown anywhere in the app. The access token is stored in your device's Keychain and used only to fetch your own store's data on your request. That data is subject to Shopify's own privacy policy as well as this one.</p>
+
+      <h3 id="signin-service">Connecting Shopify</h3>
+      <p>Signing in to Shopify needs one step that can't happen on your phone. Shopify requires a secret key to complete the sign-in, and a key shipped inside an app can be pulled back out of it — so it can't live there. SpoolPilot runs a single small service whose only job is that one exchange.</p>
+      <p>It receives your store's address and a one-time sign-in code, hands back an access token, and keeps nothing — no tokens, no order data, no logs of either. Your shop's data never passes through it, and it plays no part in anything after sign-in: from then on your phone talks to Shopify directly.</p>
 
       <h3>Camera</h3>
       <p>The barcode scanner uses your device's camera to read barcodes on-device. No camera images or video are stored or sent anywhere.</p>
@@ -64,6 +72,13 @@
       <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud — a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds what you'd expect a backup to hold: your settings, filament, products, and sales history.</p>
       <p>This happens on its own — once when the app opens and again when you leave it, and at most once a day unless something actually changed. It goes to your Apple account, not to us: we have no access to that folder and never receive a copy. If a fresh install finds a backup there, SpoolPilot offers to restore it and waits for you to say yes.</p>
       <p>To turn it off, switch SpoolPilot off under iCloud Drive in the iOS Settings app. The app has no separate toggle — it simply uses iCloud if you've allowed it to.</p>
+
+      <h3>How long your data is kept</h3>
+      <p>Your records stay on your device for as long as you want them — a profit history is only useful if it goes back. Nothing expires on its own and nothing is deleted behind your back. Deleting a record removes it; deleting the app removes all of it. Disconnecting a sales channel deletes that channel's access token from your device straight away, and SpoolPilot can no longer reach that shop.</p>
+      <p>Because your shop data isn't on our servers, there's nothing on our side to delete, and no retention period of ours for it to sit under.</p>
+
+      <h3>Encryption</h3>
+      <p>Traffic between your phone and Etsy, Shopify, or the sign-in service above goes over HTTPS. On your device, records are protected by iOS's built-in file encryption, and access tokens are held in the Keychain rather than ordinary storage. iCloud backups are encrypted by Apple under your own account.</p>
 
       <h3>Exporting your data</h3>
       <p>Manual backups and CSV exports write files to your device and hand them to Apple's standard share sheet, so you choose where they go. We never see them.</p>
