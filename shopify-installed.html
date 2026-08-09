@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpoolPilot is connected to your Shopify store</title>
+  <meta name="description" content="Your Shopify store is connected to SpoolPilot. Get the iPhone app to see cost and profit for every product you sell.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://spoolpilot.app/shopify-installed.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="article.css">
+</head>
+<body>
+  <!--
+    Where Shopify sends a merchant after they install from the Shopify App Store.
+
+    That path can't hand a token to the phone: the OAuth session is started BY the iOS app, and
+    only the app that started it can receive the callback. A merchant arriving from Shopify has
+    no session running, so the honest job of this page is to say what just happened, say what's
+    left, and get out of the way — rather than the marketing homepage, which never mentions
+    Shopify and reads as a dead end mid-install.
+
+    It is also the page an app reviewer lands on when testing the listing.
+  -->
+  <header>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+        <span class="brandtext">SpoolPilot</span>
+      </a>
+      <nav>
+        <a href="/support.html">Support</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+
+    <p class="crumb">Shopify</p>
+    <h1>Your store is connected.</h1>
+    <p class="lede">SpoolPilot runs on your iPhone — that's where your numbers live, and where your shop data stays. One more step and your Shopify orders start reporting real profit.</p>
+
+    <div class="card">
+      <h3>Get the app</h3>
+      <p>The beta is open. Enter your email and the TestFlight link arrives in a minute or two.</p>
+      <div id="waitlist">
+        <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+          <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+          <button type="submit">Send me the app link</button>
+        </form>
+        <p class="note">No spam, and a person reads every reply.</p>
+      </div>
+    </div>
+
+    <h3>Then, in the app</h3>
+    <p>Open <strong>Settings &rarr; Sales channels &rarr; Shopify</strong> and tap Connect. You've already approved SpoolPilot on Shopify's side, so this takes a couple of seconds — it's just handing the connection to your phone.</p>
+    <p>From there SpoolPilot imports your products and orders, and reads the real processing fee Shopify charged on each one.</p>
+
+    <h3>What SpoolPilot reads</h3>
+    <p>Order line items, quantities, prices, discounts, shipping charged, currency and order dates — the figures that decide what a product actually earned.</p>
+    <p><strong>Not your customers.</strong> SpoolPilot asks Shopify for no names, email addresses, phone numbers, or shipping and billing addresses. None of it is requested, received, or stored. Your shop data lives on your device, not on our servers — the details are in the <a href="/privacy.html">privacy policy</a>.</p>
+
+    <h3>Changed your mind?</h3>
+    <p>Uninstall SpoolPilot from your Shopify admin under Settings &rarr; Apps and sales channels. That revokes its access immediately; nothing of yours is kept.</p>
+
+    <p class="note">Questions? Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a> — we answer.</p>
+
+  </main>
+  <footer>
+    <div class="in">
+      &copy; <span id="year"></span> Opus Design Group LLC &middot; <a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a>
+    </div>
+  </footer>
+  <script src="waitlist.js"></script>
+</body>
+</html>
