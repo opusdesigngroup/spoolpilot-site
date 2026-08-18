@@ -33,25 +33,22 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated August 10, 2026</p>
+    <p class="updated">Last updated August 17, 2026</p>
 
     <div >
       <p>SpoolPilot is built to keep your shop's data on your device. This page explains what that means in practice.</p>
 
       <h3>What's stored, and where</h3>
-      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't run a server that stores your shop data, and we can't see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in connecting Shopify, described under <a href="#signin-service">Connecting Shopify</a>; it stores nothing and never receives your shop data.</p>
+      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us — we don't run a server that stores your shop data, and we can't see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in connecting a sales channel, described under <a href="#signin-service">The sign-in service</a>; it stores nothing and never receives your shop data.</p>
 
       <h3>Etsy sync</h3>
-      <p>If you connect an Etsy shop, SpoolPilot uses Etsy's official sign-in flow to get permission to read your own shop's listings and orders. The access token is stored in your device's Keychain and is used only to fetch your own shop data on your request. That data is subject to Etsy's own privacy policy as well as this one.</p>
+      <p>When you connect your Etsy shop, SpoolPilot uses Etsy's official sign-in flow to get permission to read your own shop's listings and orders. It reads only the parts of an order that decide profit: the items sold, their quantities and prices, any discounts, the shipping charged, the currency, and the date.</p>
+      <p><strong>It does not read your customers.</strong> SpoolPilot requests no customer names, email addresses, phone numbers, or shipping or billing addresses — none of it is requested, received, stored, or shown anywhere in the app. Your access token is stored in your device's Keychain and used only to fetch your own shop data on your request. Etsy data is also subject to Etsy's own privacy policy.</p>
+      <p>If you connect any other sales channel you own, SpoolPilot handles it the same way: read-only access to your own orders, no customer data, and the access token kept in your device's Keychain.</p>
 
-      <h3>Shopify sync</h3>
-      <p>If you connect a Shopify store, SpoolPilot uses Shopify's official sign-in to get permission to read your own store's orders and products. It reads the parts of an order that decide profit: the items sold, their quantities and prices, any discounts, the shipping charged, the currency, and the date.</p>
-      <p><strong>It does not read your customers.</strong> SpoolPilot asks Shopify for no customer names, email addresses, phone numbers, or shipping or billing addresses — none of it is requested, received, stored, or shown anywhere in the app. The access token is stored in your device's Keychain and used only to fetch your own store's data on your request. That data is subject to Shopify's own privacy policy as well as this one.</p>
-
-      <h3 id="signin-service">Connecting Shopify</h3>
-      <p>Signing in to Shopify needs one step that can't happen on your phone. Shopify requires a secret key to complete the sign-in, and a key shipped inside an app can be pulled back out of it — so it can't live there. SpoolPilot runs a single small service whose only job is that one exchange.</p>
-      <p>It receives your store's address and a one-time sign-in code, hands back an access token, and keeps nothing — no tokens, no order data, no logs of either. Your shop's data never passes through it: your phone talks to Shopify directly.</p>
-      <p>The same service does two other small jobs. For stores that subscribe to SpoolPilot through Shopify, the app asks it about once a day whether that subscription is active — the question carries your store's address, the answer is yes or no, and neither is stored. And it receives Shopify's standard privacy notifications (data requests and deletion notices); because SpoolPilot holds no customer data anywhere, the truthful response to each is an acknowledgement, and that is all that happens.</p>
+      <h3 id="signin-service">The sign-in service</h3>
+      <p>Signing in to a sales channel can need one step that can't happen on your phone: the channel requires a secret key to complete the sign-in, and a key shipped inside an app can be pulled back out of it — so it can't live there. SpoolPilot runs a single small service whose only job is that exchange.</p>
+      <p>It receives your shop's address and a one-time sign-in code, hands back an access token, and keeps nothing — no tokens, no order data, no logs of either. Your shop's data never passes through it: your phone talks to the channel directly.</p>
 
       <h3>Camera</h3>
       <p>The barcode scanner uses your device's camera to read barcodes on-device. No camera images or video are stored or sent anywhere.</p>
@@ -79,7 +76,7 @@
       <p>Because your shop data isn't on our servers, there's nothing on our side to delete, and no retention period of ours for it to sit under.</p>
 
       <h3>Encryption</h3>
-      <p>Traffic between your phone and Etsy, Shopify, or the sign-in service above goes over HTTPS. On your device, records are protected by iOS's built-in file encryption, and access tokens are held in the Keychain rather than ordinary storage. iCloud backups are encrypted by Apple under your own account.</p>
+      <p>Traffic between your phone and the sales channels you connect, or the sign-in service above, goes over HTTPS. On your device, records are protected by iOS's built-in file encryption, and access tokens are held in the Keychain rather than ordinary storage. iCloud backups are encrypted by Apple under your own account.</p>
 
       <h3>Exporting your data</h3>
       <p>Manual backups and CSV exports write files to your device and hand them to Apple's standard share sheet, so you choose where they go. We never see them.</p>
@@ -87,11 +84,11 @@
       <h3>Questions</h3>
       <p>Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a> and we'll get back to you.</p>
     </div>
-  
+
   </main>
   <footer>
     <div class="in">
-      &copy; <span id="year"></span> Opus Design Group LLC · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a>
+      &copy; <span id="year"></span> Opus Design Group LLC · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
       <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
     </div>
   </footer>
