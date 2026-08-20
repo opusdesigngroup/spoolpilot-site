@@ -238,18 +238,7 @@
     .strip p{margin:0;font-size:15px;line-height:1.55;color:var(--body)}
     @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
 
-    /* ---- interactive slicer scan: a button re-plays the row reveal ---- */
-    .scan-btn{margin:32px auto 0;display:inline-block;border:0;background:var(--orange);color:#fff;
-      font:inherit;font-weight:600;font-size:16px;padding:13px 28px;border-radius:980px;cursor:pointer;
-      transition:background .16s ease,transform .16s ease}
-    .scan-btn:hover{background:#E4650C;transform:translateY(-1px)}
-    .scan-btn[disabled]{opacity:.65;cursor:default;transform:none}
-    @media (prefers-reduced-motion:no-preference){
-      .proof.replaying .pl{opacity:0;transform:translateY(6px)}
-      .proof.replaying .pl.shown{opacity:1;transform:none;transition:opacity .34s ease,transform .34s ease}
-    }
-
-    /* ---- shop-floor: tap through real app screens ---- */
+    /* ---- shop-floor: tabs switch app screens; the caption gives each its moment ---- */
     .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;width:fit-content;max-width:100%;
       background:var(--bg-alt);border:1px solid var(--rule);border-radius:22px;padding:4px;margin:52px auto 0}
     .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:14.5px;
@@ -261,7 +250,7 @@
       box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
       opacity:0;transition:opacity .2s ease}
     .floor-view img.active{opacity:1}
-    .floor-cap{margin:18px auto 0;font-size:13px;color:var(--muted)}
+    .floor-cap{margin:20px auto 0;font-size:15px;line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
 
     /* ---- fee-calculator teaser: slide a price, watch Etsy's cut ---- */
     .feecalc{max-width:430px;margin:48px auto 0;background:#fff;border:1px solid var(--rule);
@@ -292,8 +281,6 @@
     .vs.sum .b{font-size:17px}
     @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:13.5px;gap:0 8px}}
 
-    /* the demo button belongs to the card it replays — tighter than the default proof gap */
-    #slicerProof{margin-top:36px}
 
     /* four shipped items read as a 2×2, not a 3-column grid with an orphan */
     .road.two{grid-template-columns:repeat(2,1fr)}
@@ -391,8 +378,7 @@
     <div class="wrap">
       <h2 class="reveal">Your slicer only counts the plastic.</h2>
       <p class="reveal">It has no idea what your electricity, packaging, or time cost — or what Etsy takes. <strong>Scan the slicer screen and SpoolPilot adds all four, then tells you what to list the print at.</strong></p>
-      <button class="scan-btn reveal" id="scanBtn" type="button">Watch it price a print</button>
-      <div class="proof reveal" id="slicerProof">
+      <div class="proof reveal">
         <div class="proof-hd"><span>Dice Tower · slicer scan</span><span>Read from your screen</span></div>
         <div class="proof-body">
           <div class="pl"><span>Print time</span><span>3h 24m</span></div>
@@ -426,21 +412,21 @@
 
   <section class="stage">
     <div class="wrap">
-      <h2 class="reveal">It lives where the work happens.</h2>
-      <p class="reveal">Desktop trackers stay at the desk. SpoolPilot is a <strong>native iOS app</strong>, so the whole shop fits in one hand — right in front of the printer. Tap through it:</p>
-      <div class="tabs reveal" id="floorTabs" role="tablist" aria-label="App screens">
+      <h2 class="reveal">The whole shop, in your hand.</h2>
+      <p class="reveal">Not a desktop dashboard you check at the end of the day. SpoolPilot is a <strong>native iPhone app</strong>, so the number you need is already there — at the printer, at the shelf, at the post office. Tap a moment in the day:</p>
+      <div class="tabs reveal" id="floorTabs" role="tablist" aria-label="Choose an app screen">
         <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
-        <button role="tab" type="button" aria-selected="false" data-i="1">Sale detail</button>
-        <button role="tab" type="button" aria-selected="false" data-i="2">P&amp;L</button>
-        <button role="tab" type="button" aria-selected="false" data-i="3">Filament</button>
+        <button role="tab" type="button" aria-selected="false" data-i="1">A sale</button>
+        <button role="tab" type="button" aria-selected="false" data-i="2">The month</button>
+        <button role="tab" type="button" aria-selected="false" data-i="3">The shelf</button>
       </div>
       <div class="floor-view reveal" id="floorView">
-        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" alt="SpoolPilot home screen — a real app screen.">
-        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" alt="Sale detail with itemized Etsy fees — a real app screen.">
-        <img data-i="2" src="phone-pnl-crop.png" width="440" height="844" alt="Monthly profit and loss — a real app screen.">
-        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" alt="Filament inventory — a real app screen.">
+        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" alt="SpoolPilot home screen — today's revenue and this month's profit.">
+        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" alt="Sale detail with the exact Etsy fees itemized.">
+        <img data-i="2" src="phone-pnl-crop.png" width="440" height="844" alt="Monthly profit and loss.">
+        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" alt="Filament inventory with weeks of stock left.">
       </div>
-      <p class="floor-cap reveal">Real app screens — tap through.</p>
+      <p class="floor-cap reveal" id="floorCap">Between prints — today's take and the month's profit, at a glance.</p>
     </div>
   </section>
 
@@ -554,35 +540,16 @@
   </script>
   <script>
     (function () {
-      // Slicer scan: the card is fully readable by default; the button replays the reveal.
-      var scanBtn = document.getElementById('scanBtn');
-      var proof = document.getElementById('slicerProof');
-      if (scanBtn && proof && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        scanBtn.addEventListener('click', function () {
-          var rows = proof.querySelectorAll('.pl');
-          scanBtn.disabled = true;
-          scanBtn.textContent = 'Reading…';
-          proof.classList.add('replaying');
-          rows.forEach(function (r) { r.classList.remove('shown'); });
-          var i = 0;
-          var t = setInterval(function () {
-            if (i >= rows.length) {
-              clearInterval(t);
-              proof.classList.remove('replaying');
-              rows.forEach(function (r) { r.classList.remove('shown'); });
-              scanBtn.disabled = false;
-              scanBtn.textContent = 'Watch again';
-              return;
-            }
-            rows[i].classList.add('shown');
-            i++;
-          }, 300);
-        });
-      }
-
-      // Shop floor: tap a pill, swap the app screen.
+      // Shop floor: tap a pill, swap the app screen and the line that gives it its moment.
       var tabs = document.getElementById('floorTabs');
       var view = document.getElementById('floorView');
+      var cap = document.getElementById('floorCap');
+      var caps = [
+        "Between prints — today's take and the month's profit, at a glance.",
+        "An order lands at the printer — its real Etsy fees and true profit, itemized.",
+        "Reconciling the month — the full profit-and-loss, any month, in one tap.",
+        "At the shelf — scan a spool in or out; weeks of stock updates itself."
+      ];
       if (tabs && view) {
         tabs.addEventListener('click', function (e) {
           var btn = e.target.closest('button[data-i]');
@@ -590,6 +557,7 @@
           var i = btn.getAttribute('data-i');
           tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
           view.querySelectorAll('img').forEach(function (img) { img.classList.toggle('active', img.getAttribute('data-i') === i); });
+          if (cap && caps[i]) cap.textContent = caps[i];
         });
       }
 
