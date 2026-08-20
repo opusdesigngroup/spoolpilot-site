@@ -231,6 +231,54 @@
        work without introducing another hue. Italic is reserved for terms of art. */
     .lede strong,.stage p strong,.facts p strong,.road span strong{color:var(--ink);font-weight:600}
     .lede em,.stage p em,.facts p em,.road span em{font-style:italic;color:var(--ink)}
+
+    /* ---- differentiator strip (under the hero) ---- */
+    .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:72px auto 0;padding-top:44px;border-top:1px solid var(--rule);text-align:left}
+    .strip h3{margin:0 0 8px;font-size:16.5px;font-weight:600;letter-spacing:-.02em}
+    .strip p{margin:0;font-size:15px;line-height:1.55;color:var(--body)}
+    @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
+
+    /* ---- interactive slicer scan: a button re-plays the row reveal ---- */
+    .scan-btn{margin:32px auto 0;display:inline-block;border:0;background:var(--orange);color:#fff;
+      font:inherit;font-weight:600;font-size:16px;padding:13px 28px;border-radius:980px;cursor:pointer;
+      transition:background .16s ease,transform .16s ease}
+    .scan-btn:hover{background:#E4650C;transform:translateY(-1px)}
+    .scan-btn[disabled]{opacity:.65;cursor:default;transform:none}
+    @media (prefers-reduced-motion:no-preference){
+      .proof.replaying .pl{opacity:0;transform:translateY(6px)}
+      .proof.replaying .pl.shown{opacity:1;transform:none;transition:opacity .34s ease,transform .34s ease}
+    }
+
+    /* ---- shop-floor: tap through real app screens ---- */
+    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;width:fit-content;max-width:100%;
+      background:var(--bg-alt);border:1px solid var(--rule);border-radius:22px;padding:4px;margin:52px auto 0}
+    .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:14.5px;
+      font-weight:600;padding:9px 17px;border-radius:980px;cursor:pointer;transition:all .16s ease}
+    @media (max-width:420px){.tabs button{padding:9px 13px;font-size:14px}}
+    .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
+    .floor-view{position:relative;margin:26px auto 0;width:270px;max-width:78vw;aspect-ratio:440/844}
+    .floor-view img{position:absolute;inset:0;width:100%;height:100%;border-radius:30px;
+      box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
+      opacity:0;transition:opacity .2s ease}
+    .floor-view img.active{opacity:1}
+    .floor-cap{margin:18px auto 0;font-size:13px;color:var(--muted)}
+
+    /* ---- fee-calculator teaser: slide a price, watch Etsy's cut ---- */
+    .feecalc{max-width:430px;margin:48px auto 0;background:#fff;border:1px solid var(--rule);
+      border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 26px 52px -34px rgba(17,16,16,.34)}
+    .fc-top{padding:20px 22px 18px;border-bottom:1px solid var(--rule)}
+    .fc-price{display:flex;justify-content:space-between;align-items:baseline}
+    .fc-price span{font-size:15px;font-weight:600}
+    .fc-price b{font-size:30px;font-weight:700;letter-spacing:-.03em}
+    .feecalc input[type=range]{width:100%;margin:15px 0 5px;accent-color:var(--orange);cursor:pointer}
+    .fc-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+    .fc-ads{display:flex;align-items:center;gap:9px;margin-top:17px;font-size:14.5px;color:var(--body);cursor:pointer}
+    .fc-ads input{width:17px;height:17px;accent-color:var(--orange);cursor:pointer}
+    .fc-body{padding:8px 22px 6px}
+    .fc-body .pl[hidden]{display:none}  /* beats .pl{display:flex}, so the Offsite Ads row stays hidden until checked */
+    .fc-note{padding:12px 22px 20px;font-size:13px;color:var(--muted);line-height:1.5}
+    .fc-note a{color:var(--orange);font-weight:600;text-decoration:none}
+    .fc-note a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
@@ -256,7 +304,7 @@
       Built by an Etsy seller with 3,000+ sales
     </p>
     <h1>Know your real profit on every Etsy order.</h1>
-    <p class="lede">Your filament tracker knows how much plastic is left. SpoolPilot knows <strong>how much money you made</strong>.</p>
+    <p class="lede">Your filament tracker knows how much plastic is left. SpoolPilot knows <strong style="color:var(--profit)">how much money you made</strong>.</p>
     <div id="waitlist">
       <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
         <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
@@ -269,6 +317,11 @@
     <div class="hero-device">
       <img src="shot-home.png" width="1206" height="2622" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
     </div>
+    <div class="strip reveal">
+      <div><h3>Point it at the slicer</h3><p>The camera reads print time and grams off the slicer screen, then prices the print &mdash; fees and labor included.</p></div>
+      <div><h3>Scan spools by barcode</h3><p>Sealed spools counted on the shelf &mdash; no weighing &mdash; with weeks of stock forecast from your real sales pace.</p></div>
+      <div><h3>Native on iPhone</h3><p>Not a desktop dashboard. It rides in your pocket &mdash; at the printer, at the shelf, in the post-office line.</p></div>
+    </div>
   </div>
 
   <section class="stage tint">
@@ -280,8 +333,8 @@
         <div class="proof-body">
           <div class="pl"><span>Sold · 1 × $28.00</span><span>$28.00</span></div>
           <div class="pl thru"><span>Shipping collected · pass-through</span><span>$5.62</span></div>
-          <div class="pl"><span>Etsy fees (actual)</span><span class="n">−$7.68</span></div>
-          <div class="pl child"><span>Offsite Ads</span><span>−$4.03</span></div>
+          <div class="pl"><span>Etsy fees (actual)</span><span class="n">−$8.69</span></div>
+          <div class="pl child"><span>Offsite Ads</span><span>−$5.04</span></div>
           <div class="pl child"><span>Transaction fee</span><span>−$1.82</span></div>
           <div class="pl child"><span>Payment processing</span><span>−$1.26</span></div>
           <div class="pl child"><span>Transaction fee (shipping)</span><span>−$0.37</span></div>
@@ -291,7 +344,7 @@
           <div class="pl child"><span>Electricity</span><span>−$0.60</span></div>
           <div class="pl child"><span>Shipping &amp; packaging</span><span>−$1.95</span></div>
           <div class="pl child"><span>Labor &amp; finishing</span><span>−$4.40</span></div>
-          <div class="pl sum"><span>Net profit · 33% margin</span><b>$9.19</b></div>
+          <div class="pl sum"><span>Net profit · 29% margin</span><b>$8.18</b></div>
         </div>
       </div>
     </div>
@@ -301,7 +354,8 @@
     <div class="wrap">
       <h2 class="reveal">Your slicer only counts the plastic.</h2>
       <p class="reveal">It has no idea what your electricity, packaging, or time cost — or what Etsy takes. <strong>Scan the slicer screen and SpoolPilot adds all four, then tells you what to list the print at.</strong></p>
-      <div class="proof reveal">
+      <button class="scan-btn reveal" id="scanBtn" type="button">Watch it price a print</button>
+      <div class="proof reveal" id="slicerProof">
         <div class="proof-hd"><span>Dice Tower · slicer scan</span><span>Read from your screen</span></div>
         <div class="proof-body">
           <div class="pl"><span>Print time</span><span>3h 24m</span></div>
@@ -330,6 +384,26 @@
       <h2 class="reveal">Count sealed spools. Skip the grams.</h2>
       <p class="reveal">Scan a barcode to put a spool on the shelf or take one off. SpoolPilot forecasts <strong>how many weeks each filament lasts</strong> from your real sales pace.</p>
       <div class="device reveal"><img src="shot-inventory.png" width="1206" height="2622" alt="Filament inventory with sealed spool counts and weeks-of-stock estimates."></div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="wrap">
+      <h2 class="reveal">It lives where the work happens.</h2>
+      <p class="reveal">Desktop trackers stay at the desk. SpoolPilot is a <strong>native iOS app</strong>, so the whole shop fits in one hand — right in front of the printer. Tap through it:</p>
+      <div class="tabs reveal" id="floorTabs" role="tablist" aria-label="App screens">
+        <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
+        <button role="tab" type="button" aria-selected="false" data-i="1">Sale detail</button>
+        <button role="tab" type="button" aria-selected="false" data-i="2">P&amp;L</button>
+        <button role="tab" type="button" aria-selected="false" data-i="3">Filament</button>
+      </div>
+      <div class="floor-view reveal" id="floorView">
+        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" alt="SpoolPilot home screen — a real app screen.">
+        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" alt="Sale detail with itemized Etsy fees — a real app screen.">
+        <img data-i="2" src="phone-pnl-crop.png" width="440" height="844" alt="Monthly profit and loss — a real app screen.">
+        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" alt="Filament inventory — a real app screen.">
+      </div>
+      <p class="floor-cap reveal">Real app screens — tap through.</p>
     </div>
   </section>
 
@@ -363,12 +437,36 @@
     </div>
   </section>
 
+  <section class="stage tint">
+    <div class="wrap">
+      <h2 class="reveal">Slide your price. See Etsy's cut.</h2>
+      <p class="reveal">Etsy's published US fees, computed live. In the app the fees aren't computed at all — they're <strong>read from your payment account, order by order</strong>, with materials and labor subtracted too.</p>
+      <div class="feecalc reveal">
+        <div class="fc-top">
+          <div class="fc-price"><span>Sale price</span><b id="fcPrice">$28</b></div>
+          <input type="range" id="fcRange" min="5" max="120" step="1" value="28" aria-label="Sale price">
+          <div class="fc-ends"><span>$5</span><span>$120</span></div>
+          <label class="fc-ads"><input type="checkbox" id="fcAds"> Sale came from an Offsite Ad (15%)</label>
+        </div>
+        <div class="fc-body">
+          <div class="pl"><span>Transaction fee · 6.5%</span><span class="n" id="fcTx">−$1.82</span></div>
+          <div class="pl"><span>Payment processing · 3% + 25¢</span><span class="n" id="fcPr">−$1.09</span></div>
+          <div class="pl"><span>Listing fee</span><span class="n" id="fcLs">−$0.20</span></div>
+          <div class="pl" id="fcAdsRow" hidden><span>Offsite Ads · 15%</span><span class="n" id="fcAd">−$4.20</span></div>
+          <div class="pl sum"><span>You keep · <span id="fcPct">89%</span></span><b id="fcKeep">$24.89</b></div>
+        </div>
+        <p class="fc-note">Before filament, electricity, and labor — the app subtracts those from your real ledger fees. <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
+      </div>
+    </div>
+  </section>
+
   <section class="stage">
     <div class="wrap narrow">
       <h2 class="reveal">Where it's going</h2>
       <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here's what landed recently, and what's next.</p>
       <p class="roadlabel reveal">Shipped during the beta</p>
       <div class="road reveal" style="margin-bottom:34px">
+        <div><b>Etsy for everyone</b><span>Etsy granted commercial access — the old 5-shop limit is gone. Every seller can connect now.</span></div>
         <div><b>Monday recap</b><span>Last week's profit and your top sellers, ranked — with a card worth posting.</span></div>
         <div><b>Slicer scan</b><span>Point your phone at the slicer; print time and grams land in the cost.</span></div>
         <div><b>iCloud backup</b><span>Your catalog and sales history back up to your own iCloud automatically.</span></div>
@@ -395,6 +493,7 @@
   </section>
 
   <footer class="wrap">
+    <p style="margin:0 0 14px;color:var(--body);font-weight:600">No customer data collected — SpoolPilot only ever reads your own shop's numbers.</p>
     <p style="margin:0 0 10px"><a href="/etsy-fee-calculator.html">Free Etsy fee calculator</a> · <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html">Craftybase alternative</a></p>
     &copy; <span id="year"></span> Opus Design Group LLC · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
     <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
@@ -415,6 +514,71 @@
     } else {
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
     }
+  </script>
+  <script>
+    (function () {
+      // Slicer scan: the card is fully readable by default; the button replays the reveal.
+      var scanBtn = document.getElementById('scanBtn');
+      var proof = document.getElementById('slicerProof');
+      if (scanBtn && proof && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        scanBtn.addEventListener('click', function () {
+          var rows = proof.querySelectorAll('.pl');
+          scanBtn.disabled = true;
+          scanBtn.textContent = 'Reading…';
+          proof.classList.add('replaying');
+          rows.forEach(function (r) { r.classList.remove('shown'); });
+          var i = 0;
+          var t = setInterval(function () {
+            if (i >= rows.length) {
+              clearInterval(t);
+              proof.classList.remove('replaying');
+              rows.forEach(function (r) { r.classList.remove('shown'); });
+              scanBtn.disabled = false;
+              scanBtn.textContent = 'Watch again';
+              return;
+            }
+            rows[i].classList.add('shown');
+            i++;
+          }, 300);
+        });
+      }
+
+      // Shop floor: tap a pill, swap the app screen.
+      var tabs = document.getElementById('floorTabs');
+      var view = document.getElementById('floorView');
+      if (tabs && view) {
+        tabs.addEventListener('click', function (e) {
+          var btn = e.target.closest('button[data-i]');
+          if (!btn) return;
+          var i = btn.getAttribute('data-i');
+          tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+          view.querySelectorAll('img').forEach(function (img) { img.classList.toggle('active', img.getAttribute('data-i') === i); });
+        });
+      }
+
+      // Fee-calculator teaser: Etsy's published US fees, live.
+      var range = document.getElementById('fcRange');
+      var ads = document.getElementById('fcAds');
+      if (range && ads) {
+        var fmt = function (n) { return '−$' + n.toFixed(2); };
+        var recalc = function () {
+          var p = +range.value;
+          var tx = p * 0.065, pr = p * 0.03 + 0.25, ls = 0.20, ad = ads.checked ? p * 0.15 : 0;
+          var keep = p - (tx + pr + ls + ad);
+          document.getElementById('fcPrice').textContent = '$' + p;
+          document.getElementById('fcTx').textContent = fmt(tx);
+          document.getElementById('fcPr').textContent = fmt(pr);
+          document.getElementById('fcLs').textContent = fmt(ls);
+          document.getElementById('fcAd').textContent = fmt(ad);
+          document.getElementById('fcAdsRow').hidden = !ads.checked;
+          document.getElementById('fcKeep').textContent = '$' + keep.toFixed(2);
+          document.getElementById('fcPct').textContent = Math.round(keep / p * 100) + '%';
+        };
+        range.addEventListener('input', recalc);
+        ads.addEventListener('change', recalc);
+        recalc();
+      }
+    })();
   </script>
 </body>
 </html>
