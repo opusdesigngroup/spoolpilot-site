@@ -279,6 +279,25 @@
     .fc-note{padding:12px 22px 20px;font-size:13px;color:var(--muted);line-height:1.5}
     .fc-note a{color:var(--orange);font-weight:600;text-decoration:none}
     .fc-note a:hover{text-decoration:underline}
+
+    /* ---- the spreadsheet objection: same job, both ways ---- */
+    .vs{display:grid;grid-template-columns:1.25fr .9fr .95fr;gap:0 12px;padding:9px 0;font-size:15px;align-items:baseline;text-align:left}
+    .vs + .vs{border-top:1px solid var(--rule)}
+    .vs .a{color:var(--muted);text-align:right}
+    .vs .b{color:var(--profit);font-weight:600;text-align:right}
+    .vs.vs-hd{padding-bottom:4px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .vs.vs-hd .b{color:var(--orange)}
+    .vs.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:6px;padding-top:12px;font-weight:600}
+    .vs.sum .a{text-decoration:line-through;text-decoration-color:#C2540C}
+    .vs.sum .b{font-size:17px}
+    @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:13.5px;gap:0 8px}}
+
+    /* the demo button belongs to the card it replays — tighter than the default proof gap */
+    #slicerProof{margin-top:36px}
+
+    /* four shipped items read as a 2×2, not a 3-column grid with an orphan */
+    .road.two{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:760px){.road.two{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -326,6 +345,24 @@
 
   <section class="stage tint">
     <div class="wrap">
+      <h2 class="reveal">&ldquo;But my spreadsheet works.&rdquo;</h2>
+      <p class="reveal">It does &mdash; on the numbers you remember to type. SpoolPilot logs the sale, the real fee, and the grams <strong>the moment they happen</strong>. Nothing to enter, nothing to reconcile.</p>
+      <div class="proof reveal">
+        <div class="proof-hd"><span>The same job, both ways</span><span>Side by side</span></div>
+        <div class="proof-body">
+          <div class="vs vs-hd"><span></span><span class="a">Your sheet</span><span class="b">SpoolPilot</span></div>
+          <div class="vs"><span>Log a sale</span><span class="a">Typed later</span><span class="b">Instant</span></div>
+          <div class="vs"><span>Etsy fees</span><span class="a">Guessed %</span><span class="b">Actual</span></div>
+          <div class="vs"><span>Grams &amp; print time</span><span class="a">Estimated</span><span class="b">From the scan</span></div>
+          <div class="vs"><span>Spool stock</span><span class="a">Weighing</span><span class="b">Barcode</span></div>
+          <div class="vs sum"><span>Monthly books</span><span class="a">Hours</span><span class="b">Minutes</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="wrap">
       <h2 class="reveal">Every fee Etsy charged. No estimating.</h2>
       <p class="reveal">Read from your Etsy payment account, order by order, and reconciled against <strong>what Etsy actually deposits</strong>. Buyer-paid shipping is treated as <em>pass-through</em>; when you ship free, the label is counted as the real cost it is.</p>
       <div class="proof reveal">
@@ -350,7 +387,7 @@
     </div>
   </section>
 
-  <section class="stage">
+  <section class="stage tint">
     <div class="wrap">
       <h2 class="reveal">Your slicer only counts the plastic.</h2>
       <p class="reveal">It has no idea what your electricity, packaging, or time cost — or what Etsy takes. <strong>Scan the slicer screen and SpoolPilot adds all four, then tells you what to list the print at.</strong></p>
@@ -371,7 +408,7 @@
     </div>
   </section>
 
-  <section class="stage tint">
+  <section class="stage">
     <div class="wrap">
       <h2 class="reveal">Your whole history, in one tap.</h2>
       <p class="reveal">Import <strong>every sale you've ever made</strong> — 90 days, 12 months, or all time. Tap any month and the full profit-and-loss follows it.</p>
@@ -379,7 +416,7 @@
     </div>
   </section>
 
-  <section class="stage">
+  <section class="stage tint">
     <div class="wrap">
       <h2 class="reveal">Count sealed spools. Skip the grams.</h2>
       <p class="reveal">Scan a barcode to put a spool on the shelf or take one off. SpoolPilot forecasts <strong>how many weeks each filament lasts</strong> from your real sales pace.</p>
@@ -465,7 +502,7 @@
       <h2 class="reveal">Where it's going</h2>
       <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here's what landed recently, and what's next.</p>
       <p class="roadlabel reveal">Shipped during the beta</p>
-      <div class="road reveal" style="margin-bottom:34px">
+      <div class="road two reveal" style="margin-bottom:34px">
         <div><b>Etsy for everyone</b><span>Etsy granted commercial access — the old 5-shop limit is gone. Every seller can connect now.</span></div>
         <div><b>Monday recap</b><span>Last week's profit and your top sellers, ranked — with a card worth posting.</span></div>
         <div><b>Slicer scan</b><span>Point your phone at the slicer; print time and grams land in the cost.</span></div>
