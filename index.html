@@ -38,16 +38,18 @@
     "author": { "@type": "Organization", "name": "Opus Design Group LLC" }
   }
   </script>
+  <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#8B857F;
-      --rule:rgba(17,16,16,.08); --orange:#F97316; --profit:#177245;
+      --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;
+      --rule:rgba(17,16,16,.08); --orange:#F97316; --cta:#C2540C; --cta-hover:#A8470A; --profit:#177245;
       /* credential: used only for the maker-proof line. Not an interactive colour. */
       --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
     }
     *{box-sizing:border-box}
     html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+    @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
     body{
       margin:0;background:var(--bg);color:var(--ink);
       font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:18px;line-height:1.6;
@@ -80,11 +82,13 @@
     .tool:hover{background:rgba(249,115,22,.16)}
     .tool svg{width:15px;height:15px;display:block;flex:0 0 auto;color:var(--orange)}
     .toollabel-short{display:none}
+    /* CTA fills use the deeper brand orange: white text reads at 4.6:1 (WCAG AA), which the
+       vivid accent orange can't give. The vivid orange stays for accents and large graphics. */
     .btn{
-      background:var(--orange);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;
+      background:var(--cta);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;
       padding:8px 16px;border-radius:980px;transition:background .16s ease;
     }
-    .btn:hover{background:#E4650C}
+    .btn:hover{background:var(--cta-hover)}
 
     /* ---- hero: centred, the device large ---- */
     .hero{text-align:center;padding-top:96px;padding-bottom:0}
@@ -110,12 +114,19 @@
     .waitlist input[type=email]::placeholder{color:#AFA9A3}
     .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
     .waitlist button{
-      border:0;background:var(--orange);color:#fff;font:inherit;font-weight:600;font-size:16px;
+      border:0;background:var(--cta);color:#fff;font:inherit;font-weight:600;font-size:16px;
       padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease,transform .16s ease;
     }
-    .waitlist button:hover{background:#E4650C}
+    .waitlist button:hover{background:var(--cta-hover)}
     .note{margin:16px auto 0;font-size:13.5px;color:var(--muted);max-width:46ch}
     .waitlist-error{margin:12px auto 0;font-size:14px;font-weight:600;color:#B4231B;text-align:center}
+    .waitlist-hint{margin:12px auto 0;font-size:14.5px;color:var(--body);text-align:center}
+    .waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:600;color:var(--cta);cursor:pointer;text-decoration:underline}
+
+    /* Keyboard focus is a state, not an accident */
+    :focus-visible{outline:2px solid var(--cta);outline-offset:2px;border-radius:4px}
+    .tabs button:focus-visible{outline-offset:0}
+    .waitlist input[type=email]:focus-visible{outline:none}
     .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
     .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
     .waitlist-success p{margin:0;font-size:14.5px;color:var(--body)}
@@ -234,9 +245,14 @@
 
     /* ---- differentiator strip (under the hero) ---- */
     .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:72px auto 0;padding-top:44px;border-top:1px solid var(--rule);text-align:left}
-    .strip h3{margin:0 0 8px;font-size:16.5px;font-weight:600;letter-spacing:-.02em}
+    .strip h2{margin:0 0 8px;font-size:16.5px;font-weight:600;letter-spacing:-.02em}
     .strip p{margin:0;font-size:15px;line-height:1.55;color:var(--body)}
     @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
+
+    /* Mid-page CTA: one act-now door at the moment the fee argument lands, so a convinced
+       reader isn't marched ten more screens to the only other form. */
+    .midcta{display:inline-block;margin-top:34px;color:var(--cta);font-weight:600;font-size:16.5px;text-decoration:none}
+    .midcta:hover{text-decoration:underline}
 
     /* ---- shop-floor: tabs switch app screens; the caption gives each its moment ---- */
     .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;width:fit-content;max-width:100%;
@@ -299,7 +315,7 @@
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
         <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
-        <a class="btn" href="#waitlist">Get the beta</a>
+        <a class="btn" href="#get-the-beta">Get the beta</a>
       </nav>
     </div>
   </header>
@@ -318,15 +334,18 @@
         <input type="hidden" name="anticsrf" value="true">
         <button type="submit">Send me the beta link</button>
       </form>
-      <p class="note">The beta is open &mdash; your TestFlight link arrives by email in a minute or two. No spam, and a person reads every reply.</p>
+      <p class="note">The beta is open. Your TestFlight link (Apple's free beta app) arrives by email in a minute or two. No spam, and a person reads every reply.</p>
     </div>
     <div class="hero-device">
-      <img src="shot-home.png" width="1206" height="2622" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
+      <picture>
+        <source srcset="shot-home.webp" type="image/webp">
+        <img src="shot-home.png" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
+      </picture>
     </div>
     <div class="strip reveal">
-      <div><h3>Point it at the slicer</h3><p>The camera reads print time and grams off the slicer screen, then prices the print &mdash; fees and labor included.</p></div>
-      <div><h3>Scan spools by barcode</h3><p>Sealed spools counted on the shelf &mdash; no weighing &mdash; with weeks of stock forecast from your real sales pace.</p></div>
-      <div><h3>Native on iPhone</h3><p>Not a desktop dashboard. It rides in your pocket &mdash; at the printer, at the shelf, in the post-office line.</p></div>
+      <div><h2>Point it at the slicer</h2><p>The camera reads print time and grams off the slicer screen, then prices the print, fees and labor included.</p></div>
+      <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with weeks of stock forecast from your real sales pace.</p></div>
+      <div><h2>Native on iPhone</h2><p>Not a desktop dashboard. It rides in your pocket &mdash; at the printer, at the shelf, in the post-office line.</p></div>
     </div>
   </div>
 
@@ -351,7 +370,7 @@
   <section class="stage">
     <div class="wrap">
       <h2 class="reveal">Every fee Etsy charged. No estimating.</h2>
-      <p class="reveal">Read from your Etsy payment account, order by order, and reconciled against <strong>what Etsy actually deposits</strong>. Buyer-paid shipping is treated as <em>pass-through</em>; when you ship free, the label is counted as the real cost it is.</p>
+      <p class="reveal">Read from your Etsy payment account, order by order, and reconciled against <strong>what Etsy actually deposits</strong>. Shipping your buyer paid passes straight through; when you ship free, the label is counted as the real cost it is.</p>
       <div class="proof reveal">
         <div class="proof-hd"><span>Desk Organizer · Jul 27</span><span>Reconciled</span></div>
         <div class="proof-body">
@@ -371,13 +390,14 @@
           <div class="pl sum"><span>Net profit · 29% margin</span><b>$8.18</b></div>
         </div>
       </div>
+      <a class="midcta reveal" href="#get-the-beta">Get the beta and see yours &rarr;</a>
     </div>
   </section>
 
   <section class="stage tint">
     <div class="wrap">
       <h2 class="reveal">Your slicer only counts the plastic.</h2>
-      <p class="reveal">It has no idea what your electricity, packaging, or time cost — or what Etsy takes. <strong>Scan the slicer screen and SpoolPilot adds all four, then tells you what to list the print at.</strong></p>
+      <p class="reveal">It has no idea what your electricity, packaging, or time cost. Or what Etsy takes. <strong>Scan the slicer screen and SpoolPilot adds all four, then tells you what to list the print at.</strong></p>
       <div class="proof reveal">
         <div class="proof-hd"><span>Dice Tower · slicer scan</span><span>Read from your screen</span></div>
         <div class="proof-body">
@@ -396,24 +416,8 @@
 
   <section class="stage">
     <div class="wrap">
-      <h2 class="reveal">Your whole history, in one tap.</h2>
-      <p class="reveal">Import <strong>every sale you've ever made</strong> — 90 days, 12 months, or all time. Tap any month and the full profit-and-loss follows it.</p>
-      <div class="device reveal"><img src="shot-finances.png" width="1206" height="2622" alt="Finances screen showing a full profit-and-loss for a selected month."></div>
-    </div>
-  </section>
-
-  <section class="stage tint">
-    <div class="wrap">
-      <h2 class="reveal">Count sealed spools. Skip the grams.</h2>
-      <p class="reveal">Scan a barcode to put a spool on the shelf or take one off. SpoolPilot forecasts <strong>how many weeks each filament lasts</strong> from your real sales pace.</p>
-      <div class="device reveal"><img src="shot-inventory.png" width="1206" height="2622" alt="Filament inventory with sealed spool counts and weeks-of-stock estimates."></div>
-    </div>
-  </section>
-
-  <section class="stage">
-    <div class="wrap">
       <h2 class="reveal">The whole shop, in your hand.</h2>
-      <p class="reveal">Not a desktop dashboard you check at the end of the day. SpoolPilot is a <strong>native iPhone app</strong>, so the number you need is already there — at the printer, at the shelf, at the post office. Tap a moment in the day:</p>
+      <p class="reveal">A <strong>native iPhone app</strong>, so the answer is wherever you are — mid-print, mid-pack, mid-errand. Tap a moment in the day:</p>
       <div class="tabs reveal" id="floorTabs" role="tablist" aria-label="Choose an app screen">
         <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
         <button role="tab" type="button" aria-selected="false" data-i="1">A sale</button>
@@ -421,12 +425,12 @@
         <button role="tab" type="button" aria-selected="false" data-i="3">The shelf</button>
       </div>
       <div class="floor-view reveal" id="floorView">
-        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" alt="SpoolPilot home screen — today's revenue and this month's profit.">
-        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" alt="Sale detail with the exact Etsy fees itemized.">
-        <img data-i="2" src="phone-pnl-crop.png" width="440" height="844" alt="Monthly profit and loss.">
-        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" alt="Filament inventory with weeks of stock left.">
+        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" loading="lazy" alt="SpoolPilot home screen — today's revenue and this month's profit.">
+        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" loading="lazy" alt="Sale detail with the exact Etsy fees itemized.">
+        <img data-i="2" src="phone-pnl-crop.png" width="440" height="844" loading="lazy" alt="Monthly profit and loss.">
+        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" loading="lazy" alt="Filament inventory with weeks of stock left.">
       </div>
-      <p class="floor-cap reveal" id="floorCap">Between prints — today's take and the month's profit, at a glance.</p>
+      <p class="floor-cap reveal" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
     </div>
   </section>
 
@@ -434,8 +438,8 @@
     <div class="wrap">
       <h2 class="reveal">The busywork it takes off you.</h2>
       <div class="facts reveal">
-        <div><h3>Made to order</h3><p>Products <strong>don't demand a stock count you don't keep</strong>. Low-stock flags appear only where you actually shelve inventory.</p></div>
-        <div><h3>Print next</h3><p>A queue of what's running out at your real sales pace — tap a row to log the print run when it's done.</p></div>
+        <div><h3>Made to order</h3><p><strong>No forced stock counts.</strong> Low-stock flags appear only where you actually shelve inventory.</p></div>
+        <div><h3>Print next</h3><p>A queue of what's about to run out, ranked by your real sales pace. Tap a row to log the run.</p></div>
         <div><h3>Bundles</h3><p>Kits sell from pre-assembled stock first, then <strong>assemble themselves from component parts</strong>, with the cost itemized live.</p></div>
       </div>
     </div>
@@ -443,17 +447,17 @@
 
   <section class="stage">
     <div class="wrap">
-      <h2 class="reveal">Where it fits</h2>
-      <p class="reveal" style="margin-bottom:44px">Most tools stop at how much plastic is left.</p>
+      <h2 class="reveal">Most tools stop at how much plastic is left.</h2>
+      <p class="reveal" style="margin-bottom:44px">SpoolPilot counts the money.</p>
       <div class="tbl reveal">
         <table>
-          <thead><tr><th></th><th>Filament trackers</th><th>Craftybase / spreadsheets</th><th class="sp">SpoolPilot</th></tr></thead>
+          <thead><tr><th></th><th class="sp">SpoolPilot</th><th>Filament trackers</th><th>Craftybase / spreadsheets</th></tr></thead>
           <tbody>
-            <tr><td>Primary focus</td><td>Remaining filament weight</td><td>General handmade tracking</td><td class="sp">3D-print business profit</td></tr>
-            <tr><td>Data entry</td><td>Manual or local print server</td><td>Manual spreadsheet typing</td><td class="sp">Automatic Etsy order sync</td></tr>
-            <tr><td>Form factor</td><td>Desktop / local web</td><td>Desktop web</td><td class="sp">Native iOS, shop-floor mobile</td></tr>
-            <tr><td>Seller fees</td><td>—</td><td>Estimated percentages</td><td class="sp">The exact fees Etsy charged, itemized per order</td></tr>
-            <tr><td>Financials</td><td>None</td><td>Basic manual COGS</td><td class="sp">Full P&amp;L — any month, whole history</td></tr>
+            <tr><td>Primary focus</td><td class="sp">3D-print business profit</td><td>Remaining filament weight</td><td>General handmade tracking</td></tr>
+            <tr><td>Data entry</td><td class="sp">Automatic Etsy order sync</td><td>Manual or local print server</td><td>Manual spreadsheet typing</td></tr>
+            <tr><td>Form factor</td><td class="sp">Native iOS, shop-floor mobile</td><td>Desktop / local web</td><td>Desktop web</td></tr>
+            <tr><td>Seller fees</td><td class="sp">The exact fees Etsy charged, itemized per order</td><td>—</td><td>Estimated percentages</td></tr>
+            <tr><td>Financials</td><td class="sp">Full P&amp;L, any month, whole history</td><td>None</td><td>Basic manual COGS</td></tr>
           </tbody>
         </table>
       </div>
@@ -466,19 +470,19 @@
       <p class="reveal">Etsy's published US fees, computed live. In the app the fees aren't computed at all — they're <strong>read from your payment account, order by order</strong>, with materials and labor subtracted too.</p>
       <div class="feecalc reveal">
         <div class="fc-top">
-          <div class="fc-price"><span>Sale price</span><b id="fcPrice">$28</b></div>
-          <input type="range" id="fcRange" min="5" max="120" step="1" value="28" aria-label="Sale price">
+          <div class="fc-price"><span>Sale price</span><b id="fcPrice">$32</b></div>
+          <input type="range" id="fcRange" min="5" max="120" step="1" value="32" aria-label="Sale price">
           <div class="fc-ends"><span>$5</span><span>$120</span></div>
           <label class="fc-ads"><input type="checkbox" id="fcAds"> Sale came from an Offsite Ad (15%)</label>
         </div>
-        <div class="fc-body">
-          <div class="pl"><span>Transaction fee · 6.5%</span><span class="n" id="fcTx">−$1.82</span></div>
-          <div class="pl"><span>Payment processing · 3% + 25¢</span><span class="n" id="fcPr">−$1.09</span></div>
+        <div class="fc-body" aria-live="polite">
+          <div class="pl"><span>Transaction fee · 6.5%</span><span class="n" id="fcTx">−$2.08</span></div>
+          <div class="pl"><span>Payment processing · 3% + 25¢</span><span class="n" id="fcPr">−$1.21</span></div>
           <div class="pl"><span>Listing fee</span><span class="n" id="fcLs">−$0.20</span></div>
-          <div class="pl" id="fcAdsRow" hidden><span>Offsite Ads · 15%</span><span class="n" id="fcAd">−$4.20</span></div>
-          <div class="pl sum"><span>You keep · <span id="fcPct">89%</span></span><b id="fcKeep">$24.89</b></div>
+          <div class="pl" id="fcAdsRow" hidden><span>Offsite Ads · 15%</span><span class="n" id="fcAd">−$4.80</span></div>
+          <div class="pl sum"><span>You keep · <span id="fcPct">89%</span></span><b id="fcKeep">$28.51</b></div>
         </div>
-        <p class="fc-note">Before filament, electricity, and labor — the app subtracts those from your real ledger fees. <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
+        <p class="fc-note">Before filament, electricity, and labor. The app subtracts those from your real ledger fees. <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
       </div>
     </div>
   </section>
@@ -489,8 +493,8 @@
       <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here's what landed recently, and what's next.</p>
       <p class="roadlabel reveal">Shipped during the beta</p>
       <div class="road two reveal" style="margin-bottom:34px">
-        <div><b>Etsy for everyone</b><span>Etsy granted commercial access — the old 5-shop limit is gone. Every seller can connect now.</span></div>
-        <div><b>Monday recap</b><span>Last week's profit and your top sellers, ranked — with a card worth posting.</span></div>
+        <div><b>Etsy for everyone</b><span>Connect any Etsy shop — no invite, no cap. The early-beta limit is gone.</span></div>
+        <div><b>Monday recap</b><span>Last week's profit and your top sellers, ranked, with a card worth posting.</span></div>
         <div><b>Slicer scan</b><span>Point your phone at the slicer; print time and grams land in the cost.</span></div>
         <div><b>iCloud backup</b><span>Your catalog and sales history back up to your own iCloud automatically.</span></div>
       </div>
@@ -501,17 +505,17 @@
     </div>
   </section>
 
-  <section class="stage tint">
+  <section class="stage tint" id="get-the-beta">
     <div class="wrap">
       <h2>See the profit on your next print.</h2>
-      <p style="margin-bottom:32px">The beta is open. Leave your email and the link is with you in a minute.</p>
+      <p style="margin-bottom:32px">The beta is open and free. Leave your email and the link is with you in a minute.</p>
       <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
         <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
         <input type="hidden" name="ml-submit" value="1">
         <input type="hidden" name="anticsrf" value="true">
         <button type="submit">Send me the beta link</button>
       </form>
-      <p class="note">The beta is open. Your link arrives by email in a minute or two.</p>
+      <p class="note">No spam, and a person reads every reply. No customer data collected: SpoolPilot only ever reads your own shop's numbers.</p>
     </div>
   </section>
 
@@ -545,10 +549,10 @@
       var view = document.getElementById('floorView');
       var cap = document.getElementById('floorCap');
       var caps = [
-        "Between prints — today's take and the month's profit, at a glance.",
-        "An order lands at the printer — its real Etsy fees and true profit, itemized.",
-        "Reconciling the month — the full profit-and-loss, any month, in one tap.",
-        "At the shelf — scan a spool in or out; weeks of stock updates itself."
+        "Between prints: today's take and the month's profit at a glance.",
+        "An order lands: the real Etsy fees and true profit, already itemized.",
+        "Reconciling: full P&L for any month, with one-tap import of your whole sales history.",
+        "At the shelf: scan spools in or out, no weighing. Weeks-of-stock updates itself."
       ];
       if (tabs && view) {
         tabs.addEventListener('click', function (e) {
@@ -558,6 +562,19 @@
           tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
           view.querySelectorAll('img').forEach(function (img) { img.classList.toggle('active', img.getAttribute('data-i') === i); });
           if (cap && caps[i]) cap.textContent = caps[i];
+        });
+      }
+
+      // A CTA that lands on the form should hand you the keyboard, not just the view —
+      // on desktop. On touch, focusing would shove the on-screen keyboard over the page
+      // mid-scroll (and delayed focus cancels the smooth glide — tested), so touch gets
+      // the clean glide and taps the field itself.
+      if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        document.querySelectorAll('a[href="#get-the-beta"]').forEach(function (a) {
+          a.addEventListener('click', function () {
+            var input = document.querySelector('#get-the-beta input[type="email"]');
+            if (input) setTimeout(function () { input.focus(); }, 0);
+          });
         });
       }
 

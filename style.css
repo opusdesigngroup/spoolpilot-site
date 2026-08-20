@@ -166,6 +166,10 @@ table.compare .col-sp b { font-weight: 700; }
   .waitlist button { flex: 1 1 100%; }
 }
 
+/* Email domain-typo hint (shared waitlist.js) */
+.waitlist-hint { margin: 12px 2px 0; font-size: 14.5px; color: var(--body); }
+.waitlist-hint button { border: 0; background: none; padding: 0; font: inherit; font-weight: 700; color: var(--orange); cursor: pointer; text-decoration: underline; }
+
 /* ===== Waitlist success state ===== */
 .waitlist-success { position: relative; overflow: hidden; max-width: 460px; margin-top: 24px; padding: 26px 22px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-align: center; box-shadow: 0 18px 40px -22px rgba(23, 19, 15, .3); }
 .cta-band .waitlist-success { margin-left: auto; margin-right: auto; }
