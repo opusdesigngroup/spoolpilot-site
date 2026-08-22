@@ -93,7 +93,10 @@
     .btn:hover{background:var(--cta-fill-hover)}
 
     /* ---- hero: centred, the device large ---- */
-    .hero{text-align:center;padding-top:96px;padding-bottom:0}
+    /* padding-bottom lifts the differentiator strip off the next section's tint edge —
+       without it the last strip item ("Native on iPhone") sits flush against the colour
+       change and reads as crowded, most visibly on mobile where the strip is stacked. */
+    .hero{text-align:center;padding-top:96px;padding-bottom:52px}
     .kicker{
       display:inline-flex;align-items:center;gap:8px;
       font-size:14px;font-weight:600;color:var(--credential);
