@@ -119,6 +119,10 @@ tbody td:first-child{color:var(--muted);font-size:14px}
 }
 .waitlist button:hover{background:var(--orange-deep)}
 .note{margin:14px 0 0;font-size:13.5px;color:var(--muted)}
+/* When .note sits inside a .cta or .card, the compound .cta p / .card p rules
+   (specificity 0,0,1,1) otherwise beat .note (0,0,1,0) and zero its top margin,
+   jamming the "No spam…" line flat against the form above it. Re-qualify to win. */
+.cta .note,.card .note{margin:14px 0 0}
 .waitlist-error{margin:12px 0 0;font-size:14px;font-weight:600;color:var(--loss)}
 .waitlist-success{max-width:440px;padding:20px 22px;border:1px solid var(--rule-2);border-radius:18px;background:#fff}
 .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
