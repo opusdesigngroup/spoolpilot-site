@@ -43,7 +43,8 @@
   <style>
     :root{
       --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;
-      --rule:rgba(17,16,16,.08); --orange:#F97316; --cta:#C2540C; --cta-hover:#A8470A; --profit:#177245;
+      --rule:rgba(17,16,16,.08); --orange:#F97316; --cta:#C2540C; --cta-hover:#A8470A;
+      --cta-fill:#F97316; --cta-fill-hover:#E4650C; --profit:#177245;
       /* credential: used only for the maker-proof line. Not an interactive colour. */
       --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
     }
@@ -82,13 +83,14 @@
     .tool:hover{background:rgba(249,115,22,.16)}
     .tool svg{width:15px;height:15px;display:block;flex:0 0 auto;color:var(--orange)}
     .toollabel-short{display:none}
-    /* CTA fills use the deeper brand orange: white text reads at 4.6:1 (WCAG AA), which the
-       vivid accent orange can't give. The vivid orange stays for accents and large graphics. */
+    /* Button fills are the brand orange with dark text — dark-on-orange reads at 6.8:1 (AA),
+       which white on this orange can't (2.8:1). Text links + focus rings use the deeper --cta
+       orange instead, since a thin orange mark on white needs the higher-contrast shade. */
     .btn{
-      background:var(--cta);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;
+      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;
       padding:8px 16px;border-radius:980px;transition:background .16s ease;
     }
-    .btn:hover{background:var(--cta-hover)}
+    .btn:hover{background:var(--cta-fill-hover)}
 
     /* ---- hero: centred, the device large ---- */
     .hero{text-align:center;padding-top:96px;padding-bottom:0}
@@ -114,10 +116,10 @@
     .waitlist input[type=email]::placeholder{color:#AFA9A3}
     .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
     .waitlist button{
-      border:0;background:var(--cta);color:#fff;font:inherit;font-weight:600;font-size:16px;
+      border:0;background:var(--cta-fill);color:var(--ink);font:inherit;font-weight:600;font-size:16px;
       padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease,transform .16s ease;
     }
-    .waitlist button:hover{background:var(--cta-hover)}
+    .waitlist button:hover{background:var(--cta-fill-hover)}
     .note{margin:16px auto 0;font-size:13.5px;color:var(--muted);max-width:46ch}
     .waitlist-error{margin:12px auto 0;font-size:14px;font-weight:600;color:#B4231B;text-align:center}
     .waitlist-hint{margin:12px auto 0;font-size:14.5px;color:var(--body);text-align:center}
