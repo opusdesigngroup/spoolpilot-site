@@ -268,7 +268,9 @@
       box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
       opacity:0;transition:opacity .2s ease}
     .floor-view img.active{opacity:1}
-    .floor-cap{margin:20px auto 0;font-size:15px;line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
+    /* Qualified with .stage so it outranks `.stage p` (margin:0 auto), which was silently
+       zeroing this caption's top margin and jamming it against the phone's bottom edge. */
+    .stage p.floor-cap{margin:26px auto 0;font-size:15px;line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
 
     /* ---- fee-calculator teaser: slide a price, watch Etsy's cut ---- */
     .feecalc{max-width:430px;margin:48px auto 0;background:#fff;border:1px solid var(--rule);
