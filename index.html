@@ -58,7 +58,7 @@
     ]
   }
   </script>
-  <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
+  <link rel="preload" as="image" href="/phone-dashboard-crop.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -156,8 +156,6 @@
     .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
     .waitlist-success p{margin:0;font-size:14.5px;color:var(--body)}
 
-    .hero-device{margin:74px auto 0;max-width:326px}
-    .hero-device img{border-radius:34px;box-shadow:0 42px 80px -40px rgba(17,16,16,.42), 0 0 0 1px rgba(17,16,16,.07)}
 
     /* ---- stage: one idea per viewport ---- */
     .stage{padding-top:118px;padding-bottom:118px;text-align:center}
@@ -298,6 +296,9 @@
     @media (max-width:420px){.tabs button{padding:9px 13px;font-size:14px}}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
     .floor-view{position:relative;margin:26px auto 0;width:270px;max-width:78vw;aspect-ratio:440/844}
+    /* In the hero the widget replaces the old static device shot — a touch larger, tighter tab gap. */
+    .hero .tabs{margin-top:64px}
+    .hero .floor-view{width:300px;margin-top:22px}
     .floor-view img{position:absolute;inset:0;width:100%;height:100%;border-radius:30px;
       box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
       opacity:0;transition:opacity .2s ease}
@@ -409,12 +410,35 @@
       </form>
       <p class="note">The beta is open. Your TestFlight link (Apple's free beta app) arrives by email in a minute or two. No spam, and a person reads every reply.</p>
     </div>
-    <div class="hero-device">
-      <picture>
-        <source srcset="shot-home.webp" type="image/webp">
-        <img src="shot-home.png" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen showing today's revenue, monthly profit, a revenue chart and recent Etsy orders.">
-      </picture>
-    </div>
+      <div class="tabs" id="floorTabs" role="tablist" aria-label="Choose an app screen">
+        <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
+        <button role="tab" type="button" aria-selected="false" data-i="1">A sale</button>
+        <button role="tab" type="button" aria-selected="false" data-i="2">The month</button>
+        <button role="tab" type="button" aria-selected="false" data-i="3">The shelf</button>
+      </div>
+      <div class="floor-view" id="floorView">
+        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" fetchpriority="high" alt="SpoolPilot home screen — today's revenue and this month's profit.">
+        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" loading="lazy" alt="Sale detail with the exact Etsy fees itemized.">
+        <div class="floor-app" data-i="2" role="group" aria-label="Interactive monthly profit and loss — tap a month">
+          <div class="fa-hd"><b>Finances</b><span id="faMonth">August</span></div>
+          <div class="fa-pnl">
+            <div class="fa-row"><span>Revenue</span><b id="faRev">$3,124.00</b></div>
+            <div class="fa-row"><span>Cost of materials</span><span id="faMat">&minus;$518.43</span></div>
+            <div class="fa-rule"></div>
+            <div class="fa-row"><b>Gross profit</b><b id="faGross">$2,605.57</b></div>
+            <div class="fa-row"><span>Operating expenses</span><span id="faOpex">&minus;$1,131.55</span></div>
+            <div class="fa-rule"></div>
+            <div class="fa-net"><span class="lbl">Net profit<span class="fa-pill" id="faMargin">47% margin</span></span><span class="val" id="faNet">+$1,474.02</span></div>
+          </div>
+          <div class="fa-chart">
+            <p class="cap">Revenue, last 6 months &mdash; tap a bar</p>
+            <div class="fa-bars" id="faBars"></div>
+          </div>
+          <p class="fa-hint">Scroll for costs, best sellers, and every sale &darr;</p>
+        </div>
+        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" loading="lazy" alt="Filament inventory with weeks of stock left.">
+      </div>
+      <p class="floor-cap" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
     <div class="strip reveal">
       <div><h2>Point it at the slicer</h2><p>The camera reads print time and grams off the slicer screen, then prices the print &mdash; fees and labor included.</p></div>
       <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with weeks of stock from your real sales pace.</p></div>
@@ -487,41 +511,6 @@
     </div>
   </section>
 
-  <section class="stage">
-    <div class="wrap">
-      <h2 class="reveal">The whole shop, in your hand.</h2>
-      <p class="reveal">A <strong>native iPhone app</strong>, so the answer is wherever you are — mid-print, mid-pack, mid-errand. Tap a moment in the day:</p>
-      <div class="tabs reveal" id="floorTabs" role="tablist" aria-label="Choose an app screen">
-        <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
-        <button role="tab" type="button" aria-selected="false" data-i="1">A sale</button>
-        <button role="tab" type="button" aria-selected="false" data-i="2">The month</button>
-        <button role="tab" type="button" aria-selected="false" data-i="3">The shelf</button>
-      </div>
-      <div class="floor-view reveal" id="floorView">
-        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" loading="lazy" alt="SpoolPilot home screen — today's revenue and this month's profit.">
-        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" loading="lazy" alt="Sale detail with the exact Etsy fees itemized.">
-        <div class="floor-app" data-i="2" role="group" aria-label="Interactive monthly profit and loss — tap a month">
-          <div class="fa-hd"><b>Finances</b><span id="faMonth">August</span></div>
-          <div class="fa-pnl">
-            <div class="fa-row"><span>Revenue</span><b id="faRev">$3,124.00</b></div>
-            <div class="fa-row"><span>Cost of materials</span><span id="faMat">&minus;$518.43</span></div>
-            <div class="fa-rule"></div>
-            <div class="fa-row"><b>Gross profit</b><b id="faGross">$2,605.57</b></div>
-            <div class="fa-row"><span>Operating expenses</span><span id="faOpex">&minus;$1,131.55</span></div>
-            <div class="fa-rule"></div>
-            <div class="fa-net"><span class="lbl">Net profit<span class="fa-pill" id="faMargin">47% margin</span></span><span class="val" id="faNet">+$1,474.02</span></div>
-          </div>
-          <div class="fa-chart">
-            <p class="cap">Revenue, last 6 months &mdash; tap a bar</p>
-            <div class="fa-bars" id="faBars"></div>
-          </div>
-          <p class="fa-hint">Scroll for costs, best sellers, and every sale &darr;</p>
-        </div>
-        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" loading="lazy" alt="Filament inventory with weeks of stock left.">
-      </div>
-      <p class="floor-cap reveal" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
-    </div>
-  </section>
 
   <section class="stage tint">
     <div class="wrap">
