@@ -282,6 +282,13 @@
     .strip h2{margin:0 0 8px;font-size:16.5px;font-weight:600;letter-spacing:-.02em}
     .strip p{margin:0;font-size:15px;line-height:1.55;color:var(--body)}
     @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
+    /* ---- testimonial: one real quote from a beta tester ---- */
+    .quote{max-width:640px;margin:64px auto 0;padding:28px 32px;background:#fff;
+      border:1px solid var(--rule);border-radius:18px;text-align:left}
+    .quote blockquote{margin:0;font-size:17px;line-height:1.65;color:var(--body)}
+    .quote cite{display:block;margin-top:14px;font-style:normal;font-size:14px;font-weight:700;color:var(--ink)}
+    .quote cite span{font-weight:600;color:var(--muted)}
+    @media (max-width:760px){.quote{margin-top:48px;padding:22px 22px}}
 
     /* Mid-page CTA: one act-now door at the moment the fee argument lands, so a convinced
        reader isn't marched ten more screens to the only other form. */
@@ -391,6 +398,10 @@
       <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with weeks of stock from your real sales pace.</p></div>
       <div><h2>On your phone, not a desk</h2><p>The sale, the print, the empty spool &mdash; they happen away from a computer. A native iPhone app catches them right there, so &ldquo;I&rsquo;ll log it later&rdquo; never turns into never.</p></div>
     </div>
+    <figure class="quote reveal">
+      <blockquote>&ldquo;Overall, I really enjoyed testing the app! It feels very convenient and intuitive, and everything is easy to understand without much explanation. I especially liked that you can choose any color and connect your slicer &mdash; those features are really useful for 3D printing.&rdquo;</blockquote>
+      <cite>&mdash; Angelina <span>&middot; Gumi Print House on Etsy</span></cite>
+    </figure>
   </div>
 
   <section class="stage tint">
