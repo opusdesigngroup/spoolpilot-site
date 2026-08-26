@@ -43,8 +43,8 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "Does SpoolPilot use the real Etsy fees, or estimates?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The real ones. After you connect your shop, SpoolPilot reads the exact fees Etsy charged on each order from Etsy's own ledger — transaction, payment processing, listing, and Offsite Ads — and subtracts them to the cent. A built-in calculator can estimate fees for a print you haven't sold yet, and estimates are always marked as such." } },
+      { "@type": "Question", "name": "How does SpoolPilot calculate profit?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labour if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a tilde." } },
       { "@type": "Question", "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
         "acceptedAnswer": { "@type": "Answer", "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question — what did this Etsy order actually make you — and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile." } },
       { "@type": "Question", "name": "What does SpoolPilot cost?",
@@ -58,7 +58,7 @@
     ]
   }
   </script>
-  <link rel="preload" as="image" href="/phone-dashboard-crop.png" type="image/png">
+  <link rel="preload" as="image" href="/shot-home.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -296,6 +296,15 @@
     @media (max-width:420px){.tabs button{padding:9px 13px;font-size:14px}}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
     .floor-view{position:relative;margin:26px auto 0;width:270px;max-width:78vw;aspect-ratio:440/844}
+    /* Hero: the full-size device, tabbed through the app's five real tabs. */
+    .hero .tabs{margin-top:56px}
+    .hero-device{position:relative;margin:24px auto 0;width:326px;max-width:82vw;aspect-ratio:1206/2622}
+    .hero-device img,.hero-device .floor-app{position:absolute;inset:0;width:100%;height:100%;
+      border-radius:34px;box-shadow:0 42px 80px -40px rgba(17,16,16,.42),0 0 0 1px rgba(17,16,16,.07);
+      opacity:0;transition:opacity .2s ease;pointer-events:none}
+    .hero-device img.active,.hero-device .floor-app.active{opacity:1;pointer-events:auto}
+    .hero-device .floor-app{background:#fff;overflow:hidden;padding:22px 16px 16px;
+      display:flex;flex-direction:column;gap:12px;text-align:left}
     /* In the hero the widget replaces the old static device shot — a touch larger, tighter tab gap. */
     .hero .tabs{margin-top:64px}
     .hero .floor-view{width:300px;margin-top:22px}
@@ -412,14 +421,17 @@
     </div>
       <div class="tabs" id="floorTabs" role="tablist" aria-label="Choose an app screen">
         <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
-        <button role="tab" type="button" aria-selected="false" data-i="1">A sale</button>
-        <button role="tab" type="button" aria-selected="false" data-i="2">The month</button>
-        <button role="tab" type="button" aria-selected="false" data-i="3">The shelf</button>
+        <button role="tab" type="button" aria-selected="false" data-i="1">Filament</button>
+        <button role="tab" type="button" aria-selected="false" data-i="2">Scan</button>
+        <button role="tab" type="button" aria-selected="false" data-i="3">Products</button>
+        <button role="tab" type="button" aria-selected="false" data-i="4">Finances</button>
       </div>
-      <div class="floor-view" id="floorView">
-        <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" fetchpriority="high" alt="SpoolPilot home screen — today's revenue and this month's profit.">
-        <img data-i="1" src="phone-fees-crop.png" width="440" height="844" loading="lazy" alt="Sale detail with the exact Etsy fees itemized.">
-        <div class="floor-app" data-i="2" role="group" aria-label="Interactive monthly profit and loss — tap a month">
+      <div class="hero-device" id="floorView">
+        <img class="active" data-i="0" src="shot-home.png" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen — today's revenue, this month's profit, and recent Etsy orders with the profit on each.">
+        <img data-i="1" src="shot-filament.png" width="1206" height="2622" loading="lazy" alt="Filament inventory — sealed spool counts with weeks of stock left at your sales pace.">
+        <img data-i="2" src="shot-scan.png" width="1206" height="2622" loading="lazy" alt="Scan tab — point the camera at a spool barcode or your slicer screen.">
+        <img data-i="3" src="shot-products.png" width="1206" height="2622" loading="lazy" alt="Products — units in stock, stock value, and estimated shelf profit.">
+        <div class="floor-app" data-i="4" role="group" aria-label="Interactive monthly profit and loss — tap a month">
           <div class="fa-hd"><b>Finances</b><span id="faMonth">August</span></div>
           <div class="fa-pnl">
             <div class="fa-row"><span>Revenue</span><b id="faRev">$3,124.00</b></div>
@@ -436,7 +448,6 @@
           </div>
           <p class="fa-hint">Scroll for costs, best sellers, and every sale &darr;</p>
         </div>
-        <img data-i="3" src="phone-filament-crop.png" width="440" height="844" loading="lazy" alt="Filament inventory with weeks of stock left.">
       </div>
       <p class="floor-cap" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
     <div class="strip reveal">
@@ -589,8 +600,8 @@
       <h2 class="reveal">Questions makers ask</h2>
       <div class="faq reveal">
         <details>
-          <summary>Does SpoolPilot use the real Etsy fees, or estimates?</summary>
-          <p>The real ones. After you connect your shop, SpoolPilot reads the exact fees Etsy charged on each order from Etsy&rsquo;s own ledger &mdash; transaction, payment processing, listing, and Offsite Ads &mdash; and subtracts them to the cent. A built-in calculator can <em>estimate</em> fees for a print you haven&rsquo;t sold yet, and estimates are always marked as such.</p>
+          <summary>How does SpoolPilot calculate profit?</summary>
+          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order &mdash; transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated &mdash; then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labour if you set an hourly rate. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
@@ -661,9 +672,10 @@
       var cap = document.getElementById('floorCap');
       var caps = [
         "Between prints: today's take and the month's profit at a glance.",
-        "An order lands: the real Etsy fees and true profit, already itemized.",
-        "Reconciling: tap any month and the whole P&L re-aims to it — same as the app.",
-        "At the shelf: scan spools in or out, no weighing. Weeks-of-stock updates itself."
+        "At the shelf: scan spools in or out, no weighing. Weeks-of-stock keeps itself current.",
+        "Point the camera at a spool barcode — or at your slicer screen to price the print.",
+        "What you sell: units on hand, what the shelf is worth, and the profit in it.",
+        "Reconciling: tap any month and the whole P&L re-aims to it — same as the app."
       ];
       if (tabs && view) {
         tabs.addEventListener('click', function (e) {
