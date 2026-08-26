@@ -302,6 +302,37 @@
       box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
       opacity:0;transition:opacity .2s ease}
     .floor-view img.active{opacity:1}
+    /* Interactive "tap a month" P&L — mirrors the app's Finances screen (tap a revenue bar,
+       the whole P&L re-aims to that month). Lives in the same phone slot as the screenshots. */
+    .floor-view .floor-app{position:absolute;inset:0;width:100%;height:100%;border-radius:30px;
+      background:#fff;box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
+      opacity:0;transition:opacity .2s ease;overflow:hidden;padding:20px 15px 15px;
+      display:flex;flex-direction:column;gap:11px;text-align:left}
+    .floor-view .floor-app.active{opacity:1}
+    .fa-hd{display:flex;align-items:baseline;justify-content:space-between}
+    .fa-hd b{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+    .fa-hd span{font-size:10.5px;font-weight:600;color:var(--muted)}
+    .fa-pnl{background:var(--bg-alt);border-radius:13px;padding:11px 12px}
+    .fa-row{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--body);padding:2.5px 0}
+    .fa-row b{color:var(--ink);font-weight:700}
+    .fa-rule{height:1px;background:var(--rule);margin:5px 0}
+    .fa-net{display:flex;justify-content:space-between;align-items:center;margin-top:5px}
+    .fa-net .lbl{font-size:11.5px;font-weight:800;color:var(--ink)}
+    .fa-net .val{font-size:16px;font-weight:800;color:var(--profit);font-variant-numeric:tabular-nums}
+    .fa-pill{display:inline-block;font-size:8.5px;font-weight:700;color:var(--profit);
+      background:rgba(23,114,69,.12);border-radius:999px;padding:2px 6px;margin-left:5px}
+    .fa-chart{background:#fff;border:1px solid var(--rule);border-radius:13px;padding:11px 12px 10px}
+    .fa-hint{margin-top:auto;font-size:9px;color:var(--muted);text-align:center;opacity:.7}
+    .fa-chart .cap{font-size:9.5px;font-weight:600;color:var(--muted);margin:0 0 6px}
+    .fa-bars{display:flex;align-items:stretch;gap:5px;height:104px}
+    .fa-bars button{flex:1;border:0;background:transparent;padding:0;cursor:pointer;
+      display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
+    .fa-bars .v{font-size:8.5px;font-weight:700;color:var(--body);opacity:0;transition:opacity .15s ease;
+      font-variant-numeric:tabular-nums;white-space:nowrap}
+    .fa-bars button.sel .v{opacity:1}
+    .fa-bars .bar{width:100%;border-radius:3px;background:rgba(154,147,139,.32);transition:background .15s ease}
+    .fa-bars button.sel .bar{background:var(--orange)}
+    .fa-bars .m{font-size:8.5px;font-weight:700;color:var(--muted)}
     /* Qualified with .stage so it outranks `.stage p` (margin:0 auto), which was silently
        zeroing this caption's top margin and jamming it against the phone's bottom edge. */
     .stage p.floor-cap{margin:26px auto 0;font-size:15px;line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
@@ -465,7 +496,23 @@
       <div class="floor-view reveal" id="floorView">
         <img class="active" data-i="0" src="phone-dashboard-crop.png" width="440" height="844" loading="lazy" alt="SpoolPilot home screen — today's revenue and this month's profit.">
         <img data-i="1" src="phone-fees-crop.png" width="440" height="844" loading="lazy" alt="Sale detail with the exact Etsy fees itemized.">
-        <img data-i="2" src="phone-pnl-crop.png" width="440" height="844" loading="lazy" alt="Monthly profit and loss.">
+        <div class="floor-app" data-i="2" role="group" aria-label="Interactive monthly profit and loss — tap a month">
+          <div class="fa-hd"><b>Finances</b><span id="faMonth">August</span></div>
+          <div class="fa-pnl">
+            <div class="fa-row"><span>Revenue</span><b id="faRev">$3,124.00</b></div>
+            <div class="fa-row"><span>Cost of materials</span><span id="faMat">&minus;$518.43</span></div>
+            <div class="fa-rule"></div>
+            <div class="fa-row"><b>Gross profit</b><b id="faGross">$2,605.57</b></div>
+            <div class="fa-row"><span>Operating expenses</span><span id="faOpex">&minus;$1,131.55</span></div>
+            <div class="fa-rule"></div>
+            <div class="fa-net"><span class="lbl">Net profit<span class="fa-pill" id="faMargin">47% margin</span></span><span class="val" id="faNet">+$1,474.02</span></div>
+          </div>
+          <div class="fa-chart">
+            <p class="cap">Revenue, last 6 months &mdash; tap a bar</p>
+            <div class="fa-bars" id="faBars"></div>
+          </div>
+          <p class="fa-hint">Scroll for costs, best sellers, and every sale &darr;</p>
+        </div>
         <img data-i="3" src="phone-filament-crop.png" width="440" height="844" loading="lazy" alt="Filament inventory with weeks of stock left.">
       </div>
       <p class="floor-cap reveal" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
@@ -622,7 +669,7 @@
       var caps = [
         "Between prints: today's take and the month's profit at a glance.",
         "An order lands: the real Etsy fees and true profit, already itemized.",
-        "Reconciling: full P&L for any month, with one-tap import of your whole sales history.",
+        "Reconciling: tap any month and the whole P&L re-aims to it — same as the app.",
         "At the shelf: scan spools in or out, no weighing. Weeks-of-stock updates itself."
       ];
       if (tabs && view) {
@@ -631,9 +678,52 @@
           if (!btn) return;
           var i = btn.getAttribute('data-i');
           tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
-          view.querySelectorAll('img').forEach(function (img) { img.classList.toggle('active', img.getAttribute('data-i') === i); });
+          view.querySelectorAll('[data-i]').forEach(function (el) { el.classList.toggle('active', el.getAttribute('data-i') === i); });
           if (cap && caps[i]) cap.textContent = caps[i];
         });
+      }
+
+      // Interactive "tap a month" P&L — the same numbers re-aim when you tap a revenue bar,
+      // exactly like the app's Finances screen. Data is illustrative but internally consistent
+      // (gross = revenue − materials, net = gross − operating, margin = net ÷ revenue).
+      var faBars = document.getElementById('faBars');
+      if (faBars) {
+        var mData = [
+          { m: 'March',     s: 'Mar', rev: 1168, mat: 194,    opex: 423 },
+          { m: 'April',     s: 'Apr', rev: 1532, mat: 254,    opex: 555 },
+          { m: 'May',       s: 'May', rev: 2050, mat: 340,    opex: 743 },
+          { m: 'June',      s: 'Jun', rev: 2440, mat: 405,    opex: 884 },
+          { m: 'July',      s: 'Jul', rev: 2884, mat: 479,    opex: 1044 },
+          { m: 'August',    s: 'Aug', rev: 3124, mat: 518.43, opex: 1131.55 }
+        ];
+        var maxRev = 3124, maxBar = 74;
+        var money = function (n) {
+          return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        };
+        var neg = function (n) { return '−$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+        var el = function (id) { return document.getElementById(id); };
+        var select = function (i) {
+          var d = mData[i], gross = d.rev - d.mat, net = gross - d.opex, margin = Math.round(net / d.rev * 100);
+          el('faMonth').textContent = d.m;
+          el('faRev').textContent = money(d.rev);
+          el('faMat').textContent = neg(d.mat);
+          el('faGross').textContent = money(gross);
+          el('faOpex').textContent = neg(d.opex);
+          el('faNet').textContent = '+' + money(net);
+          el('faMargin').textContent = margin + '% margin';
+          faBars.querySelectorAll('button').forEach(function (b, bi) { b.classList.toggle('sel', bi === i); });
+        };
+        mData.forEach(function (d, i) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', d.m + ' revenue $' + d.rev.toLocaleString('en-US'));
+          b.innerHTML = '<span class="v">$' + d.rev.toLocaleString('en-US') + '</span>' +
+                        '<span class="bar" style="height:' + Math.max(6, d.rev / maxRev * maxBar) + 'px"></span>' +
+                        '<span class="m">' + d.s + '</span>';
+          b.addEventListener('click', function () { select(i); });
+          faBars.appendChild(b);
+        });
+        select(mData.length - 1);
       }
 
       // A CTA that lands on the form should hand you the keyboard, not just the view —
