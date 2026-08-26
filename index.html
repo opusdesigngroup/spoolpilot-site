@@ -38,6 +38,26 @@
     "author": { "@type": "Organization", "name": "Opus Design Group LLC" }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Does SpoolPilot use the real Etsy fees, or estimates?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The real ones. After you connect your shop, SpoolPilot reads the exact fees Etsy charged on each order from Etsy's own ledger — transaction, payment processing, listing, and Offsite Ads — and subtracts them to the cent. A built-in calculator can estimate fees for a print you haven't sold yet, and estimates are always marked as such." } },
+      { "@type": "Question", "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question — what did this Etsy order actually make you — and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile." } },
+      { "@type": "Question", "name": "What does SpoolPilot cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The beta is free on TestFlight. When SpoolPilot launches on the App Store it will be free to download, with an optional Pro subscription for unlimited sales sync, the full profit-and-loss, and stock forecasts. The core inventory, calculator, and manual tracking stay free." } },
+      { "@type": "Question", "name": "Is my shop and customer data private?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your data lives on your iPhone and your own iCloud — nothing is uploaded to us, there is no account, and no analytics or tracking SDKs. SpoolPilot connects to Etsy read-only (it can't change your shop), and it only ever reads your shop's numbers, never your buyers' personal details." } },
+      { "@type": "Question", "name": "Which slicers and platforms does SpoolPilot work with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The camera reads print time and grams from Bambu Studio, OrcaSlicer, and PrusaSlicer screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard." } },
+      { "@type": "Question", "name": "Who makes SpoolPilot?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It's built by a working Etsy seller with 3,000+ sales, published by Opus Design Group LLC. It exists because the maker needed to know real per-order profit and no tool did it well from a phone." } }
+    ]
+  }
+  </script>
   <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -147,6 +167,17 @@
       font-weight:700;max-width:18ch;text-wrap:balance;
     }
     .stage p{margin:0 auto;font-size:18px;line-height:1.6;color:var(--body);max-width:50ch}
+    /* FAQ — accessible native disclosure, left-aligned inside the centred stage */
+    .faq{max-width:660px;margin:32px auto 0;text-align:left}
+    .faq details{border-top:1px solid var(--rule);padding:2px 0}
+    .faq details:last-child{border-bottom:1px solid var(--rule)}
+    .faq summary{list-style:none;cursor:pointer;padding:20px 34px 20px 0;position:relative;
+      font-size:18px;font-weight:600;color:var(--ink);line-height:1.4}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);
+      font-size:24px;font-weight:400;color:var(--orange);line-height:1}
+    .faq details[open] summary::after{content:"\2212"}
+    .faq details p{margin:0 0 22px;font-size:16.5px;line-height:1.62;color:var(--body);max-width:none}
     .stage .device{margin:60px auto 0;max-width:296px}
     .stage .device img{border-radius:32px;box-shadow:0 36px 70px -38px rgba(17,16,16,.4), 0 0 0 1px rgba(17,16,16,.07)}
 
@@ -509,6 +540,38 @@
       <div class="road two reveal">
         <div><b>App Store release</b><span>Public download on iOS. Until then the beta is open to anyone.</span></div>
         <div><b>More languages</b><span>The app translated beyond English, so it fits shops well outside the US.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="faq">
+    <div class="wrap narrow">
+      <h2 class="reveal">Questions makers ask</h2>
+      <div class="faq reveal">
+        <details>
+          <summary>Does SpoolPilot use the real Etsy fees, or estimates?</summary>
+          <p>The real ones. After you connect your shop, SpoolPilot reads the exact fees Etsy charged on each order from Etsy&rsquo;s own ledger &mdash; transaction, payment processing, listing, and Offsite Ads &mdash; and subtracts them to the cent. A built-in calculator can <em>estimate</em> fees for a print you haven&rsquo;t sold yet, and estimates are always marked as such.</p>
+        </details>
+        <details>
+          <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
+          <p>Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question &mdash; what did this Etsy order actually make you &mdash; and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>The beta is free on TestFlight. When SpoolPilot launches on the App Store it will be free to download, with an optional Pro subscription for unlimited sales sync, the full profit-and-loss, and stock forecasts. The core inventory, calculator, and manual tracking stay free.</p>
+        </details>
+        <details>
+          <summary>Is my shop and customer data private?</summary>
+          <p>Yes. Your data lives on your iPhone and your own iCloud &mdash; nothing is uploaded to us, there is no account, and no analytics or tracking SDKs. SpoolPilot connects to Etsy read-only (it can&rsquo;t change your shop), and it only ever reads <em>your</em> shop&rsquo;s numbers, never your buyers&rsquo; personal details.</p>
+        </details>
+        <details>
+          <summary>Which slicers and platforms does it work with?</summary>
+          <p>The camera reads print time and grams from Bambu Studio, OrcaSlicer, and PrusaSlicer screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard.</p>
+        </details>
+        <details>
+          <summary>Who makes SpoolPilot?</summary>
+          <p>It&rsquo;s built by a working Etsy seller with 3,000+ sales, published by Opus Design Group LLC. It exists because the maker needed to know real per-order profit and no tool did it well from a phone.</p>
+        </details>
       </div>
     </div>
   </section>

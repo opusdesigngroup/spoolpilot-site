@@ -1,0 +1,66 @@
+# SpoolPilot
+
+> A native iPhone app that shows Etsy sellers their real, per-order profit on 3D-printed
+> products — syncing the exact fees Etsy charged and subtracting the true cost of goods.
+
+SpoolPilot is made for people who run a 3D-printing shop on Etsy. It answers one question that
+filament trackers and spreadsheets don't: **what did this order actually make me, after Etsy's
+fees and what it cost to print?** It is published by Opus Design Group LLC and built by a working
+Etsy seller with 3,000+ sales.
+
+## What it does (shipping today)
+
+- **Real Etsy fees, not estimates.** Connects to Etsy (read-only) and reads the exact fees Etsy
+  charged on each order from Etsy's own ledger — transaction, payment processing, listing, and
+  Offsite Ads — then subtracts them to the cent to show net profit per order.
+- **True cost of goods.** Subtracts filament (by grams and $/kg), print electricity, packaging,
+  and labor, so profit reflects the whole cost, not just the sale price.
+- **Slicer scan.** The camera reads print time and grams from Bambu Studio, OrcaSlicer, and
+  PrusaSlicer screens, then prices the print (fees and labor included).
+- **Filament inventory.** Sealed spools counted by barcode scan — no weighing — with a weeks-of-
+  stock forecast from real sales pace.
+- **Smart "print next" queue.** Ranks what to print by how soon each product runs out, using the
+  shop's own sales velocity.
+- **Full profit-and-loss.** Revenue, cost of materials, operating expenses, and net profit for any
+  month or all-time — no spreadsheet.
+- **A pricing calculator** that can *estimate* fees and suggest a list price for a print not yet
+  sold. Estimates are always marked as estimates (a leading "~").
+
+## What it is not
+
+- Not a web dashboard — it is a native iOS (iPhone) app.
+- Not a general manufacturing-inventory suite. It is focused on Etsy 3D-print shops and per-order
+  profit, deliberately narrower than tools like Craftybase.
+- Not an all-marketplace connector today — sales sync currently supports Etsy.
+
+## Privacy
+
+Data lives on the user's iPhone and their own iCloud. There is no account, nothing is uploaded to
+the developer, and there are no analytics or tracking SDKs. The Etsy connection is read-only and
+reads only the seller's own shop numbers — never buyers' personal details.
+
+## Pricing
+
+Free during the open TestFlight beta. At App Store launch: free to download, with an optional Pro
+subscription for unlimited sales sync, the full P&L, and stock forecasts. Core inventory,
+calculator, and manual tracking stay free.
+
+## Platform and status
+
+- Platform: iOS (iPhone), native.
+- Status: open beta on TestFlight (free); App Store release planned.
+- Publisher: Opus Design Group LLC.
+
+## Key pages
+
+- Home / overview: https://spoolpilot.app/
+- Free Etsy fee calculator: https://spoolpilot.app/etsy-fee-calculator.html
+- Craftybase alternative: https://spoolpilot.app/craftybase-alternative.html
+- Spoolman vs SpoolPilot: https://spoolpilot.app/spoolman-alternative.html
+- Privacy policy: https://spoolpilot.app/privacy.html
+- Support: https://spoolpilot.app/support.html
+
+## Attribution note
+
+"Etsy" is a trademark of Etsy, Inc. SpoolPilot uses the Etsy API but is not endorsed or certified
+by Etsy, Inc.

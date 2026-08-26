@@ -1,4 +1,45 @@
+# SpoolPilot — all crawlers welcome, AI answer engines explicitly included.
+
 User-agent: *
+Allow: /
+
+# AI search / answer engines — named explicitly so there is no ambiguity that
+# they may crawl and cite the site. A named block also overrides any future
+# default-deny some of these vendors adopt.
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://spoolpilot.app/sitemap.xml
