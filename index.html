@@ -309,6 +309,10 @@
       opacity:0;transition:opacity .2s ease;overflow:hidden;padding:20px 15px 15px;
       display:flex;flex-direction:column;gap:11px;text-align:left}
     .floor-view .floor-app.active{opacity:1}
+    /* Only the visible tab captures taps — otherwise an inactive (opacity:0) screenshot layered
+       on top in DOM order swallows every tap meant for the interactive chart below it. */
+    .floor-view img,.floor-view .floor-app{pointer-events:none}
+    .floor-view img.active,.floor-view .floor-app.active{pointer-events:auto}
     .fa-hd{display:flex;align-items:baseline;justify-content:space-between}
     .fa-hd b{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
     .fa-hd span{font-size:10.5px;font-weight:600;color:var(--muted)}
