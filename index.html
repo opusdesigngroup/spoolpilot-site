@@ -44,7 +44,7 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "How does SpoolPilot calculate profit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labour if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a tilde." } },
+        "acceptedAnswer": { "@type": "Answer", "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a tilde." } },
       { "@type": "Question", "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
         "acceptedAnswer": { "@type": "Answer", "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question — what did this Etsy order actually make you — and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile." } },
       { "@type": "Question", "name": "What does SpoolPilot cost?",
@@ -65,7 +65,7 @@
       --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;
       --rule:rgba(17,16,16,.08); --orange:#F97316; --cta:#C2540C; --cta-hover:#A8470A;
       --cta-fill:#F97316; --cta-fill-hover:#E4650C; --profit:#177245;
-      /* credential: used only for the maker-proof line. Not an interactive colour. */
+      /* credential: used only for the maker-proof line. Not an interactive color. */
       --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
     }
     *{box-sizing:border-box}
@@ -114,7 +114,7 @@
 
     /* ---- hero: centred, the device large ---- */
     /* padding-bottom lifts the differentiator strip off the next section's tint edge —
-       without it the last strip item ("Native on iPhone") sits flush against the colour
+       without it the last strip item ("Native on iPhone") sits flush against the color
        change and reads as crowded, most visibly on mobile where the strip is stacked. */
     .hero{text-align:center;padding-top:96px;padding-bottom:52px}
     .kicker{
@@ -295,58 +295,12 @@
       font-weight:600;padding:9px 17px;border-radius:980px;cursor:pointer;transition:all .16s ease}
     @media (max-width:420px){.tabs button{padding:9px 13px;font-size:14px}}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
-    .floor-view{position:relative;margin:26px auto 0;width:270px;max-width:78vw;aspect-ratio:440/844}
-    /* Hero: the full-size device, tabbed through the app's five real tabs. */
     .hero .tabs{margin-top:56px}
     .hero-device{position:relative;margin:24px auto 0;width:326px;max-width:82vw;aspect-ratio:1206/2622}
-    .hero-device img,.hero-device .floor-app{position:absolute;inset:0;width:100%;height:100%;
+    .hero-device img{position:absolute;inset:0;width:100%;height:100%;
       border-radius:34px;box-shadow:0 42px 80px -40px rgba(17,16,16,.42),0 0 0 1px rgba(17,16,16,.07);
       opacity:0;transition:opacity .2s ease;pointer-events:none}
-    .hero-device img.active,.hero-device .floor-app.active{opacity:1;pointer-events:auto}
-    .hero-device .floor-app{background:#fff;overflow:hidden;padding:22px 16px 16px;
-      display:flex;flex-direction:column;gap:12px;text-align:left}
-    /* In the hero the widget replaces the old static device shot — a touch larger, tighter tab gap. */
-    .hero .tabs{margin-top:64px}
-    .hero .floor-view{width:300px;margin-top:22px}
-    .floor-view img{position:absolute;inset:0;width:100%;height:100%;border-radius:30px;
-      box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
-      opacity:0;transition:opacity .2s ease}
-    .floor-view img.active{opacity:1}
-    /* Interactive "tap a month" P&L — mirrors the app's Finances screen (tap a revenue bar,
-       the whole P&L re-aims to that month). Lives in the same phone slot as the screenshots. */
-    .floor-view .floor-app{position:absolute;inset:0;width:100%;height:100%;border-radius:30px;
-      background:#fff;box-shadow:0 36px 70px -38px rgba(17,16,16,.4),0 0 0 1px rgba(17,16,16,.07);
-      opacity:0;transition:opacity .2s ease;overflow:hidden;padding:20px 15px 15px;
-      display:flex;flex-direction:column;gap:11px;text-align:left}
-    .floor-view .floor-app.active{opacity:1}
-    /* Only the visible tab captures taps — otherwise an inactive (opacity:0) screenshot layered
-       on top in DOM order swallows every tap meant for the interactive chart below it. */
-    .floor-view img,.floor-view .floor-app{pointer-events:none}
-    .floor-view img.active,.floor-view .floor-app.active{pointer-events:auto}
-    .fa-hd{display:flex;align-items:baseline;justify-content:space-between}
-    .fa-hd b{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
-    .fa-hd span{font-size:10.5px;font-weight:600;color:var(--muted)}
-    .fa-pnl{background:var(--bg-alt);border-radius:13px;padding:11px 12px}
-    .fa-row{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--body);padding:2.5px 0}
-    .fa-row b{color:var(--ink);font-weight:700}
-    .fa-rule{height:1px;background:var(--rule);margin:5px 0}
-    .fa-net{display:flex;justify-content:space-between;align-items:center;margin-top:5px}
-    .fa-net .lbl{font-size:11.5px;font-weight:800;color:var(--ink)}
-    .fa-net .val{font-size:16px;font-weight:800;color:var(--profit);font-variant-numeric:tabular-nums}
-    .fa-pill{display:inline-block;font-size:8.5px;font-weight:700;color:var(--profit);
-      background:rgba(23,114,69,.12);border-radius:999px;padding:2px 6px;margin-left:5px}
-    .fa-chart{background:#fff;border:1px solid var(--rule);border-radius:13px;padding:11px 12px 10px}
-    .fa-hint{margin-top:auto;font-size:9px;color:var(--muted);text-align:center;opacity:.7}
-    .fa-chart .cap{font-size:9.5px;font-weight:600;color:var(--muted);margin:0 0 6px}
-    .fa-bars{display:flex;align-items:stretch;gap:5px;height:104px}
-    .fa-bars button{flex:1;border:0;background:transparent;padding:0;cursor:pointer;
-      display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
-    .fa-bars .v{font-size:8.5px;font-weight:700;color:var(--body);opacity:0;transition:opacity .15s ease;
-      font-variant-numeric:tabular-nums;white-space:nowrap}
-    .fa-bars button.sel .v{opacity:1}
-    .fa-bars .bar{width:100%;border-radius:3px;background:rgba(154,147,139,.32);transition:background .15s ease}
-    .fa-bars button.sel .bar{background:var(--orange)}
-    .fa-bars .m{font-size:8.5px;font-weight:700;color:var(--muted)}
+    .hero-device img.active{opacity:1;pointer-events:auto}
     /* Qualified with .stage so it outranks `.stage p` (margin:0 auto), which was silently
        zeroing this caption's top margin and jamming it against the phone's bottom edge. */
     .stage p.floor-cap{margin:26px auto 0;font-size:15px;line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
@@ -422,32 +376,14 @@
       <div class="tabs" id="floorTabs" role="tablist" aria-label="Choose an app screen">
         <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
         <button role="tab" type="button" aria-selected="false" data-i="1">Filament</button>
-        <button role="tab" type="button" aria-selected="false" data-i="2">Scan</button>
-        <button role="tab" type="button" aria-selected="false" data-i="3">Products</button>
-        <button role="tab" type="button" aria-selected="false" data-i="4">Finances</button>
+        <button role="tab" type="button" aria-selected="false" data-i="2">Products</button>
+        <button role="tab" type="button" aria-selected="false" data-i="3">Finances</button>
       </div>
       <div class="hero-device" id="floorView">
         <img class="active" data-i="0" src="shot-home.png" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen — today's revenue, this month's profit, and recent Etsy orders with the profit on each.">
         <img data-i="1" src="shot-filament.png" width="1206" height="2622" loading="lazy" alt="Filament inventory — sealed spool counts with weeks of stock left at your sales pace.">
-        <img data-i="2" src="shot-scan.png" width="1206" height="2622" loading="lazy" alt="Scan tab — point the camera at a spool barcode or your slicer screen.">
-        <img data-i="3" src="shot-products.png" width="1206" height="2622" loading="lazy" alt="Products — units in stock, stock value, and estimated shelf profit.">
-        <div class="floor-app" data-i="4" role="group" aria-label="Interactive monthly profit and loss — tap a month">
-          <div class="fa-hd"><b>Finances</b><span id="faMonth">August</span></div>
-          <div class="fa-pnl">
-            <div class="fa-row"><span>Revenue</span><b id="faRev">$3,124.00</b></div>
-            <div class="fa-row"><span>Cost of materials</span><span id="faMat">&minus;$518.43</span></div>
-            <div class="fa-rule"></div>
-            <div class="fa-row"><b>Gross profit</b><b id="faGross">$2,605.57</b></div>
-            <div class="fa-row"><span>Operating expenses</span><span id="faOpex">&minus;$1,131.55</span></div>
-            <div class="fa-rule"></div>
-            <div class="fa-net"><span class="lbl">Net profit<span class="fa-pill" id="faMargin">47% margin</span></span><span class="val" id="faNet">+$1,474.02</span></div>
-          </div>
-          <div class="fa-chart">
-            <p class="cap">Revenue, last 6 months &mdash; tap a bar</p>
-            <div class="fa-bars" id="faBars"></div>
-          </div>
-          <p class="fa-hint">Scroll for costs, best sellers, and every sale &darr;</p>
-        </div>
+        <img data-i="2" src="shot-products.png" width="1206" height="2622" loading="lazy" alt="Products — units in stock, stock value, and estimated shelf profit.">
+        <img data-i="3" src="shot-finances.png" width="1206" height="2622" loading="lazy" alt="Finances — the month's profit-and-loss with revenue, real Etsy fees, materials, and net profit.">
       </div>
       <p class="floor-cap" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
     <div class="strip reveal">
@@ -601,7 +537,7 @@
       <div class="faq reveal">
         <details>
           <summary>How does SpoolPilot calculate profit?</summary>
-          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order &mdash; transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated &mdash; then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labour if you set an hourly rate. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
+          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order &mdash; transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated &mdash; then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
@@ -673,9 +609,8 @@
       var caps = [
         "Between prints: today's take and the month's profit at a glance.",
         "At the shelf: scan spools in or out, no weighing. Weeks-of-stock keeps itself current.",
-        "Point the camera at a spool barcode — or at your slicer screen to price the print.",
         "What you sell: units on hand, what the shelf is worth, and the profit in it.",
-        "Reconciling: tap any month and the whole P&L re-aims to it — same as the app."
+        "Reconciling: the month's P&L with the real Etsy fees already subtracted."
       ];
       if (tabs && view) {
         tabs.addEventListener('click', function (e) {
@@ -688,48 +623,6 @@
         });
       }
 
-      // Interactive "tap a month" P&L — the same numbers re-aim when you tap a revenue bar,
-      // exactly like the app's Finances screen. Data is illustrative but internally consistent
-      // (gross = revenue − materials, net = gross − operating, margin = net ÷ revenue).
-      var faBars = document.getElementById('faBars');
-      if (faBars) {
-        var mData = [
-          { m: 'March',     s: 'Mar', rev: 1168, mat: 194,    opex: 423 },
-          { m: 'April',     s: 'Apr', rev: 1532, mat: 254,    opex: 555 },
-          { m: 'May',       s: 'May', rev: 2050, mat: 340,    opex: 743 },
-          { m: 'June',      s: 'Jun', rev: 2440, mat: 405,    opex: 884 },
-          { m: 'July',      s: 'Jul', rev: 2884, mat: 479,    opex: 1044 },
-          { m: 'August',    s: 'Aug', rev: 3124, mat: 518.43, opex: 1131.55 }
-        ];
-        var maxRev = 3124, maxBar = 74;
-        var money = function (n) {
-          return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        };
-        var neg = function (n) { return '−$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-        var el = function (id) { return document.getElementById(id); };
-        var select = function (i) {
-          var d = mData[i], gross = d.rev - d.mat, net = gross - d.opex, margin = Math.round(net / d.rev * 100);
-          el('faMonth').textContent = d.m;
-          el('faRev').textContent = money(d.rev);
-          el('faMat').textContent = neg(d.mat);
-          el('faGross').textContent = money(gross);
-          el('faOpex').textContent = neg(d.opex);
-          el('faNet').textContent = '+' + money(net);
-          el('faMargin').textContent = margin + '% margin';
-          faBars.querySelectorAll('button').forEach(function (b, bi) { b.classList.toggle('sel', bi === i); });
-        };
-        mData.forEach(function (d, i) {
-          var b = document.createElement('button');
-          b.type = 'button';
-          b.setAttribute('aria-label', d.m + ' revenue $' + d.rev.toLocaleString('en-US'));
-          b.innerHTML = '<span class="v">$' + d.rev.toLocaleString('en-US') + '</span>' +
-                        '<span class="bar" style="height:' + Math.max(6, d.rev / maxRev * maxBar) + 'px"></span>' +
-                        '<span class="m">' + d.s + '</span>';
-          b.addEventListener('click', function () { select(i); });
-          faBars.appendChild(b);
-        });
-        select(mData.length - 1);
-      }
 
       // A CTA that lands on the form should hand you the keyboard, not just the view —
       // on desktop. On touch, focusing would shove the on-screen keyboard over the page
