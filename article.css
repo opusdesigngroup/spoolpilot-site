@@ -9,9 +9,9 @@
    ========================================================================== */
 
 :root{
-  --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#8B857F;
+  --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;
   --rule:rgba(17,16,16,.08); --rule-2:rgba(17,16,16,.16);
-  --orange:#F97316; --orange-deep:#E4650C; --profit:#177245; --loss:#B4231B;
+  --orange:#F97316; --orange-deep:#E4650C; --cta:#C2540C; --profit:#177245; --loss:#B4231B;
   /* credential: the maker-proof hue. Never interactive, never a money value. */
   --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
 }
@@ -51,8 +51,9 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
 .tool svg{width:15px;height:15px;display:block;flex:0 0 auto;color:var(--orange)}
 .toollabel-short{display:none}
 
+/* Dark-on-orange like index.html — white on this orange reads at 2.8:1 and fails AA. */
 .btn{
-  background:var(--orange);color:#fff !important;text-decoration:none;font-weight:600;font-size:14.5px;
+  background:var(--orange);color:var(--ink) !important;text-decoration:none;font-weight:600;font-size:14.5px;
   padding:8px 16px;border-radius:980px;transition:background .16s ease;
 }
 .btn:hover{background:var(--orange-deep)}
@@ -60,7 +61,7 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
 /* ---------- reading column ---------- */
 .doc{max-width:660px;margin:0 auto;padding:64px 24px 30px}
 .crumb{font-size:14px;color:var(--muted);margin:0 0 14px}
-.crumb a{color:var(--orange);text-decoration:none;font-weight:600}
+.crumb a{color:var(--cta);text-decoration:none;font-weight:600}
 h1{
   margin:0 0 20px;font-size:clamp(32px,4.6vw,46px);line-height:1.1;letter-spacing:-.035em;
   font-weight:700;text-wrap:balance;
@@ -114,7 +115,7 @@ tbody td:first-child{color:var(--muted);font-size:14px}
 .waitlist input[type=email]::placeholder{color:#AFA9A3}
 .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
 .waitlist button{
-  border:0;background:var(--orange);color:#fff;font:inherit;font-weight:600;font-size:16px;
+  border:0;background:var(--orange);color:var(--ink);font:inherit;font-weight:600;font-size:16px;
   padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease;
 }
 .waitlist button:hover{background:var(--orange-deep)}
@@ -208,3 +209,7 @@ footer a:hover{color:var(--ink)}
   nav .btn{padding:7px 12px;font-size:13.5px}
   nav{gap:8px}
 }
+
+/* Domain-typo suggestion from waitlist.js — styled on index, previously bare here. */
+.waitlist-hint{margin:10px 0 0;font-size:13.5px;color:var(--body)}
+.waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--cta);cursor:pointer;text-decoration:underline}

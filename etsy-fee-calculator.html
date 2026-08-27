@@ -42,7 +42,7 @@
       </a>
       <nav>
         <a href="/support.html">Support</a>
-        <a href="/privacy.html">Privacy</a>
+        <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a>
         <a class="tool tool-current" aria-current="page" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
         <a class="btn" href="/#waitlist">Get the beta</a>
       </nav>
@@ -59,9 +59,9 @@
     <p class="lede">A free <strong>Etsy fee and pricing calculator for 3D printing</strong>. Work out what a sale really nets you — or what to charge a new listing to hit the margin you want. See the fee stack most sellers never itemize — transaction, processing, listing, Offsite Ads — then what's really left after filament, electricity, packaging and your own time. <strong>No signup, nothing stored.</strong></p>
 
     <div class="calc">
-      <div class="modes" role="tablist" aria-label="Calculator mode">
-        <button type="button" class="mode on" id="mode-profit" role="tab" aria-selected="true">What did I make?</button>
-        <button type="button" class="mode" id="mode-price" role="tab" aria-selected="false">What should I charge?</button>
+      <div class="modes"  aria-label="Calculator mode">
+        <button type="button" class="mode on" id="mode-profit" aria-pressed="true">What did I make?</button>
+        <button type="button" class="mode" id="mode-price" aria-pressed="false">What should I charge?</button>
       </div>
       <div class="calc-grid">
         <div class="field" id="f-price"><label for="c-price">Item price ($)</label><input id="c-price" type="number" inputmode="decimal" value="28" min="0" step="0.01"></div>
@@ -235,8 +235,8 @@
         priceMode = toPrice;
         $('mode-price').classList.toggle('on', toPrice);
         $('mode-profit').classList.toggle('on', !toPrice);
-        $('mode-price').setAttribute('aria-selected', String(toPrice));
-        $('mode-profit').setAttribute('aria-selected', String(!toPrice));
+        $('mode-price').setAttribute('aria-pressed', String(toPrice));
+        $('mode-profit').setAttribute('aria-pressed', String(!toPrice));
         $('f-price').style.display = toPrice ? 'none' : '';
         $('f-margin').style.display = toPrice ? '' : 'none';
         $('suggest').style.display = toPrice ? '' : 'none';

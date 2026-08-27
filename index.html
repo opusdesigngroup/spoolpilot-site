@@ -44,21 +44,21 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "How does SpoolPilot calculate profit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a tilde." } },
+        "acceptedAnswer": { "@type": "Answer", "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a \"~\"." } },
       { "@type": "Question", "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
         "acceptedAnswer": { "@type": "Answer", "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question — what did this Etsy order actually make you — and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile." } },
-      { "@type": "Question", "name": "What does SpoolPilot cost?",
+      { "@type": "Question", "name": "What does it cost?",
         "acceptedAnswer": { "@type": "Answer", "text": "The beta is free on TestFlight. When SpoolPilot launches on the App Store it will be free to download, with an optional Pro subscription for unlimited sales sync, the full profit-and-loss, and stock forecasts. The core inventory, calculator, and manual tracking stay free." } },
       { "@type": "Question", "name": "Is my shop and customer data private?",
         "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your data lives on your iPhone and your own iCloud — nothing is uploaded to us, there is no account, and no analytics or tracking SDKs. SpoolPilot connects to Etsy read-only (it can't change your shop), and it only ever reads your shop's numbers, never your buyers' personal details." } },
-      { "@type": "Question", "name": "Which slicers and platforms does SpoolPilot work with?",
+      { "@type": "Question", "name": "Which slicers and platforms does it work with?",
         "acceptedAnswer": { "@type": "Answer", "text": "The camera reads print time and grams from Bambu Studio, OrcaSlicer, and PrusaSlicer screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard." } },
       { "@type": "Question", "name": "Why was SpoolPilot created?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Because the founder got tired of guessing. Sean runs Opus Design Company on Etsy — over 3,000 sales of 3D prints — and could never get a straight answer on what an order actually made after Etsy's fees, filament, and time. Spreadsheets fell behind and every other tool wanted a desktop, so he built the one he wanted: real profit, in your pocket, right at the printer. SpoolPilot is published by Opus Design Group LLC." } }
+        "acceptedAnswer": { "@type": "Answer", "text": "Because I got tired of guessing. I'm Sean, and I run Opus Design Company on Etsy — over 3,000 sales of 3D prints — and could never get a straight answer on what an order actually made after Etsy's fees, filament, and time. Spreadsheets fell behind and every other tool wanted a desktop, so he built the one he wanted: real profit, in your pocket, right at the printer. SpoolPilot is published by Opus Design Group LLC." } }
     ]
   }
   </script>
-  <link rel="preload" as="image" href="/shot-home.png" type="image/png">
+  <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -116,7 +116,27 @@
     /* padding-bottom lifts the differentiator strip off the next section's tint edge —
        without it the last strip item ("Native on iPhone") sits flush against the color
        change and reads as crowded, most visibly on mobile where the strip is stacked. */
-    .hero{text-align:center;padding-top:96px;padding-bottom:52px}
+    .hero{text-align:center;padding-top:72px;padding-bottom:52px}
+    /* Two columns from 1040px: the pitch and the product share the first screen instead of
+       stacking — the whole reason the phone lives in the hero is to be seen before a scroll. */
+    .fold-quote{display:none}
+    @media (min-width:1040px){
+      .hero{text-align:left;padding-top:64px;padding-bottom:40px}
+      .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:64px;align-items:start}
+      .hero-copy{padding-top:26px}
+      .hero-copy h1{margin-left:0;max-width:12ch;font-size:54px;margin-bottom:20px}
+      .hero-copy .lede{margin-left:0;max-width:40ch;margin-bottom:30px;font-size:19px}
+      .hero-copy .waitlist{margin-left:0;justify-content:flex-start}
+      .hero-copy .note{text-align:left;margin-left:0}
+      .hero-stage .tabs{margin-top:0;padding:4px}
+      .hero-stage .tabs button{padding:8px 12px;font-size:13.5px}
+      .hero-stage .hero-device{width:300px;margin-top:18px}
+      .hero-stage .floor-cap{margin-top:18px;font-size:13.5px;min-height:0}
+      /* The fold gets its own copy of the proof — the full card below stays for readers. */
+      .fold-quote{display:block;margin:26px 0 0;padding:0 0 0 16px;border-left:3px solid var(--rule);text-align:left}
+      .fold-quote blockquote{margin:0;font-size:14.5px;line-height:1.55;color:var(--body)}
+      .fold-quote cite{display:block;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:700;color:var(--muted)}
+    }
     .kicker{
       display:inline-flex;align-items:center;gap:8px;
       font-size:14px;font-weight:600;color:var(--credential);
@@ -128,7 +148,7 @@
       margin:0 auto 24px;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.04em;
       font-weight:700;max-width:14ch;text-wrap:balance;
     }
-    .lede{margin:0 auto 40px;font-size:20px;line-height:1.55;color:var(--body);max-width:44ch}
+    .lede{margin:0 auto 32px;font-size:20px;line-height:1.55;color:var(--body);max-width:44ch}
 
     .waitlist{display:flex;gap:9px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
     .waitlist input[type=email]{
@@ -254,7 +274,7 @@
     @media (max-width:760px){
       .facts,.road{grid-template-columns:1fr;gap:30px}
       .stage{padding-top:80px;padding-bottom:80px}
-      .hero{padding-top:64px}
+      .hero{padding-top:44px}
       nav a:not(.btn):not(.tool){display:none}
       .brand .brandtext{display:none}
       .brand{gap:0}
@@ -302,7 +322,8 @@
       font-weight:600;padding:9px 17px;border-radius:980px;cursor:pointer;transition:all .16s ease}
     @media (max-width:420px){.tabs button{padding:9px 13px;font-size:14px}}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
-    .hero .tabs{margin-top:56px}
+    .hero .tabs{margin-top:34px}
+    @media (max-width:1039px){.hero .tabs{margin-top:30px}}
     .hero-device{position:relative;margin:24px auto 0;width:326px;max-width:82vw;aspect-ratio:1206/2622}
     .hero-device img{position:absolute;inset:0;width:100%;height:100%;
       border-radius:34px;box-shadow:0 42px 80px -40px rgba(17,16,16,.42),0 0 0 1px rgba(17,16,16,.07);
@@ -365,6 +386,8 @@
   </header>
 
   <div class="hero wrap">
+   <div class="hero-grid">
+    <div class="hero-copy">
     <p class="kicker">
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Built by an Etsy seller with 3,000+ sales
@@ -380,19 +403,27 @@
       </form>
       <p class="note">The beta is open. Your TestFlight link (Apple's free beta app) arrives by email in a minute or two. No spam, and a person reads every reply.</p>
     </div>
-      <div class="tabs" id="floorTabs" role="tablist" aria-label="Choose an app screen">
-        <button role="tab" type="button" aria-selected="true" data-i="0">Home</button>
-        <button role="tab" type="button" aria-selected="false" data-i="1">Filament</button>
-        <button role="tab" type="button" aria-selected="false" data-i="2">Products</button>
-        <button role="tab" type="button" aria-selected="false" data-i="3">Finances</button>
+    <figure class="fold-quote">
+      <blockquote>&ldquo;It feels very convenient and intuitive, and everything is easy to understand without much explanation.&rdquo;</blockquote>
+      <cite>&mdash; Angelina &middot; Gumi Print House on Etsy</cite>
+    </figure>
+    </div>
+    <div class="hero-stage">
+      <div class="tabs" id="floorTabs" aria-label="Choose an app screen">
+        <button type="button" aria-pressed="true" data-i="0">Home</button>
+        <button type="button" aria-pressed="false" data-i="1">Filament</button>
+        <button type="button" aria-pressed="false" data-i="2">Products</button>
+        <button type="button" aria-pressed="false" data-i="3">Finances</button>
       </div>
       <div class="hero-device" id="floorView">
-        <img class="active" data-i="0" src="shot-home.png" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen — today's revenue, this month's profit, and recent Etsy orders with the profit on each.">
-        <img data-i="1" src="shot-filament.png" width="1206" height="2622" loading="lazy" alt="Filament inventory — sealed spool counts with weeks of stock left at your sales pace.">
-        <img data-i="2" src="shot-products.png" width="1206" height="2622" loading="lazy" alt="Products — units in stock, stock value, and estimated shelf profit.">
-        <img data-i="3" src="shot-finances.png" width="1206" height="2622" loading="lazy" alt="Finances — the month's profit-and-loss with revenue, real Etsy fees, materials, and net profit.">
+        <img class="active" data-i="0" src="shot-home.webp" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen — today's revenue, this month's profit, and recent Etsy orders with the profit on each.">
+        <img data-i="1" src="shot-filament.webp" width="1206" height="2622" loading="lazy" alt="Filament inventory — sealed spool counts with weeks of stock left at your sales pace.">
+        <img data-i="2" src="shot-products.webp" width="1206" height="2622" loading="lazy" alt="Products — units in stock, stock value, and estimated shelf profit.">
+        <img data-i="3" src="shot-finances.webp" width="1206" height="2622" loading="lazy" alt="Finances — the month's profit-and-loss with revenue, real Etsy fees, materials, and net profit.">
       </div>
       <p class="floor-cap" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
+    </div>
+   </div>
     <div class="strip reveal">
       <div><h2>Point it at the slicer</h2><p>The camera reads print time and grams off the slicer screen, then prices the print &mdash; fees and labor included.</p></div>
       <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with weeks of stock from your real sales pace.</p></div>
@@ -628,7 +659,7 @@
           var btn = e.target.closest('button[data-i]');
           if (!btn) return;
           var i = btn.getAttribute('data-i');
-          tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+          tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
           view.querySelectorAll('[data-i]').forEach(function (el) { el.classList.toggle('active', el.getAttribute('data-i') === i); });
           if (cap && caps[i]) cap.textContent = caps[i];
         });
