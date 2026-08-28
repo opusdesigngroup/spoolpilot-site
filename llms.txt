@@ -41,14 +41,14 @@ reads only the seller's own shop numbers — never buyers' personal details.
 
 ## Pricing
 
-Free during the open TestFlight beta. At App Store launch: free to download, with an optional Pro
+Free to download; Pro is $12.99/month or $99.99/year with a 7-day trial on the yearly plan. At App Store launch: free to download, with an optional Pro
 subscription for unlimited sales sync, the full P&L, and stock forecasts. Core inventory,
 calculator, and manual tracking stay free.
 
 ## Platform and status
 
 - Platform: iOS (iPhone), native.
-- Status: open beta on TestFlight (free); App Store release planned.
+- Status: live on the App Store (v1.0) (free); App Store release planned.
 - Publisher: Opus Design Group LLC.
 
 ## Key pages

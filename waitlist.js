@@ -7,7 +7,7 @@
     var box = document.createElement('div');
     box.className = 'waitlist-success';
     box.setAttribute('role', 'status');
-    box.innerHTML = '<h3>Check your inbox</h3><p>Your TestFlight link is on its way — open it on your iPhone and you’re in.</p>';
+    box.innerHTML = '<h3>Check your inbox</h3><p>You're on the list — we'll email occasional product updates and you’re in.</p>';
     form.replaceWith(box);
   }
   function clearError(form) {
@@ -24,7 +24,7 @@
     form.insertAdjacentElement('afterend', msg);
   }
   // Domain-typo catcher: a one-field form's only common failure is a fat-fingered domain, and a
-  // wrong email here means the TestFlight link never arrives — the worst silent failure this
+  // wrong email here means the updates never arrive — the worst silent failure this
   // site can produce. Suggest, never auto-correct: one tap accepts, typing on dismisses.
   var domainFixes = {
     'gmail.co': 'gmail.com', 'gmail.con': 'gmail.com', 'gmial.com': 'gmail.com', 'gamil.com': 'gmail.com',
