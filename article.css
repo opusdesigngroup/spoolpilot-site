@@ -55,6 +55,15 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
 .btn{
   background:var(--orange);color:var(--ink) !important;text-decoration:none;font-weight:600;font-size:14.5px;
   padding:8px 16px;border-radius:980px;transition:background .16s ease;
+  /* nowrap: at 375px the 24-character label folded to two lines inside the pill. */
+  white-space:nowrap;flex:0 0 auto;
+}
+/* Below ~440px the header can't hold the icon, the calculator pill, and the full label on one
+   line, so the CTA swaps to a short form the same way the calculator pill does at 385. */
+.btnlabel-short{display:none}
+@media (max-width:440px){
+  .btnlabel-full{display:none}
+  .btnlabel-short{display:inline}
 }
 .btn:hover{background:var(--orange-deep)}
 

@@ -109,6 +109,16 @@
     .btn{
       background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;
       padding:8px 16px;border-radius:980px;transition:background .16s ease;
+      /* nowrap: at 375px the 24-character label folded to two lines inside the pill. The
+         calculator pill beside it already had this; the CTA — the one that matters — didn't. */
+      white-space:nowrap;flex:0 0 auto;
+    }
+    /* Below ~440px the header can't hold the icon, the calculator pill, and the full label on
+       one line, so the CTA swaps to a short form the same way the calculator pill does at 385. */
+    .btnlabel-short{display:none}
+    @media (max-width:440px){
+      .btnlabel-full{display:none}
+      .btnlabel-short{display:inline}
     }
     .btn:hover{background:var(--cta-fill-hover)}
 
@@ -380,7 +390,7 @@
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
         <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
-        <a class="btn" href="https://apps.apple.com/app/spoolpilot-3d-print-profit/id6796133961">Download on the App Store</a>
+        <a class="btn" href="https://apps.apple.com/app/spoolpilot-3d-print-profit/id6796133961"><span class="btnlabel-full">Download on the App Store</span><span class="btnlabel-short">Get the app</span></a>
       </nav>
     </div>
   </header>
