@@ -113,6 +113,15 @@ tbody td:first-child{color:var(--muted);font-size:14px}
    a placeholder. */
 .cta p.cta-live{font-weight:600;color:var(--ink);margin-bottom:12px}
 .cta p.cta-live:empty{display:none}
+/* The download, sized as the primary action. The calculator's closer used to end in an email
+   form; the rate-change signup under the result is now this page's single email ask. */
+.btn-big{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--ink) !important;
+  text-decoration:none;font-weight:700;font-size:17px;padding:15px 28px;border-radius:14px;white-space:nowrap;
+  box-shadow:0 14px 28px -14px rgba(249,115,22,.7);transition:background .16s ease,transform .16s ease}
+.btn-big:hover{background:var(--orange-deep);transform:translateY(-1px)}
+.btn-big svg{width:18px;height:18px;flex:0 0 auto}
+.cta p.cta-free{margin:12px 0 0;font-size:14px;color:var(--muted);font-weight:600}
+@media (max-width:380px){.btn-big{font-size:15.5px;padding:13px 20px}}
 
 /* ---------- waitlist ---------- */
 .waitlist{display:flex;gap:9px;max-width:440px;flex-wrap:wrap}
