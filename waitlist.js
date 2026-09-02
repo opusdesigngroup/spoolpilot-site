@@ -7,7 +7,7 @@
     var box = document.createElement('div');
     box.className = 'waitlist-success';
     box.setAttribute('role', 'status');
-    box.innerHTML = '<h3>Check your inbox</h3><p>You're on the list — we'll email occasional product updates and you’re in.</p>';
+    box.innerHTML = '<h3>You’re on the list</h3><p>Occasional product updates, nothing else. Unsubscribe any time.</p>';
     form.replaceWith(box);
   }
   function clearError(form) {
