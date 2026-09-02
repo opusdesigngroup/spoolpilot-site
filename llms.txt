@@ -41,8 +41,8 @@ reads only the seller's own shop numbers — never buyers' personal details.
 
 ## Pricing
 
-Free to download; Pro is $12.99/month or $99.99/year with a 7-day trial on the yearly plan. At App Store launch: free to download, with an optional Pro
-subscription for unlimited sales sync, the full P&L, and stock forecasts. Core inventory,
+Free to download; Pro is $12.99/month or $99.99/year with a 7-day trial on the yearly plan.
+Pro adds unlimited sales sync, the full P&L, and stock forecasts. Core inventory, the pricing
 calculator, and manual tracking stay free.
 
 ## Platform and status
