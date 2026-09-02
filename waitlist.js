@@ -1,13 +1,24 @@
 // Shared waitlist handler — identical behaviour across every page and every design version.
 // Reads MailerLite's real response: celebrates only on genuine success, shows a real error otherwise.
 (function () {
+  // Escapes anything that came from markup before it goes back into innerHTML.
+  function esc(t) {
+    var d = document.createElement('div');
+    d.textContent = t;
+    return d.innerHTML;
+  }
   function showSuccess(form) {
     var note = form.nextElementSibling;
     if (note && note.classList.contains('note')) note.remove();
     var box = document.createElement('div');
     box.className = 'waitlist-success';
     box.setAttribute('role', 'status');
-    box.innerHTML = '<h3>You’re on the list</h3><p>Occasional product updates, nothing else. Unsubscribe any time.</p>';
+    // Per-form copy via data-success-title / data-success-body. A form that asks for one thing
+    // (Etsy rate changes) must not confirm a different thing (product updates) — the mismatch
+    // reads as a bait-and-switch at the exact moment trust is being extended.
+    var title = form.dataset.successTitle || 'You’re on the list';
+    var body = form.dataset.successBody || 'Occasional product updates, nothing else. Unsubscribe any time.';
+    box.innerHTML = '<h3>' + esc(title) + '</h3><p>' + esc(body) + '</p>';
     form.replaceWith(box);
   }
   function clearError(form) {

@@ -97,6 +97,44 @@
       <p class="note">Shipping is left out on purpose: what a buyer pays for postage goes straight back out on the label, so this prices the item itself. Note that Etsy also charges its percentage on shipping you collect, so real fees run a little above the figure here. Based on Etsy's published US rates as of July 2026 (transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 15%). Sales tax excluded — Etsy collects and remits it.</p>
     </div>
 
+    <style>
+      /* Scoped to this block so nothing here can reach the shared stylesheet. */
+      .ratewatch { margin-top: 22px; padding: 22px 22px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+      .ratewatch h3 { margin: 0 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -.4px; color: var(--ink); }
+      .ratewatch > p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.55; max-width: 60ch; }
+      .ratewatch .waitlist { margin-top: 16px; }
+      .ratewatch .form-note { margin: 10px 2px 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .rw-yours { margin: 14px 0 0; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; color: var(--body); font-size: 14px; line-height: 1.5; }
+      .rw-yours b { color: var(--ink); }
+      .rw-copy { margin-top: 10px; border: 0; background: none; padding: 0; font: inherit; font-size: 14px; font-weight: 700; color: var(--orange); cursor: pointer; text-decoration: underline; }
+    </style>
+
+    <div class="ratewatch">
+      <h3>Etsy will change these rates</h3>
+      <p>They have before, and every change quietly moves the number above. Leave your email and I&rsquo;ll tell you when the rates in this calculator change &mdash; with your figures rerun, so you can see what it does to this listing.</p>
+
+      <p class="rw-yours" id="rw-yours" aria-live="polite"></p>
+
+      <!-- Same MailerLite endpoint and the same form.waitlist class as every other form on the
+           site, so waitlist.js handles submit, the domain-typo catcher, and the error state.
+           The hidden fields carry their own figures; MailerLite ignores any that aren't defined
+           as custom fields, so this works today and gets richer once they exist. -->
+      <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank"
+            data-success-title="I&rsquo;ll be in touch" data-success-body="Only when Etsy&rsquo;s rates actually change. Nothing else.">
+        <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+        <input type="hidden" name="fields[calc_price]" id="rw-f-price" value="">
+        <input type="hidden" name="fields[calc_net]" id="rw-f-net" value="">
+        <input type="hidden" name="fields[calc_margin]" id="rw-f-margin" value="">
+        <input type="hidden" name="fields[calc_grams]" id="rw-f-grams" value="">
+        <input type="hidden" name="fields[calc_hours]" id="rw-f-hours" value="">
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit">Tell me when rates change</button>
+      </form>
+      <p class="form-note">Rate changes only &mdash; not a newsletter. Unsubscribe any time.</p>
+      <button type="button" class="rw-copy" id="rw-copy">Copy this breakdown instead</button>
+    </div>
+
     <h2>The honest caveat: this is an estimate</h2>
     <p>Real orders drift from rate-card math. Coupons change the base the percentages apply to. Offsite Ads hit only attributed orders — at 12% or 15% depending on your revenue, capped per order. Processing rates differ by country. Regulatory fees appear in some regions and not others. Stack a few of those and the number above can be off by enough to matter on a $28 sale.</p>
     <p>That's why SpoolPilot doesn't estimate. It connects to your Etsy shop and reads the <strong>actual fees Etsy charged</strong> on each order — itemized line by line, built to reconcile with what Etsy deposits. <em>Estimates for planning; actuals for the truth.</em></p>
@@ -219,6 +257,27 @@
         // Quote their own figure back at the point of decision. Someone who has just watched
         // a $28 listing shrink to $9 is at peak motivation; a generic pitch wastes that, and
         // the honest gap — estimate versus what Etsy actually charged — is the whole product.
+        // Carry their own figures into the rate-watch signup, and show them what is being
+        // attached. Hidden fields the person cannot see are the kind of thing that erodes
+        // trust on a page whose whole pitch is "nothing stored" — so the summary is printed
+        // above the form in plain sight, and it is the same text the copy button hands over.
+        var yours = $('rw-yours');
+        if (yours) {
+          if (item > 0) {
+            var mPct = (net / item * 100).toFixed(0);
+            $('rw-f-price').value = money(item);
+            $('rw-f-net').value = money(net);
+            $('rw-f-margin').value = mPct + '%';
+            $('rw-f-grams').value = String(num('c-grams'));
+            $('rw-f-hours').value = String(num('c-hours'));
+            yours.innerHTML = 'Attached to your email: <b>' + money(item) + '</b> listing &middot; <b>'
+              + num('c-grams') + 'g</b> &middot; <b>' + num('c-hours') + 'h</b> &rarr; <b>'
+              + money(net) + '</b> net, <b>' + mPct + '%</b> margin.';
+          } else {
+            yours.textContent = '';
+          }
+        }
+
         var live = $('cta-live');
         if (live) {
           if (item > 0) {
@@ -246,6 +305,38 @@
       $('mode-profit').addEventListener('click', function () { setMode(false); });
 
       ids.forEach(function (id) { $(id).addEventListener('input', recalc); $(id).addEventListener('change', recalc); });
+
+      // "Copy this breakdown instead" — the page promises no signup, so the numbers have to be
+      // takeable without one. Offering it next to the form costs a few signups and buys the
+      // right to ask at all.
+      var copyBtn = $('rw-copy');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var lines = [];
+          document.querySelectorAll('.out .orow').forEach(function (row) {
+            if (row.offsetParent === null) return;
+            var label = row.firstElementChild, val = row.lastElementChild;
+            if (label && val) lines.push(label.textContent.trim() + ': ' + val.textContent.trim());
+          });
+          lines.push('', 'Estimated with the SpoolPilot Etsy fee calculator', 'https://spoolpilot.app/etsy-fee-calculator.html');
+          var text = lines.join('\n');
+          function done() {
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () { copyBtn.textContent = 'Copy this breakdown instead'; }, 1800);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () { legacyCopy(text, done); });
+          } else { legacyCopy(text, done); }
+        });
+      }
+      function legacyCopy(text, done) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* clipboard unavailable */ }
+        document.body.removeChild(ta);
+      }
+
       recalc();
     })();
   </script>
