@@ -1,3 +1,26 @@
+/* Type ramp. Every font-size in this file is one of these roles — a literal px value
+   here is drift, not a decision. Roles are jobs, not sizes: pick by what the element
+   IS, never by which number is closest to what it used to be. */
+:root {
+  --fs-meta: 13px;                          /* fine print, captions, table headers, cite, form labels */
+  --fs-ui: 15px;                            /* nav, buttons, inputs, table cells, dense UI */
+  --fs-body: 17px;                          /* running prose */
+  --fs-lede: 20px;                          /* the intro paragraph under a heading */
+  --fs-sub: 24px;                           /* h3, card headings */
+  --fs-figure: 30px;                        /* a money figure presented as a result */
+  --fs-section: clamp(30px, 4.4vw, 44px);   /* h2 */
+  --fs-display: clamp(40px, 6vw, 64px);     /* h1 on the marketing home only */
+
+  /* Display face. Headings only; Hanken Grotesk keeps everything else. Archivo is a tighter,
+     more rigid grotesque — it reads engineered next to Hanken's rounder humanist forms, which
+     suits a product about precise numbers. Set to 'inherit' to drop back to one family. */
+  --ff-display: 'Archivo', 'Hanken Grotesk', system-ui, sans-serif;
+}
+
+/* These are Read-mode pages: comparison articles, policy, support. They step the heading
+   set down one from the marketing home — h1 takes --fs-section, h2 --fs-sub, h3 --fs-lede —
+   so headings stay subordinate to reading. Same ramp, one step quieter. */
+
 /* ============================================================================
    SpoolPilot — shared styles for reading pages (support, privacy, comparisons,
    the fee calculator).
@@ -21,7 +44,7 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
 body{
   margin:0;background:var(--bg);color:var(--ink);
   font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
-  font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  font-size:var(--fs-body);line-height:1.62;-webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -30,10 +53,10 @@ a{color:inherit}
 /* ---------- nav ---------- */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--rule)}
 header .bar{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;max-width:1000px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.02em}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:var(--fs-body);letter-spacing:-.02em}
 .brand svg{width:26px;height:26px;border-radius:7px;display:block}
 nav{display:flex;align-items:center;gap:24px}
-nav a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;position:relative}
+nav a{color:var(--muted);text-decoration:none;font-size:var(--fs-ui);font-weight:500;position:relative}
 nav a:hover{color:var(--ink)}
 /* every target keeps a 44px press area regardless of its visual height */
 nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;min-height:100%}
@@ -41,7 +64,7 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
    Secondary to the orange waitlist CTA but deliberately not a plain link: it survives the
    mobile breakpoint that hides the other nav links, because a free tool nobody sees on a
    phone is a free tool nobody uses. */
-.tool{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:14.5px;
+.tool{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:var(--fs-ui);
   font-weight:600;padding:8px 15px;border-radius:980px;white-space:nowrap;color:var(--ink);
   background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.22);transition:background .16s ease}
 .tool:hover{background:rgba(249,115,22,.16)}
@@ -53,7 +76,7 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
 
 /* Dark-on-orange like index.html — white on this orange reads at 2.8:1 and fails AA. */
 .btn{
-  background:var(--orange);color:var(--ink) !important;text-decoration:none;font-weight:600;font-size:14.5px;
+  background:var(--orange);color:var(--ink) !important;text-decoration:none;font-weight:600;font-size:var(--fs-ui);
   padding:8px 16px;border-radius:980px;transition:background .16s ease;
   /* nowrap: at 375px the 24-character label folded to two lines inside the pill. */
   white-space:nowrap;flex:0 0 auto;
@@ -69,15 +92,16 @@ nav a::after,footer a::after{content:"";position:absolute;left:0;right:0;top:50%
 
 /* ---------- reading column ---------- */
 .doc{max-width:660px;margin:0 auto;padding:64px 24px 30px}
-.crumb{font-size:14px;color:var(--muted);margin:0 0 14px}
+.crumb{font-size:var(--fs-ui);color:var(--muted);margin:0 0 14px}
 .crumb a{color:var(--cta);text-decoration:none;font-weight:600}
 h1{
-  margin:0 0 20px;font-size:clamp(32px,4.6vw,46px);line-height:1.1;letter-spacing:-.035em;
+  font-family:var(--ff-display);
+  margin:0 0 20px;font-size:var(--fs-section);line-height:1.1;letter-spacing:-.035em;
   font-weight:700;text-wrap:balance;
 }
-.lede{margin:0 0 8px;font-size:19.5px;line-height:1.55;color:var(--body)}
-h2{margin:52px 0 14px;font-size:26px;letter-spacing:-.03em;font-weight:700;line-height:1.22;text-wrap:balance}
-h3{margin:32px 0 8px;font-size:18px;letter-spacing:-.02em;font-weight:600}
+.lede{margin:0 0 8px;font-size:var(--fs-lede);line-height:1.55;color:var(--body)}
+h2{font-family:var(--ff-display);margin:52px 0 14px;font-size:var(--fs-sub);letter-spacing:-.03em;font-weight:700;line-height:1.22;text-wrap:balance}
+h3{margin:32px 0 8px;font-size:var(--fs-lede);letter-spacing:-.02em;font-weight:600}
 p{margin:0 0 16px;color:var(--body)}
 ul{margin:0 0 16px;padding-left:22px;color:var(--body)}
 li{margin:7px 0}
@@ -85,29 +109,29 @@ li{margin:7px 0}
    the contrast does the work, no extra hue required. */
 strong{color:var(--ink);font-weight:600}
 em{font-style:italic;color:var(--ink)}
-.fine{font-size:13.5px;color:var(--muted);line-height:1.55}
+.fine{font-size:var(--fs-meta);color:var(--muted);line-height:1.55}
 
 /* ---------- credential badge ---------- */
 .credential{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:14px;font-weight:600;color:var(--credential);
+  font-size:var(--fs-ui);font-weight:600;color:var(--credential);
   background:var(--credential-tint);border-radius:980px;padding:7px 15px 7px 12px;margin:0 0 22px;
 }
 .credential svg{width:15px;height:15px;display:block;flex:0 0 auto}
 
 /* ---------- compare table ---------- */
 .tbl{overflow-x:auto;border:1px solid var(--rule-2);border-radius:16px;background:#fff;margin:22px 0 8px;-webkit-overflow-scrolling:touch}
-table{width:100%;border-collapse:collapse;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:var(--fs-ui)}
 th,td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
 tbody tr:last-child td{border-bottom:0}
-thead th{font-size:12.5px;font-weight:600;color:var(--muted)}
-tbody td:first-child{color:var(--muted);font-size:14px}
+thead th{font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
+tbody td:first-child{color:var(--muted);font-size:var(--fs-ui)}
 .sp{background:#FDFAF7;font-weight:600;color:var(--ink)}
 
 /* ---------- callout / CTA ---------- */
 .cta{background:var(--bg-alt);border-radius:20px;padding:30px 28px;margin:44px 0 0}
-.cta h2{margin:0 0 10px;font-size:23px}
-.cta p{margin:0 0 20px;font-size:16.5px}
+.cta h2{margin:0 0 10px;font-size:var(--fs-sub)}
+.cta p{margin:0 0 20px;font-size:var(--fs-body)}
 /* The reader's own number, echoed back. Heavier and inked-up so it reads as a finding rather
    than more body copy; empty until the calculator has produced something, so it never shows
    a placeholder. */
@@ -116,41 +140,41 @@ tbody td:first-child{color:var(--muted);font-size:14px}
 /* The download, sized as the primary action. The calculator's closer used to end in an email
    form; the rate-change signup under the result is now this page's single email ask. */
 .btn-big{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--ink) !important;
-  text-decoration:none;font-weight:700;font-size:17px;padding:15px 28px;border-radius:14px;white-space:nowrap;
+  text-decoration:none;font-weight:700;font-size:var(--fs-ui);padding:15px 28px;border-radius:14px;white-space:nowrap;
   box-shadow:0 14px 28px -14px rgba(249,115,22,.7);transition:background .16s ease,transform .16s ease}
 .btn-big:hover{background:var(--orange-deep);transform:translateY(-1px)}
 .btn-big svg{width:18px;height:18px;flex:0 0 auto}
-.cta p.cta-free{margin:12px 0 0;font-size:14px;color:var(--muted);font-weight:600}
-@media (max-width:380px){.btn-big{font-size:15.5px;padding:13px 20px}}
+.cta p.cta-free{margin:12px 0 0;font-size:var(--fs-meta);color:var(--muted);font-weight:600}
+@media (max-width:380px){.btn-big{font-size:var(--fs-ui);padding:13px 20px}}
 
 /* ---------- waitlist ---------- */
 .waitlist{display:flex;gap:9px;max-width:440px;flex-wrap:wrap}
 .waitlist input[type=email]{
-  flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:16px;
+  flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:var(--fs-ui);
   border:1px solid var(--rule-2);border-radius:980px;background:#fff;color:var(--ink);
   transition:border-color .16s ease,box-shadow .16s ease;
 }
 .waitlist input[type=email]::placeholder{color:#AFA9A3}
 .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
 .waitlist button{
-  border:0;background:var(--orange);color:var(--ink);font:inherit;font-weight:600;font-size:16px;
+  border:0;background:var(--orange);color:var(--ink);font:inherit;font-weight:600;font-size:var(--fs-ui);
   padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease;
 }
 .waitlist button:hover{background:var(--orange-deep)}
-.note{margin:14px 0 0;font-size:13.5px;color:var(--muted)}
+.note{margin:14px 0 0;font-size:var(--fs-meta);color:var(--muted)}
 /* When .note sits inside a .cta or .card, the compound .cta p / .card p rules
    (specificity 0,0,1,1) otherwise beat .note (0,0,1,0) and zero its top margin,
    jamming the "No spam…" line flat against the form above it. Re-qualify to win. */
 .cta .note,.card .note{margin:14px 0 0}
-.waitlist-error{margin:12px 0 0;font-size:14px;font-weight:600;color:var(--loss)}
+.waitlist-error{margin:12px 0 0;font-size:var(--fs-meta);font-weight:600;color:var(--loss)}
 .waitlist-success{max-width:440px;padding:20px 22px;border:1px solid var(--rule-2);border-radius:18px;background:#fff}
-.waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
-.waitlist-success p{margin:0;font-size:14.5px;color:var(--body)}
+.waitlist-success h3{margin:0 0 5px;font-size:var(--fs-lede);font-weight:600;letter-spacing:-.02em}
+.waitlist-success p{margin:0;font-size:var(--fs-ui);color:var(--body)}
 
 /* ---------- contact plate (support) ---------- */
 .plate{
   display:inline-block;background:var(--ink);color:#fff !important;text-decoration:none;
-  font-weight:600;font-size:19px;padding:16px 26px;border-radius:14px;margin:4px 0 6px;
+  font-weight:600;font-size:var(--fs-ui);padding:16px 26px;border-radius:14px;margin:4px 0 6px;
   transition:transform .16s ease,background .16s ease;
 }
 .plate:hover{background:#000;transform:translateY(-1px)}
@@ -158,41 +182,41 @@ tbody td:first-child{color:var(--muted);font-size:14px}
 /* ---------- cards (support topics) ---------- */
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 8px}
 .card{background:var(--bg-alt);border-radius:16px;padding:20px 22px}
-.card h3{margin:0 0 6px;font-size:16.5px}
-.card p{margin:0;font-size:15px;line-height:1.55}
+.card h3{margin:0 0 6px;font-size:var(--fs-lede)}
+.card p{margin:0;font-size:var(--fs-ui);line-height:1.55}
 
 /* ---------- fee calculator ---------- */
 .calc{background:var(--bg-alt);border-radius:20px;padding:24px;margin:24px 0 10px}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
-.field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
+.field label{display:block;font-size:var(--fs-meta);font-weight:600;color:var(--muted);margin-bottom:6px}
 .field input{
   width:100%;padding:11px 13px;border:1px solid var(--rule-2);border-radius:10px;
-  font:inherit;font-size:15.5px;background:#fff;color:var(--ink);
+  font:inherit;font-size:var(--fs-ui);background:#fff;color:var(--ink);
 }
 .field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.13)}
-.check{display:flex;align-items:center;gap:9px;grid-column:1/-1;font-size:15px;font-weight:500;color:var(--body)}
+.check{display:flex;align-items:center;gap:9px;grid-column:1/-1;font-size:var(--fs-ui);font-weight:500;color:var(--body)}
 .check input{width:auto;accent-color:var(--orange)}
 .out{margin-top:22px;border-top:1px solid var(--rule-2);padding-top:16px}
-.orow{display:flex;justify-content:space-between;gap:14px;padding:6px 0;font-size:15.5px;color:var(--body)}
-.orow.child{padding-left:16px;font-size:14px;color:var(--muted);padding-top:3px;padding-bottom:3px}
-.orow.total{border-top:1px solid var(--rule-2);margin-top:10px;padding-top:13px;font-weight:700;color:var(--ink);font-size:17px}
+.orow{display:flex;justify-content:space-between;gap:14px;padding:6px 0;font-size:var(--fs-ui);color:var(--body)}
+.orow.child{padding-left:16px;font-size:var(--fs-meta);color:var(--muted);padding-top:3px;padding-bottom:3px}
+.orow.total{border-top:1px solid var(--rule-2);margin-top:10px;padding-top:13px;font-weight:700;color:var(--ink);font-size:var(--fs-body)}
 .orow .v{font-variant-numeric:tabular-nums}
 .neg{color:var(--orange-deep)}
 .pos{color:var(--profit);font-weight:700}
 
 footer{border-top:1px solid var(--rule);margin-top:56px}
-footer .in{max-width:660px;margin:0 auto;padding:28px 24px 46px;color:var(--muted);font-size:14px}
+footer .in{max-width:660px;margin:0 auto;padding:28px 24px 46px;color:var(--muted);font-size:var(--fs-meta)}
 footer a{color:var(--muted);text-decoration:none;position:relative}
 footer a:hover{color:var(--ink)}
 
 @media (max-width:700px){
-  body{font-size:17px}
+  body{font-size:var(--fs-body)}
   .doc{padding-top:44px}
   .cards,.calc-grid{grid-template-columns:1fr}
   nav a:not(.btn):not(.tool){display:none}
   .brand .brandtext{display:none}
   .brand{gap:0}
-  .tool{padding:8px 12px;font-size:14px}
+  .tool{padding:8px 12px;font-size:var(--fs-ui)}
   header .bar{padding-left:16px;padding-right:16px}
   nav{gap:12px}
   header .bar{padding-left:16px;padding-right:16px}
@@ -203,7 +227,7 @@ footer a:hover{color:var(--ink)}
    control rather than two pages — same SEO surface, and the shared inputs mean switching
    modes keeps everything you already typed. */
 .modes{display:flex;gap:6px;background:#fff;border:1px solid var(--rule-2);border-radius:980px;padding:4px;margin:0 0 18px}
-.mode{flex:1;border:0;background:none;font:inherit;font-size:14.5px;font-weight:600;color:var(--muted);
+.mode{flex:1;border:0;background:none;font:inherit;font-size:var(--fs-ui);font-weight:600;color:var(--muted);
   padding:9px 12px;border-radius:980px;cursor:pointer;transition:background .16s ease,color .16s ease;min-height:40px}
 .mode:hover{color:var(--ink)}
 .mode.on{background:var(--ink);color:#fff}
@@ -211,9 +235,9 @@ footer a:hover{color:var(--ink)}
 /* The answer in price mode — the one number the whole page exists to produce. */
 .suggest{display:flex;flex-direction:column;gap:2px;padding:16px 18px;margin:0 0 14px;
   background:#fff;border:1px solid var(--rule-2);border-radius:14px}
-.suggest-label{font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.suggest-price{font-size:34px;font-weight:700;letter-spacing:-.03em;color:var(--profit);font-variant-numeric:tabular-nums;line-height:1.1}
-.suggest-note{font-size:13.5px;color:var(--body)}
+.suggest-label{font-size:var(--fs-meta);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.suggest-price{font-size:var(--fs-figure);font-weight:700;letter-spacing:-.03em;color:var(--profit);font-variant-numeric:tabular-nums;line-height:1.1}
+.suggest-note{font-size:var(--fs-meta);color:var(--body)}
 
 /* "Free" earns its place wherever it fits — swap to a complete shorter label only on
    genuinely narrow phones, never by hiding a word (that reads as truncation). */
@@ -223,11 +247,11 @@ footer a:hover{color:var(--ink)}
 }
 @media (max-width:340px){
   .tool svg{display:none}
-  .tool{gap:0;padding:7px 10px;font-size:13.5px}
-  nav .btn{padding:7px 12px;font-size:13.5px}
+  .tool{gap:0;padding:7px 10px;font-size:var(--fs-ui)}
+  nav .btn{padding:7px 12px;font-size:var(--fs-ui)}
   nav{gap:8px}
 }
 
 /* Domain-typo suggestion from waitlist.js — styled on index, previously bare here. */
-.waitlist-hint{margin:10px 0 0;font-size:13.5px;color:var(--body)}
+.waitlist-hint{margin:10px 0 0;font-size:var(--fs-meta);color:var(--body)}
 .waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--cta);cursor:pointer;text-decoration:underline}

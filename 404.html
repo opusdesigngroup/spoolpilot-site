@@ -9,7 +9,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- HeyCatch analytics. This page carries it for a second reason beyond measurement: GitHub
        Pages has no redirect config, so HeyCatch's reserved single-character short links (/a-/z,
        /0-/9) cannot be forwarded by the host. GitHub Pages does serve this file for every unknown
@@ -31,6 +31,11 @@
     :root{
       --bg:#FAF9F5; --ink:#17130F; --body:#3D372F; --muted:#6E665F;
       --orange:#F97316; --orange-hover:#ea6a0d; --line:rgba(23,19,15,.10);
+      /* Same ramp as article.css and the home page. This page stands alone — it loads no
+         stylesheet, because it has to render for any unknown path — so it carries its own
+         copy of the roles it uses. */
+      --fs-ui: 15px; --fs-body: 17px; --fs-section: clamp(30px, 4.4vw, 44px);
+      --ff-display: 'Archivo', 'Hanken Grotesk', system-ui, sans-serif;
     }
     *{box-sizing:border-box}
     body{
@@ -40,17 +45,17 @@
     }
     .card{max-width:30rem}
     svg{width:56px;height:56px;border-radius:16px;display:block;margin:0 auto 24px}
-    h1{margin:0 0 12px;font-size:clamp(30px,4.4vw,44px);font-weight:800;letter-spacing:-.9px;line-height:1.1}
-    p{margin:0 0 24px;font-size:17px;line-height:1.6;color:var(--body)}
+    h1{font-family:var(--ff-display);margin:0 0 12px;font-size:var(--fs-section);font-weight:800;letter-spacing:-.9px;line-height:1.1}
+    p{margin:0 0 24px;font-size:var(--fs-body);line-height:1.6;color:var(--body)}
     .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     a.primary{
       background:var(--orange); color:#fff; text-decoration:none; font-weight:700;
-      border-radius:12px; padding:15px 24px; font-size:17px; display:inline-block;
+      border-radius:12px; padding:15px 24px; font-size:var(--fs-ui); display:inline-block;
     }
     a.primary:hover{background:var(--orange-hover)}
     a.secondary{
       color:var(--body); text-decoration:none; font-weight:600; border:1px solid var(--line);
-      border-radius:12px; padding:15px 24px; font-size:17px; display:inline-block;
+      border-radius:12px; padding:15px 24px; font-size:var(--fs-ui); display:inline-block;
     }
     a.secondary:hover{border-color:var(--muted)}
   </style>

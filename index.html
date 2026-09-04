@@ -60,7 +60,7 @@
   }
   </script>
   <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -82,6 +82,24 @@
     window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
   </script>
   <style>
+  /* Type ramp. Every font-size on this page is one of these roles — a literal px value
+     here is drift, not a decision. Roles are jobs, not sizes: pick by what the element
+     IS, never by which number is closest to what it used to be. article.css carries the
+     same ramp and steps its headings down one, because those pages are for reading. */
+  :root {
+    --fs-meta: 13px;                          /* fine print, captions, table headers, cite */
+    --fs-ui: 15px;                            /* nav, buttons, inputs, table cells, dense UI */
+    --fs-body: 17px;                          /* running prose */
+    --fs-lede: 20px;                          /* the intro paragraph under a heading */
+    --fs-sub: 24px;                           /* h3, card headings */
+    --fs-figure: 30px;                        /* a money figure presented as a result */
+    --fs-section: clamp(30px, 4.4vw, 44px);   /* h2 */
+    --fs-display: clamp(40px, 6vw, 64px);     /* h1 */
+
+    /* Display face. Headings only; Hanken Grotesk keeps everything a reader actually reads.
+       Set to 'inherit' to drop back to one family. */
+    --ff-display: 'Archivo', 'Hanken Grotesk', system-ui, sans-serif;
+  }
     :root{
       --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;
       --rule:rgba(17,16,16,.08); --orange:#F97316; --cta:#C2540C; --cta-hover:#A8470A;
@@ -94,7 +112,7 @@
     @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
     body{
       margin:0;background:var(--bg);color:var(--ink);
-      font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:18px;line-height:1.6;
+      font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;
       -webkit-font-smoothing:antialiased;
     }
     img{max-width:100%;height:auto;display:block}
@@ -106,10 +124,10 @@
 
     header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--rule)}
     header .bar{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;max-width:1000px;margin:0 auto}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.02em}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:var(--fs-ui);letter-spacing:-.02em}
     .brand svg{width:26px;height:26px;border-radius:7px;display:block}
     nav{display:flex;align-items:center;gap:24px}
-    nav a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;font-size:var(--fs-ui);font-weight:500}
     nav a:hover{color:var(--ink)}
 
     /* ---- free-tool nav action ----
@@ -117,7 +135,7 @@
        mobile breakpoint that hides Support/Privacy, because a free tool nobody sees on a phone
        is a free tool nobody uses. Named rather than teased — navs get scanned, and "calculator"
        alone left people asking what kind. */
-    .tool{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:14.5px;
+    .tool{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:var(--fs-ui);
       font-weight:600;padding:8px 15px;border-radius:980px;white-space:nowrap;color:var(--ink);
       background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.22);
       transition:background .16s ease}
@@ -128,7 +146,7 @@
        which white on this orange can't (2.8:1). Text links + focus rings use the deeper --cta
        orange instead, since a thin orange mark on white needs the higher-contrast shade. */
     .btn{
-      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:600;font-size:14.5px;
+      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:600;font-size:var(--fs-ui);
       padding:8px 16px;border-radius:980px;transition:background .16s ease;
       /* nowrap: at 375px the 24-character label folded to two lines inside the pill. The
          calculator pill beside it already had this; the CTA — the one that matters — didn't. */
@@ -147,23 +165,23 @@
        header-only pill. Install is free, so the download is the ask, and the email is the
        fallback behind a text link. */
     .btn-big{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:700;font-size:17px;
-      padding:15px 28px;border-radius:14px;white-space:nowrap;
+      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:700;font-size:var(--fs-ui);
+      padding:15px 28px;border-radius:12px;white-space:nowrap;
       box-shadow:0 14px 28px -14px rgba(249,115,22,.7);transition:background .16s ease,transform .16s ease}
     .btn-big:hover{background:var(--cta-fill-hover);transform:translateY(-1px)}
     .btn-big svg{width:18px;height:18px;flex:0 0 auto}
     /* "Free on the App Store · iPhone" — free and the platform, nothing else. No Pro price here:
        the install is free, and the app's own paywall, with the person's real numbers in it, is a
        better salesman than a caption. */
-    .cta-free{margin:12px 0 0;font-size:14px;color:var(--muted);font-weight:600}
-    .mailtoggle{display:inline-block;margin-top:14px;font-size:14.5px;color:var(--muted)}
+    .cta-free{margin:12px 0 0;font-size:var(--fs-meta);color:var(--muted);font-weight:600}
+    .mailtoggle{display:inline-block;margin-top:14px;font-size:var(--fs-ui);color:var(--muted)}
     .mailtoggle button{border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--cta);cursor:pointer;text-decoration:underline}
     .mailwrap[hidden]{display:none}
     .mailwrap{margin-top:8px}
     .cta-stack{display:flex;flex-direction:column;align-items:center}
     @media (min-width:1040px){.hero-copy .cta-stack{align-items:flex-start}.hero-copy .cta-free,.hero-copy .mailtoggle{text-align:left}}
     /* 320px phones: 17px + 28px padding + the icon overruns the column by ~10px. */
-    @media (max-width:380px){.btn-big{font-size:15.5px;padding:13px 20px}.midcta{font-size:15px;padding:12px 20px}}
+    @media (max-width:380px){.btn-big{font-size:var(--fs-ui);padding:13px 20px}.midcta{font-size:var(--fs-ui);padding:12px 20px}}
 
     /* ---- hero: centred, the device large ---- */
     /* padding-bottom lifts the differentiator strip off the next section's tint edge —
@@ -177,48 +195,49 @@
       .hero{text-align:left;padding-top:64px;padding-bottom:40px}
       .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:64px;align-items:start}
       .hero-copy{padding-top:26px}
-      .hero-copy h1{margin-left:0;max-width:12ch;font-size:54px;margin-bottom:20px}
-      .hero-copy .lede{margin-left:0;max-width:40ch;margin-bottom:30px;font-size:19px}
+      .hero-copy h1{margin-left:0;max-width:12ch;font-size:var(--fs-display);margin-bottom:20px}
+      .hero-copy .lede{margin-left:0;max-width:40ch;margin-bottom:30px;font-size:var(--fs-lede)}
       .hero-copy .waitlist{margin-left:0;justify-content:flex-start}
       .hero-copy .note{text-align:left;margin-left:0}
       .hero-stage .tabs{margin-top:0;padding:4px}
-      .hero-stage .tabs button{padding:8px 12px;font-size:13.5px}
+      .hero-stage .tabs button{padding:8px 12px;font-size:var(--fs-meta)}
       .hero-stage .hero-device{width:300px;margin-top:18px}
-      .hero-stage .floor-cap{margin-top:18px;font-size:13.5px;min-height:0}
+      .hero-stage .floor-cap{margin-top:18px;font-size:var(--fs-meta);min-height:0}
       /* The fold gets its own copy of the proof — the full card below stays for readers. */
-      .fold-quote{display:block;margin:26px 0 0;padding:0 0 0 16px;border-left:3px solid var(--rule);text-align:left}
-      .fold-quote blockquote{margin:0;font-size:14.5px;line-height:1.55;color:var(--body)}
-      .fold-quote cite{display:block;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:700;color:var(--muted)}
+      .fold-quote{display:block;margin:26px 0 0;padding:0 0 0 16px;border-left:1px solid var(--rule);text-align:left}
+      .fold-quote blockquote{margin:0;font-size:var(--fs-body);line-height:1.55;color:var(--body)}
+      .fold-quote cite{display:block;margin-top:6px;font-style:normal;font-size:var(--fs-meta);font-weight:700;color:var(--muted)}
     }
     .kicker{
       display:inline-flex;align-items:center;gap:8px;
-      font-size:14px;font-weight:600;color:var(--credential);
+      font-size:var(--fs-meta);font-weight:600;color:var(--credential);
       background:var(--credential-tint);border-radius:980px;
       padding:7px 15px 7px 12px;margin:0 0 26px;letter-spacing:.005em;
     }
     .kicker svg{width:15px;height:15px;display:block;flex:0 0 auto}
     h1{
-      margin:0 auto 24px;font-size:clamp(38px,6vw,68px);line-height:1.06;letter-spacing:-.04em;
+      font-family:var(--ff-display);
+      margin:0 auto 24px;font-size:var(--fs-display);line-height:1.06;letter-spacing:-.04em;
       font-weight:700;max-width:14ch;text-wrap:balance;
     }
-    .lede{margin:0 auto 32px;font-size:20px;line-height:1.55;color:var(--body);max-width:44ch}
+    .lede{margin:0 auto 32px;font-size:var(--fs-lede);line-height:1.55;color:var(--body);max-width:44ch}
 
     .waitlist{display:flex;gap:9px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
     .waitlist input[type=email]{
-      flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:16px;
+      flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:var(--fs-ui);
       border:1px solid rgba(17,16,16,.16);border-radius:980px;background:#fff;color:var(--ink);text-align:center;
       transition:border-color .16s ease,box-shadow .16s ease;
     }
     .waitlist input[type=email]::placeholder{color:#AFA9A3}
     .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
     .waitlist button{
-      border:0;background:var(--cta-fill);color:var(--ink);font:inherit;font-weight:600;font-size:16px;
+      border:0;background:var(--cta-fill);color:var(--ink);font:inherit;font-weight:600;font-size:var(--fs-ui);
       padding:13px 26px;border-radius:980px;cursor:pointer;white-space:nowrap;transition:background .16s ease,transform .16s ease;
     }
     .waitlist button:hover{background:var(--cta-fill-hover)}
-    .note{margin:16px auto 0;font-size:13.5px;color:var(--muted);max-width:46ch}
-    .waitlist-error{margin:12px auto 0;font-size:14px;font-weight:600;color:#B4231B;text-align:center}
-    .waitlist-hint{margin:12px auto 0;font-size:14.5px;color:var(--body);text-align:center}
+    .note{margin:16px auto 0;font-size:var(--fs-meta);color:var(--muted);max-width:46ch}
+    .waitlist-error{margin:12px auto 0;font-size:var(--fs-ui);font-weight:600;color:#B4231B;text-align:center}
+    .waitlist-hint{margin:12px auto 0;font-size:var(--fs-ui);color:var(--body);text-align:center}
     .waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:600;color:var(--cta);cursor:pointer;text-decoration:underline}
 
     /* Keyboard focus is a state, not an accident */
@@ -226,29 +245,30 @@
     .tabs button:focus-visible{outline-offset:0}
     .waitlist input[type=email]:focus-visible{outline:none}
     .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
-    .waitlist-success h3{margin:0 0 5px;font-size:18px;font-weight:600;letter-spacing:-.02em}
-    .waitlist-success p{margin:0;font-size:14.5px;color:var(--body)}
+    .waitlist-success h3{margin:0 0 5px;font-size:var(--fs-sub);font-weight:600;letter-spacing:-.02em}
+    .waitlist-success p{margin:0;font-size:var(--fs-body);color:var(--body)}
 
 
     /* ---- stage: one idea per viewport ---- */
     .stage{padding-top:118px;padding-bottom:118px;text-align:center}
     .stage.tint{background:var(--bg-alt)}
     .stage h2{
-      margin:0 auto 18px;font-size:clamp(28px,3.8vw,42px);line-height:1.14;letter-spacing:-.035em;
+      font-family:var(--ff-display);
+      margin:0 auto 18px;font-size:var(--fs-section);line-height:1.14;letter-spacing:-.035em;
       font-weight:700;max-width:18ch;text-wrap:balance;
     }
-    .stage p{margin:0 auto;font-size:18px;line-height:1.6;color:var(--body);max-width:50ch}
+    .stage p{margin:0 auto;font-size:var(--fs-lede);line-height:1.6;color:var(--body);max-width:50ch}
     /* FAQ — accessible native disclosure, left-aligned inside the centred stage */
     .faq{max-width:660px;margin:32px auto 0;text-align:left}
     .faq details{border-top:1px solid var(--rule);padding:2px 0}
     .faq details:last-child{border-bottom:1px solid var(--rule)}
     .faq summary{list-style:none;cursor:pointer;padding:20px 34px 20px 0;position:relative;
-      font-size:18px;font-weight:600;color:var(--ink);line-height:1.4}
+      font-size:var(--fs-sub);font-weight:600;color:var(--ink);line-height:1.4}
     .faq summary::-webkit-details-marker{display:none}
     .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);
-      font-size:24px;font-weight:400;color:var(--orange);line-height:1}
+      font-size:var(--fs-sub);font-weight:400;color:var(--orange);line-height:1}
     .faq details[open] summary::after{content:"\2212"}
-    .faq details p{margin:0 0 22px;font-size:16.5px;line-height:1.62;color:var(--body);max-width:none}
+    .faq details p{margin:0 0 22px;font-size:var(--fs-body);line-height:1.62;color:var(--body);max-width:none}
     .stage .device{margin:60px auto 0;max-width:296px}
     .stage .device img{border-radius:32px;box-shadow:0 36px 70px -38px rgba(17,16,16,.4), 0 0 0 1px rgba(17,16,16,.07)}
 
@@ -258,28 +278,28 @@
       border-radius:18px;overflow:hidden;text-align:left;
       box-shadow:0 26px 52px -34px rgba(17,16,16,.34);
     }
-    .proof-hd{padding:14px 20px;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--muted);display:flex;justify-content:space-between}
+    .proof-hd{padding:14px 20px;border-bottom:1px solid var(--rule);font-size:var(--fs-meta);color:var(--muted);display:flex;justify-content:space-between}
     .proof-body{padding:8px 20px 16px}
-    .pl{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:15.5px}
+    .pl{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:var(--fs-ui)}
     .pl + .pl{border-top:1px solid var(--rule)}
-    .pl.child{padding-left:16px;color:var(--muted);font-size:14px;border-top:0;padding-top:3px;padding-bottom:3px}
+    .pl.child{padding-left:16px;color:var(--muted);font-size:var(--fs-meta);border-top:0;padding-top:3px;padding-bottom:3px}
     .pl.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:8px;padding-top:13px;font-weight:600;align-items:center}
-    .pl.sum b{font-size:22px;letter-spacing:-.03em;color:var(--profit)}
+    .pl.sum b{font-size:var(--fs-figure);letter-spacing:-.03em;color:var(--profit)}
     .pl .n{color:#C2540C}
     .pl.thru{color:var(--muted)}
 
     /* ---- three quiet facts ---- */
     .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:left;padding:20px 0 0}
-    .facts h3{margin:0 0 8px;font-size:17px;font-weight:600;letter-spacing:-.02em}
-    .facts p{margin:0;font-size:15.5px;color:var(--body);line-height:1.55;max-width:none}
+    .facts h3{margin:0 0 8px;font-size:var(--fs-sub);font-weight:600;letter-spacing:-.02em}
+    .facts p{margin:0;font-size:var(--fs-body);color:var(--body);line-height:1.55;max-width:none}
 
     /* ---- compare ---- */
     .tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:16px;background:#fff;text-align:left}
-    table{width:100%;border-collapse:collapse;font-size:15px}
+    table{width:100%;border-collapse:collapse;font-size:var(--fs-ui)}
     th,td{padding:14px 17px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
     tbody tr:last-child td{border-bottom:0}
-    thead th{font-size:12.5px;font-weight:600;color:var(--muted)}
-    tbody td:first-child{color:var(--muted);font-size:14px}
+    thead th{font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
+    tbody td:first-child{color:var(--muted);font-size:var(--fs-meta)}
     .sp{background:#FDFAF7;font-weight:600}
 
     .road{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left;padding-top:12px}
@@ -289,15 +309,15 @@
     /* Qualified with .stage so it outranks `.stage p`, which otherwise re-centres this with
        its own margin:0 auto and max-width:50ch and knocks the label out of line with the
        grid underneath it. */
-    .stage p.roadlabel{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    .stage p.roadlabel{font-size:var(--fs-meta);font-weight:600;letter-spacing:.08em;text-transform:uppercase;
       color:var(--muted);text-align:left;margin:0 0 14px;max-width:none}
-    .road b{display:block;font-size:16px;font-weight:600;margin-bottom:5px}
-    .road span{font-size:14.5px;color:var(--body);line-height:1.55}
+    .road b{display:block;font-size:var(--fs-body);font-weight:600;margin-bottom:5px}
+    .road span{font-size:var(--fs-body);color:var(--body);line-height:1.55}
 
-    footer{border-top:1px solid var(--rule);padding:34px 0 50px;color:var(--muted);font-size:14px;text-align:center}
+    footer{border-top:1px solid var(--rule);padding:34px 0 50px;color:var(--muted);font-size:var(--fs-meta);text-align:center}
     footer a{color:var(--muted);text-decoration:none}
     footer a:hover{color:var(--ink)}
-    .fine{margin:12px auto 0;font-size:12px;line-height:1.55;max-width:64ch}
+    .fine{margin:12px auto 0;font-size:var(--fs-meta);line-height:1.55;max-width:64ch}
 
     @media (prefers-reduced-motion:no-preference){
       .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -319,8 +339,8 @@
     }
     @media (max-width:340px){
       .tool svg{display:none}
-      .tool{gap:0;padding:7px 10px;font-size:13.5px}
-      nav .btn{padding:7px 12px;font-size:13.5px}
+      .tool{gap:0;padding:7px 10px;font-size:var(--fs-ui)}
+      nav .btn{padding:7px 12px;font-size:var(--fs-ui)}
       nav{gap:8px}
     }
 
@@ -331,7 +351,7 @@
       nav a:not(.btn):not(.tool){display:none}
       .brand .brandtext{display:none}
       .brand{gap:0}
-      .tool{padding:8px 12px;font-size:14px}
+      .tool{padding:8px 12px;font-size:var(--fs-ui)}
       .bar{padding-left:16px;padding-right:16px}
       nav{gap:12px}
       .bar{padding-left:16px;padding-right:16px}
@@ -352,31 +372,31 @@
 
     /* ---- differentiator strip (under the hero) ---- */
     .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:72px auto 0;padding-top:44px;border-top:1px solid var(--rule);text-align:left}
-    .strip h2{margin:0 0 8px;font-size:16.5px;font-weight:600;letter-spacing:-.02em}
-    .strip p{margin:0;font-size:15px;line-height:1.55;color:var(--body)}
+    .strip h2{margin:0 0 8px;font-size:var(--fs-body);font-weight:600;letter-spacing:-.02em}
+    .strip p{margin:0;font-size:var(--fs-body);line-height:1.55;color:var(--body)}
     @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
     /* ---- testimonial: one real quote from a beta tester ---- */
     .quote{max-width:640px;margin:64px auto 0;padding:28px 32px;background:#fff;
       border:1px solid var(--rule);border-radius:18px;text-align:left}
-    .quote blockquote{margin:0;font-size:17px;line-height:1.65;color:var(--body)}
-    .quote cite{display:block;margin-top:14px;font-style:normal;font-size:14px;font-weight:700;color:var(--ink)}
+    .quote blockquote{margin:0;font-size:var(--fs-body);line-height:1.65;color:var(--body)}
+    .quote cite{display:block;margin-top:14px;font-style:normal;font-size:var(--fs-meta);font-weight:700;color:var(--ink)}
     .quote cite span{font-weight:600;color:var(--muted)}
     @media (max-width:760px){.quote{margin-top:48px;padding:22px 22px}}
 
     /* Mid-page CTA: one act-now door at the moment the fee argument lands, so a convinced
        reader isn't marched ten more screens to the only other form. */
     /* Was an underlined sentence under the strongest argument on the page. Same words, button. */
-    .midcta{display:inline-block;margin-top:34px;background:var(--cta-fill);color:var(--ink);font-weight:700;font-size:16px;
-      text-decoration:none;padding:13px 24px;border-radius:14px;box-shadow:0 14px 28px -14px rgba(249,115,22,.7);
+    .midcta{display:inline-block;margin-top:34px;background:var(--cta-fill);color:var(--ink);font-weight:700;font-size:var(--fs-ui);
+      text-decoration:none;padding:13px 24px;border-radius:12px;box-shadow:0 14px 28px -14px rgba(249,115,22,.7);
       transition:background .16s ease,transform .16s ease}
     .midcta:hover{background:var(--cta-fill-hover);transform:translateY(-1px);text-decoration:none}
 
     /* ---- shop-floor: tabs switch app screens; the caption gives each its moment ---- */
     .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;width:fit-content;max-width:100%;
-      background:var(--bg-alt);border:1px solid var(--rule);border-radius:22px;padding:4px;margin:52px auto 0}
-    .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:14.5px;
+      background:var(--bg-alt);border:1px solid var(--rule);border-radius:24px;padding:4px;margin:52px auto 0}
+    .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:var(--fs-ui);
       font-weight:600;padding:9px 17px;border-radius:980px;cursor:pointer;transition:all .16s ease}
-    @media (max-width:420px){.tabs button{padding:9px 13px;font-size:14px}}
+    @media (max-width:420px){.tabs button{padding:9px 13px;font-size:var(--fs-meta)}}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
     .hero .tabs{margin-top:34px}
     @media (max-width:1039px){.hero .tabs{margin-top:30px}}
@@ -387,36 +407,36 @@
     .hero-device img.active{opacity:1;pointer-events:auto}
     /* Qualified with .stage so it outranks `.stage p` (margin:0 auto), which was silently
        zeroing this caption's top margin and jamming it against the phone's bottom edge. */
-    .stage p.floor-cap{margin:26px auto 0;font-size:15px;line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
+    .stage p.floor-cap{margin:26px auto 0;font-size:var(--fs-meta);line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
 
     /* ---- fee-calculator teaser: slide a price, watch Etsy's cut ---- */
     .feecalc{max-width:430px;margin:48px auto 0;background:#fff;border:1px solid var(--rule);
       border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 26px 52px -34px rgba(17,16,16,.34)}
     .fc-top{padding:20px 22px 18px;border-bottom:1px solid var(--rule)}
     .fc-price{display:flex;justify-content:space-between;align-items:baseline}
-    .fc-price span{font-size:15px;font-weight:600}
-    .fc-price b{font-size:30px;font-weight:700;letter-spacing:-.03em}
+    .fc-price span{font-size:var(--fs-ui);font-weight:600}
+    .fc-price b{font-size:var(--fs-figure);font-weight:700;letter-spacing:-.03em}
     .feecalc input[type=range]{width:100%;margin:15px 0 5px;accent-color:var(--orange);cursor:pointer}
-    .fc-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
-    .fc-ads{display:flex;align-items:center;gap:9px;margin-top:17px;font-size:14.5px;color:var(--body);cursor:pointer}
+    .fc-ends{display:flex;justify-content:space-between;font-size:var(--fs-meta);color:var(--muted)}
+    .fc-ads{display:flex;align-items:center;gap:9px;margin-top:17px;font-size:var(--fs-ui);color:var(--body);cursor:pointer}
     .fc-ads input{width:17px;height:17px;accent-color:var(--orange);cursor:pointer}
     .fc-body{padding:8px 22px 6px}
     .fc-body .pl[hidden]{display:none}  /* beats .pl{display:flex}, so the Offsite Ads row stays hidden until checked */
-    .fc-note{padding:12px 22px 20px;font-size:13px;color:var(--muted);line-height:1.5}
+    .fc-note{padding:12px 22px 20px;font-size:var(--fs-meta);color:var(--muted);line-height:1.5}
     .fc-note a{color:var(--orange);font-weight:600;text-decoration:none}
     .fc-note a:hover{text-decoration:underline}
 
     /* ---- the spreadsheet objection: same job, both ways ---- */
-    .vs{display:grid;grid-template-columns:1.25fr .9fr .95fr;gap:0 12px;padding:9px 0;font-size:15px;align-items:baseline;text-align:left}
+    .vs{display:grid;grid-template-columns:1.25fr .9fr .95fr;gap:0 12px;padding:9px 0;font-size:var(--fs-ui);align-items:baseline;text-align:left}
     .vs + .vs{border-top:1px solid var(--rule)}
     .vs .a{color:var(--muted);text-align:right}
     .vs .b{color:var(--profit);font-weight:600;text-align:right}
-    .vs.vs-hd{padding-bottom:4px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .vs.vs-hd{padding-bottom:4px;font-size:var(--fs-meta);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
     .vs.vs-hd .b{color:var(--orange)}
     .vs.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:6px;padding-top:12px;font-weight:600}
     .vs.sum .a{text-decoration:line-through;text-decoration-color:#C2540C}
-    .vs.sum .b{font-size:17px}
-    @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:13.5px;gap:0 8px}}
+    .vs.sum .b{font-size:var(--fs-ui)}
+    @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:var(--fs-ui);gap:0 8px}}
 
 
     /* four shipped items read as a 2×2, not a 3-column grid with an orphan */

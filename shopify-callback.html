@@ -7,18 +7,22 @@
   <title>Connecting your Shopify shop — SpoolPilot</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/favicon.ico" sizes="any">
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#F7F6F4;--ink:#111010;--body:#55504B;--muted:#8B857F;--orange:#F97316}
+    :root{--bg:#F7F6F4;--ink:#111010;--body:#55504B;--muted:#8B857F;--orange:#F97316;
+      /* Same ramp as the rest of the site. This page loads no stylesheet — it has to render
+         standalone on the OAuth bounce — so it carries the roles it uses. */
+      --fs-meta:13px;--fs-body:17px;--fs-sub:24px;
+      --ff-display:'Archivo','Hanken Grotesk',system-ui,sans-serif}
     *{box-sizing:border-box}
     body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
       background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;
       padding:24px;text-align:center}
     .card{max-width:26rem}
-    svg{width:56px;height:56px;border-radius:14px;display:block;margin:0 auto 22px}
-    h1{margin:0 0 12px;font-size:24px;letter-spacing:-.02em;font-weight:700}
-    p{margin:0 0 10px;font-size:16px;line-height:1.6;color:var(--body)}
-    .quiet{font-size:13.5px;color:var(--muted)}
+    svg{width:56px;height:56px;border-radius:16px;display:block;margin:0 auto 22px}
+    h1{font-family:var(--ff-display);margin:0 0 12px;font-size:var(--fs-sub);letter-spacing:-.02em;font-weight:700}
+    p{margin:0 0 10px;font-size:var(--fs-body);line-height:1.6;color:var(--body)}
+    .quiet{font-size:var(--fs-meta);color:var(--muted)}
     a{color:var(--orange);font-weight:600}
   </style>
 </head>
