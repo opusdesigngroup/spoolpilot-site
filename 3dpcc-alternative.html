@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-itunes-app" content="app-id=6796133961">
-  <title>Spoolman vs SpoolPilot — Grams, or Actual Profit?</title>
-  <meta name="description" content="Spoolman tracks how much plastic is left. SpoolPilot tracks what your shop earned — exact Etsy fees, real COGS, profit per sale. An honest comparison.">
-  <link rel="canonical" href="https://spoolpilot.app/spoolman-alternative.html">
+  <title>3DPCC Alternative: Estimated Etsy Fees vs Actual — SpoolPilot</title>
+  <meta name="description" content="3DPCC estimates Etsy fees from the published rate card before you list. SpoolPilot reads the fees Etsy actually charged, per order. An honest comparison for 3D-print sellers.">
+  <link rel="canonical" href="https://spoolpilot.app/3dpcc-alternative.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="SpoolPilot">
-  <meta property="og:title" content="Spoolman vs SpoolPilot — Grams, or Actual Profit?">
-  <meta property="og:description" content="Spoolman tracks how much plastic is left. SpoolPilot tracks what your shop earned — exact Etsy fees, real COGS, profit per sale. An honest comparison.">
-  <meta property="og:url" content="https://spoolpilot.app/spoolman-alternative.html">
+  <meta property="og:title" content="3DPCC Alternative: Estimated Etsy Fees vs Actual — SpoolPilot">
+  <meta property="og:description" content="3DPCC estimates Etsy fees before you list. SpoolPilot reads what Etsy actually charged, per order. An honest comparison.">
+  <meta property="og:url" content="https://spoolpilot.app/3dpcc-alternative.html">
   <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -63,35 +63,41 @@
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <h1>Spoolman vs SpoolPilot: two different questions</h1>
-    <p class="lede">Spoolman asks <em>how much plastic is left on each spool</em>. SpoolPilot asks <strong>how much money the shop made</strong>. If you sell what you print, you might genuinely want both — but you should know which is which.</p>
+    <h1>3DPCC vs SpoolPilot: estimated fees, or the ones Etsy actually charged</h1>
+    <p class="lede">3DPCC is a well-built cost calculator for 3D printing, and it does something SpoolPilot doesn't: it prices and quotes a job <em>before</em> you print it. But its Etsy feature <strong>estimates</strong> fees from the published rate card. SpoolPilot connects to your shop and reads what Etsy <strong>actually took</strong>. Here's the honest comparison.</p>
 
-    <h2>Spoolman, respectfully</h2>
-    <p>Spoolman is excellent at what it does: a free, open-source, self-hosted filament database with native Klipper support, so your printer itself logs consumption per print. For a tinkerer running Klipper who wants gram-accurate remaining weight on every spool, it's the community's gold standard — and being MIT-licensed and self-hosted, it's fully yours.</p>
-    <p>The cost is ceremony. You run a server (Docker, usually), then build your database by hand: manufacturers, then filament types, then each physical spool. Weights stay accurate only when prints flow through the integrations. And it stops at plastic — <strong>no sales, no fees, no profit</strong>, because that was never its job.</p>
+    <h2>The difference in one sentence</h2>
+    <p>3DPCC answers <em>"what should I charge for this print?"</em> SpoolPilot answers <em>"what did that order actually make me?"</em> Those sound like the same question and they are not. One happens before the sale, from numbers you type. The other happens after, from your shop's real records.</p>
 
-    <h2>What sellers need that grams can't answer</h2>
-    <p>A shop owner's daily questions are different: what did that $28 order actually net after Etsy's four separate fees? Which product is quietly unprofitable? How many sealed spools are on the shelf, and how many weeks will they last at the current sales pace? What should I print next?</p>
-    <p>Those are money-and-time questions, and they need sales data — <em>not a scale</em>. SpoolPilot connects to your Etsy shop, imports your whole sales history, reads the exact fees Etsy charged on each order, and treats filament the way a busy shop actually does: count sealed spools by scanning the barcode, let sales infer the rest.</p>
+    <h2>Why estimated fees drift</h2>
+    <p>Etsy publishes a rate card — transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 15% — and any calculator can apply it. The trouble is that what Etsy deposits often isn't that number. Offsite Ads is attributed partially rather than landing cleanly on the order you'd expect. Processing rates differ by country. Coupons change the base the percentage applies to. Regulatory fees appear in some regions and in no rate-card formula.</p>
+    <p>None of that makes a calculator wrong for pricing. It makes it the wrong tool for bookkeeping. If you want to know what your shop earned last month, the formula isn't good enough — you need the fee entries on the orders themselves.</p>
 
-    <h2>Side by side</h2>
+    <h2>How SpoolPilot compares</h2>
     <div class="tbl">
       <table>
-        <thead><tr><th></th><th>Spoolman</th><th class="sp">SpoolPilot</th></tr></thead>
+        <thead><tr><th></th><th>3DPCC</th><th class="sp">SpoolPilot</th></tr></thead>
         <tbody>
-          <tr><td>Core question</td><td>Grams remaining per spool</td><td class="sp">Net profit per sale</td></tr>
-          <tr><td>Runs on</td><td>Your own server (Docker)</td><td class="sp">Your iPhone</td></tr>
-          <tr><td>Setup</td><td>Host it, then hand-build the database</td><td class="sp">Connect Etsy, scan a spool — minutes</td></tr>
-          <tr><td>Filament model</td><td>Per-gram weights via printer integrations</td><td class="sp">Sealed-spool counts + weeks-of-stock forecast</td></tr>
-          <tr><td>Sales &amp; fees</td><td>—</td><td class="sp">Whole Etsy history, exact fees itemized per order</td></tr>
-          <tr><td>Price</td><td>Free, open source</td><td class="sp">Free tier + Pro</td></tr>
-          <tr><td>Best for</td><td>Klipper tinkerers &amp; gram-accuracy fans</td><td class="sp">People selling what they print</td></tr>
+          <tr><td>The question it answers</td><td>What should I charge for this print?</td><td class="sp">What did that order actually make me?</td></tr>
+          <tr><td>Etsy fees</td><td>Estimated from published rates, before you list</td><td class="sp">The exact fees Etsy charged, read from Etsy's ledger, per order</td></tr>
+          <tr><td>Your sales</td><td>Not connected — you type what you want to price</td><td class="sp">Synced from your Etsy shop, including full history</td></tr>
+          <tr><td>Profit view</td><td>Per print, at quote time</td><td class="sp">Per sale, per product and per month — a real P&amp;L</td></tr>
+          <tr><td>Filament stock</td><td>Manual counts you keep updated</td><td class="sp">Barcode scan, sealed-spool counts, weeks of stock from your sales pace</td></tr>
+          <tr><td>Quotes</td><td>Draft → delivered status tracking</td><td class="sp">Not offered</td></tr>
+          <tr><td>VAT</td><td>Supported, plus 30+ currencies</td><td class="sp">Currency yes, VAT not yet</td></tr>
+          <tr><td>Slicer input</td><td>Typed</td><td class="sp">Point the camera at the slicer screen</td></tr>
+          <tr><td>Your data</td><td>Email address and user ID collected</td><td class="sp">Nothing collected. No account.</td></tr>
+          <tr><td>Runs on</td><td>iOS 18 or later</td><td class="sp">iOS 17 or later</td></tr>
+          <tr><td>Price</td><td>Free tier; $3.99/mo, $24.99/yr, $49.99 lifetime</td><td class="sp">Free tier; $12.99/mo or $99.99/yr</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="fine">3DPCC details as published on its App Store listing, checked 4 September 2026 (version 1.0.5); verify current pricing and features before deciding. Data-collection rows are taken from each app's own App Store privacy label. 3DPCC is the trademark of its developer; SpoolPilot is not affiliated with it.</p>
 
-    <h2>Can you run both?</h2>
-    <p>Sure. Some print-farm owners keep Spoolman for per-machine gram nerdery and use SpoolPilot for the business: profit, fees, forecasts, and what to print next. They don't compete for the same job — <strong>they compete for the same shelf</strong>.</p>
+    <h2>Where 3DPCC is the better buy</h2>
+    <p>Fair is fair, and this is a genuinely good app built by one developer. Pick 3DPCC if you mostly need to <strong>quote custom jobs before printing them</strong> — its draft-to-delivered quote tracking has no equivalent in SpoolPilot. Pick it if you need <strong>VAT</strong>, which SpoolPilot doesn't handle yet. Pick it if you want a <strong>one-time purchase</strong> rather than a subscription; $49.99 once is a real advantage over any monthly plan. And pick it if you <strong>don't sell on Etsy</strong>, because SpoolPilot's whole edge is reading a ledger you wouldn't have.</p>
+    <p>SpoolPilot costs more, and it should only win if you actually want the thing it does: your real sales, your real fees, and a profit number you can stand behind at the end of the month.</p>
+
   <div class="cta">
     <h2>See your real profit in minutes</h2>
     <p>SpoolPilot syncs your whole Etsy history, itemizes the exact fees Etsy charged on every order, and shows true net profit per sale. Free to download on iOS, with an optional Pro subscription.</p>
@@ -104,7 +110,7 @@
     <p class="note">No spam, and a person reads every reply.</p>
   </div>
 
-    <p class="fine" style="margin-top:26px">Spoolman is an open-source project by its respective authors; SpoolPilot is not affiliated with it. More: <a href="/etsy-fee-calculator.html" style="color:var(--orange);font-weight:600">free Etsy fee calculator</a> · <a href="/craftybase-alternative.html" style="color:var(--orange);font-weight:600">a Stocksmith alternative</a> · <a href="/3dpcc-alternative.html" style="color:var(--orange);font-weight:600">3DPCC vs SpoolPilot</a></p>
+    <p class="fine" style="margin-top:26px">More: <a href="/etsy-fee-calculator.html" style="color:var(--orange);font-weight:600">free Etsy fee calculator</a> · <a href="/spoolman-alternative.html" style="color:var(--orange);font-weight:600">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html" style="color:var(--orange);font-weight:600">a Stocksmith alternative</a></p>
   </main>
 
   <footer>
