@@ -15,6 +15,26 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="article.css?v=6066016">
+  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
+       paint; autocapture handles pageviews, clicks and route changes from here on. The project
+       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
+       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
+       code, and a pageview would send it to a third party. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+
+    // Bridge for waitlist.js, which is a classic script and cannot import a module. Only a
+    // business outcome goes through here — UI events are autocaptured and must not be doubled.
+    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
+  </script>
 </head>
 <body>
   <!--

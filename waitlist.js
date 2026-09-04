@@ -20,6 +20,13 @@
     var body = form.dataset.successBody || 'Occasional product updates, nothing else. Unsubscribe any time.';
     box.innerHTML = '<h3>' + esc(title) + '</h3><p>' + esc(body) + '</p>';
     form.replaceWith(box);
+    // The only business outcome on this site, and the browser is the only place that learns it —
+    // MailerLite answers the client directly, no server of ours is in the path. Reported after
+    // MailerLite confirms success, never on submit. The form's own id tells signup points apart.
+    // No email or name is sent: this is a count, not an identity.
+    if (window.spoolpilotTrack) {
+      window.spoolpilotTrack('waitlist_signup', { form: form.id || form.dataset.successTitle || 'default' });
+    }
   }
   function clearError(form) {
     var next = form.nextElementSibling;

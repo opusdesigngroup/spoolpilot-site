@@ -61,6 +61,26 @@
   </script>
   <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
+       paint; autocapture handles pageviews, clicks and route changes from here on. The project
+       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
+       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
+       code, and a pageview would send it to a third party. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+
+    // Bridge for waitlist.js, which is a classic script and cannot import a module. Only a
+    // business outcome goes through here — UI events are autocaptured and must not be doubled.
+    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
+  </script>
   <style>
     :root{
       --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;

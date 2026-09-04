@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-itunes-app" content="app-id=6796133961">
+  <title>Page not found — SpoolPilot</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- HeyCatch analytics. This page carries it for a second reason beyond measurement: GitHub
+       Pages has no redirect config, so HeyCatch's reserved single-character short links (/a-/z,
+       /0-/9) cannot be forwarded by the host. GitHub Pages does serve this file for every unknown
+       path, so loading the SDK here is what gives those links a chance to forward themselves.
+       The status is still 404, so verify a real short link after deploying rather than trusting
+       the status code. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+  </script>
+  <style>
+    :root{
+      --bg:#FAF9F5; --ink:#17130F; --body:#3D372F; --muted:#6E665F;
+      --orange:#F97316; --orange-hover:#ea6a0d; --line:rgba(23,19,15,.10);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background:var(--bg); color:var(--ink); padding:24px; text-align:center;
+      font-family:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    }
+    .card{max-width:30rem}
+    svg{width:56px;height:56px;border-radius:16px;display:block;margin:0 auto 24px}
+    h1{margin:0 0 12px;font-size:clamp(30px,4.4vw,44px);font-weight:800;letter-spacing:-.9px;line-height:1.1}
+    p{margin:0 0 24px;font-size:17px;line-height:1.6;color:var(--body)}
+    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    a.primary{
+      background:var(--orange); color:#fff; text-decoration:none; font-weight:700;
+      border-radius:12px; padding:15px 24px; font-size:17px; display:inline-block;
+    }
+    a.primary:hover{background:var(--orange-hover)}
+    a.secondary{
+      color:var(--body); text-decoration:none; font-weight:600; border:1px solid var(--line);
+      border-radius:12px; padding:15px 24px; font-size:17px; display:inline-block;
+    }
+    a.secondary:hover{border-color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" rx="180" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+    <h1>That page isn't here</h1>
+    <p>The link may be old, or mistyped. The homepage and the fee calculator are both one tap away.</p>
+    <div class="actions">
+      <a class="primary" href="/">Go to the homepage</a>
+      <a class="secondary" href="/etsy-fee-calculator.html">Etsy fee calculator</a>
+    </div>
+  </div>
+</body>
+</html>
