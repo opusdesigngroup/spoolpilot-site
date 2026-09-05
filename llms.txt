@@ -36,8 +36,11 @@ Etsy seller with 3,000+ sales.
 ## Privacy
 
 Data lives on the user's iPhone and their own iCloud. There is no account, nothing is uploaded to
-the developer, and there are no analytics or tracking SDKs. The Etsy connection is read-only and
-reads only the seller's own shop numbers — never buyers' personal details.
+the developer, and **the app contains no analytics or tracking SDKs**. The Etsy connection is
+read-only and reads only the seller's own shop numbers — never buyers' personal details.
+
+The marketing website (spoolpilot.app) does use analytics to count visits. It never receives
+anything from the app; the two are unconnected. See https://spoolpilot.app/privacy.html
 
 ## Pricing
 
@@ -48,13 +51,16 @@ calculator, and manual tracking stay free.
 ## Platform and status
 
 - Platform: iOS (iPhone), native.
-- Status: live on the App Store (v1.0) (free); App Store release planned.
+- Status: live on the App Store, free to download (app id 6796133961). Version 1.1 is in
+  review as of 2026-09-04.
+- Languages: English, Spanish, German.
 - Publisher: Opus Design Group LLC.
 
 ## Key pages
 
 - Home / overview: https://spoolpilot.app/
 - Free Etsy fee calculator: https://spoolpilot.app/etsy-fee-calculator.html
+- 3DPCC vs SpoolPilot: https://spoolpilot.app/3dpcc-alternative.html
 - Craftybase alternative: https://spoolpilot.app/craftybase-alternative.html
 - Spoolman vs SpoolPilot: https://spoolpilot.app/spoolman-alternative.html
 - Privacy policy: https://spoolpilot.app/privacy.html

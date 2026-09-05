@@ -40,6 +40,56 @@
     // business outcome goes through here — UI events are autocaptured and must not be doubled.
     window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "3DPCC vs SpoolPilot",
+          "item": "https://spoolpilot.app/3dpcc-alternative.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "3DPCC vs SpoolPilot: price the print, then find out what it really made",
+      "description": "Both price a print before you make it — SpoolPilot scans the grams and hours off your slicer screen. Then it reads the fees Etsy actually charged, per order.",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "3DPCC: 3D Printing Calculator"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spoolpilot.app/3dpcc-alternative.html"
+      },
+      "image": "https://spoolpilot.app/og-image-v2.png",
+      "datePublished": "2026-09-04",
+      "dateModified": "2026-09-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header>
