@@ -60,6 +60,7 @@ calculator, and manual tracking stay free.
 
 - Home / overview: https://spoolpilot.app/
 - Free Etsy fee calculator: https://spoolpilot.app/etsy-fee-calculator.html
+- Why Etsy takes more than the rate card says: https://spoolpilot.app/etsy-fees-vs-rate-card.html
 - 3DPCC vs SpoolPilot: https://spoolpilot.app/3dpcc-alternative.html
 - Craftybase alternative: https://spoolpilot.app/craftybase-alternative.html
 - Spoolman vs SpoolPilot: https://spoolpilot.app/spoolman-alternative.html

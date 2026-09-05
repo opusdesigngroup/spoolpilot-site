@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-itunes-app" content="app-id=6796133961">
+  <title>Why Etsy Takes More Than the Rate Card Says — SpoolPilot</title>
+  <meta name="description" content="Etsy publishes 6.5% transaction, 3% + $0.25 processing, $0.20 listing. What lands in your payment account is often more. Five places the rate card and the ledger disagree, and how to check your own shop.">
+  <link rel="canonical" href="https://spoolpilot.app/etsy-fees-vs-rate-card.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SpoolPilot">
+  <meta property="og:title" content="Why Etsy Takes More Than the Rate Card Says">
+  <meta property="og:description" content="Five places Etsy's published rates and your actual payment account disagree, and how to check your own shop in ten minutes.">
+  <meta property="og:url" content="https://spoolpilot.app/etsy-fees-vs-rate-card.html">
+  <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="article.css?v=6066016">
+  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
+       paint; autocapture handles pageviews, clicks and route changes from here on. The project
+       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
+       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
+       code, and a pageview would send it to a third party. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+
+    // Bridge for waitlist.js, which is a classic script and cannot import a module. Only a
+    // business outcome goes through here — UI events are autocaptured and must not be doubled.
+    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Craftybase alternative",
+          "item": "https://spoolpilot.app/craftybase-alternative.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "A Craftybase alternative built for 3D print shops",
+      "description": "Stocksmith (formerly Craftybase) starts at $41–49/mo and has no concept of a filament spool. SpoolPilot is built for 3D-print sellers on Etsy.",
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Craftybase (Stocksmith)"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spoolpilot.app/craftybase-alternative.html"
+      },
+      "image": "https://spoolpilot.app/og-image-v2.png",
+      "datePublished": "2026-09-04",
+      "dateModified": "2026-09-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Why Etsy takes more than the rate card says",
+          "item": "https://spoolpilot.app/etsy-fees-vs-rate-card.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Why Etsy takes more than the rate card says",
+      "description": "Five places Etsy's published rates and your actual payment account disagree, and how to check your own shop.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spoolpilot.app/etsy-fees-vs-rate-card.html"
+      },
+      "image": "https://spoolpilot.app/og-image-v2.png",
+      "datePublished": "2026-09-04",
+      "dateModified": "2026-09-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Check Etsy's actual fees against the rate card for your own shop",
+      "totalTime": "PT10M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Download a statement",
+          "text": "In Shop Manager, open Finances then Payment account and download a monthly statement."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Total the real fees",
+          "text": "Pick ten orders. For each, add up the fee lines Etsy actually charged."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Work out the prediction",
+          "text": "For the same ten orders, calculate what the rate card predicts: 6.5% of the total paid including shipping, plus 3% + $0.25, plus $0.20."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Compare",
+          "text": "Compare the two columns to see the gap on your own products at your own price points."
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+        <span class="brandtext">SpoolPilot</span>
+      </a>
+      <nav>
+        <a href="/support.html">Support</a>
+        <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a>
+        <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
+        <a class="btn" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-header&mt=8"><span class="btnlabel-full">Download on the App Store</span><span class="btnlabel-short">Get the app</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <p class="crumb"><a href="/">SpoolPilot</a> · Etsy fees</p>
+      <p class="credential">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Built by an Etsy seller with 3,000+ sales
+      </p>
+    <h1>Why Etsy takes more than the rate card says</h1>
+    <p class="lede">Etsy publishes its fees plainly: 6.5% transaction, 3% + $0.25 processing, $0.20 to list. Put those in a spreadsheet and you get a number. Then the deposit lands and it is not that number. Here is where the two come apart, and how to check it in your own shop without taking anyone's word for it.</p>
+
+    <h2>Start with what the rate card says</h2>
+    <p>Take a $28 print, US rates as published in July 2026:</p>
+    <ul>
+      <li>Transaction, 6.5%: <strong>$1.82</strong></li>
+      <li>Payment processing, 3% + $0.25: <strong>$1.09</strong></li>
+      <li>Listing: <strong>$0.20</strong></li>
+    </ul>
+    <p><strong>$3.11</strong>, or about 11% of the sale. If that order also gets charged Offsite Ads at 15%, add <strong>$4.20</strong> and you are at <strong>$7.31</strong> — a little over 26%. Same product, same price, and the fee more than doubles depending on one thing you did not control.</p>
+    <p>That gap between 11% and 26% is the whole problem in one line. A single average number cannot describe both.</p>
+
+    <h2>Five places the formula and the ledger disagree</h2>
+
+    <h3>1. Offsite Ads lands on some orders and not others</h3>
+    <p>Etsy charges the Offsite Ads fee when it attributes a sale to an ad click, within a 30-day window. You cannot tell in advance which orders those will be. Apply 15% to everything and you overstate your fees on most sales. Apply nothing and you are blindsided on the ones that get it. The fee is capped per order, which helps on a large sale and not at all on a $28 one.</p>
+
+    <h3>2. Processing rates are per-country</h3>
+    <p>The 3% + $0.25 is the US rate. Sell to a buyer elsewhere and the processing rate is different. One rate in a spreadsheet is right for some of your orders and wrong for the rest, and the mix changes every month.</p>
+
+    <h3>3. Discounts move the base, not just the total</h3>
+    <p>Etsy's percentages apply to what the buyer actually paid. Run a 20% sale and the fee is calculated on the discounted figure, not your list price. Most spreadsheets are built off list price because that is the number you typed in once.</p>
+
+    <h3>4. Shipping you collect is part of the base</h3>
+    <p>The transaction fee applies to shipping the buyer paid, not only the item. If you charge $6 shipping on that $28 print, Etsy's 6.5% is calculated on $34. Easy to miss, and it moves every order.</p>
+
+    <h3>5. Regulatory operating fees exist in some countries</h3>
+    <p>Etsy charges these in several markets, including the UK, France, Italy, Spain and Turkey. They are real line items on real orders and they appear in no rate-card calculation, because the rate card is not where they live.</p>
+
+    <h2>Check your own shop in ten minutes</h2>
+    <p>Do not take this on faith. Run it against your own numbers:</p>
+    <ol>
+      <li>In Shop Manager, open <strong>Finances → Payment account</strong> and download a monthly statement.</li>
+      <li>Pick ten orders. For each, add up the fee lines Etsy actually charged.</li>
+      <li>For the same ten, work out what the rate card predicts: 6.5% of the total paid including shipping, plus 3% + $0.25, plus $0.20.</li>
+      <li>Compare the two columns.</li>
+    </ol>
+    <p>Whatever you find is your answer, not a claim from a website. If the columns match, your spreadsheet is fine and you have lost ten minutes. If they do not, you now know by how much, on your own products, at your own price points.</p>
+
+    <h2>Why this is hard to fix with a better formula</h2>
+    <p>You could keep patching the spreadsheet. Add an Offsite Ads column, per-country processing, a discount field, shipping in the base. It still will not work, because the formula never learns which specific orders were attributed to an ad, or which buyer paid a Turkish regulatory fee. That information exists in exactly one place: the fee entries Etsy wrote against each order.</p>
+    <p>Estimating is the right tool before a sale, when the order does not exist yet and you are deciding what to charge. After the sale, the estimate has been replaced by a fact, and the fact is sitting in your payment account.</p>
+
+  <div class="cta">
+    <h2>Or let it read the ledger for you</h2>
+    <p>SpoolPilot connects to your Etsy shop and does the comparison above on every order automatically, including your back catalog. It reads the fee entries Etsy charged, subtracts what the print actually cost in filament, electricity, packaging and time, and shows the profit on each sale. Free on the App Store.</p>
+    <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
+      <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+      <input type="hidden" name="ml-submit" value="1">
+      <input type="hidden" name="anticsrf" value="true">
+      <button type="submit">Send me product updates</button>
+    </form>
+    <p class="note">No spam, and a person reads every reply.</p>
+  </div>
+
+    <p class="fine" style="margin-top:26px">More: <a href="/etsy-fee-calculator.html" style="color:var(--orange);font-weight:600">free 3D print cost calculator</a> · <a href="/3dpcc-alternative.html" style="color:var(--orange);font-weight:600">3DPCC vs SpoolPilot</a> · <a href="/craftybase-alternative.html" style="color:var(--orange);font-weight:600">a Stocksmith alternative</a></p>
+  </main>
+
+  <footer>
+    <div class="in">
+      &copy; <span id="year"></span> Opus Design Group LLC · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a>
+      <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+    </div>
+  </footer>
+  <script src="waitlist.js?v=6066016"></script>
+</body>
+</html>
