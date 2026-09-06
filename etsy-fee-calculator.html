@@ -135,8 +135,8 @@
     </style>
 
     <div class="ratewatch">
-      <h3>Etsy will change these rates</h3>
-      <p>They have before, and every change quietly moves the number above. Leave your email and I&rsquo;ll tell you when the rates in this calculator change &mdash; with your figures rerun, so you can see what it does to this listing.</p>
+      <h3>Email yourself this breakdown</h3>
+      <p>Every figure above, plus a link that reopens this calculator with your numbers already in it. Useful when you are pricing at the bench and deciding at a desk.</p>
 
       <p class="rw-yours" id="rw-yours" aria-live="polite"></p>
 
@@ -145,17 +145,18 @@
            The hidden fields carry their own figures; MailerLite ignores any that aren't defined
            as custom fields, so this works today and gets richer once they exist. -->
       <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank"
-            data-success-title="I&rsquo;ll be in touch" data-success-body="Only when Etsy&rsquo;s rates actually change. Nothing else.">
+            data-success-title="On its way" data-success-body="Your breakdown, with a link that reopens it. Occasional product updates after that, and you can leave any time.">
         <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
         <input type="hidden" name="fields[calc_price]" id="rw-f-price" value="">
         <input type="hidden" name="fields[calc_net]" id="rw-f-net" value="">
         <input type="hidden" name="fields[calc_margin]" id="rw-f-margin" value="">
         <input type="hidden" name="fields[calc_grams]" id="rw-f-grams" value="">
         <input type="hidden" name="fields[calc_hours]" id="rw-f-hours" value="">
+        <input type="hidden" name="fields[calc_link]" id="rw-f-link" value="">
         <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="fields[source]" value="calc-ratewatch">
+        <input type="hidden" name="fields[source]" value="calc-breakdown">
         <input type="hidden" name="anticsrf" value="true">
-        <button type="submit">Tell me when rates change</button>
+        <button type="submit">Email me this breakdown</button>
       </form>
       <p class="form-note">Rate changes only &mdash; not a newsletter. Unsubscribe any time.</p>
       <button type="button" class="rw-copy" id="rw-copy">Copy this breakdown instead</button>
@@ -226,6 +227,25 @@
         return (costs + 0.25 + 0.20) / denom;
       }
 
+      // Inputs that survive a round trip through an email. Kept short so the URL stays
+      // readable, and kept to INPUTS only — see the note where the link is built.
+      var PREFILL = { price:'c-price', margin:'c-margin', grams:'c-grams', kg:'c-kg',
+                      hours:'c-hours', elec:'c-elec', pack:'c-pack',
+                      labormin:'c-labormin', laborrate:'c-laborrate', osa:'c-osa' };
+
+      function calcLink() {
+        var parts = [];
+        for (var key in PREFILL) {
+          var el = $(PREFILL[key]);
+          if (!el) continue;
+          var v = el.type === 'checkbox' ? (el.checked ? '1' : '0') : el.value;
+          if (v !== '' && v != null) parts.push(key + '=' + encodeURIComponent(v));
+        }
+        var mode = document.getElementById('mode-price');
+        if (mode && mode.getAttribute('aria-pressed') === 'true') parts.push('mode=price');
+        return 'https://spoolpilot.app/etsy-fee-calculator.html?' + parts.join('&');
+      }
+
       function recalc() {
         var costs = productCosts();
         var pct = pctRate();
@@ -291,6 +311,11 @@
             $('rw-f-margin').value = mPct + '%';
             $('rw-f-grams').value = String(num('c-grams'));
             $('rw-f-hours').value = String(num('c-hours'));
+            // The link is the point of the email: it reopens this page with their inputs, so the
+            // breakdown stays live instead of freezing into a table in an inbox. Only inputs go
+            // in — the outputs are recomputed on arrival, so a rate change updates the answer
+            // rather than mailing someone a number that has quietly gone stale.
+            $('rw-f-link').value = calcLink();
             yours.innerHTML = 'Attached to your email: <b>' + money(item) + '</b> listing &middot; <b>'
               + num('c-grams') + 'g</b> &middot; <b>' + num('c-hours') + 'h</b> &rarr; <b>'
               + money(net) + '</b> net, <b>' + mPct + '%</b> margin.';
@@ -326,6 +351,37 @@
       $('mode-profit').addEventListener('click', function () { setMode(false); });
 
       ids.forEach(function (id) { $(id).addEventListener('input', recalc); $(id).addEventListener('change', recalc); });
+
+      // Arriving from an emailed breakdown: fill the inputs back in, then let the normal
+      // recalc below produce the answer. Values are validated against each field's own type
+      // rather than trusted — a URL is user input, and a junk value should leave the default
+      // standing rather than blanking the field or poisoning the math.
+      (function readPrefill() {
+        var q = new URLSearchParams(window.location.search);
+        if (![].some.call(Object.keys(PREFILL), function (k) { return q.has(k); })) return;
+        var filled = 0;
+        Object.keys(PREFILL).forEach(function (key) {
+          if (!q.has(key)) return;
+          var el = $(PREFILL[key]);
+          if (!el) return;
+          var raw = q.get(key);
+          if (el.type === 'checkbox') { el.checked = raw === '1'; filled++; return; }
+          var n = parseFloat(raw);
+          if (!isFinite(n) || n < 0) return;      // junk leaves the default in place
+          el.value = String(n);
+          filled++;
+        });
+        if (q.get('mode') === 'price') setMode(true);
+        if (filled) {
+          // Say so, rather than silently showing numbers they did not type on this visit.
+          var note = document.createElement('p');
+          note.className = 'form-note';
+          note.style.margin = '10px 0 0';
+          note.textContent = 'Filled in from your emailed breakdown. Change anything to rerun it.';
+          var calc = document.querySelector('.calc');
+          if (calc) calc.appendChild(note);
+        }
+      })();
 
       // "Copy this breakdown instead" — the page promises no signup, so the numbers have to be
       // takeable without one. Offering it next to the form costs a few signups and buys the
