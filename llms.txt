@@ -51,8 +51,8 @@ calculator, and manual tracking stay free.
 ## Platform and status
 
 - Platform: iOS (iPhone), native.
-- Status: live on the App Store, free to download (app id 6796133961). Version 1.1 is in
-  review as of 2026-09-04.
+- Status: live on the App Store, free to download (app id 6796133961). Version 1.1 released
+  2026-09-05.
 - Languages: English, Spanish, German.
 - Publisher: Opus Design Group LLC.
 
