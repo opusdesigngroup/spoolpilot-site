@@ -38,7 +38,7 @@
     var msg = document.createElement('p');
     msg.className = 'waitlist-error';
     msg.setAttribute('role', 'alert');
-    msg.textContent = 'That didn’t go through — please check your email and try again.';
+    msg.textContent = 'That didn’t go through. An ad blocker may be blocking it — otherwise check the address and try again.';
     form.insertAdjacentElement('afterend', msg);
   }
   // Domain-typo catcher: a one-field form's only common failure is a fat-fingered domain, and a
@@ -101,12 +101,26 @@
       var label = btn ? btn.textContent : 'Join the waitlist';
       if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
       clearError(form);
-      fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+      var payload = new URLSearchParams(new FormData(form));
+      fetch(form.action, { method: 'POST', body: payload })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, data: j }; }, function () { return { ok: r.ok, data: {} }; }); })
         .then(function (res) {
           if (res.ok && res.data && res.data.success) { showSuccess(form); } else { showError(form, btn, label); }
         })
-        .catch(function () { showError(form, btn, label); });
+        .catch(function () {
+          // A rejected fetch does NOT mean the signup failed. Content and tracker blockers list
+          // MailerLite, and they commonly sever the RESPONSE while the request still goes out —
+          // we confirmed a subscriber landing in MailerLite while this page showed an error,
+          // which is the worst possible pairing: captured, and told it didn't work.
+          //
+          // So retry opaquely. no-cors makes the response unreadable, which is fine: we are no
+          // longer asking what the server said, only whether the browser would send it at all.
+          // If that completes, a request reached MailerLite and success is the honest answer.
+          // If it also fails, nothing was sent and the error is real.
+          fetch(form.action, { method: 'POST', mode: 'no-cors', body: payload })
+            .then(function () { showSuccess(form); })
+            .catch(function () { showError(form, btn, label); });
+        });
     });
   });
   var y = document.getElementById('year');
