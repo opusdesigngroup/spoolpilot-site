@@ -213,7 +213,12 @@ footer a:hover{color:var(--ink)}
   body{font-size:var(--fs-body)}
   .doc{padding-top:44px}
   .cards,.calc-grid{grid-template-columns:1fr}
-  nav a:not(.btn):not(.tool){display:none}
+  /* Text links yield to the CTA only when there IS one. Every page but shopify-installed.html
+     carries a Download button and usually the calculator pill, and on a narrow phone those plus
+     Support/Privacy cannot share a line. That page has neither, so the unconditional rule left
+     it with an empty header — a bare icon and nothing else, on the one page a Shopify reviewer
+     lands on looking for a support contact. `:has()` makes the rule say what it always meant. */
+  nav:has(.btn, .tool) a:not(.btn):not(.tool){display:none}
   .brand .brandtext{display:none}
   .brand{gap:0}
   .tool{padding:8px 12px;font-size:var(--fs-ui)}
