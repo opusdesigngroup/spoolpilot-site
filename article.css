@@ -260,3 +260,6 @@ footer a:hover{color:var(--ink)}
 /* Domain-typo suggestion from waitlist.js — styled on index, previously bare here. */
 .waitlist-hint{margin:10px 0 0;font-size:var(--fs-meta);color:var(--body)}
 .waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--cta);cursor:pointer;text-decoration:underline}
+
+/* Card headings are h2 for document order (h1 → h2) but keep the h3 size. */
+h2.h3{font-size:var(--fs-sub);margin:0 0 8px}

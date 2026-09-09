@@ -35,6 +35,14 @@
     // business outcome goes through here — UI events are autocaptured and must not be doubled.
     window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
   </script>
+  <style>
+    /* On this page the App Store link is the primary action and the email form the fallback,
+       so the site's accent goes to Download; site-wide the form's button is the orange one. */
+    .card .plate{background:var(--orange)}
+    .card .plate:hover{background:var(--orange-deep)}
+    .card .waitlist button{background:var(--ink)}
+    .card .waitlist button:hover{background:var(--ink);filter:brightness(.8)}
+  </style>
 </head>
 <body>
   <!--
@@ -68,7 +76,7 @@
     <p class="lede">One more step, then it's on your phone.</p>
 
     <div class="card">
-      <h3>Get the app</h3>
+      <h2 class="h3">Get the app</h2>
       <p class="plate-wrap"><a class="plate" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&amp;ct=shopify-installed&amp;mt=8">Download on the App Store</a></p>
       <p class="note">Free · iPhone · iOS 17+</p>
       <div id="waitlist">
@@ -83,10 +91,10 @@
       </div>
     </div>
 
-    <p>Then open <strong>Settings &rarr; Sales channels &rarr; Shopify</strong> and tap Connect. You've already approved it here, so it takes seconds.</p>
+    <p>Then open <strong>Settings &rarr; Sales channels &rarr; Shopify</strong> and tap Connect. You approved it on Shopify, so it takes seconds.</p>
 
-    <h3>A few things worth knowing</h3>
-    <p><strong>There's no screen in your Shopify admin.</strong> Your numbers live on your phone, not on our servers. There's nothing here to show.</p>
+    <h2 class="h3">How it works</h2>
+    <p><strong>There's no screen in your Shopify admin.</strong> Your numbers live on your phone, not on our servers. There’s no screen in your Shopify admin.</p>
     <p><strong>We never ask for your customers.</strong> No names, emails, phone numbers or addresses. Orders and prices only. <a href="/privacy.html">Privacy policy</a>.</p>
     <p><strong>Uninstall from Settings &rarr; Apps</strong> in your Shopify admin. Access is revoked immediately.</p>
 
