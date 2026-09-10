@@ -80,6 +80,9 @@
     .scan-result{margin:10px 0 0;font-size:var(--fs-meta);color:var(--muted);text-align:center}
     .scan-result.ok{color:var(--profit);font-weight:600}
     .scan-result.warn{color:var(--ink)}
+    .scan-android{margin-top:14px;padding-top:14px;border-top:1px solid var(--rule-2)}
+    .scan-android p{margin:0 0 10px;font-size:var(--fs-meta);color:var(--muted);line-height:1.5}
+    .scan-android .waitlist{max-width:none}
     @media (prefers-reduced-motion:reduce){.scan-drop{transition:none}}
   </style>
 </head>
@@ -124,6 +127,21 @@
           <span class="scan-sub" id="scan-sub">Tap to take a photo of your slice results, or pick a screenshot. Bambu&nbsp;Studio, OrcaSlicer, PrusaSlicer and Cura. Nothing is uploaded.</span>
         </label>
         <p class="scan-result" id="scan-result" role="status" aria-live="polite" hidden></p>
+        <!-- Android demand test. Shown by slicer-scan-ui.js on Android and desktop, never on an
+             iPhone (that visitor gets the app). Says exactly what it is: a count. Nothing about
+             Android is built or promised, and the copy must not imply otherwise. -->
+        <div class="scan-android" id="scan-android" hidden>
+          <p>Want this as an app on Android? Leave your email and you're counted. If enough people ask, it gets built, and you'll hear first.</p>
+          <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank"
+                data-success-title="Counted" data-success-body="You'll hear if an Android version happens. Occasional product updates in between, and you can leave any time.">
+            <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
+            <input type="hidden" name="ml-submit" value="1">
+            <input type="hidden" name="fields[signup_source]" value="android-waitlist">
+            <input type="hidden" name="fields[platform]" value="android">
+            <input type="hidden" name="anticsrf" value="true">
+            <button type="submit">Count me in</button>
+          </form>
+        </div>
       </div>
 
       <div class="calc-grid">
@@ -223,7 +241,7 @@
     </div>
   </footer>
   <script src="slicer-scan.js?v=9"></script>
-  <script src="slicer-scan-ui.js?v=9"></script>
+  <script src="slicer-scan-ui.js?v=10"></script>
   <script src="waitlist.js?v=6066016"></script>
 
   <script>

@@ -175,6 +175,14 @@
     }
   });
 
+  // The Android ask. iPhone and iPad visitors never see it: they have the app. Everyone else
+  // (Android, and desktop, where the phone in the pocket is unknown) sees one line and a
+  // field. A demand count, not a launch — the copy in the HTML says so and must keep saying so.
+  var ask = document.getElementById('scan-android');
+  var ua = navigator.userAgent || '';
+  var isApple = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && 'ontouchstart' in window);
+  if (ask && !isApple) ask.hidden = false;
+
   // Only claim the camera where one exists, so desktop copy doesn't promise a phone feature.
   // Copying the text is named first on both, because it needs no OCR and cannot misread.
   if (!('ontouchstart' in window)) {
