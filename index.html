@@ -427,6 +427,9 @@
       font-weight:700;max-width:18ch;text-wrap:balance;
     }
     .stage p{margin:0 auto;font-size:var(--fs-lede);line-height:1.6;color:var(--body);max-width:50ch}
+    /* .stage p outranks the caption classes; restate them here so the closing CTA matches the hero. */
+    .stage p.cta-free{margin:24px auto 0;font-size:var(--fs-meta)}
+    .stage p.mailtoggle{margin:14px auto 0;font-size:var(--fs-ui)}
     /* FAQ — accessible native disclosure, left-aligned inside the centred stage */
     .faq{max-width:660px;margin:32px auto 0;text-align:left}
     .faq details{border-top:1px solid var(--rule);padding:2px 0}
