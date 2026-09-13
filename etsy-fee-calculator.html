@@ -241,6 +241,7 @@
             <span><input id="c-mins" type="number" inputmode="numeric" value="0" min="0" max="59" step="1" aria-label="Print time, minutes"><em>m</em></span>
           </div></div>
         <div class="field"><label for="c-elec">Electricity ($/print-hour)</label><input id="c-elec" type="number" inputmode="decimal" value="0.21" min="0" step="0.01"></div>
+        <div class="field"><label for="c-wear">Printer wear ($/print-hour)</label><input id="c-wear" type="number" inputmode="decimal" value="0" min="0" step="0.01" placeholder="0.20"></div>
         <div class="field"><label for="c-pack">Packaging per order ($)</label><input id="c-pack" type="number" inputmode="decimal" value="0.50" min="0" step="0.01"></div>
         <div class="field"><label for="c-labormin">Your labor per order (minutes)</label><input id="c-labormin" type="number" inputmode="decimal" value="10" min="0" step="1"></div>
         <div class="field"><label for="c-laborrate">Your labor rate ($/hour)</label><input id="c-laborrate" type="number" inputmode="decimal" value="25" min="0" step="1"></div>
@@ -260,6 +261,7 @@
         <div class="orow"><span>Estimated Etsy fees</span><span class="v neg" id="o-fees">−$0.00</span></div>
         <div class="orow"><span>Filament</span><span class="v neg" id="o-fil">−$0.00</span></div>
         <div class="orow"><span>Electricity</span><span class="v neg" id="o-el">−$0.00</span></div>
+        <div class="orow" id="row-wear" style="display:none"><span>Printer wear</span><span class="v neg" id="o-wear">−$0.00</span></div>
         <div class="orow"><span>Packaging</span><span class="v neg" id="o-pk">−$0.00</span></div>
         <div class="orow" id="row-labor" style="display:none"><span>Your labor</span><span class="v neg" id="o-lab">−$0.00</span></div>
         <div class="orow total"><span>Estimated net profit</span><span class="v pos" id="o-net">$0.00</span></div>
@@ -347,7 +349,7 @@
       var $ = function (id) { return document.getElementById(id); };
       var money = function (n) { return (n < 0 ? '-$' : '$') + Math.abs(n).toFixed(2); };
       var c = function (n) { return Math.round(n * 100) / 100; };
-      var ids = ['c-price','c-grams','c-kg','c-hours','c-mins','c-elec','c-pack',
+      var ids = ['c-price','c-grams','c-kg','c-hours','c-mins','c-elec','c-wear','c-pack',
                  'c-labormin','c-laborrate','c-margin','c-osa'];
       var priceMode = false;
       var interacted = false;
@@ -364,7 +366,7 @@
       // Everything that leaves your pocket to make and pack one order, before Etsy's cut.
       function productCosts() {
         return c(c(num('c-grams') / 1000 * num('c-kg')) + c(hoursTotal() * num('c-elec'))
-               + c(num('c-pack')) + laborCost());
+               + c(hoursTotal() * num('c-wear')) + c(num('c-pack')) + laborCost());
       }
 
       // SHIPPING IS OUT OF SCOPE ENTIRELY.
@@ -391,7 +393,7 @@
       // Inputs that survive a round trip through an email. Kept short so the URL stays
       // readable, and kept to INPUTS only — see the note where the link is built.
       var PREFILL = { price:'c-price', margin:'c-margin', grams:'c-grams', kg:'c-kg',
-                      hours:'c-hours', mins:'c-mins', elec:'c-elec', pack:'c-pack',
+                      hours:'c-hours', mins:'c-mins', elec:'c-elec', wear:'c-wear', pack:'c-pack',
                       labormin:'c-labormin', laborrate:'c-laborrate', osa:'c-osa' };
 
       function calcLink() {
@@ -436,9 +438,10 @@
 
         var fil = c(num('c-grams') / 1000 * num('c-kg'));
         var el = c(hoursTotal() * num('c-elec'));
+        var wear = c(hoursTotal() * num('c-wear'));
         var pk = c(num('c-pack'));
         var lab = laborCost();
-        var net = c(item - fees - fil - el - pk - lab);
+        var net = c(item - fees - fil - el - wear - pk - lab);
 
         $('o-rev').textContent = money(item);
         $('o-txn').textContent = '\u2212' + money(txn);
@@ -449,6 +452,8 @@
         $('o-fees').textContent = '\u2212' + money(fees);
         $('o-fil').textContent = '\u2212' + money(fil);
         $('o-el').textContent = '\u2212' + money(el);
+        $('row-wear').style.display = wear > 0 ? 'flex' : 'none';
+        $('o-wear').textContent = '\u2212' + money(wear);
         $('o-pk').textContent = '\u2212' + money(pk);
         $('row-labor').style.display = lab > 0 ? 'flex' : 'none';
         $('o-lab').textContent = '\u2212' + money(lab);
