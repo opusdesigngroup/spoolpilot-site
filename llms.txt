@@ -10,7 +10,7 @@
 People who sell what they print, from one printer to a small print farm, mostly on Etsy. It is not a
 hobbyist filament tracker, not a print-farm controller, and not general bookkeeping.
 
-## What it does (shipping today, version 1.1.2)
+## What it does (shipping today, version 1.1.3)
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
@@ -30,7 +30,8 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
 ## Free vs Pro
 
 - **Free:** filament inventory, the pricing calculator, manual sales, the product cost model, three
-  slicer scans, and up to ten synced Etsy orders a month.
+  slicer scans, and up to ten synced Etsy orders a month. Unlimited slicer scans are a $4.99 one-time
+  purchase (no subscription needed).
 - **Pro:** actual Etsy fees per order, the full profit-and-loss, weeks-of-stock forecasts, unlimited
   order sync and history import, unlimited slicer scans. $12.99/month or $99.99/year with a 7-day
   trial on the yearly plan.
