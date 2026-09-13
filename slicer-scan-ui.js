@@ -96,15 +96,15 @@
     var el = document.getElementById(id);
     if (el) el.classList.toggle('scanned', !!on);
   }
-  ['c-hours', 'c-grams'].forEach(function (id) {
+  ['c-hours', 'c-mins', 'c-grams'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', function () { mark(id, false); });
   });
 
   function undo() {
     if (!before) return;
-    fill('c-hours', before.hours); fill('c-grams', before.grams);
-    mark('c-hours', false); mark('c-grams', false);
+    fill('c-hours', before.hours); fill('c-mins', before.mins); fill('c-grams', before.grams);
+    mark('c-hours', false); mark('c-mins', false); mark('c-grams', false);
     before = null;
     say('Put your numbers back.', '');
   }
@@ -119,11 +119,13 @@
           'warn');
       return false;
     }
-    before = { hours: document.getElementById('c-hours').value, grams: document.getElementById('c-grams').value };
-    fill('c-hours', Math.round(reading.minutes / 60 * 100) / 100);
+    before = { hours: document.getElementById('c-hours').value, mins: document.getElementById('c-mins').value,
+               grams: document.getElementById('c-grams').value };
+    var h = Math.floor(reading.minutes / 60), m = Math.round(reading.minutes % 60);
+    // The slicer shows hours and minutes; the two fields take them as read, no decimal hours.
+    fill('c-hours', h); fill('c-mins', m);
     fill('c-grams', reading.grams);
-    mark('c-hours', true); mark('c-grams', true);
-    var h = Math.floor(reading.minutes / 60), m = reading.minutes % 60;
+    mark('c-hours', true); mark('c-mins', true); mark('c-grams', true);
     say('Read ' + (h ? h + 'h ' : '') + m + 'm and ' + reading.grams + ' g'
         + (reading.slicer ? ' from ' + reading.slicer : '')
         + (how === 'text' ? '.' : '. Check the two fields below.'), 'ok');

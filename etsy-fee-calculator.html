@@ -73,6 +73,10 @@
     .scan-drop:focus-within{border-color:var(--orange);outline:2px solid var(--orange);outline-offset:2px}
     /* A field the scan filled, until the person types in it. A misread must not look typed. */
     .scanned{border-color:var(--orange)!important;box-shadow:inset 3px 0 0 var(--orange)}
+    /* Hours and minutes side by side; the unit sits outside the input so the number stays clean. */
+    .time-pair{display:flex;gap:10px}
+    .time-pair span{flex:1;display:flex;align-items:center;gap:6px;min-width:0}
+    .time-pair em{font-style:normal;font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
     .scan-undo{margin-left:8px;font:inherit;color:var(--cta);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
     .scan-drop.busy{cursor:progress;opacity:.7}
     .scan-title{font-size:var(--fs-ui);font-weight:700;color:var(--ink)}
@@ -149,7 +153,11 @@
         <div class="field" id="f-margin" style="display:none"><label for="c-margin">Target profit margin (%)</label><input id="c-margin" type="number" inputmode="decimal" value="45" min="0" max="95" step="1"></div>
         <div class="field"><label for="c-grams">Filament used (g)</label><input id="c-grams" type="number" inputmode="decimal" value="45" min="0" step="1"></div>
         <div class="field"><label for="c-kg">Filament cost ($/kg)</label><input id="c-kg" type="number" inputmode="decimal" value="22" min="0" step="0.01"></div>
-        <div class="field"><label for="c-hours">Print time (hours)</label><input id="c-hours" type="number" inputmode="decimal" value="3" min="0" step="any"></div>
+        <div class="field"><label for="c-hours">Print time</label>
+          <div class="time-pair">
+            <span><input id="c-hours" type="number" inputmode="numeric" value="3" min="0" step="1" aria-label="Print time, hours"><em>h</em></span>
+            <span><input id="c-mins" type="number" inputmode="numeric" value="0" min="0" max="59" step="1" aria-label="Print time, minutes"><em>m</em></span>
+          </div></div>
         <div class="field"><label for="c-elec">Electricity ($/print-hour)</label><input id="c-elec" type="number" inputmode="decimal" value="0.21" min="0" step="0.01"></div>
         <div class="field"><label for="c-pack">Packaging per order ($)</label><input id="c-pack" type="number" inputmode="decimal" value="0.50" min="0" step="0.01"></div>
         <div class="field"><label for="c-labormin">Your labor per order (minutes)</label><input id="c-labormin" type="number" inputmode="decimal" value="10" min="0" step="1"></div>
@@ -241,7 +249,7 @@
     </div>
   </footer>
   <script src="slicer-scan.js?v=9"></script>
-  <script src="slicer-scan-ui.js?v=10"></script>
+  <script src="slicer-scan-ui.js?v=11"></script>
   <script src="waitlist.js?v=6066016"></script>
 
   <script>
@@ -249,10 +257,13 @@
       var $ = function (id) { return document.getElementById(id); };
       var money = function (n) { return (n < 0 ? '-$' : '$') + Math.abs(n).toFixed(2); };
       var c = function (n) { return Math.round(n * 100) / 100; };
-      var ids = ['c-price','c-grams','c-kg','c-hours','c-elec','c-pack',
+      var ids = ['c-price','c-grams','c-kg','c-hours','c-mins','c-elec','c-pack',
                  'c-labormin','c-laborrate','c-margin','c-osa'];
       var priceMode = false;
       function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v : 0; }
+      // Print time is entered as hours and minutes because that is how every slicer shows it.
+      function hoursTotal() { return num('c-hours') + Math.min(num('c-mins'), 59) / 60; }
+      function timeLabel() { var h = num('c-hours'), m = Math.min(num('c-mins'), 59); return h + 'h' + (m ? ' ' + m + 'm' : ''); }
 
       // Minutes x hourly rate. Sellers know what their time is worth per hour and roughly how
       // long a piece takes to finish and pack — asking for a dollar figure per order made them
@@ -261,7 +272,7 @@
 
       // Everything that leaves your pocket to make and pack one order, before Etsy's cut.
       function productCosts() {
-        return c(c(num('c-grams') / 1000 * num('c-kg')) + c(num('c-hours') * num('c-elec'))
+        return c(c(num('c-grams') / 1000 * num('c-kg')) + c(hoursTotal() * num('c-elec'))
                + c(num('c-pack')) + laborCost());
       }
 
@@ -289,7 +300,7 @@
       // Inputs that survive a round trip through an email. Kept short so the URL stays
       // readable, and kept to INPUTS only — see the note where the link is built.
       var PREFILL = { price:'c-price', margin:'c-margin', grams:'c-grams', kg:'c-kg',
-                      hours:'c-hours', elec:'c-elec', pack:'c-pack',
+                      hours:'c-hours', mins:'c-mins', elec:'c-elec', pack:'c-pack',
                       labormin:'c-labormin', laborrate:'c-laborrate', osa:'c-osa' };
 
       function calcLink() {
@@ -333,7 +344,7 @@
         var fees = c(txn + proc + list + osa);
 
         var fil = c(num('c-grams') / 1000 * num('c-kg'));
-        var el = c(num('c-hours') * num('c-elec'));
+        var el = c(hoursTotal() * num('c-elec'));
         var pk = c(num('c-pack'));
         var lab = laborCost();
         var net = c(item - fees - fil - el - pk - lab);
@@ -369,14 +380,14 @@
             $('rw-f-net').value = money(net);
             $('rw-f-margin').value = mPct + '%';
             $('rw-f-grams').value = String(num('c-grams'));
-            $('rw-f-hours').value = String(num('c-hours'));
+            $('rw-f-hours').value = timeLabel();
             // The link is the point of the email: it reopens this page with their inputs, so the
             // breakdown stays live instead of freezing into a table in an inbox. Only inputs go
             // in — the outputs are recomputed on arrival, so a rate change updates the answer
             // rather than mailing someone a number that has quietly gone stale.
             $('rw-f-link').value = calcLink();
             yours.innerHTML = 'Attached to your email: <b>' + money(item) + '</b> listing &middot; <b>'
-              + num('c-grams') + 'g</b> &middot; <b>' + num('c-hours') + 'h</b> &rarr; <b>'
+              + num('c-grams') + 'g</b> &middot; <b>' + timeLabel() + '</b> &rarr; <b>'
               + money(net) + '</b> net, <b>' + mPct + '%</b> margin.';
           } else {
             yours.textContent = '';
