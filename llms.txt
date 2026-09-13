@@ -1,7 +1,9 @@
 # SpoolPilot
 
-> SpoolPilot is an iPhone app for running a small 3D-printing business: pricing prints, reading the
-> fees Etsy actually charged on each order, profit per order and per product, and filament inventory.
+> SpoolPilot is the profit app you use standing at the printer. It reads your slicer, your Etsy fees,
+> and your spools, so you never sit down to a spreadsheet again. An iPhone app for running a small
+> 3D-printing business: pricing prints, the fees Etsy actually charged per order, profit per order and
+> per product, and filament inventory.
 > Published by Opus Design Group LLC; built by Sean, who runs a 3D-print shop on Etsy (five years,
 > 3,000+ sales). Category: 3D printing business management software. Site: https://spoolpilot.app
 
