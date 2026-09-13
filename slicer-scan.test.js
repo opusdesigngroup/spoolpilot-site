@@ -5,6 +5,25 @@ const parse = ctx.window.SlicerScan.parse;
 
 // minutes, grams, complete. null = must not read anything.
 const CASES = [
+["REGRESSION 157h: column-wise OCR puts the metres right under the Total header", `Filament Model Support Total
+9431 m
+299.43 g
+Total time: 5h36m`, 336, 299.43],
+
+["REGRESSION 157h: total-time label mangled, metres must not become minutes", `Slicing Result
+Filament Model Support Total
+; 87.30 m 701m 9431 m
+27719¢g 2225¢g 299.43 g
+Filament change times: 0
+Cost: 5.99
+Time Estimation
+Prepare time: 7m15s
+Model printing time: 5h28m
+Totai tirne: 5h36m`, 336, 299.43],
+
+["a lone four-digit minutes token is not a duration", `Total 9431 m
+Total filament 299.43 g`, null, 299.43],
+
 ["Bambu 2026 table panel: Total column, not Model", `Slicing Result
 Color Scheme Filament
 Filament Model Support Total

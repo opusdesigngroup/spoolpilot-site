@@ -25,7 +25,7 @@
   // since Total >= Prepare/Model on every slicer.
   var TIME = [
     { slicer: 'PrusaSlicer',              re: /estimated\s+printing\s+time\s*:?\s*([0-9dhms\s]+?)(?:\r?\n|$)/i, max: false },
-    { slicer: 'Bambu Studio / OrcaSlicer', re: /total\b[^\d:\n]{0,20}:?\s*((?:\d+\s*d\s*)?(?:\d+\s*h\s*)?\d+\s*m(?:in)?(?:\s*\d+\s*s)?\b)/i, max: false },
+    { slicer: 'Bambu Studio / OrcaSlicer', re: /total\b[^\d:\n]{0,20}:?[ \t]*((?:\d+[ \t]*d[ \t]*)?(?:\d+[ \t]*h[ \t]*)?\d+[ \t]*m(?:in)?(?:[ \t]*\d+[ \t]*s)?\b)/i, max: false },
     // Prusa prints two estimates. Name the normal one, or largest-candidate silently prices
     // every job at the slower stealth figure.
     { slicer: 'PrusaSlicer',              re: /normal\s+mode[^\d\n]{0,12}((?:\d+\s*d\s*)?(?:\d+\s*h\s*)?\d+\s*m(?:in)?(?:\s*\d+\s*s)?)/i, max: false },
@@ -85,6 +85,9 @@
       else if (u === 's') total += v / 60;
       saw = true;
     }
+    // A duration written in minutes alone never reaches four digits on a slicer (it would show
+    // hours). "9431 m" is a filament length that lost its decimal point, not 157 hours.
+    if (saw && /^\s*\d{4,}\s*m(?:in)?s?\s*$/i.test(token)) return null;
     return saw ? Math.round(total) : null;
   }
 
@@ -236,8 +239,20 @@
     return null;
   }
 
+  /* Bambu's table panel lists filament length in metres beside the grams. "94.31 m" is not
+     a duration, and "9431 m" (the point lost to OCR) reads as 157 hours if it reaches the
+     time patterns. Everything between the table's column header and the first line that
+     mentions time is filament, so it is removed before any duration is looked for. */
+  function withoutFilamentTable(text) {
+    var head = COLUMN_HEADER.exec(text);
+    if (!head) return text;
+    var rest = text.slice(head.index + head[0].length);
+    var stop = rest.search(/^[^\n]*\btime\b/im);
+    return text.slice(0, head.index) + (stop < 0 ? '' : rest.slice(stop));
+  }
+
   function parse(text) {
-    var t = firstOrMax(text, TIME, function (m) { return minutesFrom(m[1]); });
+    var t = firstOrMax(withoutFilamentTable(text), TIME, function (m) { return minutesFrom(m[1]); });
 
     // `unitFirst` belongs to the PATTERN, not the match — Prusa's sidebar prints
     // "Used Filament (g) 150.33", unit before value. Reading it off the match array made it
