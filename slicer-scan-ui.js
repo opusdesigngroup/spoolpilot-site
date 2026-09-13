@@ -126,6 +126,9 @@
     fill('c-hours', h); fill('c-mins', m);
     fill('c-grams', reading.grams);
     mark('c-hours', true); mark('c-mins', true); mark('c-grams', true);
+    // The fills above recalculated before the marks existed; one more change event lets the
+    // calculator see that these numbers came from a scan.
+    document.getElementById('c-grams').dispatchEvent(new Event('change', { bubbles: true }));
     say('Read ' + (h ? h + 'h ' : '') + m + 'm and ' + reading.grams + ' g'
         + (reading.slicer ? ' from ' + reading.slicer : '')
         + (how === 'text' ? '.' : '. Check the two fields below.'), 'ok');
