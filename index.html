@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-itunes-app" content="app-id=6796133961">
-  <title>SpoolPilot — Etsy profit &amp; fee tracking for 3D-print shops</title>
-  <meta name="description" content="SpoolPilot syncs your Etsy sales, reads the exact fees from Etsy&#39;s own ledger, subtracts your real costs, and shows the net profit on every order — built for Etsy sellers running 3D-print shops.">
+  <title>SpoolPilot: 3D Printing Business App for Etsy Sellers</title>
+  <meta name="description" content="iPhone app for small 3D-print businesses on Etsy: real fees from Etsy&#x27;s ledger, profit per order, print pricing from your slicer, filament inventory. Free, with Pro.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -14,52 +14,220 @@
   <link rel="canonical" href="https://spoolpilot.app/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SpoolPilot">
-  <meta property="og:title" content="SpoolPilot — Etsy profit & fee tracking for 3D-print shops">
-  <meta property="og:description" content="Sync your Etsy sales, see the exact fees Etsy charged, and true net profit on every order — from your phone. Built for Etsy sellers.">
+  <meta property="og:title" content="SpoolPilot: 3D Printing Business App for Etsy Sellers">
+  <meta property="og:description" content="iPhone app for small 3D-print businesses on Etsy: real fees from Etsy&#x27;s ledger, profit per order, print pricing from your slicer, filament inventory. Free, with Pro.">
   <meta property="og:url" content="https://spoolpilot.app/">
   <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SpoolPilot — Etsy profit & fee tracking for 3D-print shops">
-  <meta name="twitter:description" content="Sync your Etsy sales, see the exact fees Etsy charged, and true net profit on every order — from your phone. Built for Etsy sellers.">
+  <meta name="twitter:title" content="SpoolPilot: 3D Printing Business App for Etsy Sellers">
+  <meta name="twitter:description" content="iPhone app for small 3D-print businesses on Etsy: real fees from Etsy&#x27;s ledger, profit per order, print pricing from your slicer, filament inventory. Free, with Pro.">
   <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "SpoolPilot",
-    "operatingSystem": "iOS",
-    "applicationCategory": "BusinessApplication",
-    "description": "SpoolPilot syncs your Etsy sales, reads the exact fees from Etsy\u2019s own ledger, subtracts your true cost of goods, and shows the net profit on every order — built for Etsy sellers running 3D-print shops.",
-    "sameAs": ["https://www.instagram.com/spoolpilot.app/"],
-    "url": "https://spoolpilot.app/",
-    "image": "https://spoolpilot.app/og-image-v2.png",
-    "releaseNotes": "Version 1.1 on the App Store: print kinds, prints not sold, month and year recaps, enough-to-print and filament-used for Pro. Free to download, with an optional Pro subscription.",
-    "author": { "@type": "Organization", "name": "Opus Design Group LLC" }
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://spoolpilot.app/#organization",
+      "name": "Opus Design Group LLC",
+      "url": "https://spoolpilot.app/",
+      "logo": "https://spoolpilot.app/icon-192.png",
+      "sameAs": [
+        "https://apps.apple.com/app/id6796133961",
+        "https://www.instagram.com/spoolpilot.app/"
+      ],
+      "founder": {
+        "@id": "https://spoolpilot.app/#founder"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://spoolpilot.app/#founder",
+      "name": "Sean",
+      "jobTitle": "Founder, SpoolPilot",
+      "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
+      "worksFor": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "knowsAbout": [
+        "3D printing",
+        "Etsy selling",
+        "print costing",
+        "filament inventory"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://spoolpilot.app/#website",
+      "name": "SpoolPilot",
+      "url": "https://spoolpilot.app/",
+      "publisher": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "description": "Profit, pricing, and filament inventory for small 3D-printing businesses, plus guides on running one.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://spoolpilot.app/#app",
+      "name": "SpoolPilot",
+      "url": "https://spoolpilot.app/",
+      "operatingSystem": "iOS 17 or later",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "3D printing business management",
+      "description": "iPhone app for people who run a small 3D-printing business. Prices a print by reading the slicer screen, syncs an Etsy shop and reads the fees Etsy actually charged on each order, shows profit per order and per product, counts filament spools by barcode with weeks of stock from sales pace, and ranks what to print next.",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Small 3D-printing businesses and print farms selling on Etsy"
+      },
+      "installUrl": "https://apps.apple.com/app/id6796133961",
+      "downloadUrl": "https://apps.apple.com/app/id6796133961",
+      "sameAs": [
+        "https://apps.apple.com/app/id6796133961"
+      ],
+      "image": "https://spoolpilot.app/og-image-v2.png",
+      "screenshot": [
+        "https://spoolpilot.app/shot-home.png",
+        "https://spoolpilot.app/shot-scan.png",
+        "https://spoolpilot.app/shot-finances.png",
+        "https://spoolpilot.app/shot-filament.png"
+      ],
+      "softwareVersion": "1.1.2",
+      "featureList": [
+        "Slicer scan: reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura",
+        "Print pricing calculator that solves for a target margin after Etsy fees",
+        "Etsy order sync with full history (read-only)",
+        "Actual Etsy fees per order, read from the Etsy payment ledger",
+        "Profit per order, per product, and monthly profit and loss",
+        "Filament inventory by sealed-spool barcode scan with weeks-of-stock forecasts",
+        "Made-to-order and stocked products, bundles, print-next queue",
+        "Manual and in-person sales",
+        "Local-first, no account, no analytics in the app"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/app/id6796133961",
+          "description": "Filament inventory, pricing calculator, manual sales, three slicer scans, ten synced Etsy orders a month"
+        },
+        {
+          "@type": "Offer",
+          "name": "SpoolPilot Pro, monthly",
+          "price": "12.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/app/id6796133961",
+          "description": "Actual Etsy fees per order, profit and loss, forecasts, unlimited sync and slicer scans"
+        },
+        {
+          "@type": "Offer",
+          "name": "SpoolPilot Pro, yearly",
+          "price": "99.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/app/id6796133961",
+          "description": "Same as monthly, billed yearly, with a 7-day free trial"
+        }
+      ],
+      "author": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "publisher": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "isRelatedTo": {
+        "@id": "https://spoolpilot.app/etsy-fee-calculator.html#calculator"
+      }
+    }
+  ]
+}
   </script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "How does SpoolPilot calculate profit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a \"~\"." } },
-      { "@type": "Question", "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question — what did this Etsy order actually make you — and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile." } },
-      { "@type": "Question", "name": "What does it cost?",
-        "acceptedAnswer": { "@type": "Answer", "text": "SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit. Pro adds unlimited order sync, the full profit-and-loss, and weeks-of-stock forecasts — $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan." } },
-      { "@type": "Question", "name": "Is my shop and customer data private?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your data lives on your iPhone and your own iCloud — nothing is uploaded to us, there is no account, and the app contains no analytics or tracking SDKs. SpoolPilot connects to Etsy read-only (it can't change your shop), and it only ever reads your shop's numbers, never your buyers' personal details. This website does count visits, so we know which pages people read; it never receives anything from the app." } },
-      { "@type": "Question", "name": "Which slicers and platforms does it work with?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The camera reads print time and grams from Bambu Studio, OrcaSlicer, and PrusaSlicer screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard." } },
-      { "@type": "Question", "name": "Why was SpoolPilot created?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Because I got tired of guessing. I'm Sean, and I run Opus Design Company on Etsy — over 3,000 sales of 3D prints — and could never get a straight answer on what an order actually made after Etsy's fees, filament, and time. Spreadsheets fell behind and every other tool wanted a desktop, so he built the one he wanted: real profit, in your pocket, right at the printer. SpoolPilot is published by Opus Design Group LLC." } }
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is SpoolPilot, and who is it for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SpoolPilot is an iPhone app for running a small 3D-printing business: pricing a print from the slicer, reading the fees Etsy actually charged on each order, profit per order and per product, and filament inventory by barcode. It is built for people who sell what they print, mostly on Etsy, from one printer up to a small farm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work without an Etsy shop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Pricing from the slicer, filament inventory, and the product cost model need no shop connection, and sales at markets or in person are logged by hand in two taps and get the same profit treatment. Sales sync and reading real fees are Etsy-only today."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an Android or web version?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. SpoolPilot is a native iPhone app. The pricing calculator on spoolpilot.app is the one part that runs in a browser, free, with no signup. If you want the app on Android, the calculator page has a place to say so."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does SpoolPilot calculate profit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order — transaction, payment processing, listing, and Offsite Ads, read from Etsy's own ledger, not estimated — then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What's left is the profit on that order. For a print you haven't sold yet the calculator estimates the fees instead, and anything estimated is marked with a \"~\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question — what did this Etsy order actually make you — and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit. Pro adds unlimited order sync, the full profit-and-loss, and weeks-of-stock forecasts — $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my shop and customer data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your data lives on your iPhone and your own iCloud — nothing is uploaded to us, there is no account, and the app contains no analytics or tracking SDKs. SpoolPilot connects to Etsy read-only (it can't change your shop), and it only ever reads your shop's numbers, never your buyers' personal details. This website does count visits, so we know which pages people read; it never receives anything from the app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which slicers and platforms does it work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The camera reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why was SpoolPilot created?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because I got tired of guessing. I'm Sean, and I run Opus Design Company on Etsy — over 3,000 sales of 3D prints — I could never get a straight answer on what an order actually made after Etsy's fees, filament, and my time. Spreadsheets fell behind, and every other tool wanted a desktop. So I built the one I wanted: real profit, in your pocket, right at the printer. SpoolPilot is published by Opus Design Group LLC."
+      }
+    }
+  ]
+}
   </script>
   <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
@@ -453,6 +621,7 @@
         <span class="brandtext">SpoolPilot</span>
       </a>
       <nav>
+        <a href="/resources/">Resources</a>
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
         <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
@@ -676,12 +845,24 @@
       <h2 class="reveal">Questions makers ask</h2>
       <div class="faq reveal">
         <details>
+          <summary>What is SpoolPilot, and who is it for?</summary>
+          <p>SpoolPilot is an iPhone app for running a small 3D-printing business: pricing a print from the slicer, reading the fees Etsy actually charged on each order, profit per order and per product, and filament inventory by barcode. It is built for people who sell what they print, mostly on Etsy, from one printer up to a small farm. <a href="/3d-printing-business-software">What a 3D printing business needs to track</a> explains the whole picture; <a href="/resources/">the resources section</a> goes deeper on each part.</p>
+        </details>
+        <details>
+          <summary>Does it work without an Etsy shop?</summary>
+          <p>Yes. Pricing from the slicer, filament inventory, and the product cost model need no shop connection, and sales at markets or in person are logged by hand in two taps and get the same profit treatment. Sales sync and reading real fees are Etsy-only today.</p>
+        </details>
+        <details>
+          <summary>Is there an Android or web version?</summary>
+          <p>Not yet. SpoolPilot is a native iPhone app. The <a href="/etsy-fee-calculator.html">pricing calculator</a> on this site is the one part that runs in a browser, free, with no signup. If you want the app on Android, the calculator page has a place to say so.</p>
+        </details>
+        <details>
           <summary>How does SpoolPilot calculate profit?</summary>
           <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order &mdash; transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated &mdash; then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
-          <p>Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question &mdash; what did this Etsy order actually make you &mdash; and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile.</p>
+          <p>Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question &mdash; what did this Etsy order actually make you &mdash; and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile. <a href="/resources/3d-printing-business-software">How to choose software for a print business</a> lays out the options side by side.</p>
         </details>
         <details>
           <summary>What does it cost?</summary>
@@ -693,7 +874,7 @@
         </details>
         <details>
           <summary>Which slicers and platforms does it work with?</summary>
-          <p>The camera reads print time and grams from Bambu Studio, OrcaSlicer, and PrusaSlicer screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard.</p>
+          <p>The camera reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura screens. Sales sync works with Etsy today. SpoolPilot is a native iPhone app (iOS), not a web dashboard.</p>
         </details>
         <details>
           <summary>Why was SpoolPilot created?</summary>

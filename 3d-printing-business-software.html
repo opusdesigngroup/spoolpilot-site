@@ -22,6 +22,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/article.css?v=6066016">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
@@ -49,8 +51,18 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "SpoolPilot", "item": "https://spoolpilot.app/" },
-        { "@type": "ListItem", "position": 2, "name": "What software does a 3D printing business need?", "item": "https://spoolpilot.app/3d-printing-business-software" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What software does a 3D printing business need?",
+          "item": "https://spoolpilot.app/3d-printing-business-software"
+        }
       ]
     },
     {
@@ -58,21 +70,28 @@
       "@id": "https://spoolpilot.app/3d-printing-business-software#article",
       "headline": "What software does a 3D printing business actually need?",
       "description": "What a small 3D printing business has to track, from filament and print time to failed prints and Etsy fees, and when a spreadsheet stops being enough.",
-      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spoolpilot.app/3d-printing-business-software" },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spoolpilot.app/3d-printing-business-software"
+      },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-09-12",
+      "dateModified": "2026-09-13",
       "author": {
-        "@type": "Person",
-        "name": "Sean",
-        "jobTitle": "Founder, SpoolPilot",
-        "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales.",
-        "worksFor": { "@type": "Organization", "name": "Opus Design Group LLC", "url": "https://spoolpilot.app/" }
+        "@id": "https://spoolpilot.app/#founder"
       },
-      "publisher": { "@type": "Organization", "name": "Opus Design Group LLC", "url": "https://spoolpilot.app/" },
+      "publisher": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
       "about": [
-        { "@type": "Thing", "name": "3D printing business management software" },
-        { "@type": "Thing", "name": "3D printing cost and profit tracking" }
+        {
+          "@type": "Thing",
+          "name": "3D printing business management software"
+        },
+        {
+          "@type": "Thing",
+          "name": "3D printing cost and profit tracking"
+        }
       ],
       "mentions": [
         {
@@ -83,12 +102,60 @@
           "url": "https://spoolpilot.app/",
           "installUrl": "https://apps.apple.com/app/id6796133961",
           "offers": [
-            { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
-            { "@type": "Offer", "name": "SpoolPilot Pro, monthly", "price": "12.99", "priceCurrency": "USD" },
-            { "@type": "Offer", "name": "SpoolPilot Pro, yearly", "price": "99.99", "priceCurrency": "USD" }
+            {
+              "@type": "Offer",
+              "name": "Free",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "name": "SpoolPilot Pro, monthly",
+              "price": "12.99",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "name": "SpoolPilot Pro, yearly",
+              "price": "99.99",
+              "priceCurrency": "USD"
+            }
           ]
         }
+      ],
+      "isPartOf": {
+        "@id": "https://spoolpilot.app/#website"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://spoolpilot.app/#founder",
+      "name": "Sean",
+      "jobTitle": "Founder, SpoolPilot",
+      "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
+      "worksFor": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "knowsAbout": [
+        "3D printing",
+        "Etsy selling",
+        "print costing",
+        "filament inventory"
       ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://spoolpilot.app/#organization",
+      "name": "Opus Design Group LLC",
+      "url": "https://spoolpilot.app/",
+      "logo": "https://spoolpilot.app/icon-192.png",
+      "sameAs": [
+        "https://apps.apple.com/app/id6796133961",
+        "https://www.instagram.com/spoolpilot.app/"
+      ],
+      "founder": {
+        "@id": "https://spoolpilot.app/#founder"
+      }
     }
   ]
 }
@@ -102,6 +169,7 @@
         <span class="brandtext">SpoolPilot</span>
       </a>
       <nav>
+        <a href="/resources/">Resources</a>
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a>
         <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>

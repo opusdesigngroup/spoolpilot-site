@@ -182,7 +182,7 @@ tbody td:first-child{color:var(--muted);font-size:var(--fs-ui)}
 /* ---------- cards (support topics) ---------- */
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 8px}
 .card{background:var(--bg-alt);border-radius:16px;padding:20px 22px}
-.card h3{margin:0 0 6px;font-size:var(--fs-lede)}
+.card h3,.card h2.h3{margin:0 0 6px;font-size:var(--fs-lede)}
 .card p{margin:0;font-size:var(--fs-ui);line-height:1.55}
 
 /* ---------- fee calculator ---------- */

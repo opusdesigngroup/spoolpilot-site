@@ -22,6 +22,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/article.css?v=6066016">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
@@ -82,20 +84,10 @@
       "datePublished": "2026-09-12",
       "dateModified": "2026-09-12",
       "author": {
-        "@type": "Person",
-        "name": "Sean",
-        "jobTitle": "Founder, SpoolPilot",
-        "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales.",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Opus Design Group LLC",
-          "url": "https://spoolpilot.app/"
-        }
+        "@id": "https://spoolpilot.app/#founder"
       },
       "publisher": {
-        "@type": "Organization",
-        "name": "Opus Design Group LLC",
-        "url": "https://spoolpilot.app/"
+        "@id": "https://spoolpilot.app/#organization"
       },
       "isPartOf": {
         "@type": "CollectionPage",
@@ -116,6 +108,36 @@
           "name": "Etsy profit for 3D print sellers"
         }
       ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://spoolpilot.app/#founder",
+      "name": "Sean",
+      "jobTitle": "Founder, SpoolPilot",
+      "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
+      "worksFor": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "knowsAbout": [
+        "3D printing",
+        "Etsy selling",
+        "print costing",
+        "filament inventory"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://spoolpilot.app/#organization",
+      "name": "Opus Design Group LLC",
+      "url": "https://spoolpilot.app/",
+      "logo": "https://spoolpilot.app/icon-192.png",
+      "sameAs": [
+        "https://apps.apple.com/app/id6796133961",
+        "https://www.instagram.com/spoolpilot.app/"
+      ],
+      "founder": {
+        "@id": "https://spoolpilot.app/#founder"
+      }
     }
   ]
 }

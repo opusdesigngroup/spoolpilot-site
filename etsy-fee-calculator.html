@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-itunes-app" content="app-id=6796133961">
   <title>3D Printing Cost Calculator with Real Etsy Fees — SpoolPilot</title>
-  <meta name="description" content="Free 3D printing cost calculator: filament, electricity, packaging and print time, plus the Etsy fees most sellers never itemize. Work out a price or check a sale. No signup, no account.">
+  <meta name="description" content="Free 3D printing cost calculator: filament, electricity, packaging, print time, and the Etsy fees most sellers never itemize. Price a print or check a sale.">
   <link rel="canonical" href="https://spoolpilot.app/etsy-fee-calculator.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SpoolPilot">
   <meta property="og:title" content="Etsy Fee & Pricing Calculator for 3D Printing">
-  <meta property="og:description" content="Free 3D printing cost calculator: filament, electricity, packaging and print time, plus the Etsy fees most sellers never itemize. Work out a price or check a sale. No signup, no account.">
+  <meta property="og:description" content="Free 3D printing cost calculator: filament, electricity, packaging, print time, and the Etsy fees most sellers never itemize. Price a print or check a sale.">
   <meta property="og:url" content="https://spoolpilot.app/etsy-fee-calculator.html">
   <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Etsy Fee & Pricing Calculator for 3D Printing">
+  <meta name="twitter:description" content="Free 3D printing cost calculator: filament, electricity, packaging, print time, and the Etsy fees most sellers never itemize. Price a print or check a sale.">
+  <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="article.css?v=6066016">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
@@ -41,19 +47,90 @@
     window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
   </script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "3D Printing Cost Calculator with Etsy Fees",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Any",
-    "url": "https://spoolpilot.app/etsy-fee-calculator.html",
-    "description": "Free 3D printing cost calculator covering filament, electricity, packaging, print time and labor, plus Etsy's transaction, payment processing, listing and Offsite Ads fees on a sale.",
-    "featureList": "Filament cost per gram, electricity per print hour, packaging, labor, Etsy transaction and processing fees, Offsite Ads, target margin pricing",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "isAccessibleForFree": true,
-    "publisher": { "@type": "Organization", "name": "Opus Design Group LLC" }
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "3D Printing Cost Calculator with Etsy Fees",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "url": "https://spoolpilot.app/etsy-fee-calculator.html",
+      "description": "Free web version of the pricing calculator in the SpoolPilot iPhone app: filament, electricity, packaging, print time and labor, plus Etsy's published transaction, payment processing, listing and Offsite Ads fees, solved for a target margin.",
+      "featureList": "Filament cost per gram, electricity per print hour, packaging, labor, Etsy transaction and processing fees, Offsite Ads, target margin pricing",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isAccessibleForFree": true,
+      "publisher": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "@id": "https://spoolpilot.app/etsy-fee-calculator.html#calculator",
+      "isPartOf": {
+        "@id": "https://spoolpilot.app/#website"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "3D print pricing"
+        },
+        {
+          "@type": "Thing",
+          "name": "Etsy seller fees"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "3D printing cost calculator",
+          "item": "https://spoolpilot.app/etsy-fee-calculator.html"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://spoolpilot.app/#organization",
+      "name": "Opus Design Group LLC",
+      "url": "https://spoolpilot.app/",
+      "logo": "https://spoolpilot.app/icon-192.png",
+      "sameAs": [
+        "https://apps.apple.com/app/id6796133961",
+        "https://www.instagram.com/spoolpilot.app/"
+      ],
+      "founder": {
+        "@id": "https://spoolpilot.app/#founder"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://spoolpilot.app/#founder",
+      "name": "Sean",
+      "jobTitle": "Founder, SpoolPilot",
+      "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
+      "worksFor": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "knowsAbout": [
+        "3D printing",
+        "Etsy selling",
+        "print costing",
+        "filament inventory"
+      ]
+    }
+  ]
+}
   </script>
   <style>
     /* Scan drop zone. Tokens only — no literal colors or sizes. */
@@ -98,6 +175,7 @@
         <span class="brandtext">SpoolPilot</span>
       </a>
       <nav>
+        <a href="/resources/">Resources</a>
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a> <a href="/terms.html">Terms</a>
         <a class="tool tool-current" aria-current="page" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
@@ -114,6 +192,7 @@
       </p>
     <h1>3D printing cost calculator, with Etsy’s real fees</h1>
     <p class="lede"><strong>What is your actual profit?</strong> Work out what a sale really nets you — or what to charge a new listing to hit the margin you want. See the fee stack most sellers never itemize — transaction, processing, listing, Offsite Ads — then what's really left after filament, electricity, packaging and your own time. <strong>No signup, nothing stored.</strong></p>
+    <p class="fine">This is the web version of the calculator inside the SpoolPilot iPhone app. The app reads the grams and hours off your slicer screen with the camera and, for synced Etsy orders, swaps these estimates for the fees Etsy actually charged. The method behind the numbers is in <a href="/resources/3d-printing-pricing-calculator" style="color:var(--cta);font-weight:600">how to price your prints</a>.</p>
 
     <div class="calc">
       <div class="modes"  aria-label="Calculator mode">
