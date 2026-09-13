@@ -144,7 +144,7 @@ tbody td:first-child{color:var(--muted);font-size:var(--fs-ui)}
   box-shadow:0 14px 28px -14px rgba(249,115,22,.7);transition:background .16s ease,transform .16s ease}
 .btn-big:hover{background:var(--orange-deep);transform:translateY(-1px)}
 .btn-big svg{width:18px;height:18px;flex:0 0 auto}
-.cta p.cta-free{margin:12px 0 0;font-size:var(--fs-meta);color:var(--muted);font-weight:600}
+.cta p.cta-free{margin:24px 0 0;font-size:var(--fs-meta);color:var(--muted);font-weight:600}
 @media (max-width:380px){.btn-big{font-size:var(--fs-ui);padding:13px 20px}}
 
 /* ---------- waitlist ---------- */
