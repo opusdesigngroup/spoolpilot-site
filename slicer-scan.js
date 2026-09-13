@@ -160,6 +160,36 @@
     return null;
   }
 
+  /* Bambu Studio's newer results panel is a table: "Filament  Model  Support  Total" as a
+     header, then one row per filament with metres and grams under each column. There is no
+     "Total filament:" label to anchor on, and the first weight on the row is the MODEL column,
+     which is what a first-match read returns and what a seller is not looking for. When the
+     header is present, the last weight on a row is the Total column; across rows, the
+     largest of those is the print. */
+  var COLUMN_HEADER = /\bModel\b[^\n]*\bSupport\b[^\n]*\bTotal\b/i;
+  var GRAM_ON_LINE = /(\d+(?:[.,]\d+)?)[ \t]*g\b/gi;
+  function totalFromColumns(text) {
+    var head = COLUMN_HEADER.exec(text);
+    if (!head) return undefined;
+    var lines = text.slice(head.index + head[0].length).split(/\r?\n/);
+    var rowTotals = [], all = [];
+    for (var i = 0; i < lines.length; i++) {
+      var vals = [], m;
+      GRAM_ON_LINE.lastIndex = 0;
+      while ((m = GRAM_ON_LINE.exec(lines[i]))) {
+        var raw = m[1], v = NUM(raw);
+        if (v == null || v < 0.5 || v > 2500) continue;
+        if (!/[.,]/.test(raw) && raw.replace(/\D/g, '').length >= 4) continue;   // dropped decimal
+        vals.push(v);
+      }
+      if (vals.length >= 2) rowTotals.push(vals[vals.length - 1]);
+      all = all.concat(vals);
+    }
+    if (rowTotals.length) return Math.max.apply(null, rowTotals);
+    if (all.length) return Math.max.apply(null, all);   // columns split across lines: Total is still the largest
+    return undefined;
+  }
+
   function score(v) { return (v && typeof v === 'object' && 'grams' in v) ? v.grams : v; }
 
   /* Largest candidate wins — the rule the whole split-column strategy rests on, since Total is
@@ -214,6 +244,13 @@
     // permanently undefined and that whole layout returned no weight at all.
     // The labeled total outranks every pattern below it, including its own strict row.
     var anchored = totalFromLabel(text);
+    if (anchored === undefined) {
+      var columns = totalFromColumns(text);
+      if (columns != null) {
+        return { minutes: t ? t.value : null, grams: Math.round(columns * 100) / 100,
+                 slicer: (t && t.slicer) || 'Bambu Studio / OrcaSlicer', complete: !!t };
+      }
+    }
     if (anchored != null) {
       return { minutes: t ? t.value : null, grams: Math.round(anchored * 100) / 100,
                slicer: (t && t.slicer) || 'Bambu Studio / OrcaSlicer', complete: !!t };

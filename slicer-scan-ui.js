@@ -47,23 +47,86 @@
 
   var busy = false;
 
+  /* A phone photo of a slicer panel is light text on a dark panel, small in the frame, with
+     screen moire. Tesseract reads that badly as-is. Prepare it first: orient, scale to a
+     width the engine likes, grayscale, invert when the image is mostly dark, stretch the
+     contrast. The original is kept as a second attempt in case the preparation hurt a clean
+     screenshot. Nothing leaves the page; the canvas is local. */
+  function prepare(file) {
+    return new Promise(function (resolve) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        try {
+          var target = 2200;
+          var scale = Math.min(2.5, Math.max(1, target / img.naturalWidth));
+          if (img.naturalWidth > 3200) scale = 3000 / img.naturalWidth;
+          var w = Math.round(img.naturalWidth * scale), h = Math.round(img.naturalHeight * scale);
+          var c = document.createElement('canvas'); c.width = w; c.height = h;
+          var ctx = c.getContext('2d', { willReadFrequently: true });
+          ctx.drawImage(img, 0, 0, w, h);
+          var d = ctx.getImageData(0, 0, w, h), px = d.data, n = px.length / 4;
+          var hist = new Uint32Array(256), sum = 0, i, l;
+          for (i = 0; i < n; i++) {
+            l = (px[i * 4] * 299 + px[i * 4 + 1] * 587 + px[i * 4 + 2] * 114) / 1000 | 0;
+            px[i * 4] = l; hist[l]++; sum += l;
+          }
+          var dark = (sum / n) < 118;
+          // percentile stretch: 2nd..98th -> 0..255
+          var lo = 0, hi = 255, acc = 0;
+          for (i = 0; i < 256; i++) { acc += hist[i]; if (acc > n * 0.02) { lo = i; break; } }
+          acc = 0;
+          for (i = 255; i >= 0; i--) { acc += hist[i]; if (acc > n * 0.02) { hi = i; break; } }
+          var range = Math.max(1, hi - lo);
+          for (i = 0; i < n; i++) {
+            l = Math.max(0, Math.min(255, ((px[i * 4] - lo) * 255 / range) | 0));
+            if (dark) l = 255 - l;
+            px[i * 4] = px[i * 4 + 1] = px[i * 4 + 2] = l;
+          }
+          ctx.putImageData(d, 0, 0);
+          URL.revokeObjectURL(url);
+          resolve({ prepared: c, inverted: dark });
+        } catch (e) { URL.revokeObjectURL(url); resolve(null); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  }
+
+  function recognize(T, source) {
+    return T.recognize(source, 'eng').then(function (res) { return res.data.text || ''; });
+  }
+
   function handle(file) {
     if (busy || !file || !/^image\//.test(file.type)) return;
     busy = true;
     drop.classList.add('busy');
     say('Reading…');
 
+    var engine;
     loadTesseract()
-      .then(function (T) { return T.recognize(file, 'eng'); })
-      .then(function (res) {
-        var raw = res.data.text || '';
+      .then(function (T) { engine = T; return prepare(file); })
+      .then(function (prep) {
+        var first = prep ? prep.prepared : file;
+        return recognize(engine, first).then(function (raw) {
+          var reading = window.SlicerScan.parse(raw);
+          if (reading.complete || !prep) return { raw: raw, reading: reading };
+          // The prepared image missed. A clean screenshot sometimes reads better untouched.
+          return recognize(engine, file).then(function (raw2) {
+            var r2 = window.SlicerScan.parse(raw2);
+            return r2.complete || (r2.minutes != null || r2.grams != null) && !(reading.minutes != null || reading.grams != null)
+              ? { raw: raw2, reading: r2 } : { raw: raw, reading: reading };
+          });
+        });
+      })
+      .then(function (out) {
         // Keep the raw OCR on the page object. Nothing is sent anywhere; it exists so a
         // misread can be diagnosed from what the engine actually saw rather than guessed at.
         // `copy(SlicerScan.lastOCR)` in the console hands over the exact text.
-        window.SlicerScan.lastOCR = raw;
+        window.SlicerScan.lastOCR = out.raw;
         // Deliberately not "scan failed" on a miss. The likeliest causes are a cropped panel
         // or a photo taken at an angle, both fixable by the person holding the phone.
-        apply(window.SlicerScan.parse(raw), 'image');
+        apply(out.reading, 'image');
       })
       .catch(function () {
         say('Could not load the scanner. Type the numbers in below instead.', 'warn');

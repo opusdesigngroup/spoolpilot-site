@@ -5,6 +5,28 @@ const parse = ctx.window.SlicerScan.parse;
 
 // minutes, grams, complete. null = must not read anything.
 const CASES = [
+["Bambu 2026 table panel: Total column, not Model", `Slicing Result
+Color Scheme Filament
+Filament Model Support Total
+1 87.30 m 277.19 g 7.01 m 22.25 g 94.31 m 299.43 g
+Filament change times: 0
+Cost: 5.99
+Time Estimation
+Prepare time: 7m15s
+Model printing time: 5h28m
+Total time: 5h36m`, 336, 299.43],
+
+["Bambu 2026 table panel, OCR splits the columns onto lines", `Filament Model Support Total
+1 87.30 m 277.19 g
+7.01 m 22.25 g
+94.31 m 299.43 g
+Total time: 5h36m`, 336, 299.43],
+
+["Bambu 2026 table, two filaments: largest row total wins", `Filament Model Support Total
+1 40.10 m 120.00 g 2.00 m 6.00 g 42.10 m 126.00 g
+2 10.00 m 30.00 g 0 m 0 g 10.00 m 30.00 g
+Total time: 2h 10m`, 130, 126.00],
+
 ["Bambu Studio, clean OCR", `Slicing Result
 Total time: 4h22m
 Prepare time: 2m5s
