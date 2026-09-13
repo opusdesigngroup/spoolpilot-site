@@ -15,8 +15,8 @@ Etsy seller with 3,000+ sales.
   Offsite Ads — then subtracts them to the cent to show net profit per order.
 - **True cost of goods.** Subtracts filament (by grams and $/kg), print electricity, packaging,
   and labor, so profit reflects the whole cost, not just the sale price.
-- **Slicer scan.** The camera reads print time and grams from Bambu Studio, OrcaSlicer, and
-  PrusaSlicer screens, then prices the print (fees and labor included).
+- **Slicer scan.** The camera reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and
+  Ultimaker Cura screens, then prices the print (fees and labor included).
 - **Filament inventory.** Sealed spools counted by barcode scan — no weighing — with a weeks-of-
   stock forecast from real sales pace.
 - **Smart "print next" queue.** Ranks what to print by how soon each product runs out, using the
@@ -59,6 +59,13 @@ calculator, and manual tracking stay free.
 ## Key pages
 
 - Home / overview: https://spoolpilot.app/
+- What software a 3D printing business needs (guide): https://spoolpilot.app/3d-printing-business-software
+- Resources hub: https://spoolpilot.app/resources/
+- How to price your prints: https://spoolpilot.app/resources/3d-printing-pricing-calculator
+- Real profit on a 3D print: https://spoolpilot.app/resources/3d-printing-profit-calculator
+- Etsy fees for 3D print sellers: https://spoolpilot.app/resources/etsy-fees-3d-printing
+- Filament inventory for a print business: https://spoolpilot.app/resources/filament-inventory-management
+- Choosing software for a small 3D printing business: https://spoolpilot.app/resources/3d-printing-business-software
 - Free Etsy fee calculator: https://spoolpilot.app/etsy-fee-calculator.html
 - Why Etsy takes more than the rate card says: https://spoolpilot.app/etsy-fees-vs-rate-card.html
 - 3DPCC vs SpoolPilot: https://spoolpilot.app/3dpcc-alternative.html

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-itunes-app" content="app-id=6796133961">
+  <title>How to Calculate the Real Profit on a 3D Print — SpoolPilot</title>
+  <meta name="description" content="Profit on a print is what the buyer paid minus the fees actually charged minus what it cost to make and ship. One order rebuilt from the ledger.">
+  <link rel="canonical" href="https://spoolpilot.app/resources/3d-printing-profit-calculator">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SpoolPilot">
+  <meta property="og:title" content="How to calculate the real profit on a 3D print">
+  <meta property="og:description" content="Profit on a print is what the buyer paid minus the fees actually charged minus what it cost to make and ship. One order rebuilt from the ledger.">
+  <meta property="og:url" content="https://spoolpilot.app/resources/3d-printing-profit-calculator">
+  <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to calculate the real profit on a 3D print">
+  <meta name="twitter:description" content="Profit on a print is what the buyer paid minus the fees actually charged minus what it cost to make and ship. One order rebuilt from the ledger.">
+  <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/article.css?v=6066016">
+  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
+       paint; autocapture handles pageviews, clicks and route changes from here on. The project
+       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
+       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
+       code, and a pageview would send it to a third party. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+
+    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://spoolpilot.app/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to calculate the real profit on a 3D print",
+          "item": "https://spoolpilot.app/resources/3d-printing-profit-calculator"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://spoolpilot.app/resources/3d-printing-profit-calculator#article",
+      "headline": "How to calculate the real profit on a 3D print",
+      "description": "Profit on a print is what the buyer paid minus the fees actually charged minus what it cost to make and ship. One order rebuilt from the ledger.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spoolpilot.app/resources/3d-printing-profit-calculator"
+      },
+      "image": "https://spoolpilot.app/og-image-v2.png",
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "author": {
+        "@type": "Person",
+        "name": "Sean",
+        "jobTitle": "Founder, SpoolPilot",
+        "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Opus Design Group LLC",
+          "url": "https://spoolpilot.app/"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      },
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://spoolpilot.app/resources/",
+        "name": "SpoolPilot Resources"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "3D print profit calculation"
+        },
+        {
+          "@type": "Thing",
+          "name": "net profit per order"
+        },
+        {
+          "@type": "Thing",
+          "name": "Etsy seller profit"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+        <span class="brandtext">SpoolPilot</span>
+      </a>
+      <nav>
+        <a href="/resources/">Resources</a>
+        <a href="/support.html">Support</a>
+        <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
+        <a class="btn" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-res-3d-printing-profit-calculator&mt=8"><span class="btnlabel-full">Download on the App Store</span><span class="btnlabel-short">Get the app</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <p class="crumb"><a href="/">SpoolPilot</a> · <a href="/resources/">Resources</a></p>
+    <p class="credential">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      By an Etsy seller with 3,000+ sales
+    </p>
+    <h1>How to calculate the real profit on a 3D print</h1>
+    <p class="lede">The profit on a print is <strong>what the buyer paid, minus the fees the platform actually charged on that order, minus what it cost you to make and ship it</strong>. The formula is one line. The work is in the word <em>actually</em>: pricing uses estimates, but profit has to use the numbers that really happened, and for most sellers the gap between the two is the difference between a shop that feels profitable and one that is.</p>
+    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised 12 September 2026.</p>
+
+    <h2>Gross, net, and the number that matters</h2>
+    <p>"I sold $3,000 this month" is gross revenue. It is the number Etsy's dashboard shows and the one people quote, and it says nothing about whether the month made money. Net profit is what is left after fees and costs, and the version that tells you what to do next is <strong>net profit per order</strong>, added up per product. A month can be net positive while two of your products are quietly losing money on every sale; you cannot see that from the monthly total.</p>
+    <p>This page is about the after-the-sale number. If you are still deciding what to charge, start with <a href="/resources/3d-printing-pricing-calculator">how to price your prints</a>; the two use the same cost lines but different fee numbers.</p>
+
+    <h2>Reconstruct one order from the payment account</h2>
+    <p>The only trustworthy source for an order's fees is the ledger the platform keeps for your money. On Etsy that is the payment account, downloadable as a monthly CSV. Take one real order and build it up line by line.</p>
+    <div class="tbl">
+      <table style="min-width:520px">
+        <thead><tr><th>Line</th><th>Amount</th><th>Where it comes from</th></tr></thead>
+        <tbody>
+          <tr><td>Item price</td><td>$24.00</td><td>Order</td></tr>
+          <tr><td>Buyer-paid shipping</td><td>$4.50</td><td>Order. Revenue, but not yours to keep</td></tr>
+          <tr><td>Transaction fee</td><td>−$1.85</td><td>Ledger. 6.5% of $28.50, because it applies to shipping too</td></tr>
+          <tr><td>Payment processing</td><td>−$1.11</td><td>Ledger. 3% of $28.50 plus $0.25</td></tr>
+          <tr><td>Listing fee</td><td>−$0.20</td><td>Ledger</td></tr>
+          <tr><td>Shipping label</td><td>−$4.95</td><td>Your label purchase</td></tr>
+          <tr><td>Cost to make and pack</td><td>−$6.40</td><td>Your cost model (filament, time, failure share, labor, packaging)</td></tr>
+          <tr><td class="sp">Net profit on this order</td><td class="sp">$13.99</td><td class="sp">49% of the item price, 46% of what the buyer paid</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Two things in that table trip people up. The buyer's $4.50 for shipping counts as revenue and the fees are charged on it, but the label cost $4.95, so shipping was a small loss rather than income. And the fee lines came from the ledger; if that order had been attributed to an Offsite Ad, a fourth fee line of $4.28 would sit there and the profit would be $9.71. The <a href="/resources/etsy-fees-3d-printing">Etsy fees page</a> explains each line and why the ledger and a calculator can disagree.</p>
+
+    <h2>Costs that don't belong to any one order</h2>
+    <p>The "cost to make and pack" line hides a decision. Some costs arrive per print: this order's filament, this order's labor. Others arrive in lumps: a failed print on Tuesday that belonged to no order, a case of 200 mailers, the electricity bill. Profit per order only works if the lumps are turned into rates and spread across the prints they support.</p>
+    <ul>
+      <li><strong>Failed and prototype prints</strong> become a failure-rate multiplier on the product they were attempts at. A product that fails one in ten carries 11% extra material and machine cost on every success. Log the failures, or the multiplier is a guess.</li>
+      <li><strong>Packaging bought in bulk</strong> becomes a per-unit cost: $56 for 200 mailers is $0.28 each.</li>
+      <li><strong>Electricity and machine wear</strong> become a per-hour rate applied to each print's hours.</li>
+      <li><strong>Overhead</strong> that fits none of those (a subscription, a table at a market) is a monthly line on the P&amp;L, not smeared across orders. Keep it visible instead of hidden.</li>
+    </ul>
+
+    <h2>Profit per product, and the bundle trap</h2>
+    <p>Once every order has a real profit figure, sort by product. This is the view that changes decisions. Two products with the same sales count can have opposite margins once packaging and labor are in, and the one that "sells great" is sometimes the one paying for the privilege. Bundles are the usual hiding place: a three-piece set sold at a discount costs three prints, three finishing passes, and a bigger box, and it is common to find that it nets less than one of its parts sold alone.</p>
+    <p>Look at profit per product for the month and for the last few months. Prune or reprice the bottom of the list. That single habit does more for a small shop than any amount of new listings.</p>
+
+    <h2>The monthly P&amp;L</h2>
+    <p>Revenue, minus the fees actually charged, minus cost of goods (the per-order costs added up), minus the overhead lines, equals net profit for the month. Compare it to last month and to the same month last year if you have it. Two rules keep it honest: count revenue when the order was paid, not when it was listed or shipped, and subtract refunds and cancellations in the month they happened.</p>
+
+    <h2>Common mistakes</h2>
+    <ul>
+      <li><strong>Using the rate card to compute realized profit.</strong> A calculator estimate is for pricing. After the sale, use the ledger.</li>
+      <li><strong>Treating shipping income as profit</strong> and never subtracting the label.</li>
+      <li><strong>Counting the listed price</strong> when a coupon or sale price was applied.</li>
+      <li><strong>Ignoring refunds</strong> because they are annoying to enter.</li>
+      <li><strong>Never logging failed prints,</strong> so material spend and sales never reconcile and every product looks better than it is.</li>
+      <li><strong>Looking only at the monthly total</strong> and missing the two products dragging it down.</li>
+    </ul>
+
+    <h2>Doing this in a spreadsheet</h2>
+    <p>Under roughly twenty orders a month, a spreadsheet with one row per order works, and it is worth doing by hand at least once so you understand your own numbers. The step that breaks it is the fee lines. To get them you download the payment account CSV, match its rows to orders, and type the amounts in, every month, for every order. Almost everyone stops by the second month and goes back to estimates, at which point the sheet is a pricing tool wearing a profit tool's clothes.</p>
+    <p>That step is what SpoolPilot automates. Link an Etsy shop with read-only access and the app pulls in your orders, back through your full history if you want it, then attaches to each one the fee lines Etsy posted for it in the payment ledger, read directly through Etsy's API rather than estimated from the rate card. Etsy grants that kind of API access only after reviewing an app; SpoolPilot holds it, and most tools that advertise "real profit" do not, so check which kind you are looking at. With a cost recipe on each product, every order shows an itemized figure like the table above. If the money on an order doesn't add up to Etsy's total, the app says so and marks the figure as an estimate rather than showing a confident wrong number. Profit per product and the monthly P&amp;L are Pro features; the free tier includes the sales list, the cost model, and ten synced orders a month. Market and in-person sales are logged by hand in two taps and get the same treatment. If you are weighing it against a spreadsheet or another tool, <a href="/resources/3d-printing-business-software">the software guide</a> lays out the options, and <a href="/3d-printing-business-software">the broader guide</a> covers everything a shop tracks.</p>
+    <div class="cta">
+      <h2>See the real profit on every order</h2>
+      <p>SpoolPilot reads the fees Etsy actually charged on each synced order and subtracts your real cost of goods. Free to download for iPhone; profit per order and the P&amp;L are part of Pro.</p>
+      <p><a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-res-3d-printing-profit-calculator&mt=8">Download SpoolPilot on the App Store</a></p>
+      <p class="cta-free">Want the estimate first? <a href="/etsy-fee-calculator.html" style="color:var(--cta)">The free calculator</a> shows what a sale at a given price nets after fees.</p>
+    </div>
+    <p class="fine" style="margin-top:26px">More: <a href="/resources/3d-printing-pricing-calculator" style="color:var(--orange);font-weight:600">how to price your prints</a> · <a href="/resources/etsy-fees-3d-printing" style="color:var(--orange);font-weight:600">Etsy fees for 3D print sellers</a> · <a href="/etsy-fees-vs-rate-card.html" style="color:var(--orange);font-weight:600">why Etsy takes more than the rate card says</a> · <a href="/resources/filament-inventory-management" style="color:var(--orange);font-weight:600">tracking filament inventory</a> · <a href="/3d-printing-business-software" style="color:var(--orange);font-weight:600">what software a 3D printing business needs</a></p>
+  </main>
+
+  <footer>
+    <div class="in">
+      &copy; <span id="year"></span> Opus Design Group LLC · <a href="/resources/">Resources</a> · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+      <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+    </div>
+  </footer>
+  <script src="/waitlist.js?v=6066016"></script>
+</body>
+</html>

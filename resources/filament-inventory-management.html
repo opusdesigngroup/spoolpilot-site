@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-itunes-app" content="app-id=6796133961">
+  <title>How to Track Filament Inventory for a 3D Printing Business</title>
+  <meta name="description" content="Count sealed spools, estimate open ones, and turn sales pace into weeks of stock. Why weighing every spool fails and how failed prints eat inventory.">
+  <link rel="canonical" href="https://spoolpilot.app/resources/filament-inventory-management">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SpoolPilot">
+  <meta property="og:title" content="How to track filament inventory for a 3D printing business">
+  <meta property="og:description" content="Count sealed spools, estimate open ones, and turn sales pace into weeks of stock. Why weighing every spool fails and how failed prints eat inventory.">
+  <meta property="og:url" content="https://spoolpilot.app/resources/filament-inventory-management">
+  <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to track filament inventory for a 3D printing business">
+  <meta name="twitter:description" content="Count sealed spools, estimate open ones, and turn sales pace into weeks of stock. Why weighing every spool fails and how failed prints eat inventory.">
+  <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/article.css?v=6066016">
+  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
+       paint; autocapture handles pageviews, clicks and route changes from here on. The project
+       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
+       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
+       code, and a pageview would send it to a third party. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+
+    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://spoolpilot.app/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to track filament inventory for a 3D printing business",
+          "item": "https://spoolpilot.app/resources/filament-inventory-management"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://spoolpilot.app/resources/filament-inventory-management#article",
+      "headline": "How to track filament inventory for a 3D printing business",
+      "description": "Count sealed spools, estimate open ones, and turn sales pace into weeks of stock. Why weighing every spool fails and how failed prints eat inventory.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://spoolpilot.app/resources/filament-inventory-management"
+      },
+      "image": "https://spoolpilot.app/og-image-v2.png",
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "author": {
+        "@type": "Person",
+        "name": "Sean",
+        "jobTitle": "Founder, SpoolPilot",
+        "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Opus Design Group LLC",
+          "url": "https://spoolpilot.app/"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Opus Design Group LLC",
+        "url": "https://spoolpilot.app/"
+      },
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://spoolpilot.app/resources/",
+        "name": "SpoolPilot Resources"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "filament inventory management"
+        },
+        {
+          "@type": "Thing",
+          "name": "weeks of stock"
+        },
+        {
+          "@type": "Thing",
+          "name": "3D printing supply planning"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+        <span class="brandtext">SpoolPilot</span>
+      </a>
+      <nav>
+        <a href="/resources/">Resources</a>
+        <a href="/support.html">Support</a>
+        <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
+        <a class="btn" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-res-filament-inventory-management&mt=8"><span class="btnlabel-full">Download on the App Store</span><span class="btnlabel-short">Get the app</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <p class="crumb"><a href="/">SpoolPilot</a> · <a href="/resources/">Resources</a></p>
+    <p class="credential">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      By an Etsy seller with 3,000+ sales
+    </p>
+    <h1>How to track filament inventory for a 3D printing business</h1>
+    <p class="lede">Count <strong>sealed spools</strong> by scanning the barcode when they arrive, treat an opened spool as <strong>in use</strong>, and get <strong>weeks of stock</strong> from how fast your sales consume each material. That is the whole system. It survives a busy week, which is more than can be said for weighing every spool, and it answers the two questions a business actually has: can I fill this week's orders, and when do I reorder.</p>
+    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised 12 September 2026.</p>
+
+    <h2>The two questions inventory has to answer</h2>
+    <p>A hobbyist wants to know how many grams are left on the spool, because the next print has to fit. A business wants to know two different things: <strong>is there enough of this material for the orders coming in</strong>, and <strong>when do I need to order more so it arrives before I run out</strong>. Both are questions about pace, not weight. A spool with 400 g left is plenty for a product that sells twice a month and a crisis for one that sells daily.</p>
+
+    <h2>Sealed spool counts</h2>
+    <p>The unit of business inventory is the sealed spool. It is discrete, it has a barcode, and its contents are known exactly. Scan the barcode when a box arrives and the count goes up by the number of spools; scan when you open one and it moves from "on the shelf" to "in use." Five seconds per box, and the count is right. When a material is down to one sealed spool and the open one, you know without walking to the shelf.</p>
+    <p>Restock day is where this earns its keep. A case of the same spool arrives, you scan one, then tap plus for each of the rest or type the quantity if it is fifty. SpoolPilot works this way, and it also builds a shared library of scanned barcodes so a spool you have never bought before is recognized the second time anyone in the app scans it.</p>
+
+    <h2>Grams remaining on open spools</h2>
+    <p>Weighing an open spool works, and it fails as a habit. Subtract the empty-spool weight, write the number down, repeat after every print. Most people do it for two weeks. The version that lasts is <strong>derived remaining</strong>: you know the spool started at 1,000 g and you know the grams of each print that came off it (the slicer told you), so remaining is a subtraction you never have to do by hand. It drifts a little with purge and failed starts. For a business that is fine; the sealed count behind it is exact, and the open spool is one of many.</p>
+    <p>Precision matters in one case: a single large print that needs most of a spool. Weigh for that one, then go back to counting.</p>
+
+    <h2>Usage rate: what your sales say you'll need</h2>
+    <p>If a product uses 47 g of a material and sold 30 units last month, that product alone consumed 1.4 kg of it. Add the other products that use the same material, then add what failures and prototypes ate, and you have a monthly usage rate per material. This is the number a spreadsheet of spool weights cannot give you, because it lives in your sales history, not on the shelf.</p>
+
+    <h2>Weeks of stock</h2>
+    <p>weeks of stock = (sealed spools × spool weight + estimated remaining on open spools) ÷ weekly usage.</p>
+    <p>Example: three sealed 1 kg spools of a black PLA, about 400 g left on the open one, and products that use 800 g of it a week. (3,000 + 400) ÷ 800 = <strong>4.25 weeks</strong>. If the supplier takes a week to deliver and you want a week of safety, reorder when the number hits two. The same material in a color that sells slowly might show 40 weeks, which is the honest signal not to buy more of it however good the sale price is.</p>
+
+    <h2>Failed and unsold prints</h2>
+    <p>Inventory only reconciles if everything that consumed filament is counted, and the things that consume it without producing a sale are the ones that get skipped: the failed print, the test cube, the prototype, the stock you printed ahead of a season that has not sold yet. Log them. A "scratch print" entry that just says 40 g of the gold went to a failed test keeps the usage rate honest, and when the shelf is empty a week early you will know why. This is also where the pricing failure-rate multiplier comes from; <a href="/resources/3d-printing-pricing-calculator">the pricing page</a> shows how it changes a price.</p>
+
+    <h2>Why weight alone isn't enough</h2>
+    <p>Grams remaining is a fact about one spool. Weeks of stock is a fact about your business. The first tells you whether the next print will finish; the second tells you whether to place an order today, whether a new product's material is one you can commit to, and whether the bulk discount on a slow color is a saving or a shelf ornament. A filament tracker built for hobbyists optimizes for the first question and is very good at it. A shop needs the second, and the second needs sales data.</p>
+
+    <h2>Common mistakes</h2>
+    <ul>
+      <li><strong>Weighing rituals</strong> that collapse by week three, leaving worse data than a simple count.</li>
+      <li><strong>Counting open spools as full,</strong> or not counting them at all.</li>
+      <li><strong>One usage rate for "PLA"</strong> when the black sells five times faster than the teal.</li>
+      <li><strong>Reordering on gut</strong> and discovering the popular color is out the week before a holiday.</li>
+      <li><strong>Not logging failures,</strong> so the shelf and the spreadsheet disagree and nobody trusts either.</li>
+      <li><strong>Buying the bulk deal</strong> on a material that shows forty weeks of stock.</li>
+    </ul>
+
+    <h2>Spreadsheet, filament tracker, or something else</h2>
+    <p>A spreadsheet with one row per material, a sealed count, an estimated open amount, and a weekly usage number you update monthly is a workable system for a small shop, and better than most. It breaks on the usage number, which has to be recomputed from sales by hand, and on the scanning, which a sheet cannot do.</p>
+    <p>Dedicated filament trackers such as Spoolman are excellent at grams remaining, printer integration, and drying logs, and have no idea what you sold. If material precision is your problem, they are the right tool; <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> is an honest comparison.</p>
+    <p>SpoolPilot does the business version: sealed spools counted by barcode scan, weeks of stock computed from your real sales pace per material, a print-next queue ranked by how soon each product runs out, and a low-stock warning that stays quiet for materials you don't sell through. Filament inventory is part of the free tier with no limit; the forecasts are part of Pro. Where it sits next to the rest of a shop's numbers is in <a href="/3d-printing-business-software">what software a 3D printing business needs</a>, and <a href="/resources/3d-printing-business-software">the software guide</a> helps decide between these options.</p>
+    <div class="cta">
+      <h2>Count spools by scanning them</h2>
+      <p>SpoolPilot counts sealed spools by barcode and turns your sales pace into weeks of stock per material. Filament inventory is free with no limit.</p>
+      <p><a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-res-filament-inventory-management&mt=8">Download SpoolPilot on the App Store</a></p>
+      <p class="cta-free">Pricing a print first? <a href="/etsy-fee-calculator.html" style="color:var(--cta)">The free calculator</a> turns grams and hours into a price.</p>
+    </div>
+    <p class="fine" style="margin-top:26px">More: <a href="/spoolman-alternative.html" style="color:var(--orange);font-weight:600">Spoolman vs SpoolPilot</a> · <a href="/resources/3d-printing-pricing-calculator" style="color:var(--orange);font-weight:600">how to price your prints</a> · <a href="/resources/3d-printing-profit-calculator" style="color:var(--orange);font-weight:600">real profit on a print</a> · <a href="/resources/3d-printing-business-software" style="color:var(--orange);font-weight:600">choosing software for a print business</a> · <a href="/3d-printing-business-software" style="color:var(--orange);font-weight:600">what software a 3D printing business needs</a></p>
+  </main>
+
+  <footer>
+    <div class="in">
+      &copy; <span id="year"></span> Opus Design Group LLC · <a href="/resources/">Resources</a> · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+      <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+    </div>
+  </footer>
+  <script src="/waitlist.js?v=6066016"></script>
+</body>
+</html>
