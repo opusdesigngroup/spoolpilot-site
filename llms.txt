@@ -12,7 +12,7 @@
 People who sell what they print, from one printer to a small print farm, mostly on Etsy. It is not a
 hobbyist filament tracker, not a print-farm controller, and not general bookkeeping.
 
-## What it does (shipping today, version 1.1.3)
+## What it does (shipping today, version 1.1.4)
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
@@ -28,6 +28,8 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
 - **Products.** Made-to-order by default, stock tracking where wanted, bundles from parts, and a
   print-next queue ranked by how soon each product runs out.
 - **Manual sales** for markets and in-person selling, with the same cost and profit treatment.
+- **Printer wear.** Cost settings takes what one printer cost and the print hours expected from it
+  and charges the per-hour share on every price, sale, and report. Blank means nothing is charged.
 
 ## Free vs Pro
 
@@ -48,8 +50,7 @@ orders, replaces the estimate with the fees Etsy actually charged.
 
 - Not a web dashboard and not on Android. iPhone only (iOS 17 or later).
 - Sales sync is Etsy only today; other platforms are entered by hand.
-- No printer control or job routing, no tax or VAT handling, no printer depreciation in the cost
-  model, and postage is not yet counted as a cost.
+- No printer control or job routing, no tax or VAT handling, and postage is not yet counted as a cost.
 
 ## Privacy
 
