@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-itunes-app" content="app-id=6796133961">
+  <title>What SpoolPilot Reads From Etsy</title>
+  <meta property="og:title" content="What SpoolPilot Reads From Etsy">
+  <meta property="og:description" content="Two read-only permissions, every field the app reads and why, everything it never touches, and how to check it yourself in your Etsy account.">
+  <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What SpoolPilot Reads From Etsy">
+  <meta name="twitter:description" content="Two read-only permissions, every field the app reads and why, everything it never touches, and how to check it yourself in your Etsy account.">
+  <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta property="og:type" content="website">
+
+  <meta name="description" content="Two read-only permissions, every field the app reads and why, everything it never touches, and how to check it yourself in your Etsy account.">
+  <link rel="canonical" href="https://spoolpilot.app/what-spoolpilot-reads-from-etsy.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="article.css?v=6066016">
+  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
+       paint; autocapture handles pageviews, clicks and route changes from here on. The project
+       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
+       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
+       code, and a pageview would send it to a third party. -->
+  <script type="module">
+    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
+
+    analytics.init({
+      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
+      install: {
+        framework: 'web',
+        agent: 'claude-code',
+      },
+    });
+
+    // Bridge for waitlist.js, which is a classic script and cannot import a module. Only a
+    // business outcome goes through here — UI events are autocaptured and must not be doubled.
+    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://spoolpilot.app/what-spoolpilot-reads-from-etsy.html",
+      "name": "What SpoolPilot reads from Etsy",
+      "url": "https://spoolpilot.app/what-spoolpilot-reads-from-etsy.html",
+      "isPartOf": {
+        "@id": "https://spoolpilot.app/#website"
+      },
+      "publisher": {
+        "@id": "https://spoolpilot.app/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "SpoolPilot",
+          "item": "https://spoolpilot.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What SpoolPilot reads from Etsy",
+          "item": "https://spoolpilot.app/what-spoolpilot-reads-from-etsy.html"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://spoolpilot.app/#organization",
+      "name": "Opus Design Group LLC",
+      "url": "https://spoolpilot.app/",
+      "logo": "https://spoolpilot.app/icon-192.png",
+      "sameAs": [
+        "https://apps.apple.com/app/id6796133961",
+        "https://www.instagram.com/spoolpilot.app/"
+      ],
+      "founder": {
+        "@id": "https://spoolpilot.app/#founder"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://spoolpilot.app/#founder",
+      "name": "Sean",
+      "jobTitle": "Founder, SpoolPilot",
+      "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
+      "worksFor": {
+        "@id": "https://spoolpilot.app/#organization"
+      },
+      "knowsAbout": [
+        "3D printing",
+        "Etsy selling",
+        "print costing",
+        "filament inventory"
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="1024" height="1024" fill="#F97316"/><circle cx="512" cy="512" r="370" fill="#fff"/><path d="M 553.1 219.9 A 295 295 0 0 1 800.6 573.3" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><path d="M 470.9 804.1 A 295 295 0 0 1 223.4 450.7" fill="none" stroke="#F8B57C" stroke-width="56" stroke-linecap="round"/><circle cx="512" cy="512" r="220" fill="#F97316"/><circle cx="512" cy="512" r="87" fill="#17130F"/></svg>
+        <span class="brandtext">SpoolPilot</span>
+      </a>
+      <nav>
+        <a href="/resources/">Resources</a>
+        <a href="/support.html">Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
+        <a class="btn" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-header&mt=8"><span class="btnlabel-full">Download on the App Store</span><span class="btnlabel-short">Get the app</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <p class="crumb"><a href="/">SpoolPilot</a> · Etsy access</p>
+      <p class="credential">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Built by an Etsy seller with 3,000+ sales
+      </p>
+    <h1>What SpoolPilot reads from Etsy</h1>
+    <p class="lede">Connecting a shop to an app you found last week is a real decision. This page lists every permission SpoolPilot asks for, every field it reads, what each one is used for, and where the data ends up. Then it shows you how to check all of it without taking our word for anything.</p>
+
+    <h2>Two permissions, both read-only</h2>
+    <p>When you connect, Etsy shows its own consent screen. It asks you to grant SpoolPilot exactly two things: permission to read your shop's transactions, and permission to read your shop's listings. That is the whole list.</p>
+    <p>Neither permission can change anything. SpoolPilot cannot edit a listing, change a price, renew a listing, message a buyer, or touch your payment settings. If it ever asked for more, Etsy's consent screen would say so before you tapped Allow.</p>
+
+    <h2>What it reads, and what each part is for</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>From Etsy</th><th>Fields</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td>Orders</td><td>Items sold, quantities, prices, discounts, shipping the buyer paid, tax, refunds, currency, order date, the date you marked it shipped</td><td>Profit on each sale, the print queue, and how busy your printers are</td></tr>
+          <tr><td>Payment account ledger</td><td>Every fee line Etsy charged: transaction, payment processing, listing renewal, Offsite Ads, shipping transaction, regulatory operating fees</td><td>The actual fee on each order, matched to the sale it belongs to</td></tr>
+          <tr><td>Listings</td><td>Title, price, variants, and the listing photo</td><td>Matching each sale to the product you print, so its filament cost applies</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The ledger is the part most tools skip. Published rates are an estimate. The ledger is what Etsy actually took, so the fee SpoolPilot shows on an order is the fee on your statement, to the cent.</p>
+
+    <h2>What it never touches</h2>
+    <ul>
+      <li><strong>Your buyers.</strong> Etsy attaches the buyer's name and shipping address to every order it sends. SpoolPilot discards them unread. No customer name, address, or email is stored or shown anywhere in the app.</li>
+      <li><strong>Messages, reviews, and shop stats.</strong> Not requested, so not readable.</li>
+      <li><strong>Your bank and payout details.</strong> The ledger lists fees and sale amounts. It does not carry your bank account.</li>
+      <li><strong>Anything you would need to undo.</strong> There is no write permission, so there is nothing the app can change in your shop.</li>
+    </ul>
+
+    <h2>Where the data goes</h2>
+    <p>To your phone, and nowhere else. SpoolPilot has no account to sign up for and no server that holds shop data. Your orders, fees, and products are stored on the device, and the Etsy access token sits in the iPhone's Keychain. Disconnecting deletes that token immediately.</p>
+    <p>One small relay sits between the app and Etsy, because Etsy gives developers a secret key that cannot safely live inside an app. The relay holds that key, checks each request comes from a genuine unmodified copy of SpoolPilot using Apple's App Attest, forwards the request to Etsy, and returns the answer. It stores nothing and keeps no logs. The <a href="/privacy.html#signin-service">privacy policy</a> describes it in full.</p>
+    <p>The App Store listing carries Apple's <strong>Data Not Collected</strong> label. The app has no analytics and no tracking, which is what lets that label be true.</p>
+
+    <h2>Etsy reviewed how the app uses its API</h2>
+    <p>In August 2026 Etsy's developer team granted SpoolPilot Commercial Access. That is the tier Etsy requires before an app may connect more than a handful of shops, and it is granted after Etsy reviews what the app requests and how it handles the data. It is a review of the app's use of the API, not an endorsement of the app, and we do not claim otherwise.</p>
+
+    <h2>Check it yourself</h2>
+    <ol>
+      <li><strong>Read the consent screen.</strong> When you connect, the permissions Etsy lists are the permissions the app has. There should be two.</li>
+      <li><strong>Look at what Etsy says is connected.</strong> On Etsy, open You › Account settings › Security. Connected apps are listed there, with the option to revoke access at any time. Revoking there works even if you never open SpoolPilot again.</li>
+      <li><strong>Compare a fee.</strong> Open any synced order in SpoolPilot, then find the same order on your monthly statement under Finances › Payment account. The fee lines should match.</li>
+    </ol>
+
+    <h2>Who built it</h2>
+    <p>SpoolPilot is made by <a href="/">Opus Design Group LLC</a>. Sean runs Opus Design Company, a 3D-print shop on Etsy with five years and more than 3,000 sales behind it, and built the app for that shop first. The shop is still open and still runs on the app every day, which is the main reason a wrong fee gets noticed.</p>
+    <p>Questions about any of this go to <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a>.</p>
+
+    <div class="cta">
+      <h2>See the actual fee on your own orders</h2>
+      <p>Free to connect. The first ten synced orders a month cost nothing, and the fee on each one comes from your ledger, not a rate card.</p>
+      <p><a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=etsy-access-page&mt=8">Download on the App Store</a></p>
+    </div>
+
+  </main>
+  <footer>
+    <div class="in">
+      &copy; <span id="year"></span> Opus Design Group LLC · <a href="/resources/">Resources</a> · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+      <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
+    </div>
+  </footer>
+  <script src="waitlist.js?v=6066016"></script>
+</body>
+</html>
