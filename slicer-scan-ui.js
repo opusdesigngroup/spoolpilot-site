@@ -88,25 +88,55 @@
           resolve({ prepared: c, inverted: dark });
         } catch (e) { URL.revokeObjectURL(url); resolve(null); }
       };
-      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
+      // The browser could not decode it: not an image, or a format it does not open (HEIC in
+      // some browsers). That is a different failure from "the reader did not load".
+      img.onerror = function () { URL.revokeObjectURL(url); resolve({ undecodable: true }); };
       img.src = url;
     });
   }
 
+  /* Progress from the engine, in the person's words. The first scan on a phone downloads the
+     reader and its language data, several megabytes on mobile data, and for that stretch the
+     old copy said only "Reading…" while the box sat dimmed. HeyCatch showed people tapping the
+     box eight times in a row: nothing they could see was happening. Now the line moves. */
+  function progress(m) {
+    if (!m || !m.status) return;
+    var pct = typeof m.progress === 'number' ? Math.round(m.progress * 100) : null;
+    if (/recogniz/i.test(m.status)) {
+      say('Reading the image' + (pct != null ? '… ' + pct + '%' : '…'));
+    } else if (/traineddata|language/i.test(m.status)) {
+      say('Downloading the reader (first time only)' + (pct != null && pct > 0 ? '… ' + pct + '%' : '…'));
+    } else {
+      say('Getting the reader ready…');
+    }
+  }
+
   function recognize(T, source) {
-    return T.recognize(source, 'eng').then(function (res) { return res.data.text || ''; });
+    return T.recognize(source, 'eng', { logger: progress }).then(function (res) { return res.data.text || ''; });
   }
 
   function handle(file) {
-    if (busy || !file || !/^image\//.test(file.type)) return;
+    if (!file) return;
+    if (busy) { say('Still reading the last one. One moment.'); return; }
+    // Android file providers often hand over a photo with an EMPTY type. Refusing those made the
+    // control look dead: pick a photo, nothing happens, pick again. An empty type goes through
+    // and the decoder decides; only a type that says it is not an image is turned away here.
+    if (file.type && !/^image\//.test(file.type)) {
+      say('That file is not an image. Pick a screenshot or a photo of the slicer.', 'warn');
+      return;
+    }
     busy = true;
     drop.classList.add('busy');
-    say('Reading…');
+    say(window.Tesseract ? 'Reading…' : 'Loading the reader (first time only)…');
 
     var engine;
     loadTesseract()
       .then(function (T) { engine = T; return prepare(file); })
       .then(function (prep) {
+        if (prep && prep.undecodable) {
+          say('That file did not open as an image. Take a photo, or save the screenshot as a JPEG or PNG.', 'warn');
+          return null;
+        }
         var first = prep ? prep.prepared : file;
         return recognize(engine, first).then(function (raw) {
           var reading = window.SlicerScan.parse(raw);
@@ -120,6 +150,7 @@
         });
       })
       .then(function (out) {
+        if (!out) return;
         // Keep the raw OCR on the page object. Nothing is sent anywhere; it exists so a
         // misread can be diagnosed from what the engine actually saw rather than guessed at.
         // `copy(SlicerScan.lastOCR)` in the console hands over the exact text.
@@ -137,7 +168,18 @@
       });
   }
 
-  input.addEventListener('change', function () { handle(input.files && input.files[0]); });
+  input.addEventListener('change', function () {
+    var f = input.files && input.files[0];
+    // Clear the input so picking the SAME photo again fires change again. Without this a retry
+    // with the same file was a tap that did nothing.
+    input.value = '';
+    handle(f);
+  });
+  // While a read is running, a tap on the box would open the chooser for a file that would then
+  // be ignored. Say what is happening instead.
+  drop.addEventListener('click', function (e) {
+    if (busy) { e.preventDefault(); say('Still reading the last one. One moment.'); }
+  });
 
   ['dragenter', 'dragover'].forEach(function (ev) {
     drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); });
