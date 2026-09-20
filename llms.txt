@@ -34,10 +34,12 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
 ## Free vs Pro
 
 - **Free:** filament inventory, the pricing calculator, manual sales, the product cost model, three
-  slicer scans, and up to ten synced Etsy orders a month. Unlimited slicer scans are a $4.99 one-time
-  purchase (no subscription needed).
-- **Pro:** actual Etsy fees per order, the full profit-and-loss, weeks-of-stock forecasts, unlimited
-  order sync and history import, unlimited slicer scans. $12.99/month or $99.99/year with a 7-day
+  slicer scans, the weekly recap, and up to ten synced Etsy orders a month. Each of those orders
+  shows the exact fees Etsy charged and what was kept after costs. Unlimited slicer scans are a
+  $4.99 one-time purchase (no subscription needed).
+- **Pro:** every order (unlimited sync and history import), the full profit-and-loss by month and by
+  product, profit per print hour, pending orders still to print, weeks-of-stock forecasts, purchased
+  parts, printer capacity, and unlimited slicer scans. $12.99/month or $99.99/year with a 7-day
   trial on the yearly plan.
 
 ## Web calculator vs the app
