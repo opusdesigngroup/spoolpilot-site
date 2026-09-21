@@ -12,7 +12,7 @@
 People who sell what they print, from one printer to a small print farm, mostly on Etsy. It is not a
 hobbyist filament tracker, not a print-farm controller, and not general bookkeeping.
 
-## What it does (shipping today, version 1.1.4)
+## What it does (shipping today, version 1.2)
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
