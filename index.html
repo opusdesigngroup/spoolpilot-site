@@ -121,7 +121,7 @@
           "price": "12.99",
           "priceCurrency": "USD",
           "url": "https://apps.apple.com/app/id6796133961",
-          "description": "Actual Etsy fees per order, profit and loss, forecasts, unlimited sync and slicer scans"
+          "description": "Every order synced with the fees Etsy charged, profit and loss, forecasts, unlimited slicer scans"
         },
         {
           "@type": "Offer",
@@ -179,7 +179,7 @@
       "name": "How does SpoolPilot calculate profit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What’s left is the profit on that order. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
+        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your time if you count it as a cost. What’s left is the profit on that order. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
       }
     },
     {
@@ -225,7 +225,7 @@
   ]
 }
   </script>
-  <link rel="preload" as="image" href="/shot-home.webp" type="image/webp">
+  <link rel="preload" as="image" href="/shot-home.webp?v=12" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -492,8 +492,8 @@
     .fine{margin:12px auto 0;font-size:var(--fs-meta);line-height:1.55;max-width:64ch}
 
     @media (prefers-reduced-motion:no-preference){
-      .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
-      .reveal.in{opacity:1;transform:none}
+      .rv .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+      .rv .reveal.in{opacity:1;transform:none}
     }
 
     /* "Free" is worth keeping wherever it fits — it only costs ~35px, and it's the word that
@@ -645,7 +645,7 @@
     <p class="lede">SpoolPilot is <strong>the profit app you use standing at the printer</strong>. It reads your slicer, your Etsy fees, and your spools, so you never sit down to a spreadsheet again.</p>
     <div class="cta-stack">
       <a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-hero&mt=8"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>Download on the App Store</a>
-      <p class="cta-free">Free on the App Store &middot; iPhone</p>
+      <p class="cta-free">Free on iPhone &middot; real Etsy fees on 10 orders a month</p>
       <p class="mailtoggle">Prefer email? <button type="button" data-reveal="waitlist">Get product updates</button></p>
       <div class="mailwrap" id="waitlist" hidden>
         <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
@@ -674,15 +674,15 @@
     <div class="hero-stage">
       <div class="tabs" id="floorTabs" aria-label="Choose an app screen">
         <button type="button" aria-pressed="true" data-i="0">Home</button>
-        <button type="button" aria-pressed="false" data-i="1">Filament</button>
+        <button type="button" aria-pressed="false" data-i="1">Materials</button>
         <button type="button" aria-pressed="false" data-i="2">Products</button>
         <button type="button" aria-pressed="false" data-i="3">Finances</button>
       </div>
       <div class="hero-device" id="floorView">
-        <img class="active" data-i="0" src="shot-home.webp" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen: today's revenue, this month's profit, and recent Etsy orders with the profit on each.">
-        <img data-i="1" src="shot-filament.webp" width="1206" height="2622" loading="lazy" alt="Filament inventory: sealed spool counts with weeks of stock left at your sales pace.">
-        <img data-i="2" src="shot-products.webp" width="1206" height="2622" loading="lazy" alt="Products: units in stock, stock value, and estimated shelf profit.">
-        <img data-i="3" src="shot-finances.webp" width="1206" height="2622" loading="lazy" alt="Finances: the month's profit-and-loss with revenue, real Etsy fees, materials, and net profit.">
+        <img class="active" data-i="0" src="shot-home.webp?v=12" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen: today's revenue, this month's profit, profit per print hour, and what to print next.">
+        <img data-i="1" src="shot-filament.webp?v=12" width="1206" height="2622" loading="lazy" alt="Filament inventory: sealed spool counts with weeks of stock left at your sales pace.">
+        <img data-i="2" src="shot-products.webp?v=12" width="1206" height="2622" loading="lazy" alt="Products: units in stock, stock value, and estimated shelf profit.">
+        <img data-i="3" src="shot-finances.webp?v=12" width="1206" height="2622" loading="lazy" alt="Finances: the month's profit-and-loss with revenue, real Etsy fees, materials, and net profit.">
       </div>
       <p class="floor-cap" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
     </div>
@@ -739,6 +739,10 @@
           <div class="pl sum"><span>Net profit · 29% margin</span><b>$8.18</b></div>
         </div>
       </div>
+      <figure class="quote reveal">
+        <blockquote>&ldquo;I rely on SpoolPilot to keep my Etsy shop profitable and efficient after 5 years and 3,000 sales. If one of its numbers is wrong, I&rsquo;d be the first shop it affects.&rdquo;</blockquote>
+        <cite>&mdash; Sean <span>&middot; SpoolPilot founder</span></cite>
+      </figure>
       <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-mid&mt=8">Download SpoolPilot and see yours &rarr;</a>
     </div>
   </section>
@@ -802,7 +806,7 @@
   <section class="stage tint">
     <div class="wrap">
       <h2 class="reveal">Slide your price. See Etsy's cut.</h2>
-      <p class="reveal">Etsy's published US fees, computed live. In the app the fees aren't computed at all. They&rsquo;re <strong>read from your payment account, order by order</strong>, with materials and labor subtracted too.</p>
+      <p class="reveal">Etsy's published US fees, computed live. In the app the fees aren't computed at all. They&rsquo;re <strong>read from your payment account, order by order</strong>, with materials and packaging subtracted too.</p>
       <div class="feecalc reveal">
         <div class="fc-top">
           <div class="fc-price"><span>Sale price</span><b id="fcPrice">$32</b></div>
@@ -817,7 +821,7 @@
           <div class="pl" id="fcAdsRow" hidden><span>Offsite Ads · 15%</span><span class="n" id="fcAd">−$4.80</span></div>
           <div class="pl sum"><span>You keep · <span id="fcPct">89%</span></span><b id="fcKeep">$28.51</b></div>
         </div>
-        <p class="fc-note">Before filament, electricity, and labor. The app subtracts those from your real ledger fees. <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
+        <p class="fc-note">Before filament, electricity, and packaging. The app subtracts those too, after the real fees from your ledger. <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
       </div>
     </div>
   </section>
@@ -828,15 +832,13 @@
       <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here's what landed recently, and what's next.</p>
       <p class="roadlabel reveal">Shipped</p>
       <div class="road two reveal" style="margin-bottom:34px">
-        <div><b>Etsy for everyone</b><span>Connect any Etsy shop, with no invite and no cap.</span></div>
-        <div><b>Monday recap</b><span>Last week's profit and your top sellers, ranked, with a card worth posting.</span></div>
-        <div><b>Slicer scan</b><span>Point your phone at the slicer; print time and grams land in the cost.</span></div>
-        <div><b>iCloud backup</b><span>Your catalog and sales history back up to your own iCloud automatically.</span></div>
-        <div><b>On the App Store</b><span>Version 1.1: prototype and failed prints costed, month and year recaps, enough-to-print.</span></div>
+        <div><b>Real fees on the free plan</b><span>Ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept.</span></div>
+        <div><b>Orders waiting to print</b><span>Open Etsy orders you haven't printed yet sit at the top of Print next.</span></div>
+        <div><b>Parts and packing</b><span>Magnets, inserts, and boxes costed into each product and restocked by barcode.</span></div>
+        <div><b>Spanish and German</b><span>The whole app, not just the listing, so it fits shops well outside the US.</span></div>
       </div>
       <p class="roadlabel reveal">Next</p>
-      <div class="road two reveal">
-        <div><b>Spanish and German</b><span>The whole app, not just the listing, so it fits shops well outside the US.</span></div>
+      <div class="road reveal" style="grid-template-columns:1fr">
         <div><b>Grams on open spools</b><span>Built, and held back until a print farm confirms the model survives a mid-print filament swap.</span></div>
       </div>
     </div>
@@ -875,7 +877,7 @@
         </details>
         <details>
           <summary>How does SpoolPilot calculate profit?</summary>
-          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your labor if you set an hourly rate. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
+          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your time if you count it as a cost. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
@@ -906,7 +908,7 @@
       <h2>See the profit on your next print.</h2>
       <div class="cta-stack">
         <a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-footer&mt=8"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>Download on the App Store</a>
-        <p class="cta-free">Free on the App Store &middot; iPhone</p>
+        <p class="cta-free">Free on iPhone &middot; real Etsy fees on 10 orders a month</p>
         <p class="mailtoggle">Prefer email? <button type="button" data-reveal="footer-mail">Get product updates</button></p>
         <div class="mailwrap" id="footer-mail" hidden>
           <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
@@ -937,6 +939,7 @@
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
       }, { rootMargin: '0px 0px -12% 0px' });
+      document.documentElement.classList.add('rv');
       document.querySelectorAll('.reveal').forEach(function (el, i) {
         el.style.transitionDelay = (i % 3) * 70 + 'ms';
         io.observe(el);

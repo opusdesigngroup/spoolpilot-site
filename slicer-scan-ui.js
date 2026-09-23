@@ -292,6 +292,8 @@
   var ua = navigator.userAgent || '';
   var isApple = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && 'ontouchstart' in window);
   if (ask && !isApple) ask.hidden = false;
+  // An App Store button is a dead end on Android; there the ask is the result's only CTA.
+  if (/Android/i.test(ua)) document.documentElement.classList.add('is-android');
 
   // Only claim the camera where one exists, so desktop copy doesn't promise a phone feature.
   // Copying the text is named first on both, because it needs no OCR and cannot misread.

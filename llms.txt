@@ -52,7 +52,7 @@ orders, replaces the estimate with the fees Etsy actually charged.
 
 - Not a web dashboard and not on Android. iPhone only (iOS 17 or later).
 - Sales sync is Etsy only today; other platforms are entered by hand.
-- No printer control or job routing, no tax or VAT handling, and postage is not yet counted as a cost.
+- No printer control or job routing, no tax or VAT handling. Postage is counted only on free-shipping orders, at a typical label cost the seller sets.
 
 ## Privacy
 
