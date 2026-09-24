@@ -76,7 +76,7 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-09-13",
+      "dateModified": "2026-09-24",
       "author": {
         "@id": "https://spoolpilot.app/#founder"
       },
@@ -211,8 +211,8 @@
     <h3>Packaging</h3>
     <p>The box, the mailer, the tape, the insert, the thank-you card. Count the actual box, not a guess. On a $12 item, a $1.40 box and mailer is more than 10% of the sale, which is more than most people's electricity and material combined on that item. Packaging is the cost small shops most often leave out and most often regret.</p>
 
-    <h3>Labor</h3>
-    <p>Removing supports, sanding, inserting magnets, packing, answering the message about whether it comes in blue. Set an hourly rate even if you never pay yourself, because a product that only makes money when your time is free is not a product, it is a hobby with shipping labels. A rate of $15 to $25 an hour turns "I spent ten minutes on that" into a number you can compare across products.</p>
+    <h3>Your time</h3>
+    <p>Removing supports, sanding, inserting magnets, packing, answering the message about whether it comes in blue. If you pay someone for that time, their wage is a cost like the box. If it is your own time, don't bury it in the cost: your pay is what an order keeps after costs and fees, so divide that by your hands-on minutes and you know what the product pays you an hour. A product that pays you $6 an hour is not a product, it is a hobby with shipping labels. That hourly figure is also the number you can compare across products.</p>
 
     <h3>Etsy fees, if you sell on Etsy</h3>
     <p>Etsy's published rates (<a href="https://www.etsy.com/legal/fees/">Etsy's fee policy</a>) are a 6.5% transaction fee on the order total including shipping, payment processing of 3% plus $0.25 in the US, a $0.20 listing fee per item sold, and an Offsite Ads fee of 12% or 15% on orders attributed to those ads. On a $24 order with $4 shipping that is roughly $1.82 + $1.09 + $0.20, about $3.11 before any ad attribution, or about 11% of what the buyer paid. What actually lands in your payment account is often more than the rate card predicts, for reasons that don't fit a formula. <a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a> walks through five of them and how to check your own shop in ten minutes.</p>
@@ -223,7 +223,7 @@
     <p>Product inventory is the other half. Most 3D-printed products are <strong>made to order</strong>, and forcing a stock count on them is a false chore. The products worth counting are the ones you print ahead of demand, which is usually your best sellers before a busy season. A print-next queue, ranked by how soon each product runs out at its current sales rate, replaces both the whiteboard and the panic.</p>
 
     <h2>Product-level profitability</h2>
-    <p>Monthly profit tells you whether the shop is alive. Product-level profit tells you what to do next. Two items can sell equally well and one of them can be losing money on every order once packaging and labor are counted. Bundles are the usual hiding place: a three-piece set priced as a discount that costs more to print and pack than its parts sold separately. The only way to see it is to have every cost above attached to every product, and every sale's real fees attached to every order, so that "profit per product this month" is a number you can sort by rather than a feeling.</p>
+    <p>Monthly profit tells you whether the shop is alive. Product-level profit tells you what to do next. Two items can sell equally well and one of them can be losing money on every order once packaging is counted, or paying you a fraction of the other for every hour you spend on it. Bundles are the usual hiding place: a three-piece set priced as a discount that costs more to print and pack than its parts sold separately. The only way to see it is to have every cost above attached to every product, and every sale's real fees attached to every order, so that "profit per product this month" is a number you can sort by rather than a feeling.</p>
 
     <h2>Where spreadsheets stop working</h2>
     <p>A spreadsheet is the right tool at the start, and this page is not going to pretend otherwise. It breaks in a predictable order. First, <strong>fees per order</strong>: to know the real fee on each sale you have to download the payment account CSV, match its rows to orders, and type them in, and that is the step everyone abandons by the second month. Second, <strong>variants and multiple printers</strong>: the sheet that priced one product in one color becomes forty rows that nobody trusts. Third, <strong>time</strong>: the sheet lives on a laptop, and the decisions happen at the printer, at the post office, and at the kitchen table at 11pm. By the time you sit down to update it, you are estimating, and estimates drift in one direction.</p>
@@ -252,7 +252,7 @@
     <h2>Where SpoolPilot fits</h2>
     <p>SpoolPilot is an iPhone app for people who sell what they print. It does the four things at the top of this page and stops there. If you are choosing between it and a spreadsheet or another tool, <a href="/resources/3d-printing-business-software">the software decision guide</a> is the shorter, more direct version of this section.</p>
     <ul>
-      <li><strong>Cost per print.</strong> Point the camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Cura and it reads the print time and grams off the screen. Add your filament price, electricity, packaging, and labor rate, and you have the cost and a price that hits the margin you want after fees.</li>
+      <li><strong>Cost per print.</strong> Point the camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Cura and it reads the print time and grams off the screen. Your filament price, electricity, and packaging are applied, and you get the cost, a price that hits the margin you want after fees, and what that price pays you an hour.</li>
       <li><strong>Real profit per order.</strong> Connect an Etsy shop (read-only) and it imports your sales, including full history, and reads the fee entries Etsy actually charged on each order directly from your payment ledger through Etsy's API, rather than estimating them from the rate card. Etsy grants that access only after reviewing an app, and SpoolPilot holds it; many tools that promise real profit are estimating. When an order's money doesn't reconcile to Etsy's total, it says so and labels the estimate.</li>
       <li><strong>Filament on the shelf.</strong> Sealed spools counted by barcode scan, weeks of stock from your real sales pace, and a low-stock nudge that only fires for materials you actually sell through.</li>
       <li><strong>Products and what to print next.</strong> Made-to-order by default, stock tracking where you want it, bundles assembled from parts, and a print-next queue ranked by how soon each product runs out.</li>

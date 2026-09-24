@@ -16,7 +16,8 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
-  packaging, labor, and fees, solved for a target margin.
+  packaging, paid help if any, and fees, solved for a target margin, and says what the sale
+  pays you per hour of your own hands-on time.
 - **Actual Etsy fees, not estimates.** Connects to an Etsy shop read-only through the Etsy API and
   reads the fee lines Etsy posted for each order in the payment ledger (transaction, payment
   processing, listing, Offsite Ads). Etsy grants this API access after reviewing an app; SpoolPilot
