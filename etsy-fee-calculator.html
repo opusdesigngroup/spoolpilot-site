@@ -169,6 +169,11 @@
     .is-android #out-cta{display:none}
     .scan-android p{margin:0 0 10px;font-size:var(--fs-meta);color:var(--muted);line-height:1.5}
     .scan-android .waitlist{max-width:none}
+    /* Labor: the minutes, the one switch, and the rate only when someone is paid. One grid
+       cell, so the switch reads as belonging to the minutes above it. */
+    .labor{display:flex;flex-direction:column;gap:10px;min-width:0}
+    .labor-hint{margin:0;font-size:var(--fs-meta);color:var(--muted);line-height:1.5}
+    .hourly{margin:10px 0 0;font-size:var(--fs-ui);font-weight:600;color:var(--ink);line-height:1.5}
     @media (prefers-reduced-motion:reduce){.scan-drop{transition:none}}
   </style>
 </head>
@@ -230,8 +235,15 @@
         <div class="field"><label for="c-elec">Electricity ($/print-hour)</label><input id="c-elec" type="number" inputmode="decimal" value="0.21" min="0" step="0.01"></div>
         <div class="field"><label for="c-wear">Printer wear ($/print-hour)</label><input id="c-wear" type="number" inputmode="decimal" value="0" min="0" step="0.01" placeholder="0.20"></div>
         <div class="field"><label for="c-pack">Packaging per order ($)</label><input id="c-pack" type="number" inputmode="decimal" value="0.50" min="0" step="0.01"></div>
-        <div class="field"><label for="c-labormin">Your labor per order (minutes)</label><input id="c-labormin" type="number" inputmode="decimal" value="10" min="0" step="1"></div>
-        <div class="field"><label for="c-laborrate">Your labor rate ($/hour)</label><input id="c-laborrate" type="number" inputmode="decimal" value="25" min="0" step="1"></div>
+        <!-- Labor, asked the way the app asks it. A solo maker's own minutes are not a cost; the
+             answer says what the sale pays them an hour instead. Only paid help, at what it is
+             paid, becomes a cost line. The rate starts blank: it is someone else's wage. -->
+        <div class="labor">
+          <div class="field"><label for="c-labormin">Hands-on time (minutes)</label><input id="c-labormin" type="number" inputmode="decimal" value="10" min="0" step="1"></div>
+          <div class="check" id="row-laborpaid"><input id="c-laborpaid" type="checkbox"><label for="c-laborpaid" style="margin:0">I pay someone for this</label></div>
+          <div class="field" id="f-laborrate" hidden><label for="c-laborrate">Their rate ($/hour)</label><input id="c-laborrate" type="number" inputmode="decimal" value="" min="0" step="0.01" placeholder="0.00"></div>
+          <p class="labor-hint" id="labor-hint"></p>
+        </div>
         <div class="check"><input id="c-osa" type="checkbox"><label for="c-osa" style="margin:0">Order came from an Offsite Ad (15% fee)</label></div>
       </div>
       <div class="out" aria-live="polite">
@@ -250,9 +262,10 @@
         <div class="orow"><span>Electricity</span><span class="v neg" id="o-el">−$0.00</span></div>
         <div class="orow" id="row-wear" style="display:none"><span>Printer wear</span><span class="v neg" id="o-wear">−$0.00</span></div>
         <div class="orow"><span>Packaging</span><span class="v neg" id="o-pk">−$0.00</span></div>
-        <div class="orow" id="row-labor" style="display:none"><span>Your labor</span><span class="v neg" id="o-lab">−$0.00</span></div>
+        <div class="orow" id="row-labor" style="display:none"><span>Labor &amp; finishing</span><span class="v neg" id="o-lab">−$0.00</span></div>
         <div class="orow total"><span>Estimated net profit</span><span class="v pos" id="o-net">$0.00</span></div>
         <div class="orow"><span>Margin</span><span class="v" id="o-margin">0%</span></div>
+        <p class="hourly" id="o-hourly" hidden></p>
       </div>
       <!-- Shown once the person has done something (typed, switched mode, or scanned). Speaks to
            the thing they just did, and offers the app at the moment the number is in front of them. -->
@@ -351,7 +364,7 @@
       var money = function (n) { return (n < 0 ? '-$' : '$') + Math.abs(n).toFixed(2); };
       var c = function (n) { return Math.round(n * 100) / 100; };
       var ids = ['c-price','c-grams','c-kg','c-hours','c-mins','c-elec','c-wear','c-pack',
-                 'c-labormin','c-laborrate','c-margin','c-osa'];
+                 'c-labormin','c-laborpaid','c-laborrate','c-margin','c-osa'];
       var priceMode = false;
       var interacted = false;
       function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v : 0; }
@@ -359,10 +372,12 @@
       function hoursTotal() { return num('c-hours') + Math.min(num('c-mins'), 59) / 60; }
       function timeLabel() { var h = num('c-hours'), m = Math.min(num('c-mins'), 59); return h + 'h' + (m ? ' ' + m + 'm' : ''); }
 
-      // Minutes x hourly rate. Sellers know what their time is worth per hour and roughly how
-      // long a piece takes to finish and pack — asking for a dollar figure per order made them
-      // do that arithmetic themselves.
-      function laborCost() { return c(num('c-labormin') / 60 * num('c-laborrate')); }
+      // Hands-on minutes are a cost only when someone is paid for them, at their rate. Off, the
+      // maker's own pay comes out of the profit, and the answer shows what those minutes earn
+      // an hour instead. Same rule as the app's calculator.
+      function laborCost() {
+        return $('c-laborpaid').checked ? c(num('c-labormin') / 60 * num('c-laborrate')) : 0;
+      }
 
       // Everything that leaves your pocket to make and pack one order, before Etsy's cut.
       function productCosts() {
@@ -393,9 +408,11 @@
 
       // Inputs that survive a round trip through an email. Kept short so the URL stays
       // readable, and kept to INPUTS only — see the note where the link is built.
+      // The paid-help rate travels as `paidrate`, not the old `laborrate`: older links carried
+      // the maker's OWN rate (default $25), and that must not land in "Their rate".
       var PREFILL = { price:'c-price', margin:'c-margin', grams:'c-grams', kg:'c-kg',
                       hours:'c-hours', mins:'c-mins', elec:'c-elec', wear:'c-wear', pack:'c-pack',
-                      labormin:'c-labormin', laborrate:'c-laborrate', osa:'c-osa' };
+                      labormin:'c-labormin', paid:'c-laborpaid', paidrate:'c-laborrate', osa:'c-osa' };
 
       function calcLink() {
         var parts = [];
@@ -413,11 +430,13 @@
       function recalc() {
         var costs = productCosts();
         var pct = pctRate();
+        var unreachable = false;
 
         if (priceMode) {
           var target = Math.min(Math.max(num('c-margin'), 0), 95) / 100;
           var solved = solvePrice(costs, pct, target);
           if (solved === null || solved <= 0) {
+            unreachable = true;
             $('o-suggest').textContent = '\u2014';
             $('o-suggest-note').textContent = "That margin isn't reachable once Etsy's cut is covered. Try a lower target.";
           } else {
@@ -461,6 +480,32 @@
         $('o-net').textContent = money(net);
         $('o-net').className = 'v ' + (net >= 0 ? 'pos' : 'neg');
         $('o-margin').textContent = (item > 0 ? (net / item * 100) : 0).toFixed(0) + '%';
+
+        // Labor, as the app asks it: the switch appears once there are minutes to ask about,
+        // and the rate only once the switch says someone is paid.
+        var mins = num('c-labormin');
+        var paid = $('c-laborpaid').checked;
+        $('row-laborpaid').style.display = mins > 0 ? 'flex' : 'none';
+        $('f-laborrate').hidden = !(mins > 0 && paid);
+        $('labor-hint').textContent = mins <= 0
+          ? 'Packing, finishing, anything you do by hand for one item.'
+          : paid ? 'Their pay comes off profit.'
+                 : 'You’re paid from the profit, so this isn’t a cost.';
+
+        // For a solo maker, the one labor number that is true without calling their time a
+        // cost: what this sale pays for their hands-on minutes. Only with a real answer on
+        // screen, and only when there is profit to divide.
+        var hourly = $('o-hourly');
+        if (!paid && mins > 0 && net > 0 && item > 0 && !unreachable) {
+          var perHour = Math.round(net / (mins / 60));
+          var wholeMins = Math.round(mins);
+          hourly.textContent = 'Pays you $' + perHour.toLocaleString('en-US') + ' an hour for '
+            + wholeMins + (wholeMins === 1 ? ' minute' : ' minutes') + ' of work';
+          hourly.hidden = false;
+        } else {
+          hourly.textContent = '';
+          hourly.hidden = true;
+        }
 
         // Quote their own figure back at the point of decision. Someone who has just watched
         // a $28 listing shrink to $9 is at peak motivation; a generic pitch wastes that, and
@@ -583,6 +628,8 @@
             var label = row.firstElementChild, val = row.lastElementChild;
             if (label && val) lines.push(label.textContent.trim() + ': ' + val.textContent.trim());
           });
+          var hourlyLine = $('o-hourly');
+          if (hourlyLine && !hourlyLine.hidden) lines.push(hourlyLine.textContent);
           lines.push('', 'Estimated with the SpoolPilot Etsy fee calculator', 'https://spoolpilot.app/etsy-fee-calculator.html');
           var text = lines.join('\n');
           function done() {
