@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-itunes-app" content="app-id=6796133961">
   <title>SpoolPilot: 3D Printing Business App for Etsy Sellers</title>
-  <meta name="description" content="SpoolPilot is the profit app you use standing at the printer. It reads your slicer, Etsy fees, and spools, so you never sit down to a spreadsheet again.">
+  <meta name="description" content="SpoolPilot is an iPhone app for 3D-print sellers on Etsy. It reads the fees Etsy charged on each order and shows real profit. Free for 10 orders a month.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -15,14 +15,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SpoolPilot">
   <meta property="og:title" content="SpoolPilot: 3D Printing Business App for Etsy Sellers">
-  <meta property="og:description" content="SpoolPilot is the profit app you use standing at the printer. It reads your slicer, Etsy fees, and spools, so you never sit down to a spreadsheet again.">
+  <meta property="og:description" content="SpoolPilot is an iPhone app for 3D-print sellers on Etsy. It reads the fees Etsy charged on each order and shows real profit. Free for 10 orders a month.">
   <meta property="og:url" content="https://spoolpilot.app/">
   <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SpoolPilot: 3D Printing Business App for Etsy Sellers">
-  <meta name="twitter:description" content="SpoolPilot is the profit app you use standing at the printer. It reads your slicer, Etsy fees, and spools, so you never sit down to a spreadsheet again.">
+  <meta name="twitter:description" content="SpoolPilot is an iPhone app for 3D-print sellers on Etsy. It reads the fees Etsy charged on each order and shows real profit. Free for 10 orders a month.">
   <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
   <script type="application/ld+json">
 {
@@ -62,6 +62,7 @@
       "@type": "WebSite",
       "@id": "https://spoolpilot.app/#website",
       "name": "SpoolPilot",
+      "alternateName": ["SpoolPilot app", "SpoolPilot for Etsy"],
       "url": "https://spoolpilot.app/",
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -94,7 +95,7 @@
         "https://spoolpilot.app/shot-finances.png",
         "https://spoolpilot.app/shot-filament.png"
       ],
-      "softwareVersion": "1.2",
+      "softwareVersion": "1.2.1",
       "featureList": [
         "Slicer scan: reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura",
         "Print pricing calculator that solves for a target margin after Etsy fees",
@@ -120,6 +121,7 @@
           "name": "SpoolPilot Pro, monthly",
           "price": "12.99",
           "priceCurrency": "USD",
+          "priceValidUntil": "2026-10-31",
           "url": "https://apps.apple.com/app/id6796133961",
           "description": "Every order synced with the fees Etsy charged, profit and loss, forecasts, unlimited slicer scans"
         },
@@ -128,6 +130,7 @@
           "name": "SpoolPilot Pro, yearly",
           "price": "99.99",
           "priceCurrency": "USD",
+          "priceValidUntil": "2026-10-31",
           "url": "https://apps.apple.com/app/id6796133961",
           "description": "Same as monthly, billed yearly, with a 7-day free trial"
         }
@@ -137,9 +140,6 @@
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
-      },
-      "isRelatedTo": {
-        "@id": "https://spoolpilot.app/etsy-fee-calculator.html#calculator"
       }
     }
   ]
@@ -176,10 +176,18 @@
     },
     {
       "@type": "Question",
+      "name": "Is this the same SpoolPilot as spoolpilot.com?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC for people who sell 3D prints on Etsy; spoolpilot.com was a separate web filament tracker that has been discontinued, and the SpoolPilot hardware project on GitHub is unrelated. This app has no web dashboard, no public API, and no hardware."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "How does SpoolPilot calculate profit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your time if you count it as a cost. What’s left is the profit on that order. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
+        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What’s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
       }
     },
     {
@@ -187,7 +195,7 @@
       "name": "How is SpoolPilot different from Craftybase or a spreadsheet?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question, what did this Etsy order actually make you, and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile. How to choose software for a print business lays out the options side by side."
+        "text": "Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question, what did this Etsy order actually make you, and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile. What software a 3D printing business needs lays out the options side by side."
       }
     },
     {
@@ -195,7 +203,7 @@
       "name": "What does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan."
+        "text": "SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan. That founding price holds until October 31, 2026, and stays locked for anyone subscribed by then."
       }
     },
     {
@@ -629,7 +637,7 @@
         <a href="/resources/">Resources</a>
         <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
-        <a class="tool" href="/etsy-fee-calculator.html"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free profit calculator</span><span class="toollabel toollabel-short">Profit calculator</span></a>
+        <a class="tool" href="/etsy-fee-calculator.html" aria-label="Free pricing calculator"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="3" stroke="currentColor" stroke-width="1.9"/><path d="M8 7.5h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="9" cy="12.5" r="1.15" fill="currentColor"/><circle cx="15" cy="12.5" r="1.15" fill="currentColor"/><circle cx="9" cy="17" r="1.15" fill="currentColor"/><circle cx="15" cy="17" r="1.15" fill="currentColor"/></svg><span class="toollabel toollabel-full">Free pricing calculator</span><span class="toollabel toollabel-short">Calculator</span></a>
         <a class="btn" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-header&mt=8"><span class="btnlabel-full">Download on the App Store</span><span class="btnlabel-short">Get the app</span></a>
       </nav>
     </div>
@@ -689,8 +697,8 @@
     </div>
    </div>
     <div class="strip reveal">
-      <div><h2>Point it at the slicer</h2><p>The camera reads print time and grams off the slicer screen, then prices the print, fees and labor included.</p></div>
-      <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with weeks of stock from your real sales pace.</p></div>
+      <div><h2>Point it at the slicer</h2><p>The camera reads print time and grams off the slicer screen, then <a href="/resources/3d-printing-pricing-calculator">prices the print</a>, fees included, and shows what it pays you an hour.</p></div>
+      <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with <a href="/resources/filament-inventory-management">weeks of stock from your real sales pace</a>.</p></div>
       <div><h2>On your phone, not a desk</h2><p>The sale, the print, the empty spool: they happen away from a computer. A native iPhone app catches them right there, so &ldquo;I&rsquo;ll log it later&rdquo; never turns into never.</p></div>
     </div>
     <figure class="quote reveal">
@@ -720,7 +728,7 @@
   <section class="stage">
     <div class="wrap">
       <h2 class="reveal">Every fee Etsy charged. No estimating.</h2>
-      <p class="reveal">Read from your Etsy payment account, order by order, and reconciled against <strong>what Etsy actually deposits</strong>. Shipping your buyer paid passes straight through; when you ship free, the label is counted as the real cost it is.</p>
+      <p class="reveal">Read from your Etsy payment account, order by order, and reconciled against <strong>what Etsy actually deposits</strong>. Shipping your buyer paid passes straight through; when you ship free, the label is counted as the real cost it is. <a href="/resources/etsy-fees-3d-printing">The four Etsy fees, explained</a>.</p>
       <div class="proof reveal">
         <div class="proof-hd"><span>Desk Organizer · Jul 27</span><span>Reconciled</span></div>
         <div class="proof-body">
@@ -740,6 +748,7 @@
           <div class="pl sum"><span>Net profit · 29% margin</span><b>$8.18</b></div>
         </div>
       </div>
+      <p class="fine reveal" style="margin-top:22px">Want to check the math by hand? <a href="/resources/3d-printing-profit-calculator">One order rebuilt from the payment ledger</a>, line by line.</p>
       <figure class="quote reveal">
         <blockquote>&ldquo;I rely on SpoolPilot to keep my Etsy shop profitable and efficient after 5 years and 3,000 sales. If one of its numbers is wrong, I&rsquo;d be the first shop it affects.&rdquo;</blockquote>
         <cite>&mdash; Sean <span>&middot; SpoolPilot founder</span></cite>
@@ -856,7 +865,7 @@
         <cite>&mdash; Rested Tea <span>&middot; App Store review</span></cite>
       </figure>
 
-      <p class="fine reveal" style="margin-top:22px">The one thing that does leave: this website counts visits, so we know which pages people read. It never receives anything from the app. <a href="/privacy.html">The privacy policy spells out all of it</a>.</p>
+      <p class="fine reveal" style="margin-top:22px">The one thing that does leave: this website counts visits, so we know which pages people read. It never receives anything from the app. <a href="/privacy.html">The privacy policy spells out all of it</a>, and <a href="/what-spoolpilot-reads-from-etsy.html">what SpoolPilot reads from Etsy</a> lists every field the app touches.</p>
     </div>
   </section>
 
@@ -877,16 +886,20 @@
           <p>Not yet. SpoolPilot is a native iPhone app. The <a href="/etsy-fee-calculator.html">pricing calculator</a> on this site is the one part that runs in a browser, free, with no signup. If you want the app on Android, the calculator page has a place to say so.</p>
         </details>
         <details>
+          <summary>Is this the same SpoolPilot as spoolpilot.com?</summary>
+          <p>No. SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC for people who sell 3D prints on Etsy; spoolpilot.com was a separate web filament tracker that has been discontinued, and the SpoolPilot hardware project on GitHub is unrelated. This app has no web dashboard, no public API, and no hardware.</p>
+        </details>
+        <details>
           <summary>How does SpoolPilot calculate profit?</summary>
-          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, packaging, and your time if you count it as a cost. What&rsquo;s left is the profit on that order. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
+          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What&rsquo;s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
-          <p>Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question, what did this Etsy order actually make you, and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile. <a href="/resources/3d-printing-business-software">How to choose software for a print business</a> lays out the options side by side.</p>
+          <p>Craftybase is a full manufacturing-inventory suite built for the desktop; a spreadsheet only holds the numbers you remember to type. SpoolPilot is a native iOS app focused on one question, what did this Etsy order actually make you, and it logs the sale, the real fee, and the filament grams the moment they happen. Nothing to enter, nothing to reconcile. <a href="/3d-printing-business-software">What software a 3D printing business needs</a> lays out the options side by side.</p>
         </details>
         <details>
           <summary>What does it cost?</summary>
-          <p>SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan.</p>
+          <p>SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan. That founding price holds until October 31, 2026, and stays locked for anyone subscribed by then.</p>
         </details>
         <details>
           <summary>Is my shop and customer data private?</summary>
@@ -927,7 +940,7 @@
 
   <footer class="wrap">
     <p style="margin:0 0 14px;color:var(--body);font-weight:600">No customer data collected. SpoolPilot only ever reads your own shop's numbers.</p>
-    <p style="margin:0 0 10px"><a href="/resources/">Resources for print businesses</a> · <a href="/3d-printing-business-software">What software a 3D printing business needs</a> · <a href="/etsy-fee-calculator.html">Free 3D print cost calculator</a> · <a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a> · <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html">Craftybase alternative</a></p>
+    <p style="margin:0 0 10px"><a href="/resources/">Resources for print businesses</a> · <a href="/resources/3d-printing-pricing-calculator">How to price 3D prints</a> · <a href="/resources/3d-printing-profit-calculator">Real profit on a 3D print</a> · <a href="/resources/etsy-fees-3d-printing">Etsy fees for 3D print sellers</a> · <a href="/resources/filament-inventory-management">Filament inventory for a print business</a> · <a href="/3d-printing-business-software">What software a 3D printing business needs</a> · <a href="/etsy-fee-calculator.html">Free 3D print cost calculator</a> · <a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a> · <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html">Craftybase alternative</a></p>
     &copy; <span id="year"></span> Opus Design Group LLC · <a href="/resources/">Resources</a> · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
     <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
   </footer>

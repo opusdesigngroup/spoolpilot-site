@@ -7,12 +7,16 @@
 > Published by Opus Design Group LLC; built by Sean, who runs a 3D-print shop on Etsy (five years,
 > 3,000+ sales). Category: 3D printing business management software. Site: https://spoolpilot.app
 
+SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC (App Store id 6796133961).
+It is not spoolpilot.com (a discontinued web filament tracker) and not the SpoolPilot hardware
+project on GitHub. No web dashboard, no public API, no hardware.
+
 ## Who it is for
 
 People who sell what they print, from one printer to a small print farm, mostly on Etsy. It is not a
 hobbyist filament tracker, not a print-farm controller, and not general bookkeeping.
 
-## What it does (shipping today, version 1.2)
+## What it does (shipping today, version 1.2.1)
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
@@ -67,13 +71,13 @@ unconnected to the app. See https://spoolpilot.app/privacy.html
 - Home: https://spoolpilot.app/
 - What software a 3D printing business needs (guide): https://spoolpilot.app/3d-printing-business-software
 - Resources hub: https://spoolpilot.app/resources/
-- How to price your prints: https://spoolpilot.app/resources/3d-printing-pricing-calculator
+- How to price 3D prints: https://spoolpilot.app/resources/3d-printing-pricing-calculator
 - Real profit on a 3D print: https://spoolpilot.app/resources/3d-printing-profit-calculator
 - Etsy fees for 3D print sellers: https://spoolpilot.app/resources/etsy-fees-3d-printing
 - Filament inventory for a print business: https://spoolpilot.app/resources/filament-inventory-management
-- Choosing software for a small 3D printing business: https://spoolpilot.app/resources/3d-printing-business-software
-- Free Etsy fee and pricing calculator: https://spoolpilot.app/etsy-fee-calculator.html
+- Free 3D print cost and price calculator with Etsy fees: https://spoolpilot.app/etsy-fee-calculator.html
 - Why Etsy takes more than the rate card says: https://spoolpilot.app/etsy-fees-vs-rate-card.html
+- What SpoolPilot reads from Etsy (every field, read-only): https://spoolpilot.app/what-spoolpilot-reads-from-etsy.html
 - 3DPCC vs SpoolPilot: https://spoolpilot.app/3dpcc-alternative.html
 - Craftybase alternative: https://spoolpilot.app/craftybase-alternative.html
 - Spoolman vs SpoolPilot: https://spoolpilot.app/spoolman-alternative.html
