@@ -126,7 +126,7 @@ tbody td:first-child{color:var(--muted);font-size:var(--fs-ui)}
 /* The download, sized as the primary action. The calculator's closer used to end in an email
    form; the rate-change signup under the result is now this page's single email ask. */
 .btn-big{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--ink) !important;
-  text-decoration:none !important;font-weight:600;font-size:var(--fs-body);padding:15px 28px;border-radius:14px;white-space:nowrap;
+  text-decoration:none !important;font-weight:600;font-size:var(--fs-body);padding:15px 28px;border-radius:12px;white-space:nowrap;
   box-shadow:0 14px 28px -14px rgba(249,115,22,.7);transition:background .16s ease,transform .16s ease}
 .btn-big:hover{background:var(--orange-deep);transform:translateY(-1px)}
 .btn-big svg{width:18px;height:18px;flex:0 0 auto}
@@ -160,7 +160,7 @@ tbody td:first-child{color:var(--muted);font-size:var(--fs-ui)}
 /* ---------- contact plate (support) ---------- */
 .plate{
   display:inline-block;background:var(--ink);color:#fff !important;text-decoration:none;
-  font-weight:600;font-size:var(--fs-ui);padding:16px 26px;border-radius:14px;margin:4px 0 6px;
+  font-weight:600;font-size:var(--fs-ui);padding:16px 26px;border-radius:12px;margin:4px 0 6px;
   transition:transform .16s ease,background .16s ease;
 }
 .plate:hover{background:#000;transform:translateY(-1px)}
@@ -227,7 +227,7 @@ footer a:hover{color:var(--ink)}
 
 /* The answer in price mode — the one number the whole page exists to produce. */
 .suggest{display:flex;flex-direction:column;gap:2px;padding:16px 18px;margin:0 0 14px;
-  background:#fff;border:1px solid var(--rule-2);border-radius:14px}
+  background:#fff;border:1px solid var(--rule-2);border-radius:12px}
 .suggest-label{font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
 .suggest-price{font-size:var(--fs-figure);font-weight:700;letter-spacing:-.03em;color:var(--profit);font-variant-numeric:tabular-nums;line-height:1.1}
 .suggest-note{font-size:var(--fs-meta);color:var(--body)}
