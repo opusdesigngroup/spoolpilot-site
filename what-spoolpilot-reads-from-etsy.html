@@ -23,8 +23,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="article.css?v=6066016">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=1">
+  <link rel="stylesheet" href="/article.css?v=8">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -131,16 +132,16 @@
 
   <main class="doc">
     <p class="crumb"><a href="/">SpoolPilot</a> · Etsy access</p>
+    <h1>What SpoolPilot reads from Etsy</h1>
       <p class="credential">
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <h1>What SpoolPilot reads from Etsy</h1>
     <p class="lede">Connecting a shop to an app you found last week is a real decision. This page lists every permission SpoolPilot asks for, every field it reads, what each one is used for, and where the data ends up. Then it shows you how to check all of it without taking our word for anything.</p>
 
     <h2>Two permissions, both read-only</h2>
-    <p>When you connect, Etsy shows its own consent screen. It asks you to grant SpoolPilot exactly two things: permission to read your shop's transactions, and permission to read your shop's listings. That is the whole list.</p>
-    <p>Neither permission can change anything. SpoolPilot cannot edit a listing, change a price, renew a listing, message a buyer, or touch your payment settings. If it ever asked for more, Etsy's consent screen would say so before you tapped Allow.</p>
+    <p>When you connect, Etsy shows its own consent screen. It asks you to grant SpoolPilot exactly two things: permission to read your shop&rsquo;s transactions, and permission to read your shop&rsquo;s listings. That is the whole list.</p>
+    <p>Neither permission can change anything. SpoolPilot cannot edit a listing, change a price, renew a listing, message a buyer, or touch your payment settings. If it ever asked for more, Etsy&rsquo;s consent screen would say so before you tapped Allow.</p>
 
     <h2>What it reads, and what each part is for</h2>
     <div class="tbl">
@@ -157,19 +158,19 @@
 
     <h2>What it never touches</h2>
     <ul>
-      <li><strong>Your buyers.</strong> Etsy attaches the buyer's name and shipping address to every order it sends. SpoolPilot discards them unread. No customer name, address, or email is stored or shown anywhere in the app.</li>
+      <li><strong>Your buyers.</strong> Etsy attaches the buyer&rsquo;s name and shipping address to every order it sends. SpoolPilot discards them unread. No customer name, address, or email is stored or shown anywhere in the app.</li>
       <li><strong>Messages, reviews, and shop stats.</strong> Not requested, so not readable.</li>
       <li><strong>Your bank and payout details.</strong> The ledger lists fees and sale amounts. It does not carry your bank account.</li>
       <li><strong>Anything you would need to undo.</strong> There is no write permission, so there is nothing the app can change in your shop.</li>
     </ul>
 
     <h2>Where the data goes</h2>
-    <p>To your phone, and nowhere else. SpoolPilot has no account to sign up for and no server that holds shop data. Your orders, fees, and products are stored on the device, and the Etsy access token sits in the iPhone's Keychain. Disconnecting deletes that token immediately.</p>
-    <p>One small relay sits between the app and Etsy, because Etsy gives developers a secret key that cannot safely live inside an app. The relay holds that key, checks each request comes from a genuine unmodified copy of SpoolPilot using Apple's App Attest, forwards the request to Etsy, and returns the answer. It stores nothing and keeps no logs. The <a href="/privacy.html#signin-service">privacy policy</a> describes it in full.</p>
-    <p>The App Store listing carries Apple's <strong>Data Not Collected</strong> label. The app has no analytics and no tracking, which is what lets that label be true.</p>
+    <p>To your phone, and nowhere else. SpoolPilot has no account to sign up for and no server that holds shop data. Your orders, fees, and products are stored on the device, and the Etsy access token sits in the iPhone&rsquo;s Keychain. Disconnecting deletes that token immediately.</p>
+    <p>One small relay sits between the app and Etsy, because Etsy gives developers a secret key that cannot safely live inside an app. The relay holds that key, checks each request comes from a genuine unmodified copy of SpoolPilot using Apple&rsquo;s App Attest, forwards the request to Etsy, and returns the answer. It stores nothing and keeps no logs. The <a href="/privacy.html#signin-service">privacy policy</a> describes it in full.</p>
+    <p>The App Store listing carries Apple&rsquo;s <strong>Data Not Collected</strong> label. The app has no analytics and no tracking, which is what lets that label be true.</p>
 
     <h2>Etsy reviewed how the app uses its API</h2>
-    <p>In August 2026 Etsy's developer team granted SpoolPilot Commercial Access. That is the tier Etsy requires before an app may connect more than a handful of shops, and it is granted after Etsy reviews what the app requests and how it handles the data. It is a review of the app's use of the API, not an endorsement of the app, and we do not claim otherwise.</p>
+    <p>In August 2026 Etsy&rsquo;s developer team granted SpoolPilot Commercial Access. That is the tier Etsy requires before an app may connect more than a handful of shops, and it is granted after Etsy reviews what the app requests and how it handles the data. It is a review of the app&rsquo;s use of the API, not an endorsement of the app, and we do not claim otherwise.</p>
 
     <h2>Check it yourself</h2>
     <ol>

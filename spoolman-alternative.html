@@ -24,8 +24,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="article.css?v=6066016">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=1">
+  <link rel="stylesheet" href="/article.css?v=8">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -145,19 +146,19 @@
 
   <main class="doc">
     <p class="crumb"><a href="/">SpoolPilot</a> · Comparison</p>
+    <h1>Spoolman vs SpoolPilot: two different questions</h1>
       <p class="credential">
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <h1>Spoolman vs SpoolPilot: two different questions</h1>
     <p class="lede">Spoolman asks <em>how much plastic is left on each spool</em>. SpoolPilot asks <strong>how much money the shop made</strong>. If you sell what you print, you might genuinely want both, but you should know which is which.</p>
 
     <h2>Spoolman, respectfully</h2>
-    <p>Spoolman is excellent at what it does: a free, open-source, self-hosted filament database with native Klipper support, so your printer itself logs consumption per print. For a tinkerer running Klipper who wants gram-accurate remaining weight on every spool, it's the community's gold standard, and being MIT-licensed and self-hosted, it's fully yours.</p>
+    <p>Spoolman is excellent at what it does: a free, open-source, self-hosted filament database with native Klipper support, so your printer itself logs consumption per print. For a tinkerer running Klipper who wants gram-accurate remaining weight on every spool, it&rsquo;s the community&rsquo;s gold standard, and being MIT-licensed and self-hosted, it&rsquo;s fully yours.</p>
     <p>The cost is ceremony. You run a server (Docker, usually), then build your database by hand: manufacturers, then filament types, then each physical spool. Weights stay accurate only when prints flow through the integrations. And it stops at plastic: <strong>no sales, no fees, no profit</strong>, because that was never its job.</p>
 
-    <h2>What sellers need that grams can't answer</h2>
-    <p>A shop owner's daily questions are different: what did that $28 order actually net after Etsy's four separate fees? Which product is quietly unprofitable? How many sealed spools are on the shelf, and how many weeks will they last at the current sales pace? What should I print next?</p>
+    <h2>What sellers need that grams can&rsquo;t answer</h2>
+    <p>A shop owner&rsquo;s daily questions are different: what did that $28 order actually net after Etsy&rsquo;s four separate fees? Which product is quietly unprofitable? How many sealed spools are on the shelf, and how many weeks will they last at the current sales pace? What should I print next?</p>
     <p>Those are money-and-time questions, and they need sales data, <em>not a scale</em>. SpoolPilot connects to your Etsy shop, imports your sales (your whole history with Pro), reads the exact fees Etsy charged on each order, and treats filament the way a busy shop actually does: count sealed spools by scanning the barcode, let sales infer the rest.</p>
 
     <h2>Side by side</h2>
@@ -177,7 +178,7 @@
     </div>
 
     <h2>Can you run both?</h2>
-    <p>Sure. Some print-farm owners keep Spoolman for per-machine gram nerdery and use SpoolPilot for the business: profit, fees, forecasts, and what to print next. They don't compete for the same job. <strong>They compete for the same shelf</strong>.</p>
+    <p>Sure. Some print-farm owners keep Spoolman for per-machine gram nerdery and use SpoolPilot for the business: profit, fees, forecasts, and what to print next. They don&rsquo;t compete for the same job. <strong>They compete for the same shelf</strong>.</p>
   <div class="cta">
     <h2>See your real profit in minutes</h2>
     <p>SpoolPilot syncs your Etsy orders, itemizes the exact fees Etsy charged on each one, and shows the net profit per sale. Free on iPhone for 10 orders a month; Pro brings in every order and your whole history.</p>
@@ -191,7 +192,7 @@
     <p class="note">No spam, and a person reads every reply.</p>
   </div>
 
-    <p class="fine" style="margin-top:26px">Spoolman is an open-source project by its respective authors; SpoolPilot is not affiliated with it. More: <a href="/3d-printing-business-software" style="color:var(--orange);font-weight:600">what software a 3D printing business needs</a> · <a href="/etsy-fees-vs-rate-card.html" style="color:var(--orange);font-weight:600">why Etsy takes more than the rate card says</a> · <a href="/etsy-fee-calculator.html" style="color:var(--orange);font-weight:600">free Etsy fee calculator</a> · <a href="/craftybase-alternative.html" style="color:var(--orange);font-weight:600">a Stocksmith alternative</a> · <a href="/3dpcc-alternative.html" style="color:var(--orange);font-weight:600">3DPCC vs SpoolPilot</a></p>
+    <p class="fine" style="margin-top:26px">Spoolman is an open-source project by its respective authors; SpoolPilot is not affiliated with it. More: <a href="/3d-printing-business-software" style="color:var(--cta);font-weight:600">what software a 3D printing business needs</a> · <a href="/etsy-fees-vs-rate-card.html" style="color:var(--cta);font-weight:600">why Etsy takes more than the rate card says</a> · <a href="/etsy-fee-calculator.html" style="color:var(--cta);font-weight:600">free Etsy fee calculator</a> · <a href="/craftybase-alternative.html" style="color:var(--cta);font-weight:600">a Stocksmith alternative</a> · <a href="/3dpcc-alternative.html" style="color:var(--cta);font-weight:600">3DPCC vs SpoolPilot</a></p>
   </main>
 
   <footer>

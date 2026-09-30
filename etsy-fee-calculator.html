@@ -24,8 +24,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="article.css?v=6066016">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=1">
+  <link rel="stylesheet" href="/article.css?v=8">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -196,11 +197,11 @@
 
   <main class="doc">
     <p class="crumb"><a href="/">SpoolPilot</a> · Free tool</p>
+    <h1>3D print cost and price calculator with Etsy fees</h1>
       <p class="credential">
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <h1>3D print cost and price calculator with Etsy fees</h1>
     <p class="lede">See what a sale nets you after Etsy&rsquo;s fees and your costs, or what to charge to hit the margin you want. <strong>No signup, nothing stored.</strong></p>
     <p class="fine">This is the web version of the calculator in the SpoolPilot iPhone app. In the app, the camera reads grams and hours off your slicer, and synced Etsy orders show the fees Etsy actually charged. Method: <a href="/resources/3d-printing-pricing-calculator" style="color:var(--cta);font-weight:600">how to price your prints</a>.</p>
 
@@ -314,7 +315,7 @@
       .ratewatch .form-note { margin: 10px 2px 0; color: var(--muted); font-size: var(--fs-meta); line-height: 1.5; }
       .rw-yours { margin: 14px 0 0; padding: 12px 14px; background: var(--bg-alt); border: 1px solid var(--rule); border-radius: 12px; color: var(--body); font-size: var(--fs-ui); line-height: 1.5; }
       .rw-yours b { color: var(--ink); }
-      .rw-copy { margin-top: 10px; border: 0; background: none; padding: 0; font: inherit; font-size: var(--fs-ui); font-weight: 700; color: var(--orange); cursor: pointer; text-decoration: underline; }
+      .rw-copy { margin-top: 10px; border: 0; background: none; padding: 0; font: inherit; font-size: var(--fs-ui); font-weight: 600; color: var(--cta); cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
     </style>
 
     <div class="ratewatch">
@@ -380,7 +381,7 @@
     <h3>What margin should a 3D print have?</h3>
     <p>There is no number to copy. Margin is what is left after Etsy&rsquo;s fees and every cost of making and packing the item, and your own pay comes out of it, so the useful check is what the sale pays you an hour for your hands-on minutes, not the percentage on its own. <a href="/resources/3d-printing-pricing-calculator" style="color:var(--cta);font-weight:600">How to price 3D prints</a> has the formula that solves for whatever margin you choose, with a worked example.</p>
 
-    <p class="fine" style="margin-top:26px">More: <a href="/resources/3d-printing-pricing-calculator" style="color:var(--orange);font-weight:600">how to price 3D prints</a> · <a href="/resources/etsy-fees-3d-printing" style="color:var(--orange);font-weight:600">Etsy fees for 3D print sellers</a> · <a href="/resources/3d-printing-profit-calculator" style="color:var(--orange);font-weight:600">real profit on a 3D print</a> · <a href="/3d-printing-business-software" style="color:var(--orange);font-weight:600">what software a 3D printing business needs</a> · <a href="/etsy-fees-vs-rate-card.html" style="color:var(--orange);font-weight:600">why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html" style="color:var(--orange);font-weight:600">3DPCC vs SpoolPilot</a> · <a href="/craftybase-alternative.html" style="color:var(--orange);font-weight:600">a Stocksmith (Craftybase) alternative</a> · <a href="/spoolman-alternative.html" style="color:var(--orange);font-weight:600">Spoolman vs SpoolPilot</a></p>
+    <p class="fine" style="margin-top:26px">More: <a href="/resources/3d-printing-pricing-calculator" style="color:var(--cta);font-weight:600">how to price 3D prints</a> · <a href="/resources/etsy-fees-3d-printing" style="color:var(--cta);font-weight:600">Etsy fees for 3D print sellers</a> · <a href="/resources/3d-printing-profit-calculator" style="color:var(--cta);font-weight:600">real profit on a 3D print</a> · <a href="/3d-printing-business-software" style="color:var(--cta);font-weight:600">what software a 3D printing business needs</a> · <a href="/etsy-fees-vs-rate-card.html" style="color:var(--cta);font-weight:600">why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html" style="color:var(--cta);font-weight:600">3DPCC vs SpoolPilot</a> · <a href="/craftybase-alternative.html" style="color:var(--cta);font-weight:600">a Stocksmith (Craftybase) alternative</a> · <a href="/spoolman-alternative.html" style="color:var(--cta);font-weight:600">Spoolman vs SpoolPilot</a></p>
   </main>
 
   <footer>
@@ -396,7 +397,10 @@
   <script>
     (function () {
       var $ = function (id) { return document.getElementById(id); };
-      var money = function (n) { return (n < 0 ? '-$' : '$') + Math.abs(n).toFixed(2); };
+      // A true minus and grouped thousands, as the app writes money: −$1,240.50, never -$1240.50.
+      var money = function (n) {
+        return (n < 0 ? '\u2212$' : '$') + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      };
       var c = function (n) { return Math.round(n * 100) / 100; };
       var ids = ['c-price','c-grams','c-kg','c-hours','c-mins','c-elec','c-wear','c-pack',
                  'c-labormin','c-laborpaid','c-laborrate','c-margin','c-osa'];
@@ -513,7 +517,7 @@
         $('row-labor').style.display = lab > 0 ? 'flex' : 'none';
         $('o-lab').textContent = '\u2212' + money(lab);
         $('o-net').textContent = money(net);
-        $('o-net').className = 'v ' + (net >= 0 ? 'pos' : 'neg');
+        $('o-net').className = 'v ' + (net >= 0 ? 'pos' : 'loss');
         $('o-margin').textContent = (item > 0 ? (net / item * 100) : 0).toFixed(0) + '%';
 
         // Labor, as the app asks it: the switch appears once there are minutes to ask about,

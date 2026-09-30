@@ -24,8 +24,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/article.css?v=6066016">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=1">
+  <link rel="stylesheet" href="/article.css?v=8">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -189,13 +190,13 @@
 
   <main class="doc">
     <p class="crumb"><a href="/">SpoolPilot</a> · <a href="/resources/">Resources</a></p>
+    <h1>How to price 3D prints</h1>
     <p class="credential">
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       By an Etsy seller with 3,000+ sales
     </p>
-    <h1>How to price 3D prints</h1>
-    <p class="lede">Your slicer already shows a cost for the print. That number is the <strong>filament and only the filament</strong>, at whatever price per kilogram is stored in the profile. It is missing electricity, machine wear, the prints that fail, the box, and the platform's cut, and it says nothing about what the print pays you for your time. Price the print from the slicer's number plus what it leaves out, solved so the margin survives the fees: <strong>price = (cost + flat fees) ÷ (1 − margin − fee%)</strong>.</p>
-    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised 25 September 2026.</p>
+    <p class="lede">Your slicer already shows a cost for the print. That number is the <strong>filament and only the filament</strong>, at whatever price per kilogram is stored in the profile. It is missing electricity, machine wear, the prints that fail, the box, and the platform&rsquo;s cut, and it says nothing about what the print pays you for your time. Price the print from the slicer&rsquo;s number plus what it leaves out, solved so the margin survives the fees: <strong>price = (cost + flat fees) ÷ (1 − margin − fee%)</strong>.</p>
+    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised September&nbsp;25,&nbsp;2026.</p>
 
     <h2>The short answer, with a worked example</h2>
     <p>Take a print the slicer prices at <strong>$1.03</strong> of filament. Fully costed, with everything the slicer leaves out, it is <strong>$3.40</strong> to make and pack (the sections below show where each part comes from). Say you sell on Etsy, where the percentage fees on a US sale are 6.5% transaction plus 3% processing, so 9.5% together, and the flat fees are $0.25 processing plus a $0.20 listing fee, $0.45 in all. You want to keep 50% of the price.</p>
@@ -203,24 +204,24 @@
     <p>Check it at $9.95: fees are 0.65 + 0.30 + 0.25 + 0.20 = $1.40, cost is $3.40, and you keep $5.15, which is 51.8% of the price. The margin held because the percentage fees were solved for rather than added afterward. Then the check that matters most: if the print takes ten minutes of your hands, taking off supports and packing it, that $5.15 pays you about <strong>$31 an hour</strong>.</p>
     <p>If you want the arithmetic done for you, the <a href="/etsy-fee-calculator.html">free 3D printing cost calculator</a> does exactly this, including the case where a margin is not reachable at any price. It also runs the other direction: type a price and see what a sale at that price nets after fees.</p>
 
-    <h2>What the slicer's cost line includes</h2>
+    <h2>What the slicer&rsquo;s cost line includes</h2>
     <p>Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura all show a cost for a sliced job. Out of the box it is one multiplication: the grams the job will use times the price per kilogram saved in the filament profile. Two things follow from that. First, it is a material cost, not a print cost; the hours are right there on the same screen, but nothing is charged for them unless you have set up a machine rate, which almost nobody has. Second, it is only as good as the price in the profile, and the profile usually still holds the default from when the printer was set up, or the price of a spool you bought a year ago, not the one on the printer now.</p>
-    <p>The slicer's number is a fine starting point. It is the first line of the cost, not the cost.</p>
+    <p>The slicer&rsquo;s number is a fine starting point. It is the first line of the cost, not the cost.</p>
 
-    <h2>What the slicer's number is missing</h2>
+    <h2>What the slicer&rsquo;s number is missing</h2>
     <p>Six things belong in the cost of a print. The slicer gives you the first one. The rest are where prints quietly lose money. Your own time is not one of them, and the section on it says why.</p>
 
     <h3>Filament</h3>
-    <p>This is the slicer's line. Grams for the job, including supports and any purge or waste from a color change, multiplied by the price per kilogram you actually paid for that spool, which means checking that the profile's price is the real one. A $22 kilo makes a 47 g print cost $1.03 in material. Use the price of the roll on the printer, not the sale price you saw last month.</p>
+    <p>This is the slicer&rsquo;s line. Grams for the job, including supports and any purge or waste from a color change, multiplied by the price per kilogram you actually paid for that spool, which means checking that the profile&rsquo;s price is the real one. A $22 kilo makes a 47 g print cost $1.03 in material. Use the price of the roll on the printer, not the sale price you saw last month.</p>
 
     <h3>Print time and electricity</h3>
-    <p>The slicer also tells you the hours. Electricity is your printer's average draw times the hours times your rate per kilowatt-hour. A printer averaging 150 W over a six-hour print uses 0.9 kWh; at a rate near 18 cents that is about 17 cents for the print. Enclosures, heated beds, and filament dryers push it up. It is rarely the biggest line, and it is never zero.</p>
+    <p>The slicer also tells you the hours. Electricity is your printer&rsquo;s average draw times the hours times your rate per kilowatt-hour. A printer averaging 150 W over a six-hour print uses 0.9 kWh; at a rate near 18 cents that is about 17 cents for the print. Enclosures, heated beds, and filament dryers push it up. It is rarely the biggest line, and it is never zero.</p>
 
     <h3>Machine and shop cost</h3>
     <p>A printer wears out. Divide what you paid for it, plus the nozzles, plates, and belts it will go through, by the print hours you expect from it, and you have a per-hour figure: a $600 machine over 3,000 hours is 20 cents an hour. Add a share of rent or a space you would otherwise use if that is real for you. Small shops usually fold this into a per-hour rate alongside electricity so it stops being forgotten. In SpoolPilot this is the Printer wear field in Cost settings: printer cost and expected print hours in, a per-hour rate out.</p>
 
     <h3>Failed prints</h3>
-    <p>Some prints fail. If one in twelve of a product's prints ends in the bin, every successful one has to carry a twelfth of a failure. Multiply the material and machine cost by 12 ÷ 11, about 1.09. A product with a fussy overhang might fail one in four and needs 1.33. If you have never counted your failure rate, that is the first thing to write down for a week, because it is different for every product and it is the cost people most often round to zero. <a href="/resources/3d-printing-profit-calculator">The profit page</a> covers where failures show up after the sale.</p>
+    <p>Some prints fail. If one in twelve of a product&rsquo;s prints ends in the bin, every successful one has to carry a twelfth of a failure. Multiply the material and machine cost by 12 ÷ 11, about 1.09. A product with a fussy overhang might fail one in four and needs 1.33. If you have never counted your failure rate, that is the first thing to write down for a week, because it is different for every product and it is the cost people most often round to zero. <a href="/resources/3d-printing-profit-calculator">The profit page</a> covers where failures show up after the sale.</p>
 
     <h3>Paid help, and your own time</h3>
     <p>Removing supports, sanding, gluing, inserting magnets, packing, replying to the message about the color. If you pay someone for those minutes, their wage is a cost like the box: ten minutes at $18 an hour is $3, and it goes on the list.</p>
@@ -229,7 +230,7 @@
     <h3>Packaging</h3>
     <p>The box or mailer, tape, tissue, insert, and the card if you send one. Count the actual box. A $1.40 mailer on a $12 item is more than 10% of the sale.</p>
 
-    <p>Add those up. For the example above: the slicer's $1.03 of filament, $0.17 electricity, $1.20 machine time, a 1.09 failure multiplier on those three ($0.22), and $0.78 packaging comes to <strong>$3.40</strong>. Your ten minutes are not in it; they are paid from what the sale keeps.</p>
+    <p>Add those up. For the example above: the slicer&rsquo;s $1.03 of filament, $0.17 electricity, $1.20 machine time, a 1.09 failure multiplier on those three ($0.22), and $0.78 packaging comes to <strong>$3.40</strong>. Your ten minutes are not in it; they are paid from what the sale keeps.</p>
 
     <h2>Why fees have to be solved for, not added</h2>
     <p>The common shortcut is to add up the cost, double it, and call the rest profit. Then the platform takes its percentage off the top and the doubled price turns out to have been a 35% margin, or a 20% one once shipping and the failure rate are in. Percentage fees are charged on the price, and the price is the thing you are trying to find, which is why they belong in the denominator of the formula rather than as a line added at the end. On a marketplace they also apply to the shipping the buyer pays, which is easy to miss: the <a href="/resources/etsy-fees-3d-printing">Etsy fees page</a> works through an order with shipping included.</p>
@@ -241,8 +242,8 @@
 
     <h2>Mistakes that make prints lose money</h2>
     <ul>
-      <li><strong>Pricing from a competitor's listing</strong> without knowing whether their number works. Their cost structure is not yours.</li>
-      <li><strong>Using last season's filament price.</strong> Update the per-kilo number when a new spool goes on.</li>
+      <li><strong>Pricing from a competitor&rsquo;s listing</strong> without knowing whether their number works. Their cost structure is not yours.</li>
+      <li><strong>Using last season&rsquo;s filament price.</strong> Update the per-kilo number when a new spool goes on.</li>
       <li><strong>Never checking what a sale pays you an hour.</strong> Divide what you keep by your hands-on minutes. Enjoy the work and still get paid for it.</li>
       <li><strong>Counting buyer-paid shipping as income</strong> and forgetting the label costs money. Shipping is a pass-through at best.</li>
       <li><strong>Ignoring the failure rate.</strong> It is a multiplier on every successful print, not an occasional bad day.</li>
@@ -259,7 +260,7 @@
       <p><a class="btn-big" href="/etsy-fee-calculator.html">Open the free pricing calculator</a></p>
       <p class="cta-free"><a href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-res-3d-printing-pricing-calculator&mt=8" style="color:var(--cta)">Or get SpoolPilot for iPhone</a> and price prints by pointing the camera at your slicer.</p>
     </div>
-    <p class="fine" style="margin-top:26px">More: <a href="/resources/3d-printing-profit-calculator" style="color:var(--orange);font-weight:600">how to calculate the real profit on a print</a> · <a href="/resources/etsy-fees-3d-printing" style="color:var(--orange);font-weight:600">Etsy fees for 3D print sellers</a> · <a href="/resources/filament-inventory-management" style="color:var(--orange);font-weight:600">tracking filament inventory</a> · <a href="/3d-printing-business-software" style="color:var(--orange);font-weight:600">what software a 3D printing business needs</a></p>
+    <p class="fine" style="margin-top:26px">More: <a href="/resources/3d-printing-profit-calculator" style="color:var(--cta);font-weight:600">how to calculate the real profit on a print</a> · <a href="/resources/etsy-fees-3d-printing" style="color:var(--cta);font-weight:600">Etsy fees for 3D print sellers</a> · <a href="/resources/filament-inventory-management" style="color:var(--cta);font-weight:600">tracking filament inventory</a> · <a href="/3d-printing-business-software" style="color:var(--cta);font-weight:600">what software a 3D printing business needs</a></p>
   </main>
 
   <footer>

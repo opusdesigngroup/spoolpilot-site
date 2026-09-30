@@ -233,10 +233,11 @@
   ]
 }
   </script>
-  <link rel="preload" as="image" href="/shot-home.webp?v=12" type="image/webp">
+  <link rel="preload" as="image" href="/shot-home.webp?v=15" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=1">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -258,41 +259,26 @@
     window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
   </script>
   <style>
-  /* Type ramp. Every font-size on this page is one of these roles — a literal px value
-     here is drift, not a decision. Roles are jobs, not sizes: pick by what the element
-     IS, never by which number is closest to what it used to be. article.css carries the
-     same ramp and steps its headings down one, because those pages are for reading. */
-  :root {
-    --fs-meta: 13px;                          /* fine print, captions, table headers, cite */
-    --fs-ui: 15px;                            /* nav, buttons, inputs, table cells, dense UI */
-    --fs-body: 17px;                          /* running prose */
-    --fs-lede: 20px;                          /* the intro paragraph under a heading */
-    --fs-sub: 24px;                           /* h3, card headings */
-    --fs-figure: 30px;                        /* a money figure presented as a result */
-    --fs-section: clamp(30px, 4.4vw, 44px);   /* h2 */
-    --fs-display: clamp(40px, 6vw, 64px);     /* h1 */
-
-    /* Display face. Headings only; Hanken Grotesk keeps everything a reader actually reads.
-       Set to 'inherit' to drop back to one family. */
-    --ff-display: 'Archivo', 'Hanken Grotesk', system-ui, sans-serif;
-  }
-    :root{
-      --bg:#FFFFFF; --bg-alt:#F6F5F3; --ink:#111010; --body:#55504B; --muted:#746D66;
-      --rule:rgba(17,16,16,.08); --orange:#F97316; --cta:#C2540C; --cta-hover:#A8470A;
-      --cta-fill:#F97316; --cta-fill-hover:#E4650C; --profit:#177245;
-      /* credential: used only for the maker-proof line. Not an interactive color. */
-      --credential:#1B3A5C; --credential-tint:rgba(27,58,92,.08);
-    }
+  /* Roles, colors and space come from /tokens.css, shared with every page and mirroring the
+     app. Every font-size here is a role (var(--fs-*)); a literal px value is drift. */
     *{box-sizing:border-box}
     html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
     @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
     body{
       margin:0;background:var(--bg);color:var(--ink);
-      font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;
+      font-family:var(--ff);font-size:var(--fs-body);line-height:var(--lh-body);
       -webkit-font-smoothing:antialiased;
+      /* The full-bleed hero phone is 100vw wide; where a scrollbar takes width, that was a
+         sideways scroll. clip, not hidden: no scroll container, so the sticky header still works. */
+      overflow-x:clip;
     }
     img{max-width:100%;height:auto;display:block}
     a{color:inherit}
+    /* Links inside copy: the app's text orange, a thin underline that firms up on hover.
+       Buttons, nav and cards carry classes and keep their own look. */
+    :is(p,li,blockquote,.fold-quote) a:not([class]){color:var(--cta);font-weight:600;text-decoration:underline;
+      text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:color-mix(in srgb,var(--cta) 40%,transparent)}
+    :is(p,li,blockquote,.fold-quote) a:not([class]):hover{color:var(--cta-hover);text-decoration-color:currentColor}
     ::selection{background:rgba(249,115,22,.16)}
 
     .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
@@ -303,7 +289,7 @@
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:var(--fs-body);letter-spacing:-.02em}
     .brand svg{width:26px;height:26px;border-radius:7px;display:block}
     nav{display:flex;align-items:center;gap:24px}
-    nav a{color:var(--muted);text-decoration:none;font-size:var(--fs-ui);font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;font-size:var(--fs-ui);font-weight:400}
     nav a:hover{color:var(--ink)}
 
     /* ---- free-tool nav action ----
@@ -341,7 +327,7 @@
        header-only pill. Install is free, so the download is the ask, and the email is the
        fallback behind a text link. */
     .btn-big{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:700;font-size:var(--fs-ui);
+      background:var(--cta-fill);color:var(--ink);text-decoration:none;font-weight:600;font-size:var(--fs-body);
       padding:15px 28px;border-radius:12px;white-space:nowrap;
       box-shadow:0 14px 28px -14px rgba(249,115,22,.7);transition:background .16s ease,transform .16s ease}
     .btn-big:hover{background:var(--cta-fill-hover);transform:translateY(-1px)}
@@ -375,23 +361,12 @@
       .hero-copy .lede{margin-left:0;max-width:40ch;margin-bottom:30px;font-size:var(--fs-lede)}
       .hero-copy .waitlist{margin-left:0;justify-content:flex-start}
       .hero-copy .note{text-align:left;margin-left:0}
-      .hero-stage .tabs{margin-top:0;padding:4px}
-      .hero-stage .tabs button{padding:8px 12px;font-size:var(--fs-meta)}
-      .hero-stage .hero-device{width:300px;margin-top:18px}
-      .hero-stage .floor-cap{margin-top:46px;font-size:var(--fs-meta);min-height:0}
       /* The fold gets its own copy of the proof — the full card below stays for readers. */
       .fold-quote{display:block;margin:26px 0 0;padding:0 0 0 16px;border-left:1px solid var(--rule);text-align:left}
       .fold-quote + .fold-quote{margin-top:14px}
       .fold-quote blockquote{margin:0;font-size:var(--fs-body);line-height:1.55;color:var(--body)}
       .fold-quote cite{display:block;margin-top:6px;font-style:normal;font-size:var(--fs-meta);font-weight:700;color:var(--muted)}
     }
-    .kicker{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:var(--fs-meta);font-weight:600;color:var(--credential);
-      background:var(--credential-tint);border-radius:980px;
-      padding:7px 15px 7px 12px;margin:0 0 26px;letter-spacing:.005em;
-    }
-    .kicker svg{width:15px;height:15px;display:block;flex:0 0 auto}
     h1{
       font-family:var(--ff-display);
       margin:0 auto 24px;font-size:var(--fs-display);line-height:1.06;letter-spacing:-.04em;
@@ -419,10 +394,9 @@
 
     /* Keyboard focus is a state, not an accident */
     :focus-visible{outline:2px solid var(--cta);outline-offset:2px;border-radius:4px}
-    .tabs button:focus-visible{outline-offset:0}
     .waitlist input[type=email]:focus-visible{outline:none}
     .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
-    .waitlist-success h3{margin:0 0 5px;font-size:var(--fs-sub);font-weight:600;letter-spacing:-.02em}
+    .waitlist-success h3{margin:0 0 5px;font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title)}
     .waitlist-success p{margin:0;font-size:var(--fs-body);color:var(--body)}
 
 
@@ -434,19 +408,19 @@
       margin:0 auto 18px;font-size:var(--fs-section);line-height:1.14;letter-spacing:-.035em;
       font-weight:700;max-width:18ch;text-wrap:balance;
     }
-    .stage p{margin:0 auto;font-size:var(--fs-lede);line-height:1.6;color:var(--body);max-width:50ch}
-    /* .stage p outranks the caption classes; restate them here so the closing CTA matches the hero. */
-    .stage p.cta-free{margin:24px auto 0;font-size:var(--fs-meta)}
-    .stage p.mailtoggle{margin:14px auto 0;font-size:var(--fs-ui)}
+    /* :where() keeps this at a bare paragraph's weight, so every caption class (.note, .fine,
+       .cta-free, .floor-cap, .roadlabel) wins on its own. As `.stage p` it outranked them all and
+       fine print rendered at lede size; the fix used to be a qualified copy of each rule. */
+    :where(.stage) p{margin:0 auto;font-size:var(--fs-lede);line-height:var(--lh-body);color:var(--body);max-width:50ch}
     /* FAQ — accessible native disclosure, left-aligned inside the centred stage */
     .faq{max-width:660px;margin:32px auto 0;text-align:left}
     .faq details{border-top:1px solid var(--rule);padding:2px 0}
     .faq details:last-child{border-bottom:1px solid var(--rule)}
     .faq summary{list-style:none;cursor:pointer;padding:20px 34px 20px 0;position:relative;
-      font-size:var(--fs-sub);font-weight:600;color:var(--ink);line-height:1.4}
+      font-size:var(--fs-lede);font-weight:600;color:var(--ink);line-height:var(--lh-title);letter-spacing:var(--ls-title)}
     .faq summary::-webkit-details-marker{display:none}
     .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);
-      font-size:var(--fs-sub);font-weight:400;color:var(--orange);line-height:1}
+      font-size:var(--fs-lede);font-weight:400;color:var(--cta);line-height:1}
     .faq details[open] summary::after{content:"\2212"}
     .faq details p{margin:0 0 22px;font-size:var(--fs-body);line-height:1.62;color:var(--body);max-width:none}
     .stage .device{margin:60px auto 0;max-width:296px}
@@ -464,14 +438,15 @@
     .pl + .pl{border-top:1px solid var(--rule)}
     .pl.child{padding-left:16px;color:var(--muted);font-size:var(--fs-meta);border-top:0;padding-top:3px;padding-bottom:3px}
     .pl.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:8px;padding-top:13px;font-weight:600;align-items:center}
-    .pl.sum b{font-size:var(--fs-figure);letter-spacing:-.03em;color:var(--profit)}
+    .pl.sum b{font-size:var(--fs-figure);font-weight:700;letter-spacing:-.03em;color:var(--profit)}
     .pl-note{margin-top:10px;font-size:var(--fs-ui);font-weight:600;line-height:1.4;text-wrap:balance}
-    .pl .n{color:#C2540C}
+    /* A deduction is plain text with a true minus, as in the app: orange is for things you tap. */
+    .pl .n{color:inherit}
     .pl.thru{color:var(--muted)}
 
     /* ---- three quiet facts ---- */
     .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:left;padding:20px 0 0}
-    .facts h3{margin:0 0 8px;font-size:var(--fs-sub);font-weight:600;letter-spacing:-.02em}
+    .facts h3{margin:0 0 var(--s2);font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title);line-height:var(--lh-title)}
     .facts p{margin:0;font-size:var(--fs-body);color:var(--body);line-height:1.55;max-width:none}
 
     /* ---- compare ---- */
@@ -490,15 +465,15 @@
     /* Qualified with .stage so it outranks `.stage p`, which otherwise re-centres this with
        its own margin:0 auto and max-width:50ch and knocks the label out of line with the
        grid underneath it. */
-    .stage p.roadlabel{font-size:var(--fs-meta);font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-      color:var(--muted);text-align:left;margin:0 0 14px;max-width:none}
+    /* Sentence case, like the app's labels: no uppercase, no tracking. */
+    .roadlabel{font-size:var(--fs-ui);font-weight:600;color:var(--muted);text-align:left;margin:0 0 var(--s3);max-width:none}
     .road b{display:block;font-size:var(--fs-body);font-weight:600;margin-bottom:5px}
     .road span{font-size:var(--fs-body);color:var(--body);line-height:1.55}
 
     footer{border-top:1px solid var(--rule);padding:34px 0 50px;color:var(--muted);font-size:var(--fs-meta);text-align:center}
     footer a{color:var(--muted);text-decoration:none}
     footer a:hover{color:var(--ink)}
-    .fine{margin:12px auto 0;font-size:var(--fs-meta);line-height:1.55;max-width:64ch}
+    .fine{margin:12px auto 0;font-size:var(--fs-meta);line-height:1.55;max-width:64ch;color:var(--muted)}
 
     @media (prefers-reduced-motion:no-preference){
       .rv .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -553,7 +528,7 @@
 
     /* ---- differentiator strip (under the hero) ---- */
     .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:72px auto 0;padding-top:44px;border-top:1px solid var(--rule);text-align:left}
-    .strip h2{margin:0 0 8px;font-size:var(--fs-body);font-weight:600;letter-spacing:-.02em}
+    .strip h2{margin:0 0 var(--s2);font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title);line-height:var(--lh-title)}
     .strip p{margin:0;font-size:var(--fs-body);line-height:1.55;color:var(--body)}
     @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
     /* ---- testimonial: one real quote from a beta tester ---- */
@@ -567,28 +542,58 @@
     /* Mid-page CTA: one act-now door at the moment the fee argument lands, so a convinced
        reader isn't marched ten more screens to the only other form. */
     /* Was an underlined sentence under the strongest argument on the page. Same words, button. */
-    .midcta{display:inline-block;margin-top:34px;background:var(--cta-fill);color:var(--ink);font-weight:700;font-size:var(--fs-ui);
+    .midcta{display:inline-block;margin-top:34px;background:var(--cta-fill);color:var(--ink);font-weight:600;font-size:var(--fs-body);
       text-decoration:none;padding:13px 24px;border-radius:12px;box-shadow:0 14px 28px -14px rgba(249,115,22,.7);
       transition:background .16s ease,transform .16s ease}
     .midcta:hover{background:var(--cta-fill-hover);transform:translateY(-1px);text-decoration:none}
 
-    /* ---- shop-floor: tabs switch app screens; the caption gives each its moment ---- */
-    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;width:fit-content;max-width:100%;
-      background:var(--bg-alt);border:1px solid var(--rule);border-radius:24px;padding:4px;margin:52px auto 0}
-    .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:var(--fs-ui);
-      font-weight:600;padding:9px 17px;border-radius:980px;cursor:pointer;transition:all .16s ease}
-    @media (max-width:420px){.tabs button{padding:9px 13px;font-size:var(--fs-meta)}}
-    .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14)}
-    .hero .tabs{margin-top:34px}
-    @media (max-width:1039px){.hero .tabs{margin-top:30px}}
-    .hero-device{position:relative;margin:24px auto 0;width:326px;max-width:82vw;aspect-ratio:1206/2622}
-    .hero-device img{position:absolute;inset:0;width:100%;height:100%;
-      border-radius:34px;box-shadow:0 42px 80px -40px rgba(17,16,16,.42),0 0 0 1px rgba(17,16,16,.07);
-      opacity:0;transition:opacity .2s ease;pointer-events:none}
-    .hero-device img.active{opacity:1;pointer-events:auto}
-    /* Qualified with .stage so it outranks `.stage p` (margin:0 auto), which was silently
-       zeroing this caption's top margin and jamming it against the phone's bottom edge. */
-    .stage p.floor-cap{margin:50px auto 0;font-size:var(--fs-meta);line-height:1.5;color:var(--body);max-width:40ch;min-height:2.3em;transition:opacity .16s ease}
+
+    /* ---- hero v3 (2026-09-28): the site's own colors, set with more air and one type family.
+       The phone is a real Home capture from the current demo shop. ---- */
+    .hero{padding-top:92px;padding-bottom:72px;isolation:isolate}
+    .hero h1{letter-spacing:-.035em;line-height:1.02;margin-bottom:16px}
+    /* The maker proof, in the trust color. It sits under the headline, not above it: the claim
+       reads first, then who stands behind it, then the detail. */
+    .credential{display:flex;align-items:center;gap:7px;width:fit-content;margin:0 auto 24px;
+      font-size:var(--fs-meta);font-weight:600;color:var(--credential);background:var(--credential-tint);
+      border-radius:999px;padding:6px 14px 6px 10px}
+    .credential svg{width:15px;height:15px;display:block;flex:0 0 auto}
+    .hero .lede{max-width:34ch}
+    .fold-quote{border-left:0;padding-left:0}
+    .fold-quote blockquote{font-size:var(--fs-ui)}
+    .fold-quote cite{font-weight:600}
+    /* The control belongs to the phone: more room above it than between it and the screen. */
+    .hero-stage{position:relative;--pw:min(400px,80vw);margin-top:var(--s7)}
+    /* The device box ends just above the tab bar and fades out through the print queue, so the
+       screen reads as a glimpse of a live shop, not a boxed screenshot. The box is full-bleed on phones and
+       widened by margins on desktop so the shadow has room inside the mask. */
+    .hero-device{width:100vw;margin:0 0 0 calc(50% - 50vw);height:calc(var(--pw)*2493/1290);
+      -webkit-mask-image:linear-gradient(var(--ink) 87.2%,transparent);mask-image:linear-gradient(var(--ink) 87.2%,transparent)}
+    /* Corner radius follows the phone's width (a 16 Plus is ~10.5% of its width), so it stays true at 300px and 400px. */
+    .hero-device{position:relative;touch-action:pan-y}
+    .hero-device img{position:absolute;top:0;left:50%;width:var(--pw);height:auto;margin:0 0 0 calc(var(--pw) / -2);border-radius:calc(var(--pw)*.105);
+      box-shadow:0 50px 100px -40px rgba(23,19,15,.42),0 14px 30px -16px rgba(23,19,15,.22),0 0 0 1px rgba(23,19,15,.06);
+      opacity:0;transition:opacity .28s cubic-bezier(.16,1,.3,1)}
+    .hero-device img.active{opacity:1}
+    /* The same control the app uses for Spools | Parts and Week | Month: it switches the view below. */
+    .tabs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;width:min(var(--pw),100%);margin:0 auto var(--s5);
+      padding:3px;background:var(--bg-alt);border:1px solid var(--rule);border-radius:999px}
+    .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:var(--fs-ui);font-weight:600;
+      padding:9px 6px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:color .2s,background-color .2s,box-shadow .2s}
+    .tabs button:hover{color:var(--ink)}
+    .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14),0 0 0 .5px rgba(17,16,16,.06)}
+    .tabs button:focus-visible{outline:2px solid var(--orange);outline-offset:1px}
+    @media (max-width:420px){.tabs button{font-size:var(--fs-meta);padding:9px 4px}}
+    @media (prefers-reduced-motion:reduce){.hero-device img,.tabs button{transition:none}}
+    .floor-cap{margin:14px auto 0;font-size:var(--fs-meta);line-height:1.5;color:var(--muted);max-width:38ch;min-height:3em;text-align:center}
+    @media (min-width:1040px){
+      .hero-grid{grid-template-columns:minmax(0,1fr) 400px;gap:72px;align-items:center}
+      .hero-copy{padding-top:0}
+      .credential{margin-left:0}
+      .hero-stage{margin-top:0}
+      .hero-device{width:calc(100% + 160px);margin:0 -80px}
+      .fold-quote{max-width:420px}
+    }
 
     /* ---- fee-calculator teaser: slide a price, watch Etsy's cut ---- */
     .feecalc{max-width:430px;margin:48px auto 0;background:#fff;border:1px solid var(--rule);
@@ -603,8 +608,8 @@
     .fc-ads input{width:17px;height:17px;accent-color:var(--orange);cursor:pointer}
     .fc-body{padding:8px 22px 6px}
     .fc-body .pl[hidden]{display:none}  /* beats .pl{display:flex}, so the Offsite Ads row stays hidden until checked */
-    .fc-note{padding:12px 22px 20px;font-size:var(--fs-meta);color:var(--muted);line-height:1.5}
-    .fc-note a{color:var(--orange);font-weight:600;text-decoration:none}
+    .fc-note{padding:12px 22px 20px;font-size:var(--fs-meta);color:var(--muted);line-height:1.5;max-width:none;margin:0}
+    .fc-note a{color:var(--cta);font-weight:600;text-decoration:none}
     .fc-note a:hover{text-decoration:underline}
 
     /* ---- the spreadsheet objection: same job, both ways ---- */
@@ -612,10 +617,10 @@
     .vs + .vs{border-top:1px solid var(--rule)}
     .vs .a{color:var(--muted);text-align:right}
     .vs .b{color:var(--profit);font-weight:600;text-align:right}
-    .vs.vs-hd{padding-bottom:4px;font-size:var(--fs-meta);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-    .vs.vs-hd .b{color:var(--orange)}
+    .vs.vs-hd{padding-bottom:4px;font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
+    .vs.vs-hd .b{color:var(--ink)}
     .vs.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:6px;padding-top:12px;font-weight:600}
-    .vs.sum .a{text-decoration:line-through;text-decoration-color:#C2540C}
+    .vs.sum .a{text-decoration:line-through;text-decoration-color:var(--loss)}
     .vs.sum .b{font-size:var(--fs-ui)}
     @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:var(--fs-ui);gap:0 8px}}
 
@@ -646,12 +651,9 @@
   <div class="hero wrap">
    <div class="hero-grid">
     <div class="hero-copy">
-    <p class="kicker">
-      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Built by an Etsy seller with 3,000+ sales
-    </p>
     <h1>Know your real profit on every Etsy order.</h1>
-    <p class="lede">SpoolPilot is <strong>the profit app you use standing at the printer</strong>. It reads your slicer, your Etsy fees, and your spools, so you never sit down to a spreadsheet again.</p>
+    <p class="credential"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Built by an Etsy seller with 3,000+ sales</p>
+    <p class="lede">SpoolPilot is the profit app you use standing at the printer. It reads your slicer, your Etsy fees, and your spools.</p>
     <div class="cta-stack">
       <a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-hero&mt=8"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.8zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>Download on the App Store</a>
       <p class="cta-free">Free on iPhone &middot; real Etsy fees on 10 orders a month</p>
@@ -669,31 +671,27 @@
     </div>
     <figure class="fold-quote">
       <blockquote>&ldquo;It feels very convenient and intuitive, and everything is easy to understand without much explanation.&rdquo;</blockquote>
-      <cite>&mdash; Angelina &middot; Gumi Print House on Etsy</cite>
+      <cite>Angelina &middot; Gumi Print House on Etsy</cite>
     </figure>
     <figure class="fold-quote">
       <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales.&rdquo;</blockquote>
-      <cite>&mdash; Elisabeth G.S &middot; App Store review</cite>
-    </figure>
-    <figure class="fold-quote">
-      <blockquote>&ldquo;No more running back to my computer to update my spreadsheet.&rdquo;</blockquote>
-      <cite>&mdash; Rested Tea &middot; App Store review</cite>
+      <cite>Elisabeth G.S &middot; App Store review</cite>
     </figure>
     </div>
     <div class="hero-stage">
-      <div class="tabs" id="floorTabs" aria-label="Choose an app screen">
-        <button type="button" aria-pressed="true" data-i="0">Home</button>
-        <button type="button" aria-pressed="false" data-i="1">Materials</button>
-        <button type="button" aria-pressed="false" data-i="2">Products</button>
-        <button type="button" aria-pressed="false" data-i="3">Finances</button>
+      <div class="tabs" id="floorTabs" role="tablist" aria-label="App screens">
+        <button type="button" role="tab" id="ft0" aria-selected="true" aria-controls="floorView" data-i="0">Home</button>
+        <button type="button" role="tab" id="ft1" aria-selected="false" aria-controls="floorView" tabindex="-1" data-i="1">Materials</button>
+        <button type="button" role="tab" id="ft2" aria-selected="false" aria-controls="floorView" tabindex="-1" data-i="2">Products</button>
+        <button type="button" role="tab" id="ft3" aria-selected="false" aria-controls="floorView" tabindex="-1" data-i="3">Finances</button>
       </div>
-      <div class="hero-device" id="floorView">
-        <img class="active" data-i="0" src="shot-home.webp?v=12" width="1206" height="2622" fetchpriority="high" alt="SpoolPilot home screen: today's revenue, this month's profit, profit per print hour, and what to print next.">
-        <img data-i="1" src="shot-filament.webp?v=12" width="1206" height="2622" loading="lazy" alt="Filament inventory: sealed spool counts with weeks of stock left at your sales pace.">
-        <img data-i="2" src="shot-products.webp?v=12" width="1206" height="2622" loading="lazy" alt="Products: units in stock, stock value, and estimated shelf profit.">
-        <img data-i="3" src="shot-finances.webp?v=12" width="1206" height="2622" loading="lazy" alt="Finances: the month's profit-and-loss with revenue, real Etsy fees, materials, and net profit.">
-      </div>
-      <p class="floor-cap" id="floorCap">Between prints: today's take and the month's profit at a glance.</p>
+      <figure class="hero-device" id="floorView" role="tabpanel" aria-labelledby="ft0">
+        <img class="active" data-i="0" src="shot-home.webp?v=15" width="1290" height="2796" fetchpriority="high" alt="SpoolPilot Home: orders today, September profit, profit per print hour, the revenue chart, and recent sales with what each one kept.">
+        <img data-i="1" src="shot-filament.webp?v=15" width="1290" height="2796" loading="lazy" alt="Materials: sealed spool counts by color, with weeks of stock left at your sales pace.">
+        <img data-i="2" src="shot-products.webp?v=15" width="1290" height="2796" loading="lazy" alt="Products: units in stock, stock value, estimated shelf profit, and each product&rsquo;s profit and margin.">
+        <img data-i="3" src="shot-finances.webp?v=15" width="1290" height="2796" loading="lazy" alt="Finances: September&rsquo;s profit and loss, from revenue to a $1,474.02 net profit, and where the costs go.">
+      </figure>
+      <p class="floor-cap" id="floorCap" aria-live="polite">Between prints: today&rsquo;s take and the month&rsquo;s profit at a glance.</p>
     </div>
    </div>
     <div class="strip reveal">
@@ -703,7 +701,7 @@
     </div>
     <figure class="quote reveal">
       <blockquote>&ldquo;Overall, I really enjoyed testing the app! It feels very convenient and intuitive, and everything is easy to understand without much explanation. I especially liked that you can choose any color and connect your slicer &mdash; those features are really useful for 3D printing.&rdquo;</blockquote>
-      <cite>&mdash; Angelina <span>&middot; Gumi Print House on Etsy</span></cite>
+      <cite>Angelina <span>&middot; Gumi Print House on Etsy</span></cite>
     </figure>
   </div>
 
@@ -711,6 +709,10 @@
     <div class="wrap">
       <h2 class="reveal">&ldquo;But my spreadsheet works.&rdquo;</h2>
       <p class="reveal">It does, on the numbers you remember to type. SpoolPilot logs the sale, the real fee, and the grams <strong>the moment they happen</strong>. Nothing to enter, nothing to reconcile.</p>
+      <figure class="quote reveal">
+        <blockquote>&ldquo;No more running back to my computer to update my spreadsheet.&rdquo;</blockquote>
+        <cite>Rested Tea <span>&middot; App Store review</span></cite>
+      </figure>
       <div class="proof reveal">
         <div class="proof-hd"><span>The same job, both ways</span><span>Side by side</span></div>
         <div class="proof-body">
@@ -751,7 +753,7 @@
       <p class="fine reveal" style="margin-top:22px">Want to check the math by hand? <a href="/resources/3d-printing-profit-calculator">One order rebuilt from the payment ledger</a>, line by line.</p>
       <figure class="quote reveal">
         <blockquote>&ldquo;I rely on SpoolPilot to keep my Etsy shop profitable and efficient after 5 years and 3,000 sales. If one of its numbers is wrong, I&rsquo;d be the first shop it affects.&rdquo;</blockquote>
-        <cite>&mdash; Sean <span>&middot; SpoolPilot founder</span></cite>
+        <cite>Sean <span>&middot; SpoolPilot founder</span></cite>
       </figure>
       <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-mid&mt=8">Download SpoolPilot and see yours &rarr;</a>
     </div>
@@ -783,13 +785,13 @@
       <h2 class="reveal">The busywork it takes off you.</h2>
       <div class="facts reveal">
         <div><h3>Made to order</h3><p><strong>No forced stock counts.</strong> Low-stock flags appear only where you actually shelve inventory.</p></div>
-        <div><h3>Print next</h3><p>A queue of what's about to run out, ranked by your real sales pace. Tap a row to log the run.</p></div>
+        <div><h3>Print next</h3><p>A queue of what&rsquo;s about to run out, ranked by your real sales pace. Tap a row to log the run.</p></div>
         <div><h3>Bundles</h3><p>Kits sell from pre-assembled stock first, then <strong>assemble themselves from component parts</strong>, with the cost itemized live.</p></div>
       </div>
 
       <figure class="quote reveal">
         <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales. I run my business off of 3 printers and this function allows me to optimize my usage before purchasing another printer&hellip;&rdquo;</blockquote>
-        <cite>&mdash; Elisabeth G.S <span>&middot; App Store review</span></cite>
+        <cite>Elisabeth G.S <span>&middot; App Store review</span></cite>
       </figure>
     </div>
   </section>
@@ -815,8 +817,8 @@
 
   <section class="stage tint">
     <div class="wrap">
-      <h2 class="reveal">Slide your price. See Etsy's cut.</h2>
-      <p class="reveal">Etsy's published US fees, computed live. In the app the fees aren't computed at all. They&rsquo;re <strong>read from your payment account, order by order</strong>, with materials and packaging subtracted too.</p>
+      <h2 class="reveal">Slide your price. See Etsy&rsquo;s cut.</h2>
+      <p class="reveal">Etsy&rsquo;s published US fees, computed live. In the app the fees aren&rsquo;t computed at all. They&rsquo;re <strong>read from your payment account, order by order</strong>, with materials and packaging subtracted too.</p>
       <div class="feecalc reveal">
         <div class="fc-top">
           <div class="fc-price"><span>Sale price</span><b id="fcPrice">$32</b></div>
@@ -838,12 +840,12 @@
 
   <section class="stage">
     <div class="wrap narrow">
-      <h2 class="reveal">Where it's going</h2>
-      <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here's what landed recently, and what's next.</p>
+      <h2 class="reveal">Where it&rsquo;s going</h2>
+      <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here&rsquo;s what landed recently, and what&rsquo;s next.</p>
       <p class="roadlabel reveal">Shipped</p>
       <div class="road two reveal" style="margin-bottom:34px">
         <div><b>Real fees on the free plan</b><span>Ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept.</span></div>
-        <div><b>Orders waiting to print</b><span>Open Etsy orders you haven't printed yet sit at the top of Print next.</span></div>
+        <div><b>Orders waiting to print</b><span>Open Etsy orders you haven&rsquo;t printed yet sit at the top of Print next.</span></div>
         <div><b>Parts and packing</b><span>Magnets, inserts, and boxes costed into each product and restocked by barcode.</span></div>
         <div><b>Spanish and German</b><span>The whole app, not just the listing, so it fits shops well outside the US.</span></div>
       </div>
@@ -857,12 +859,12 @@
 
   <section class="stage tint" id="privacy">
     <div class="wrap narrow">
-      <h2 class="reveal">Your shop's numbers never leave your phone.</h2>
-      <p class="reveal">No account to create. Nothing uploaded. The Etsy connection is read-only and you approve it on Etsy's own site, so your password never reaches us, and we never see a single order. Apple's privacy label on the App Store listing reads <strong>Data Not Collected</strong>, which is a claim Apple holds us to, not a promise we made up.</p>
+      <h2 class="reveal">Your shop&rsquo;s numbers never leave your phone.</h2>
+      <p class="reveal">No account to create. Nothing uploaded. The Etsy connection is read-only and you approve it on Etsy&rsquo;s own site, so your password never reaches us, and we never see a single order. Apple&rsquo;s privacy label on the App Store listing reads <strong>Data Not Collected</strong>, which is a claim Apple holds us to, not a promise we made up.</p>
 
       <figure class="quote reveal">
         <blockquote>&ldquo;I love that they never see any of my data. That makes me feel safe syncing orders. In a world full of apps trying to sell data, this makes me feel at ease.&rdquo;</blockquote>
-        <cite>&mdash; Rested Tea <span>&middot; App Store review</span></cite>
+        <cite>Rested Tea <span>&middot; App Store review</span></cite>
       </figure>
 
       <p class="fine reveal" style="margin-top:22px">The one thing that does leave: this website counts visits, so we know which pages people read. It never receives anything from the app. <a href="/privacy.html">The privacy policy spells out all of it</a>, and <a href="/what-spoolpilot-reads-from-etsy.html">what SpoolPilot reads from Etsy</a> lists every field the app touches.</p>
@@ -899,7 +901,7 @@
         </details>
         <details>
           <summary>What does it cost?</summary>
-          <p>SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan. That founding price holds until October 31, 2026, and stays locked for anyone subscribed by then.</p>
+          <p>SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan. That founding price holds until October&nbsp;31,&nbsp;2026, and stays locked for anyone subscribed by then.</p>
         </details>
         <details>
           <summary>Is my shop and customer data private?</summary>
@@ -939,7 +941,7 @@
   </section>
 
   <footer class="wrap">
-    <p style="margin:0 0 14px;color:var(--body);font-weight:600">No customer data collected. SpoolPilot only ever reads your own shop's numbers.</p>
+    <p style="margin:0 0 14px;color:var(--body);font-weight:600">No customer data collected. SpoolPilot only ever reads your own shop&rsquo;s numbers.</p>
     <p style="margin:0 0 10px"><a href="/resources/">Resources for print businesses</a> · <a href="/resources/3d-printing-pricing-calculator">How to price 3D prints</a> · <a href="/resources/3d-printing-profit-calculator">Real profit on a 3D print</a> · <a href="/resources/etsy-fees-3d-printing">Etsy fees for 3D print sellers</a> · <a href="/resources/filament-inventory-management">Filament inventory for a print business</a> · <a href="/3d-printing-business-software">What software a 3D printing business needs</a> · <a href="/etsy-fee-calculator.html">Free 3D print cost calculator</a> · <a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a> · <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html">Craftybase alternative</a></p>
     &copy; <span id="year"></span> Opus Design Group LLC · <a href="/resources/">Resources</a> · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
     <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
@@ -964,27 +966,57 @@
   </script>
   <script>
     (function () {
-      // Shop floor: tap a pill, swap the app screen and the line that gives it its moment.
+
+
+      // The hero stepper: four real screens from one capture of the demo shop, so every number
+      // agrees from tab to tab. Tabs, arrow keys and a swipe on the phone all move it.
       var tabs = document.getElementById('floorTabs');
       var view = document.getElementById('floorView');
       var cap = document.getElementById('floorCap');
       var caps = [
-        "Between prints: today's take and the month's profit at a glance.",
-        "At the shelf: scan spools in or out, no weighing. Weeks-of-stock keeps itself current.",
-        "What you sell: units on hand, what the shelf is worth, and the profit in it.",
-        "Reconciling: the month's P&L with the real Etsy fees already subtracted."
+        'Between prints: today\u2019s take and the month\u2019s profit at a glance.',
+        'At the shelf: scan spools in or out, no weighing. Weeks of stock keeps itself current.',
+        'What you sell: units on hand, what the shelf is worth, and the profit in it.',
+        'Reconciling: the month\u2019s P&L with the real Etsy fees already subtracted.'
       ];
       if (tabs && view) {
+        var btns = Array.prototype.slice.call(tabs.querySelectorAll('[role=tab]'));
+        var shots = view.querySelectorAll('img[data-i]');
+        var current = 0;
+        // The other three screens wait until the page has loaded, then fetch before anyone taps,
+        // so a tab never opens on an empty phone.
+        var warm = function () { shots.forEach(function (img) { img.loading = 'eager'; }); };
+        if (document.readyState === 'complete') warm(); else window.addEventListener('load', warm);
+        var show = function (i, focus) {
+          i = (i + btns.length) % btns.length;
+          current = i;
+          btns.forEach(function (b, j) {
+            b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+            b.tabIndex = j === i ? 0 : -1;
+          });
+          shots.forEach(function (img, j) { img.classList.toggle('active', j === i); });
+          view.setAttribute('aria-labelledby', btns[i].id);
+          if (cap) cap.textContent = caps[i];
+          if (focus) btns[i].focus();
+        };
         tabs.addEventListener('click', function (e) {
-          var btn = e.target.closest('button[data-i]');
-          if (!btn) return;
-          var i = btn.getAttribute('data-i');
-          tabs.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-          view.querySelectorAll('[data-i]').forEach(function (el) { el.classList.toggle('active', el.getAttribute('data-i') === i); });
-          if (cap && caps[i]) cap.textContent = caps[i];
+          var b = e.target.closest('[role=tab]');
+          if (b) show(btns.indexOf(b));
         });
+        tabs.addEventListener('keydown', function (e) {
+          var step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+          if (step) { e.preventDefault(); show(current + step, true); }
+          else if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); show(e.key === 'Home' ? 0 : btns.length - 1, true); }
+        });
+        var x0 = null, y0 = null;
+        view.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+        view.addEventListener('touchend', function (e) {
+          if (x0 === null) return;
+          var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+          x0 = null;
+        }, { passive: true });
       }
-
 
       // A CTA that lands on the form should hand you the keyboard, not just the view —
       // on desktop. On touch, focusing would shove the on-screen keyboard over the page

@@ -1,0 +1,86 @@
+/* ============================================================================
+   SpoolPilot site tokens: the same system as the iOS app, set for the web.
+
+   One file, linked first by every page, so the home (Persuade) and the reading pages
+   (article.css) can't drift apart. Mirrors the app's decisions of 2026-09-29:
+   - a fixed role scale: pick a role by what the element IS, never by the nearest px;
+   - three weights only (400 / 600 / 700);
+   - sentence-case labels, never uppercase tracking;
+   - orange as a FILL (buttons, the mark, icons, focus rings) and a darker orange for TEXT;
+   - amber for cautions, green and red for money only.
+   ========================================================================== */
+
+:root {
+  /* ---- type roles ----
+     The app's scale with a 17px web body. Item titles (facts, the strip, FAQ questions)
+     share the lede size at 600: one level under a section heading, never competing with it. */
+  --fs-meta: 13px;                          /* captions, fine print, labels, table headers, cite */
+  --fs-ui: 15px;                            /* nav, table cells, dense UI, secondary lines */
+  --fs-body: 17px;                          /* prose and buttons */
+  --fs-lede: 20px;                          /* the intro paragraph; item titles */
+  --fs-sub: 24px;                           /* a reading page's h2 */
+  --fs-figure: 30px;                        /* a money figure shown as a result */
+  --fs-section: clamp(30px, 4.4vw, 44px);   /* h2 on the home, h1 on reading pages */
+  --fs-display: clamp(40px, 6vw, 64px);     /* h1 on the home */
+
+  --lh-body: 1.6;
+  --lh-lede: 1.5;
+  --lh-title: 1.3;
+  --lh-head: 1.12;
+
+  --ls-display: -.035em;
+  --ls-section: -.03em;
+  --ls-title: -.02em;
+
+  /* One family. Archivo carried the headings until 2026-09-28; Hanken is the wordmark's face
+     and now carries everything, the way SF carries the app. */
+  --ff: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --ff-display: var(--ff);
+
+  /* ---- color ---- */
+  --bg: #FFFFFF;
+  --bg-alt: #F6F5F3;
+  --ink: #111010;
+  --body: #55504B;
+  --muted: #746D66;
+  --rule: rgba(17, 16, 16, .08);
+  --rule-2: rgba(17, 16, 16, .16);
+
+  /* Brand orange is a fill: buttons, the mark, icons, focus rings. As text it reads at 2.8:1. */
+  --orange: #F97316;
+  --orange-deep: #E4650C;       /* a fill's hover */
+  --cta-fill: var(--orange);
+  --cta-fill-hover: var(--orange-deep);
+  /* Orange TEXT: links and text actions. The app's text orange; 4.6:1 or better on every
+     ground this site has (white, the tint, cream). */
+  --cta: #BA4F05;
+  --cta-hover: #9A4104;
+
+  --profit: #177245;            /* money kept, never decoration */
+  --loss: #B4231B;              /* money lost, never decoration */
+  --warn: #A16207;              /* amber: estimates and cautions, never orange */
+
+  /* The maker-proof hue. Never interactive, never a money value. */
+  --credential: #1B3A5C;
+  --credential-tint: rgba(27, 58, 92, .08);
+
+  /* ---- space ----
+     A 4px base, named by step. Tight inside a group, generous between groups, and more
+     space above a heading than below it. */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+}
+
+/* Paragraphs avoid a lone last word; headings balance their lines. */
+p, li, blockquote { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
+/* Money reads as figures: tabular so columns line up, and a true minus in the copy. */
+.num, .v, .pl b, .pl span:last-child { font-variant-numeric: tabular-nums; }

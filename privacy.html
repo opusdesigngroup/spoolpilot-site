@@ -23,8 +23,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="article.css?v=6066016">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tokens.css?v=1">
+  <link rel="stylesheet" href="/article.css?v=8">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -132,35 +133,35 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated September 4, 2026</p>
+    <p class="updated">Last updated September&nbsp;4,&nbsp;2026</p>
 
     <div >
-      <p>SpoolPilot is built to keep your shop's data on your device. This page explains what that means in practice.</p>
+      <p>SpoolPilot is built to keep your shop&rsquo;s data on your device. This page explains what that means in practice.</p>
 
       <h2>Where your data is stored</h2>
-      <p>Your filament, product, production, and sales records are stored locally on your device using Apple's on-device SwiftData storage. None of it is uploaded to us. We don't run a server that stores your shop data, and we can't see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in talking to a sales channel, described under <a href="#signin-service">The sign-in service</a>; it stores none of your data and keeps no logs.</p>
+      <p>Your filament, product, production, and sales records are stored locally on your device using Apple&rsquo;s on-device SwiftData storage. None of it is uploaded to us. We don&rsquo;t run a server that stores your shop data, and we can&rsquo;t see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in talking to a sales channel, described under <a href="#signin-service">The sign-in service</a>; it stores none of your data and keeps no logs.</p>
 
       <h2>Etsy sync</h2>
-      <p>When you connect your Etsy shop, SpoolPilot uses Etsy's official sign-in flow to get permission to read your own shop's listings and orders. It reads only the parts of an order that decide profit: the items sold, their quantities and prices, any discounts, the shipping charged, the currency, the date, and the fee entries Etsy recorded for that order in your payment account.</p>
-      <p><strong>It does not read your customers.</strong> SpoolPilot asks Etsy for no customer permissions: no names, email addresses, phone numbers, or billing details. Etsy's order records do arrive with the buyer's shipping details attached; SpoolPilot never reads, stores, or shows them. They're discarded unread, and no customer information appears anywhere in the app. Your access token is stored in your device's Keychain and used only to fetch your own shop data on your request. Etsy data is also subject to Etsy's own privacy policy.</p>
+      <p>When you connect your Etsy shop, SpoolPilot uses Etsy&rsquo;s official sign-in flow to get permission to read your own shop&rsquo;s listings and orders. It reads only the parts of an order that decide profit: the items sold, their quantities and prices, any discounts, the shipping charged, the currency, the date, and the fee entries Etsy recorded for that order in your payment account.</p>
+      <p><strong>It does not read your customers.</strong> SpoolPilot asks Etsy for no customer permissions: no names, email addresses, phone numbers, or billing details. Etsy&rsquo;s order records do arrive with the buyer&rsquo;s shipping details attached; SpoolPilot never reads, stores, or shows them. They&rsquo;re discarded unread, and no customer information appears anywhere in the app. Your access token is stored in your device&rsquo;s Keychain and used only to fetch your own shop data on your request. Etsy data is also subject to Etsy&rsquo;s own privacy policy.</p>
       <p>Every field the app reads from Etsy, what each is used for, and how to check it in your Etsy account is listed on <a href="/what-spoolpilot-reads-from-etsy.html">What SpoolPilot reads from Etsy</a>.</p>
-      <p>If you connect any other sales channel you own, SpoolPilot handles it the same way: read-only access to your own orders, no customer data, and the access token kept in your device's Keychain.</p>
+      <p>If you connect any other sales channel you own, SpoolPilot handles it the same way: read-only access to your own orders, no customer data, and the access token kept in your device&rsquo;s Keychain.</p>
 
       <h2 id="signin-service">The sign-in service</h2>
-      <p>Talking to a sales channel needs one thing that can't ship inside an app: the channel gives developers a secret key, and anything inside an app can be pulled back out of it, so the key can't live on your phone. SpoolPilot runs a single small relay service that holds that key instead.</p>
-      <p>For Etsy, your phone's requests travel through that relay. It first checks the request comes from a genuine, unmodified copy of SpoolPilot (using Apple's App Attest, which only real Apple hardware can pass), then adds the key, forwards the request to Etsy, and streams Etsy's answer straight back to your phone. It stores nothing and logs nothing: no tokens, no orders, no record of which shop asked. The moment a response is delivered, the relay holds nothing at all.</p>
+      <p>Talking to a sales channel needs one thing that can&rsquo;t ship inside an app: the channel gives developers a secret key, and anything inside an app can be pulled back out of it, so the key can&rsquo;t live on your phone. SpoolPilot runs a single small relay service that holds that key instead.</p>
+      <p>For Etsy, your phone&rsquo;s requests travel through that relay. It first checks the request comes from a genuine, unmodified copy of SpoolPilot (using Apple&rsquo;s App Attest, which only real Apple hardware can pass), then adds the key, forwards the request to Etsy, and streams Etsy&rsquo;s answer straight back to your phone. It stores nothing and logs nothing: no tokens, no orders, no record of which shop asked. The moment a response is delivered, the relay holds nothing at all.</p>
       <p>For any other channel, the relay is used only to complete sign-in: a one-time code goes in, an access token comes back, and it keeps neither. After that your phone talks to the channel directly.</p>
 
       <h2>Camera</h2>
-      <p>SpoolPilot uses your device's camera two ways, both entirely on-device: to read spool barcodes, and to read the print time and weight off a slicer screen. No camera images or video are stored or sent anywhere.</p>
+      <p>SpoolPilot uses your device&rsquo;s camera two ways, both entirely on-device: to read spool barcodes, and to read the print time and weight off a slicer screen. No camera images or video are stored or sent anywhere.</p>
 
       <h2>Shared filament library</h2>
-      <p>Scanning a spool can look up its barcode in SpoolPilot's shared filament library so the spec fills in automatically. Only the barcode number is sent, nothing about you or your shop. If you opt in to sharing, specs you enter (brand, color, and weight, never your costs or sales) are added to the library for other makers. Contributions aren't shown with your name or any account details.</p>
+      <p>Scanning a spool can look up its barcode in SpoolPilot&rsquo;s shared filament library so the spec fills in automatically. Only the barcode number is sent, nothing about you or your shop. If you opt in to sharing, specs you enter (brand, color, and weight, never your costs or sales) are added to the library for other makers. Contributions aren&rsquo;t shown with your name or any account details.</p>
 
       <h2>Notifications</h2>
-      <p>Low-stock alerts are local notifications generated on your device. They don't involve a push notification server or any data leaving your device.</p>
+      <p>Low-stock alerts are local notifications generated on your device. They don&rsquo;t involve a push notification server or any data leaving your device.</p>
 
-      <h2>What we don't do</h2>
+      <h2>What we don&rsquo;t do</h2>
       <ul>
         <li>No analytics or tracking SDKs in the app</li>
         <li>No advertising, and no ad networks</li>
@@ -169,28 +170,28 @@
 
       <h2 id="website">This website</h2>
       <p>Everything above is about the app. This website is separate, and it does use analytics, a product called <a href="https://heycatch.ai" rel="noopener">HeyCatch</a>, to count visits and show which pages people actually read.</p>
-      <p>What it records is ordinary web analytics: the page you're on, the link that brought you here, clicks on the page, and what your browser reports about itself. It keeps an anonymous identifier in your browser so a second visit isn't counted as a second person. It does not know your name, and we don't try to work out who you are from it.</p>
+      <p>What it records is ordinary web analytics: the page you&rsquo;re on, the link that brought you here, clicks on the page, and what your browser reports about itself. It keeps an anonymous identifier in your browser so a second visit isn&rsquo;t counted as a second person. It does not know your name, and we don&rsquo;t try to work out who you are from it.</p>
       <p><strong>It never receives anything from the app.</strong> Your filament, products, sales, costs, and any Etsy or Shopify data stay on your phone and never pass through this website. The two are not connected.</p>
       <p>If you join the email list, the site records that a signup happened and which form it came from. A count, not an address. Your email goes to the mailing-list provider so we can send you the emails you asked for.</p>
       <p>If you block analytics in your browser, or use a tracking blocker, everything on this site still works.</p>
 
       <h2 id="backups">Backups</h2>
-      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud: a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds what you'd expect a backup to hold: your settings, filament, products, and sales history.</p>
+      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud: a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds what you&rsquo;d expect a backup to hold: your settings, filament, products, and sales history.</p>
       <p>This happens on its own: once when the app opens and again when you leave it, and at most once a day unless something actually changed. It goes to your Apple account, not to us: we have no access to that folder and never receive a copy. If a fresh install finds a backup there, SpoolPilot offers to restore it and waits for you to say yes.</p>
-      <p>To turn it off, switch SpoolPilot off under iCloud Drive in the iOS Settings app. The app has no separate toggle. It simply uses iCloud if you've allowed it to.</p>
+      <p>To turn it off, switch SpoolPilot off under iCloud Drive in the iOS Settings app. The app has no separate toggle. It simply uses iCloud if you&rsquo;ve allowed it to.</p>
 
       <h2>How long your data is kept</h2>
-      <p>Your records stay on your device for as long as you want them. A profit history is only useful if it goes back. Nothing expires on its own and nothing is deleted behind your back. Deleting a record removes it; deleting the app removes all of it. Disconnecting a sales channel deletes that channel's access token from your device straight away, and SpoolPilot can no longer reach that shop.</p>
-      <p>Because your shop data isn't on our servers, there's nothing on our side to delete, and no retention period of ours for it to sit under.</p>
+      <p>Your records stay on your device for as long as you want them. A profit history is only useful if it goes back. Nothing expires on its own and nothing is deleted behind your back. Deleting a record removes it; deleting the app removes all of it. Disconnecting a sales channel deletes that channel&rsquo;s access token from your device straight away, and SpoolPilot can no longer reach that shop.</p>
+      <p>Because your shop data isn&rsquo;t on our servers, there&rsquo;s nothing on our side to delete, and no retention period of ours for it to sit under.</p>
 
       <h2>Encryption</h2>
-      <p>Traffic between your phone and the sales channels you connect, or the sign-in service above, goes over HTTPS. On your device, records are protected by iOS's built-in file encryption, and access tokens are held in the Keychain rather than ordinary storage. iCloud backups are encrypted by Apple under your own account.</p>
+      <p>Traffic between your phone and the sales channels you connect, or the sign-in service above, goes over HTTPS. On your device, records are protected by iOS&rsquo;s built-in file encryption, and access tokens are held in the Keychain rather than ordinary storage. iCloud backups are encrypted by Apple under your own account.</p>
 
       <h2>Exporting your data</h2>
-      <p>Manual backups and CSV exports write files to your device and hand them to Apple's standard share sheet, so you choose where they go. We never see them.</p>
+      <p>Manual backups and CSV exports write files to your device and hand them to Apple&rsquo;s standard share sheet, so you choose where they go. We never see them.</p>
 
       <h2>Questions</h2>
-      <p>Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a> and we'll get back to you.</p>
+      <p>Email <a href="mailto:hello@spoolpilot.app">hello@spoolpilot.app</a> and we&rsquo;ll get back to you.</p>
     </div>
 
   </main>
