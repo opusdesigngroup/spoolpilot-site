@@ -143,7 +143,7 @@
     <p class="updated">Last updated September&nbsp;4,&nbsp;2026</p>
 
     <div >
-      <p>SpoolPilot is built to keep your shop&rsquo;s data on your device. This page explains what that means in practice.</p>
+      <p>SpoolPilot is built to keep your shop&rsquo;s data on your device.</p>
 
       <h2>Where your data is stored</h2>
       <p>Your filament, product, production, and sales records are stored locally on your device using Apple&rsquo;s on-device SwiftData storage. None of it is uploaded to us. We don&rsquo;t run a server that stores your shop data, and we can&rsquo;t see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in talking to a sales channel, described under <a href="#signin-service">The sign-in service</a>; it stores none of your data and keeps no logs.</p>
@@ -179,11 +179,11 @@
       <p>Everything above is about the app. This website is separate, and it does use analytics, a product called <a href="https://heycatch.ai" rel="noopener">HeyCatch</a>, to count visits and show which pages people actually read.</p>
       <p>What it records is ordinary web analytics: the page you&rsquo;re on, the link that brought you here, clicks on the page, and what your browser reports about itself. It keeps an anonymous identifier in your browser so a second visit isn&rsquo;t counted as a second person. It does not know your name, and we don&rsquo;t try to work out who you are from it.</p>
       <p><strong>It never receives anything from the app.</strong> Your filament, products, sales, costs, and any Etsy or Shopify data stay on your phone and never pass through this website. The two are not connected.</p>
-      <p>If you join the email list, the site records that a signup happened and which form it came from. A count, not an address. Your email goes to the mailing-list provider so we can send you the emails you asked for.</p>
+      <p>If you join the email list, the site records that a signup happened and which form it came from, but not your address. Your email goes to the mailing-list provider so we can send you the emails you asked for.</p>
       <p>If you block analytics in your browser, or use a tracking blocker, everything on this site still works.</p>
 
       <h2 id="backups">Backups</h2>
-      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud: a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds what you&rsquo;d expect a backup to hold: your settings, filament, products, and sales history.</p>
+      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud: a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds your settings, filament, products, and sales history.</p>
       <p>This happens on its own: once when the app opens and again when you leave it, and at most once a day unless something actually changed. It goes to your Apple account, not to us: we have no access to that folder and never receive a copy. If a fresh install finds a backup there, SpoolPilot offers to restore it and waits for you to say yes.</p>
       <p>To turn it off, switch SpoolPilot off under iCloud Drive in the iOS Settings app. The app has no separate toggle. It uses iCloud if you&rsquo;ve allowed it to.</p>
 
@@ -208,6 +208,6 @@
       <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
     </div>
   </footer>
-  <script src="waitlist.js?v=7apptap"></script>
+  <script src="waitlist.js?v=8copy"></script>
 </body>
 </html>

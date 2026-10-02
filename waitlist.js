@@ -38,7 +38,7 @@
     var msg = document.createElement('p');
     msg.className = 'waitlist-error';
     msg.setAttribute('role', 'alert');
-    msg.textContent = 'That didn’t go through. An ad blocker may be blocking it — otherwise check the address and try again.';
+    msg.textContent = 'That didn’t go through. An ad blocker may be blocking it. If not, check the address and try again.';
     form.insertAdjacentElement('afterend', msg);
   }
   // Domain-typo catcher: a one-field form's only common failure is a fat-fingered domain, and a

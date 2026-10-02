@@ -217,7 +217,7 @@
 
     <h2>What the slicer&rsquo;s cost line includes</h2>
     <p>Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura all show a cost for a sliced job. Out of the box it is one multiplication: the grams the job will use times the price per kilogram saved in the filament profile. Two things follow from that. First, it is a material cost, not a print cost; the hours are right there on the same screen, but nothing is charged for them unless you have set up a machine rate, which almost nobody has. Second, it is only as good as the price in the profile, and the profile usually still holds the default from when the printer was set up, or the price of a spool you bought a year ago, not the one on the printer now.</p>
-    <p>The slicer&rsquo;s number is a fine starting point. It is the first line of the cost, not the cost.</p>
+    <p>The slicer&rsquo;s number is a fine starting point, but it only covers filament.</p>
 
     <h2>What does the slicer&rsquo;s cost leave out?</h2>
     <p>Electricity, machine wear, failed prints, paid help and packaging. Those are five of the six things that belong in the cost of a print; the slicer gives you only the first, filament. The five it leaves out are the costs that turn a price that looks profitable into a loss. Your own time is not one of them, and the section on it says why.</p>
@@ -245,23 +245,23 @@
 
     <h2>Why can&rsquo;t you just add the fees to the price?</h2>
     <p>Because percentage fees are charged on the price itself, so fees added after the fact shrink the margin you thought you had. The common shortcut is to add up the cost, double it, and call the rest profit. Then the platform takes its percentage off the top and the doubled price turns out to have been a 35% margin, or a 20% one once shipping and the failure rate are in. Percentage fees are charged on the price, and the price is the thing you are trying to find, which is why they belong in the denominator of the formula rather than as a line added at the end. On a marketplace they also apply to the shipping the buyer pays, which is easy to miss: the <a href="/resources/etsy-fees-3d-printing">Etsy fees page</a> works through an order with shipping included.</p>
-    <p><strong>Sometimes the formula returns a price the market will not pay.</strong> That is information. Either the cost has to come down (a faster print profile, cheaper packaging, less finishing), the margin has to come down, or the product should not be made. A calculator that prints a price for an unreachable margin without warning you is worse than one that says so; the free one on this site tells you the highest margin that is reachable instead.</p>
+    <p><strong>Sometimes the formula returns a price the market will not pay.</strong> When it does, either the cost has to come down (a faster print profile, cheaper packaging, less finishing), the margin has to come down, or the product should not be made. A calculator that prints a price for an unreachable margin without warning you is worse than one that says so; the free one on this site tells you the highest margin that is reachable instead.</p>
     <figure class="shot">
       <img src="/shot-sale-receipt.webp" width="1290" height="2008" loading="lazy" decoding="async" alt="SpoolPilot sale detail for a $28 Desk Organizer sold on Etsy: $7.68 in Etsy fees read from the payment account (Offsite Ads $4.03, transaction fee $1.82, payment processing $1.26, transaction fee on shipping $0.37, listing fee $0.20), then $11.13 of product cost (filament, electricity, shipping and packaging, labor and finishing), leaving $9.19 net profit at a 33% margin.">
       <figcaption>A $28 sale in SpoolPilot (demo shop). Etsy&rsquo;s fees took $7.68, 27% of it, before the product cost a cent.</figcaption>
     </figure>
 
     <h2>What margin should a 3D print have?</h2>
-    <p>There is no correct margin. Pick it from two things: what the sale should pay you per hour of your hands-on time, and what the product sells for elsewhere. If the market price leaves a thin margin, the fix is usually in the cost lines above, not in wishing.</p>
+    <p>There is no correct margin. Pick it from two things: what the sale should pay you per hour of your hands-on time, and what the product sells for elsewhere. If the market price leaves a thin margin, the fix is usually in the cost lines above.</p>
     <p>Margin is the share of the price you keep after costs and fees; markup is the amount added on top of cost. They are different numbers and mixing them is the second most common pricing error. A 50% markup on $3.40 is a $5.10 price with a 33% margin before fees.</p>
 
     <h2>Mistakes that make prints lose money</h2>
     <ul>
       <li><strong>Pricing from a competitor&rsquo;s listing</strong> without knowing whether their number works. Their cost structure is not yours.</li>
       <li><strong>Using last season&rsquo;s filament price.</strong> Update the per-kilo number when a new spool goes on.</li>
-      <li><strong>Never checking what a sale pays you an hour.</strong> Divide what you keep by your hands-on minutes. Enjoy the work and still get paid for it.</li>
+      <li><strong>Never checking what a sale pays you an hour.</strong> Divide what you keep by your hands-on minutes.</li>
       <li><strong>Counting buyer-paid shipping as income</strong> and forgetting the label costs money. Shipping is a pass-through at best.</li>
-      <li><strong>Ignoring the failure rate.</strong> It is a multiplier on every successful print, not an occasional bad day.</li>
+      <li><strong>Ignoring the failure rate.</strong> It is a multiplier on every successful print.</li>
       <li><strong>Adding fees at the end</strong> instead of solving for them. See above.</li>
       <li><strong>Pricing a bundle as a discount</strong> without adding up its parts. Three items cost three items to print and one bigger box to ship.</li>
     </ul>
@@ -284,6 +284,6 @@
       <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
     </div>
   </footer>
-  <script src="/waitlist.js?v=7apptap"></script>
+  <script src="/waitlist.js?v=8copy"></script>
 </body>
 </html>

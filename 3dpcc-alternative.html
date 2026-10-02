@@ -171,7 +171,7 @@
     <h2>Does 3DPCC show what an Etsy order actually earned?</h2>
     <p>No. 3DPCC&rsquo;s Etsy feature estimates fees from the published rate card, in its own words to see your net profit <em>before you list</em>. That&rsquo;s a reasonable way to price. It is not a way to know what happened.</p>
     <p>Etsy publishes a rate card in its <a href="https://www.etsy.com/legal/fees/">Fees &amp; Payments Policy</a> (transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 15%) and any calculator can apply it. What Etsy deposits often isn&rsquo;t that number. Offsite Ads gets attributed partially rather than landing cleanly on the order you&rsquo;d expect. Processing rates differ by country. Coupons change the base the percentage applies to. Regulatory fees appear in some regions and in no formula.</p>
-    <p>SpoolPilot connects to your shop and reads the fee entries on the orders themselves, the <a href="https://developers.etsy.com/documentation/reference/#tag/Ledger-Entry">payment account ledger entries</a> Etsy&rsquo;s API exposes. That&rsquo;s the difference between a price you set and a profit you can stand behind at the end of the month.</p>
+    <p>SpoolPilot connects to your shop and reads the fee entries on the orders themselves, the <a href="https://developers.etsy.com/documentation/reference/#tag/Ledger-Entry">payment account ledger entries</a> Etsy&rsquo;s API exposes. So the profit on each order uses the fees Etsy charged, not the rate card&rsquo;s estimate.</p>
     <figure class="shot">
       <img src="/shot-sale-receipt.webp" width="1290" height="2008" loading="lazy" decoding="async" alt="SpoolPilot sale detail for a $28 Desk Organizer sold on Etsy: $7.68 in Etsy fees marked Read from Etsy and itemized as Offsite Ads $4.03, transaction fee $1.82, payment processing $1.26, transaction fee on shipping $0.37 and listing fee $0.20; $11.13 product cost; net profit $9.19 at a 33% margin.">
       <figcaption>One synced order in SpoolPilot (demo shop). Each fee line comes from the Etsy payment account, not the rate card.</figcaption>
@@ -232,6 +232,6 @@
       <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
     </div>
   </footer>
-  <script src="waitlist.js?v=7apptap"></script>
+  <script src="waitlist.js?v=8copy"></script>
 </body>
 </html>
