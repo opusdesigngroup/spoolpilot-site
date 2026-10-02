@@ -123,6 +123,14 @@
         });
     });
   });
+  // The site's real outcome since launch: a tap through to the App Store. Counted with the link's
+  // campaign tag (ct) and the page, so a funnel can end on it. No identity, just a count.
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="apps.apple.com"]') : null;
+    if (!a || !window.spoolpilotTrack) return;
+    var ct = (a.getAttribute('href').match(/[?&]ct=([^&#]+)/) || [])[1] || 'untagged';
+    window.spoolpilotTrack('app_store_tap', { link: ct, page: location.pathname });
+  }, true);
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 })();

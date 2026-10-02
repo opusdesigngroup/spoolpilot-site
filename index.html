@@ -380,7 +380,7 @@
       border:1px solid rgba(17,16,16,.16);border-radius:980px;background:#fff;color:var(--ink);text-align:center;
       transition:border-color .16s ease,box-shadow .16s ease;
     }
-    .waitlist input[type=email]::placeholder{color:#AFA9A3}
+    .waitlist input[type=email]::placeholder{color:var(--muted)}
     .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
     .waitlist button{
       border:0;background:var(--cta-fill);color:var(--ink);font:inherit;font-weight:600;font-size:var(--fs-ui);
@@ -531,6 +531,23 @@
     .strip h2{margin:0 0 var(--s2);font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title);line-height:var(--lh-title)}
     .strip p{margin:0;font-size:var(--fs-body);line-height:1.55;color:var(--body)}
     @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
+    /* ---- App Store reviews carry their stars; the beta-tester quote doesn't, it isn't a rating ---- */
+    .stars{display:flex;gap:2px;margin:0 0 10px;color:var(--ink)}
+    .stars svg{width:13px;height:13px;display:block}
+    .fold-quote .stars{margin-bottom:6px}
+    .fold-quote .stars svg{width:11px;height:11px}
+    /* Phones see one review and the reach line between the button and the phone: the Facebook
+       and Reels traffic lands here, and the desktop fold quotes are hidden below 1040px. */
+    .fold-quote.review{display:block;max-width:34ch;margin:var(--s6) auto 0;text-align:center}
+    .fold-quote.review .stars{justify-content:center}
+    .fold-quote.review blockquote{margin:0;font-size:var(--fs-ui);line-height:1.55;color:var(--body)}
+    .fold-quote.review cite{display:block;margin-top:6px;font-style:normal;font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
+    .reach{margin:18px auto 0;font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
+    @media (min-width:1040px){
+      .fold-quote.review{max-width:none;margin:22px 0 0;text-align:left}
+      .fold-quote.review .stars{justify-content:flex-start}
+      .reach{margin:20px 0 0;text-align:left}
+    }
     /* ---- testimonial: one real quote from a beta tester ---- */
     .quote{max-width:640px;margin:64px auto 0;padding:28px 32px;background:#fff;
       border:1px solid var(--rule);border-radius:18px;text-align:left}
@@ -631,6 +648,7 @@
   </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.6l2.55 5.2 5.75.84-4.16 4.05.98 5.72L10 14.71l-5.12 2.7.98-5.72L1.7 7.64l5.75-.84z"/></symbol></svg>
 
   <header>
     <div class="bar">
@@ -673,10 +691,12 @@
       <blockquote>&ldquo;It feels very convenient and intuitive, and everything is easy to understand without much explanation.&rdquo;</blockquote>
       <cite>Angelina &middot; Gumi Print House on Etsy</cite>
     </figure>
-    <figure class="fold-quote">
+    <figure class="fold-quote review">
+      <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
       <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales.&rdquo;</blockquote>
       <cite>Elisabeth G.S &middot; App Store review</cite>
     </figure>
+    <p class="reach">Downloaded by makers in 50+ countries</p>
     </div>
     <div class="hero-stage">
       <div class="tabs" id="floorTabs" role="tablist" aria-label="App screens">
@@ -710,6 +730,7 @@
       <h2 class="reveal">&ldquo;But my spreadsheet works.&rdquo;</h2>
       <p class="reveal">It does, on the numbers you remember to type. SpoolPilot logs the sale, the real fee, and the grams <strong>the moment they happen</strong>. Nothing to enter, nothing to reconcile.</p>
       <figure class="quote reveal">
+        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
         <blockquote>&ldquo;No more running back to my computer to update my spreadsheet.&rdquo;</blockquote>
         <cite>Rested Tea <span>&middot; App Store review</span></cite>
       </figure>
@@ -790,6 +811,7 @@
       </div>
 
       <figure class="quote reveal">
+        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
         <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales. I run my business off of 3 printers and this function allows me to optimize my usage before purchasing another printer&hellip;&rdquo;</blockquote>
         <cite>Elisabeth G.S <span>&middot; App Store review</span></cite>
       </figure>
@@ -863,6 +885,7 @@
       <p class="reveal">No account to create. Nothing uploaded. The Etsy connection is read-only and you approve it on Etsy&rsquo;s own site, so your password never reaches us, and we never see a single order. Apple&rsquo;s privacy label on the App Store listing reads <strong>Data Not Collected</strong>, which is a claim Apple holds us to, not a promise we made up.</p>
 
       <figure class="quote reveal">
+        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
         <blockquote>&ldquo;I love that they never see any of my data. That makes me feel safe syncing orders. In a world full of apps trying to sell data, this makes me feel at ease.&rdquo;</blockquote>
         <cite>Rested Tea <span>&middot; App Store review</span></cite>
       </figure>
@@ -947,7 +970,7 @@
     <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
   </footer>
 
-  <script src="waitlist.js?v=6066016"></script>
+  <script src="waitlist.js?v=7apptap"></script>
   <script>
     // One authored moment: sections settle into place as they arrive. Content is visible by
     // default and the observer only adds motion, so nothing depends on JS to be readable.

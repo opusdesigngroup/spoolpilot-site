@@ -178,8 +178,20 @@
   // While a read is running, a tap on the box would open the chooser for a file that would then
   // be ignored. Say what is happening instead.
   drop.addEventListener('click', function (e) {
-    if (busy) { e.preventDefault(); say('Still reading the last one. One moment.'); }
+    if (busy) { e.preventDefault(); say('Still reading the last one. One moment.'); return; }
+    // Start fetching the reader while they pick a photo, so it is ready when the photo lands.
+    // A failed prefetch is retried by handle(); nothing to report here.
+    loadTesseract().catch(function () {});
   });
+
+  // In-app browsers (Facebook, Instagram, Messenger) often show the photo picker late or not at
+  // all, and people tapped the box again and again. Say so once, under the box, with the way out.
+  if (/FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger/i.test(navigator.userAgent || '')) {
+    var hint = document.createElement('p');
+    hint.className = 'scan-iab';
+    hint.textContent = 'Photos not opening? Open this page in Safari or Chrome: tap ⋯ at the top, then Open in external browser.';
+    drop.insertAdjacentElement('afterend', hint);
+  }
 
   ['dragenter', 'dragover'].forEach(function (ev) {
     drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); });

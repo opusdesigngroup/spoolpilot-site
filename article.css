@@ -140,7 +140,7 @@ tbody td:first-child{color:var(--muted);font-size:var(--fs-ui)}
   border:1px solid var(--rule-2);border-radius:980px;background:#fff;color:var(--ink);
   transition:border-color .16s ease,box-shadow .16s ease;
 }
-.waitlist input[type=email]::placeholder{color:#AFA9A3}
+.waitlist input[type=email]::placeholder{color:var(--muted)}
 .waitlist input[type=email]:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(249,115,22,.13)}
 .waitlist button{
   border:0;background:var(--orange);color:var(--ink);font:inherit;font-weight:600;font-size:var(--fs-ui);

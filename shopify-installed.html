@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=9">
+  <link rel="stylesheet" href="/article.css?v=10">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -39,9 +39,9 @@
   <style>
     /* On this page the App Store link is the primary action and the email form the fallback,
        so the site's accent goes to Download; site-wide the form's button is the orange one. */
-    .card .plate{background:var(--orange)}
+    .card .plate{background:var(--orange);color:var(--ink) !important}
     .card .plate:hover{background:var(--orange-deep)}
-    .card .waitlist button{background:var(--ink)}
+    .card .waitlist button{background:var(--ink);color:#fff}
     .card .waitlist button:hover{background:var(--ink);filter:brightness(.8)}
   </style>
 </head>
@@ -107,6 +107,6 @@
       &copy; <span id="year"></span> Opus Design Group LLC &middot; <a href="/support.html">Support</a> &middot; <a href="/privacy.html">Privacy</a>
     </div>
   </footer>
-  <script src="waitlist.js?v=6066016"></script>
+  <script src="waitlist.js?v=7apptap"></script>
 </body>
 </html>
