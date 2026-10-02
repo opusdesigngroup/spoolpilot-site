@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=10">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -77,9 +77,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-09-25",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -134,6 +137,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -154,7 +161,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -189,7 +199,7 @@
       By an Etsy seller with 3,000+ sales
     </p>
     <p class="lede">Less than the ads suggest, and different from what a normal small business uses. A small shop needs four numbers it can trust: <strong>what each print costs</strong>, <strong>what each sale actually earned</strong> after the platform took its cut, <strong>how much filament is on the shelf</strong>, and <strong>which products are worth printing again</strong>. Whether that takes a spreadsheet or an app depends mostly on how many orders a month you sell.</p>
-    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales, a few printers in a spare room. Everything below is what that shop tracks and why. Last revised September&nbsp;25,&nbsp;2026.</p>
+    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales, a few printers in a spare room. Everything below is what that shop tracks and why. Last revised October&nbsp;2,&nbsp;2026.</p>
 
     <h2>Why a 3D printing business isn&rsquo;t a normal small business</h2>
     <p>Most small-business software assumes you buy finished goods, put them on a shelf, and sell them. A print shop doesn&rsquo;t work that way. Your inventory is <strong>raw material measured by weight</strong>, not units. Most products are <strong>made after the order arrives</strong>, so a &ldquo;stock count&rdquo; is often meaningless. Your machines <strong>run unattended for hours</strong>, which makes time a cost even when you aren&rsquo;t in the room. And a single product&rsquo;s cost changes when you change a print setting: a different infill, a different layer height, or a color that needs more purging all move the number.</p>
@@ -202,7 +212,13 @@
     <p>Your slicer already knows the grams for a print. Multiply by what you paid per kilogram and that is your material cost, plus supports, purge towers, and the waste from a color change if you run multi-color. The mistake is not the math. It is using a price per kilo from six months ago, or forgetting that the fancy silk PLA costs twice what the plain roll did. Material is usually the smallest cost on a small print and the largest on a big one, so a shop that sells both needs the real figure for each.</p>
 
     <h3>Print time</h3>
-    <p>Print time matters three ways. It drives electricity. It drives wear on nozzles, belts, and build plates. And it is <strong>capacity</strong>: a six-hour print occupies a printer that could have made something else. With one printer that is easy to feel. With four, it is the difference between a product that pays for itself and one that just keeps the machines busy. The slicer reports the time; the discipline is recording it per product rather than guessing later.</p>
+    <p>Print time matters three ways:</p>
+    <ul>
+      <li>It drives <strong>electricity</strong>.</li>
+      <li>It drives <strong>wear</strong> on nozzles, belts, and build plates.</li>
+      <li>It is <strong>capacity</strong>: a six-hour print occupies a printer that could have made something else.</li>
+    </ul>
+    <p>With one printer, lost capacity is easy to feel. With four, it is the difference between a product that pays for itself and one that just keeps the machines busy. The slicer reports the time; the discipline is recording it per product rather than guessing later.</p>
 
     <h3>Failed and unsold prints</h3>
     <p>A failure is filament and hours spent with no product to show. A prototype is the same thing on purpose. A calibration cube is a cost of doing business. If none of that is logged, your material spend will never reconcile with your sales, and you will not know which product or which printer is eating the difference. SpoolPilot logs a print as <strong>stock, prototype, or failed</strong>, and lets you log a scratch print with no product behind it, so the burned spool shows up somewhere.</p>
@@ -227,6 +243,10 @@
 
     <h2>Product-level profitability</h2>
     <p>Monthly profit tells you whether the shop is alive. Product-level profit tells you what to do next. Two items can sell equally well and one of them can be losing money on every order once packaging is counted, or paying you a fraction of the other for every hour you spend on it. Bundles are the usual hiding place: a three-piece set priced as a discount that costs more to print and pack than its parts sold separately. The only way to see it is to have every cost above attached to every product, and every sale&rsquo;s real fees attached to every order, so that &ldquo;profit per product this month&rdquo; is a number you can sort by rather than a feeling.</p>
+    <figure class="shot tall">
+      <img src="/shot-products.webp?v=15" width="1290" height="2796" loading="lazy" decoding="async" alt="SpoolPilot Products screen in a demo shop: 61 units in stock, $1,278 stock value, about $703 estimated shelf profit. Each product shows units in stock and profit per sale with margin: Desk Organizer 6 in stock, $17.13, 61%; Dice Tower 5, $18.65, 58%; Headphone Stand 9, $13.83, 58%; Geometric Planter 14, $8.87, 49%; Phone Dock 7, $13.93, 63%; Cable Organizer Set 18, $6.21, 44%.">
+      <figcaption>Profit and margin per product in SpoolPilot (demo shop). The Cable Organizer Set keeps $6.21 a sale; the Dice Tower keeps $18.65.</figcaption>
+    </figure>
 
     <h2>Where spreadsheets stop working</h2>
     <p>A spreadsheet is the right tool at the start, and this page is not going to pretend otherwise. It breaks in a predictable order. First, <strong>fees per order</strong>: to know the real fee on each sale you have to download the payment account CSV, match its rows to orders, and type them in, and that is the step everyone abandons by the second month. Second, <strong>variants and multiple printers</strong>: the sheet that priced one product in one color becomes forty rows that nobody trusts. Third, <strong>time</strong>: the sheet lives on a laptop, and the decisions happen at the printer, at the post office, and at the kitchen table at 11pm. By the time you sit down to update it, you are estimating, and estimates drift in one direction.</p>
@@ -235,7 +255,7 @@
     <p>A print shop is run standing up. You notice the spool is low while you are changing it. You want to know whether an order was worth it while you are packing it. You want to price a print while the slicer is open on the screen in front of you. Software that requires walking to a desk gets used on Sundays; software in your pocket gets used when the information is fresh. That is the reason SpoolPilot is an iPhone app that reads the slicer screen with the camera, rather than a web dashboard with a form.</p>
 
     <h2>Do you need a spreadsheet, a filament tracker, Etsy analytics, or business management software?</h2>
-    <p>Each of these answers a different question. Pick by the question you actually have.</p>
+    <p>Each of these answers a different question. Pick by the question you have.</p>
     <div class="tbl">
       <table style="min-width:720px">
         <thead><tr><th>Tool</th><th>Answers</th><th>Doesn&rsquo;t answer</th><th>Right when</th></tr></thead>
@@ -292,7 +312,7 @@
 
     <div class="cta">
       <h2>Start with the number you don&rsquo;t have yet</h2>
-      <p>If you have never seen your cost per print with fees included, the free calculator will show you in about a minute, no signup. If you already know that and want the profit on every order you actually sold, that is the app.</p>
+      <p>If you have never seen your cost per print with fees included, the free calculator will show you in about a minute, no signup. If you already know that and want the profit on every order you sold, that is the app.</p>
       <p><a class="btn-big" href="/etsy-fee-calculator.html">Try the free cost calculator</a></p>
       <p class="cta-free"><a href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-guide-software&mt=8" style="color:var(--cta)">Or download SpoolPilot on the App Store</a>, free, with an optional Pro subscription.</p>
     </div>

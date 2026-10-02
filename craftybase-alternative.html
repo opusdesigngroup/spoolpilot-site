@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=10">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -82,9 +82,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-04",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -97,6 +100,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -117,7 +124,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -151,14 +161,29 @@
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <p class="lede">Craftybase, recently renamed Stocksmith, is respected bookkeeping software for handmade businesses. It&rsquo;s also priced for businesses, and it has <strong>no idea what a filament spool is</strong>. If you sell 3D prints on Etsy, here&rsquo;s the honest comparison.</p>
+    <p class="lede">Craftybase, recently renamed Stocksmith, is respected bookkeeping software for handmade businesses. It&rsquo;s also priced for businesses, and it has <strong>no idea what a filament spool is</strong>. If you sell 3D prints on Etsy, here&rsquo;s how the two compare.</p>
 
-    <h2>What changed at Craftybase</h2>
-    <p>In 2026 Craftybase rebranded to <strong>Stocksmith</strong> (&ldquo;same team, same software&rdquo;). As of July 2026 its published entry plan, Studio, runs <strong>$41/mo billed annually ($49 month-to-month)</strong>, with higher tiers at $83–$291/mo. Hourly imports and automatic stock sync sit on the $166+/mo tiers. The old ~$20/mo plan survives only as a legacy mention.</p>
+    <h2>What happened to Craftybase?</h2>
+    <p>Craftybase renamed itself <strong>Stocksmith</strong> in 2026 (&ldquo;same team, same software&rdquo;). As of October 2026 its published entry plan, Studio, runs <strong>$41/mo billed annually ($49 month-to-month)</strong>, with higher tiers at $83–$291/mo. Hourly imports and automatic stock sync sit on the $166+/mo tiers. The old ~$20/mo plan survives only as a legacy mention.</p>
     <p>For a shop grossing a few hundred dollars a month, $500–600 a year of bookkeeping software is a real line item. r/EtsySellers has a steady stream of threads asking for a cheaper way out. Nothing wrong with the software; a lot wrong with the fit.</p>
 
-    <h2>The deeper issue for 3D print sellers: it&rsquo;s generic</h2>
-    <p>Stocksmith models a general handmade business: components, recipes, manufactures. Workable for soap or jewelry, but a 3D print shop&rsquo;s material world is <em>filament</em>: spools with brands, materials, colors, grams per print, and the very specific question &ldquo;how many sealed spools are on the shelf, and how many weeks will they last at my sales pace?&rdquo; You can fake that with generic components and manual adjustments. You shouldn&rsquo;t have to.</p>
+    <h2>What does Stocksmith cost over a year?</h2>
+    <p>Studio, the entry plan, is $492 a year billed annually, or $588 paid month to month. Hourly sales imports and automatic stock sync start at Business: $166 a month billed annually, $1,992 a year. The Indie plan below it imports daily and syncs stock by hand. QuickBooks inventory sync is on Growth only, at $291 a month billed annually. Figures are from <a href="https://stocksmith.io/pricing">Stocksmith&rsquo;s pricing page</a>, checked October&nbsp;2,&nbsp;2026.</p>
+
+    <h2>Does Stocksmith understand filament?</h2>
+    <p>Not natively. Stocksmith models a general handmade business: components, recipes, manufactures. Workable for soap or jewelry, but a 3D print shop&rsquo;s material world is <em>filament</em>: spools with brands, materials, colors, grams per print, and the very specific question &ldquo;how many sealed spools are on the shelf, and how many weeks will they last at my sales pace?&rdquo; You can fake that with generic components and manual adjustments. You shouldn&rsquo;t have to.</p>
+
+    <h2>What does a 3D print shop track that handmade software doesn&rsquo;t?</h2>
+    <p>Six things a 3D print shop tracks have no natural home in a components-and-recipes model:</p>
+    <ul>
+      <li><strong>Grams per print</strong>, read off the slicer, not a component quantity you type.</li>
+      <li><strong>Print hours</strong>, which carry electricity and machine wear at a per-hour rate.</li>
+      <li><strong>Failed prints</strong>, which burn filament and printer time without producing anything to sell.</li>
+      <li><strong>Sealed spools</strong>, counted by scanning the barcode when a box arrives.</li>
+      <li><strong>Weeks of stock</strong> per material, from how fast your sales use it.</li>
+      <li><strong>Made-to-order products</strong>, printed after the sale, where a stock count is a chore with no meaning.</li>
+    </ul>
+    <p>SpoolPilot is built around those six. Each product carries a cost recipe (filament grams, print hours, packaging), and every synced Etsy order is costed against it, so the profit on a sale reflects what that print cost to make. For example, a desk organizer that uses 47 g of PLA and three print hours carries $1.03 of filament at $22 a kilo, plus electricity and machine wear for those three hours, before its box is added.</p>
 
     <h2>How SpoolPilot compares</h2>
     <div class="tbl">
@@ -166,7 +191,7 @@
         <thead><tr><th></th><th>Stocksmith (Craftybase)</th><th class="sp">SpoolPilot</th></tr></thead>
         <tbody>
           <tr><td>Built for</td><td>All handmade businesses</td><td class="sp">3D-print shops specifically</td></tr>
-          <tr><td>Entry price</td><td>$41–49/mo (July 2026)</td><td class="sp">Free tier + Pro</td></tr>
+          <tr><td>Entry price</td><td>$41–49/mo (October 2026)</td><td class="sp">Free tier + Pro</td></tr>
           <tr><td>Etsy fees</td><td>Fee tracking within accounting</td><td class="sp">The exact fees Etsy charged, itemized per order</td></tr>
           <tr><td>Materials model</td><td>Generic components &amp; recipes</td><td class="sp">Filament-native: scan spools, sealed counts, weeks-of-stock</td></tr>
           <tr><td>Stock counting</td><td>Manual counts &amp; adjustments</td><td class="sp">Inferred from sales, made-to-order by default</td></tr>
@@ -175,10 +200,13 @@
         </tbody>
       </table>
     </div>
-    <p class="fine">Competitor details as published at stocksmith.io in July 2026; verify current pricing before deciding. Stocksmith and Craftybase are trademarks of their owner; SpoolPilot is not affiliated with them.</p>
+    <p class="fine">Competitor details as published at stocksmith.io, checked October 2026; verify current pricing before deciding. Stocksmith and Craftybase are trademarks of their owner; SpoolPilot is not affiliated with them.</p>
 
-    <h2>Where Stocksmith is still the right call</h2>
-    <p>Fair is fair: if you need multi-user manufacturing workflows, batch traceability for regulated products, QuickBooks inventory sync, or you sell far beyond 3D printing, Stocksmith is mature software for exactly that. SpoolPilot&rsquo;s job is <strong>narrower and deeper</strong>: the truth about profit in a 3D-print shop, from a phone next to the printer.</p>
+    <h2>Can you switch from Craftybase without losing your history?</h2>
+    <p>Yes. Your sales history lives at Etsy, not in Craftybase, so there is nothing to export first. SpoolPilot imports your Etsy orders directly, with a one-tap history import (the full history is part of Pro). What does not carry over is your product setup: each product needs its cost recipe entered once. SpoolPilot keeps everything on your iPhone and exports to CSV whenever you want a copy.</p>
+
+    <h2>When is Stocksmith still the right call?</h2>
+    <p>If you need multi-user manufacturing workflows, batch traceability for regulated products, QuickBooks inventory sync, or you sell far beyond 3D printing, Stocksmith is mature software for exactly that. SpoolPilot&rsquo;s job is <strong>narrower and deeper</strong>: the truth about profit in a 3D-print shop, from a phone next to the printer.</p>
   <div class="cta">
     <h2>See your real profit in minutes</h2>
     <p>SpoolPilot syncs your Etsy orders, itemizes the exact fees Etsy charged on each one, and shows the net profit per sale. Free on iPhone for 10 orders a month; Pro brings in every order and your whole history.</p>

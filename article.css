@@ -105,6 +105,16 @@ em{font-style:italic;color:var(--ink)}
 }
 .credential svg{width:15px;height:15px;display:block;flex:0 0 auto}
 
+/* ---------- app captures ---------- */
+/* A real screen from the app, shown near phone scale with its true pixel width/height on the
+   img (the global img rule keeps the aspect). Captures use the demo shop, never a real one;
+   the caption says so. */
+.shot{margin:var(--s6) auto;max-width:330px}
+.shot.tall{max-width:270px}
+.shot img{width:100%;border-radius:18px;border:1px solid var(--rule-2);background:var(--bg-alt)}
+.shot.tall img{border-radius:30px}
+.shot figcaption{margin-top:var(--s3);font-size:var(--fs-meta);line-height:1.5;color:var(--muted);text-align:center;text-wrap:balance}
+
 /* ---------- compare table ---------- */
 .tbl{overflow-x:auto;border:1px solid var(--rule-2);border-radius:16px;background:#fff;margin:22px 0 8px;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:var(--fs-ui)}

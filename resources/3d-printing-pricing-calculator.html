@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=9">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -83,9 +83,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-09-25",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -141,6 +144,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -161,7 +168,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -195,11 +205,12 @@
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       By an Etsy seller with 3,000+ sales
     </p>
-    <p class="lede">Your slicer already shows a cost for the print. That number is the <strong>filament and only the filament</strong>, at whatever price per kilogram is stored in the profile. It is missing electricity, machine wear, the prints that fail, the box, and the platform&rsquo;s cut, and it says nothing about what the print pays you for your time. Price the print from the slicer&rsquo;s number plus what it leaves out, solved so the margin survives the fees: <strong>price = (cost + flat fees) ÷ (1 − margin − fee%)</strong>.</p>
-    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised September&nbsp;25,&nbsp;2026.</p>
+    <p class="lede">To price a 3D print, add up what it really costs to make (filament, electricity, machine wear, failed prints and packaging), then solve for the price that keeps your margin after the platform&rsquo;s fees: <strong>price = (cost + flat fees) ÷ (1 − margin − fee%)</strong>. On Etsy, a print that costs $3.40 to make lists at about $9.50 for a 50% margin.</p>
+    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised October&nbsp;2,&nbsp;2026.</p>
+    <p>Your slicer already shows a cost for the print. That number is the <strong>filament and only the filament</strong>, at whatever price per kilogram is stored in the profile. It is missing electricity, machine wear, the prints that fail, the box, and the platform&rsquo;s cut, and it says nothing about what the print pays you for your time.</p>
 
     <h2>The short answer, with a worked example</h2>
-    <p>Take a print the slicer prices at <strong>$1.03</strong> of filament. Fully costed, with everything the slicer leaves out, it is <strong>$3.40</strong> to make and pack (the sections below show where each part comes from). Say you sell on Etsy, where the percentage fees on a US sale are 6.5% transaction plus 3% processing, so 9.5% together, and the flat fees are $0.25 processing plus a $0.20 listing fee, $0.45 in all. You want to keep 50% of the price.</p>
+    <p>Take a print the slicer prices at <strong>$1.03</strong> of filament. Fully costed, with everything the slicer leaves out, it is <strong>$3.40</strong> to make and pack (the sections below show where each part comes from). Say you sell on Etsy, where the percentage fees on a US sale are 6.5% transaction plus 3% processing (per <a href="https://www.etsy.com/legal/fees/">Etsy&rsquo;s Fees &amp; Payments Policy</a>), so 9.5% together, and the flat fees are $0.25 processing plus a $0.20 listing fee, $0.45 in all. You want to keep 50% of the price.</p>
     <p>price = (3.40 + 0.45) ÷ (1 − 0.50 − 0.095) = 3.85 ÷ 0.405 = <strong>$9.51</strong>, so you list at $9.50 or $9.95.</p>
     <p>Check it at $9.95: fees are 0.65 + 0.30 + 0.25 + 0.20 = $1.40, cost is $3.40, and you keep $5.15, which is 51.8% of the price. The margin held because the percentage fees were solved for rather than added afterward. Then the check that matters most: if the print takes ten minutes of your hands, taking off supports and packing it, that $5.15 pays you about <strong>$31 an hour</strong>.</p>
     <p>If you want the arithmetic done for you, the <a href="/etsy-fee-calculator.html">free 3D printing cost calculator</a> does exactly this, including the case where a margin is not reachable at any price. It also runs the other direction: type a price and see what a sale at that price nets after fees.</p>
@@ -208,14 +219,14 @@
     <p>Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura all show a cost for a sliced job. Out of the box it is one multiplication: the grams the job will use times the price per kilogram saved in the filament profile. Two things follow from that. First, it is a material cost, not a print cost; the hours are right there on the same screen, but nothing is charged for them unless you have set up a machine rate, which almost nobody has. Second, it is only as good as the price in the profile, and the profile usually still holds the default from when the printer was set up, or the price of a spool you bought a year ago, not the one on the printer now.</p>
     <p>The slicer&rsquo;s number is a fine starting point. It is the first line of the cost, not the cost.</p>
 
-    <h2>What the slicer&rsquo;s number is missing</h2>
-    <p>Six things belong in the cost of a print. The slicer gives you the first one. The rest are where prints quietly lose money. Your own time is not one of them, and the section on it says why.</p>
+    <h2>What does the slicer&rsquo;s cost leave out?</h2>
+    <p>Electricity, machine wear, failed prints, paid help and packaging. Those are five of the six things that belong in the cost of a print; the slicer gives you only the first, filament. The five it leaves out are the costs that turn a price that looks profitable into a loss. Your own time is not one of them, and the section on it says why.</p>
 
     <h3>Filament</h3>
     <p>This is the slicer&rsquo;s line. Grams for the job, including supports and any purge or waste from a color change, multiplied by the price per kilogram you actually paid for that spool, which means checking that the profile&rsquo;s price is the real one. A $22 kilo makes a 47 g print cost $1.03 in material. Use the price of the roll on the printer, not the sale price you saw last month.</p>
 
     <h3>Print time and electricity</h3>
-    <p>The slicer also tells you the hours. Electricity is your printer&rsquo;s average draw times the hours times your rate per kilowatt-hour. A printer averaging 150 W over a six-hour print uses 0.9 kWh; at a rate near 18 cents that is about 17 cents for the print. Enclosures, heated beds, and filament dryers push it up. It is rarely the biggest line, and it is never zero.</p>
+    <p>The slicer also tells you the hours. Electricity is your printer&rsquo;s average draw times the hours times your rate per kilowatt-hour. A printer averaging 150 W over a six-hour print uses 0.9 kWh; at a rate near 18 cents (the US average residential price in <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a">EIA&rsquo;s monthly table</a>, which also lists your state) that is about 17 cents for the print. Enclosures, heated beds, and filament dryers push it up. It is rarely the biggest line, and it is never zero.</p>
 
     <h3>Machine and shop cost</h3>
     <p>A printer wears out. Divide what you paid for it, plus the nozzles, plates, and belts it will go through, by the print hours you expect from it, and you have a per-hour figure: a $600 machine over 3,000 hours is 20 cents an hour. Add a share of rent or a space you would otherwise use if that is real for you. Small shops usually fold this into a per-hour rate alongside electricity so it stops being forgotten. In SpoolPilot this is the Printer wear field in Cost settings: printer cost and expected print hours in, a per-hour rate out.</p>
@@ -232,13 +243,17 @@
 
     <p>Add those up. For the example above: the slicer&rsquo;s $1.03 of filament, $0.17 electricity, $1.20 machine time, a 1.09 failure multiplier on those three ($0.22), and $0.78 packaging comes to <strong>$3.40</strong>. Your ten minutes are not in it; they are paid from what the sale keeps.</p>
 
-    <h2>Why fees have to be solved for, not added</h2>
-    <p>The common shortcut is to add up the cost, double it, and call the rest profit. Then the platform takes its percentage off the top and the doubled price turns out to have been a 35% margin, or a 20% one once shipping and the failure rate are in. Percentage fees are charged on the price, and the price is the thing you are trying to find, which is why they belong in the denominator of the formula rather than as a line added at the end. On a marketplace they also apply to the shipping the buyer pays, which is easy to miss: the <a href="/resources/etsy-fees-3d-printing">Etsy fees page</a> works through an order with shipping included.</p>
-    <p><strong>Sometimes the formula returns a price the market will not pay.</strong> That is information. Either the cost has to come down (a faster print profile, cheaper packaging, less finishing), the margin has to come down, or the product should not be made. A calculator that quietly prints a price for an unreachable margin is worse than one that says so; the free one on this site tells you the highest margin that is reachable instead.</p>
+    <h2>Why can&rsquo;t you just add the fees to the price?</h2>
+    <p>Because percentage fees are charged on the price itself, so fees added after the fact shrink the margin you thought you had. The common shortcut is to add up the cost, double it, and call the rest profit. Then the platform takes its percentage off the top and the doubled price turns out to have been a 35% margin, or a 20% one once shipping and the failure rate are in. Percentage fees are charged on the price, and the price is the thing you are trying to find, which is why they belong in the denominator of the formula rather than as a line added at the end. On a marketplace they also apply to the shipping the buyer pays, which is easy to miss: the <a href="/resources/etsy-fees-3d-printing">Etsy fees page</a> works through an order with shipping included.</p>
+    <p><strong>Sometimes the formula returns a price the market will not pay.</strong> That is information. Either the cost has to come down (a faster print profile, cheaper packaging, less finishing), the margin has to come down, or the product should not be made. A calculator that prints a price for an unreachable margin without warning you is worse than one that says so; the free one on this site tells you the highest margin that is reachable instead.</p>
+    <figure class="shot">
+      <img src="/shot-sale-receipt.webp" width="1290" height="2008" loading="lazy" decoding="async" alt="SpoolPilot sale detail for a $28 Desk Organizer sold on Etsy: $7.68 in Etsy fees read from the payment account (Offsite Ads $4.03, transaction fee $1.82, payment processing $1.26, transaction fee on shipping $0.37, listing fee $0.20), then $11.13 of product cost (filament, electricity, shipping and packaging, labor and finishing), leaving $9.19 net profit at a 33% margin.">
+      <figcaption>A $28 sale in SpoolPilot (demo shop). Etsy&rsquo;s fees took $7.68, 27% of it, before the product cost a cent.</figcaption>
+    </figure>
 
-    <h2>Choosing a target margin</h2>
-    <p>Margin is the share of the price you keep after costs and fees; markup is the amount added on top of cost. They are different numbers and mixing them is the second most common pricing error. A 50% markup on $3.40 is a $5.10 price with a 33% margin before fees.</p>
+    <h2>What margin should a 3D print have?</h2>
     <p>There is no correct margin. Pick it from two things: what the sale should pay you per hour of your hands-on time, and what the product sells for elsewhere. If the market price leaves a thin margin, the fix is usually in the cost lines above, not in wishing.</p>
+    <p>Margin is the share of the price you keep after costs and fees; markup is the amount added on top of cost. They are different numbers and mixing them is the second most common pricing error. A 50% markup on $3.40 is a $5.10 price with a 33% margin before fees.</p>
 
     <h2>Mistakes that make prints lose money</h2>
     <ul>
@@ -251,8 +266,8 @@
       <li><strong>Pricing a bundle as a discount</strong> without adding up its parts. Three items cost three items to print and one bigger box to ship.</li>
     </ul>
 
-    <h2>Where a spreadsheet breaks</h2>
-    <p>For pricing, a spreadsheet is a fine tool for a long time. One row per product, columns for the six costs and the formula, done. It stops being enough at two points. The first is <strong>variants</strong>: once a product has four sizes and six colors, the sheet grows to a page of near-duplicate rows and the filament price gets updated in some of them. The second is <strong>the retyping</strong>: every time you slice something you copy grams and hours from one screen into another, and that is the step that gets skipped, so new products get priced from memory.</p>
+    <h2>When does a pricing spreadsheet stop working?</h2>
+    <p>A pricing spreadsheet stops working at variants and at retyping. Until then it is a fine tool: one row per product, columns for the six costs and the formula, done. The first is <strong>variants</strong>: once a product has four sizes and six colors, the sheet grows to a page of near-duplicate rows and the filament price gets updated in some of them. The second is <strong>the retyping</strong>: every time you slice something you copy grams and hours from one screen into another, and that is the step that gets skipped, so new products get priced from memory.</p>
     <p>That retyping step is why SpoolPilot reads the slicer screen with the iPhone camera. Point it at Bambu Studio, OrcaSlicer, PrusaSlicer, or Cura and the grams and hours come off the screen into a priced print, with your filament price, electricity, and packaging already applied, the price solved for the margin you want after fees, and a line that says what that price pays you an hour. The <a href="/etsy-fee-calculator.html">web calculator</a> is the same math without the camera, free, no signup. Pricing is free in the app too; the paid part is what happens after the sale, which is <a href="/resources/3d-printing-profit-calculator">the profit page</a>. For where pricing sits among everything else a shop tracks, see <a href="/3d-printing-business-software">what software a 3D printing business needs</a>.</p>
     <div class="cta">
       <h2>Price your next print in a minute</h2>
@@ -269,6 +284,6 @@
       <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
     </div>
   </footer>
-  <script src="/waitlist.js?v=6066016"></script>
+  <script src="/waitlist.js?v=7apptap"></script>
 </body>
 </html>

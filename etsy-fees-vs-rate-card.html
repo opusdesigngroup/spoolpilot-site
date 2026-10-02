@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=10">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -78,9 +78,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-04",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -120,6 +123,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -140,7 +147,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -176,17 +186,18 @@
       </p>
     <p class="lede">Etsy publishes its fees plainly: 6.5% transaction, 3% + $0.25 processing, $0.20 to list. Put those in a spreadsheet and you get a number. Then the deposit lands and it is not that number. Here is where the two come apart, and how to check it in your own shop without taking anyone&rsquo;s word for it.</p>
 
-    <h2>Start with what the rate card says</h2>
-    <p>Take a $28 print, US rates as published in July 2026:</p>
+    <h2>What does Etsy&rsquo;s rate card say a sale costs?</h2>
+    <p>About 11% of the sale before ads. Take a $28 print, US rates as published in July 2026 in <a href="https://www.etsy.com/legal/fees/">Etsy&rsquo;s Fees &amp; Payments Policy</a>:</p>
     <ul>
       <li>Transaction, 6.5%: <strong>$1.82</strong></li>
       <li>Payment processing, 3% + $0.25: <strong>$1.09</strong></li>
       <li>Listing: <strong>$0.20</strong></li>
     </ul>
     <p><strong>$3.11</strong>, or about 11% of the sale. If that order also gets charged Offsite Ads at 15%, add <strong>$4.20</strong> and you are at <strong>$7.31</strong>, a little over 26%. Same product, same price, and the fee more than doubles depending on one thing you did not control.</p>
-    <p>That gap between 11% and 26% is the whole problem in one line. A single average number cannot describe both.</p>
+    <p>No single average fee percentage describes both an 11% order and a 26% one, and your spreadsheet has room for only one.</p>
 
-    <h2>Five places the formula and the ledger disagree</h2>
+    <h2>Where does the ledger differ from the rate card?</h2>
+    <p>In five places: Offsite Ads, processing rates by country, discounts, shipping in the fee base, and regulatory operating fees. Each one changes what Etsy takes on a specific order, and none of them shows up in a fixed percentage.</p>
 
     <h3>1. Offsite Ads lands on some orders and not others</h3>
     <p>Etsy charges the Offsite Ads fee when it attributes a sale to an ad click, within a 30-day window. You cannot tell in advance which orders those will be. Apply 15% to everything and you overstate your fees on most sales. Apply nothing and you are blindsided on the ones that get it. The fee is capped per order, which helps on a large sale and not at all on a $28 one.</p>
@@ -213,13 +224,13 @@
     </ol>
     <p>Whatever you find is your answer, not a claim from a website. If the columns match, your spreadsheet is fine and you have lost ten minutes. If they do not, you now know by how much, on your own products, at your own price points.</p>
 
-    <h2>Why this is hard to fix with a better formula</h2>
-    <p>You could keep patching the spreadsheet. Add an Offsite Ads column, per-country processing, a discount field, shipping in the base. It still will not work, because the formula never learns which specific orders were attributed to an ad, or which buyer paid a Turkish regulatory fee. That information exists in exactly one place: the fee entries Etsy wrote against each order.</p>
+    <h2>Can a better spreadsheet formula fix it?</h2>
+    <p>No. You could keep patching the spreadsheet. Add an Offsite Ads column, per-country processing, a discount field, shipping in the base. It still will not work, because the formula never learns which specific orders were attributed to an ad, or which buyer paid a Turkish regulatory fee. That information exists in exactly one place: the fee entries Etsy wrote against each order.</p>
     <p>Estimating is the right tool before a sale, when the order does not exist yet and you are deciding what to charge. After the sale, the estimate has been replaced by a fact, and the fact is sitting in your payment account.</p>
 
   <div class="cta">
     <h2>Or let it read the ledger for you</h2>
-    <p>SpoolPilot connects to your Etsy shop and does the comparison above on your orders automatically. It reads the fee entries Etsy charged, subtracts what the print actually cost in filament, electricity, and packaging, and shows the profit on each sale. Free on the App Store for 10 orders a month; Pro covers every order and your back catalog.</p>
+    <p>SpoolPilot connects to your Etsy shop and does the comparison above on your orders automatically. It reads the fee entries Etsy charged, subtracts what the print cost in filament, electricity, and packaging, and shows the profit on each sale. Free on the App Store for 10 orders a month; Pro covers every order and your back catalog.</p>
     <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
       <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
       <input type="hidden" name="ml-submit" value="1">

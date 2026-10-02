@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=10">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -82,9 +82,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-04",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -97,6 +100,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -117,7 +124,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -151,16 +161,21 @@
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <p class="lede">Both apps price a print before you make it. SpoolPilot gets there with <strong>less typing</strong>: point the camera at your slicer screen and it reads the grams and the hours off it. Then it does the part no calculator does: connects to your Etsy shop and shows what each order <strong>actually</strong> earned, from the fees Etsy really charged.</p>
+    <p class="lede">3DPCC and SpoolPilot both price a 3D print before you make it. Pick 3DPCC for quote tracking, VAT or a one-time purchase. Pick SpoolPilot if you sell on Etsy: it <strong>scans the grams and hours off your slicer screen</strong>, then reads the fees Etsy actually charged on each order and shows what that sale <strong>really earned</strong>.</p>
+    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: 3,000+ sales. Last revised October&nbsp;2,&nbsp;2026.</p>
 
-    <h2>Pricing a print: scan it, don&rsquo;t type it</h2>
-    <p>3DPCC asks you to type the weight and the print time, then offers pricing tiers and a margin slider. SpoolPilot opens the same job with the camera: hold it up to Bambu Studio, OrcaSlicer, PrusaSlicer or Cura and the grams and print time come straight off the screen. No transcribing numbers between two apps.</p>
-    <p>Then set the margin you actually want. SpoolPilot <strong>solves for the price that hits it after Etsy&rsquo;s cut</strong>, the percentage fees and the flat ones, rather than adding a margin on top of cost and leaving the fees to eat it. And when a target margin isn&rsquo;t reachable at any price, it says so and tells you the highest one that is, instead of printing a number that can&rsquo;t happen.</p>
+    <h2>How do 3DPCC and SpoolPilot price a print?</h2>
+    <p>3DPCC has you type the weight and the print time, then offers pricing tiers and a margin slider. SpoolPilot reads both numbers with the camera: hold it up to Bambu Studio, OrcaSlicer, PrusaSlicer or Cura and the grams and print time come straight off the screen. No transcribing numbers between two apps.</p>
+    <p>Then set the margin you want. SpoolPilot <strong>solves for the price that hits it after Etsy&rsquo;s cut</strong>, the percentage fees and the flat ones, rather than adding a margin on top of cost and leaving the fees to eat it. And when a target margin isn&rsquo;t reachable at any price, it says so and tells you the highest one that is, instead of printing a number that can&rsquo;t happen.</p>
 
-    <h2>The part where they stop and we keep going</h2>
-    <p>3DPCC&rsquo;s Etsy feature estimates fees from the published rate card, in its own words to see your net profit <em>before you list</em>. That&rsquo;s a reasonable way to price. It is not a way to know what happened.</p>
-    <p>Etsy publishes a rate card (transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 15%) and any calculator can apply it. What Etsy deposits often isn&rsquo;t that number. Offsite Ads gets attributed partially rather than landing cleanly on the order you&rsquo;d expect. Processing rates differ by country. Coupons change the base the percentage applies to. Regulatory fees appear in some regions and in no formula.</p>
-    <p>SpoolPilot connects to your shop and reads the fee entries on the orders themselves. That&rsquo;s the difference between a price you set and a profit you can stand behind at the end of the month.</p>
+    <h2>Does 3DPCC show what an Etsy order actually earned?</h2>
+    <p>No. 3DPCC&rsquo;s Etsy feature estimates fees from the published rate card, in its own words to see your net profit <em>before you list</em>. That&rsquo;s a reasonable way to price. It is not a way to know what happened.</p>
+    <p>Etsy publishes a rate card in its <a href="https://www.etsy.com/legal/fees/">Fees &amp; Payments Policy</a> (transaction 6.5%, processing 3% + $0.25, listing $0.20, Offsite Ads 15%) and any calculator can apply it. What Etsy deposits often isn&rsquo;t that number. Offsite Ads gets attributed partially rather than landing cleanly on the order you&rsquo;d expect. Processing rates differ by country. Coupons change the base the percentage applies to. Regulatory fees appear in some regions and in no formula.</p>
+    <p>SpoolPilot connects to your shop and reads the fee entries on the orders themselves, the <a href="https://developers.etsy.com/documentation/reference/#tag/Ledger-Entry">payment account ledger entries</a> Etsy&rsquo;s API exposes. That&rsquo;s the difference between a price you set and a profit you can stand behind at the end of the month.</p>
+    <figure class="shot">
+      <img src="/shot-sale-receipt.webp" width="1290" height="2008" loading="lazy" decoding="async" alt="SpoolPilot sale detail for a $28 Desk Organizer sold on Etsy: $7.68 in Etsy fees marked Read from Etsy and itemized as Offsite Ads $4.03, transaction fee $1.82, payment processing $1.26, transaction fee on shipping $0.37 and listing fee $0.20; $11.13 product cost; net profit $9.19 at a 33% margin.">
+      <figcaption>One synced order in SpoolPilot (demo shop). Each fee line comes from the Etsy payment account, not the rate card.</figcaption>
+    </figure>
 
     <h2>How SpoolPilot compares</h2>
     <div class="tbl">
@@ -182,10 +197,17 @@
         </tbody>
       </table>
     </div>
-    <p class="fine">3DPCC details as published on its App Store listing and at 3dpcc.com, checked September&nbsp;4,&nbsp;2026 (app version 1.0.5); verify current pricing and features before deciding. Data-collection rows are taken from each app&rsquo;s own App Store privacy label. 3DPCC is the trademark of its developer; SpoolPilot is not affiliated with it.</p>
+    <p class="fine">3DPCC details as published on its <a href="https://apps.apple.com/us/app/3dpcc-3d-printing-calculator/id6762140057">App Store listing</a> and at <a href="https://3dpcc.com">3dpcc.com</a>, checked September&nbsp;4,&nbsp;2026 (app version 1.0.5); verify current pricing and features before deciding. Data-collection rows are taken from each app&rsquo;s own App Store privacy label. 3DPCC is the trademark of its developer; SpoolPilot is not affiliated with it.</p>
 
-    <h2>Where 3DPCC is the better buy</h2>
-    <p>Fair is fair. Pick 3DPCC if you need <strong>quote tracking</strong>: moving a job from draft to pending to delivered, with a branded PDF at the end. SpoolPilot has no equivalent and isn&rsquo;t trying to. Pick it if you need <strong>VAT</strong>, which SpoolPilot doesn&rsquo;t handle yet. Pick it if you want a <strong>one-time purchase</strong>; $49.99 once is a real advantage over any subscription. Pick it if you work at a desk in a browser rather than standing at a printer. And pick it if you <strong>don&rsquo;t sell on Etsy</strong>, because SpoolPilot&rsquo;s whole edge is reading a ledger you wouldn&rsquo;t have.</p>
+    <h2>When is 3DPCC the better buy?</h2>
+    <p>3DPCC is the better buy when you need quote tracking, VAT, a one-time price, a browser at a desk, or you don&rsquo;t sell on Etsy:</p>
+    <ul>
+      <li><strong>Quote tracking</strong>: moving a job from draft to pending to delivered, with a branded PDF at the end. SpoolPilot has no equivalent and isn&rsquo;t trying to.</li>
+      <li><strong>VAT</strong>, which SpoolPilot doesn&rsquo;t handle yet.</li>
+      <li><strong>A one-time purchase</strong>: $49.99 once is a real advantage over any subscription.</li>
+      <li><strong>A desk and a browser</strong> rather than a phone at the printer.</li>
+      <li><strong>No Etsy shop</strong>, because SpoolPilot&rsquo;s whole edge is reading a ledger you wouldn&rsquo;t have.</li>
+    </ul>
     <p>SpoolPilot costs more, and it should only win if you want the thing it does: price the print in seconds from your slicer, then know exactly what the sale made after Etsy took its cut.</p>
 
   <div class="cta">

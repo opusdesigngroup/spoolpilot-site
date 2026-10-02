@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=10">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -82,9 +82,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-04",
-      "dateModified": "2026-09-23",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -97,6 +100,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -117,7 +124,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -151,15 +161,27 @@
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Built by an Etsy seller with 3,000+ sales
       </p>
-    <p class="lede">Spoolman asks <em>how much plastic is left on each spool</em>. SpoolPilot asks <strong>how much money the shop made</strong>. If you sell what you print, you might genuinely want both, but you should know which is which.</p>
+    <p class="lede">Spoolman asks <em>how much plastic is left on each spool</em>. SpoolPilot asks <strong>how much money the shop made</strong>. If you sell what you print, you might want both, but you should know which is which.</p>
 
     <h2>Spoolman, respectfully</h2>
     <p>Spoolman is excellent at what it does: a free, open-source, self-hosted filament database with native Klipper support, so your printer itself logs consumption per print. For a tinkerer running Klipper who wants gram-accurate remaining weight on every spool, it&rsquo;s the community&rsquo;s gold standard, and being MIT-licensed and self-hosted, it&rsquo;s fully yours.</p>
-    <p>The cost is ceremony. You run a server (Docker, usually), then build your database by hand: manufacturers, then filament types, then each physical spool. Weights stay accurate only when prints flow through the integrations. And it stops at plastic: <strong>no sales, no fees, no profit</strong>, because that was never its job.</p>
+    <p>The cost is setup. You run a server (Docker, usually), then build your database by hand: manufacturers, then filament types, then each physical spool. Weights stay accurate only when prints flow through the integrations. And it stops at plastic: <strong>no sales, no fees, no profit</strong>, because that was never its job.</p>
+
+    <h2>What does Spoolman track?</h2>
+    <p>Per <a href="https://github.com/Donkie/Spoolman">Spoolman&rsquo;s own README</a>, it keeps a database of manufacturers, filament types and individual spools, and updates each spool&rsquo;s weight as a print runs when it is connected to <a href="https://moonraker.readthedocs.io/en/latest/configuration/#spoolman">Moonraker</a> (with front-ends like Fluidd and Mainsail) or OctoPrint. It also has:</p>
+    <ul>
+      <li>A community filament database, SpoolmanDB, so a new spool doesn&rsquo;t start from a blank form.</li>
+      <li>A label designer that prints a QR label for each spool.</li>
+      <li>Updates from several printers at once, a REST API, and optional Prometheus monitoring for usage history.</li>
+    </ul>
 
     <h2>What sellers need that grams can&rsquo;t answer</h2>
-    <p>A shop owner&rsquo;s daily questions are different: what did that $28 order actually net after Etsy&rsquo;s four separate fees? Which product is quietly unprofitable? How many sealed spools are on the shelf, and how many weeks will they last at the current sales pace? What should I print next?</p>
-    <p>Those are money-and-time questions, and they need sales data, <em>not a scale</em>. SpoolPilot connects to your Etsy shop, imports your sales (your whole history with Pro), reads the exact fees Etsy charged on each order, and treats filament the way a busy shop actually does: count sealed spools by scanning the barcode, let sales infer the rest.</p>
+    <p>A shop owner&rsquo;s daily questions are different: what did that $28 order actually net after Etsy&rsquo;s four separate fees? Which product loses money on every sale? How many sealed spools are on the shelf, and how many weeks will they last at the current sales pace? What should I print next?</p>
+    <p>Those are money-and-time questions, and they need sales data, <em>not a scale</em>. SpoolPilot connects to your Etsy shop, imports your sales (your whole history with Pro), reads the exact fees Etsy charged on each order, and treats filament the way a busy shop does: count sealed spools by scanning the barcode, let sales infer the rest.</p>
+    <p>An example: a product uses 47 g of black PLA and sold 30 units last month, so that product alone used 1.4 kg. Spoolman can tell you the open spool of black has 400 g left. Spoolman can&rsquo;t tell you that this product will need another 1.4 kg this month, or what each of those 30 sales kept after Etsy&rsquo;s fees. Both answers come from the sales, not the spool.</p>
+
+    <h2>What does each cost to run?</h2>
+    <p>Spoolman is free software, and the cost is the machine it runs on: an always-on computer on your network, plus the time to keep it updated. Setup is the database: each manufacturer, filament type and physical spool entered once, though SpoolmanDB fills in common filaments. SpoolPilot runs on an iPhone with iOS 17 or later, with no server and no account. Its filament inventory is free with no limit, including barcode scanning and sealed spool counts. Weeks-of-stock forecasts and profit on every order are part of Pro.</p>
 
     <h2>Side by side</h2>
     <div class="tbl">
@@ -170,7 +192,7 @@
           <tr><td>Runs on</td><td>Your own server (Docker)</td><td class="sp">Your iPhone</td></tr>
           <tr><td>Setup</td><td>Host it, then hand-build the database</td><td class="sp">Connect Etsy, scan a spool, minutes</td></tr>
           <tr><td>Filament model</td><td>Per-gram weights via printer integrations</td><td class="sp">Sealed-spool counts + weeks-of-stock forecast</td></tr>
-          <tr><td>Sales &amp; fees</td><td>—</td><td class="sp">Etsy orders with exact fees itemized, whole history with Pro</td></tr>
+          <tr><td>Sales &amp; fees</td><td>Not tracked</td><td class="sp">Etsy orders with exact fees itemized, whole history with Pro</td></tr>
           <tr><td>Price</td><td>Free, open source</td><td class="sp">Free tier + Pro</td></tr>
           <tr><td>Best for</td><td>Klipper tinkerers &amp; gram-accuracy fans</td><td class="sp">People selling what they print</td></tr>
         </tbody>
@@ -178,7 +200,8 @@
     </div>
 
     <h2>Can you run both?</h2>
-    <p>Sure. Some print-farm owners keep Spoolman for per-machine gram nerdery and use SpoolPilot for the business: profit, fees, forecasts, and what to print next. They don&rsquo;t compete for the same job. <strong>They compete for the same shelf</strong>.</p>
+    <p>Yes. If you run Klipper, keep Spoolman for per-printer gram tracking and use SpoolPilot for the business: profit, fees, forecasts, and what to print next.</p>
+    <p>Spoolman and SpoolPilot don&rsquo;t sync with each other, so split the jobs cleanly. Let Spoolman own the grams on the spools that are open and on a printer. Let SpoolPilot own the sealed spools on the shelf and the money: scan a box in when it arrives, and the reorder date comes from your sales pace rather than from a scale.</p>
   <div class="cta">
     <h2>See your real profit in minutes</h2>
     <p>SpoolPilot syncs your Etsy orders, itemizes the exact fees Etsy charged on each one, and shows the net profit per sale. Free on iPhone for 10 orders a month; Pro brings in every order and your whole history.</p>

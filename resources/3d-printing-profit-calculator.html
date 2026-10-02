@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=9">
+  <link rel="stylesheet" href="/article.css?v=11">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -83,9 +83,12 @@
       },
       "image": "https://spoolpilot.app/og-image-v2.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-09-25",
+      "dateModified": "2026-10-02",
       "author": {
-        "@id": "https://spoolpilot.app/#founder"
+        "@type": "Person",
+        "@id": "https://spoolpilot.app/#founder",
+        "name": "Sean",
+        "url": "https://spoolpilot.app/author/sean"
       },
       "publisher": {
         "@id": "https://spoolpilot.app/#organization"
@@ -114,6 +117,10 @@
       "@type": "Person",
       "@id": "https://spoolpilot.app/#founder",
       "name": "Sean",
+      "url": "https://spoolpilot.app/author/sean",
+      "sameAs": [
+        "https://opusdesigncompany.etsy.com"
+      ],
       "jobTitle": "Founder, SpoolPilot",
       "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
@@ -134,7 +141,10 @@
       "logo": "https://spoolpilot.app/icon-192.png",
       "sameAs": [
         "https://apps.apple.com/app/id6796133961",
-        "https://www.instagram.com/spoolpilot.app/"
+        "https://www.instagram.com/spoolpilot.app/",
+        "https://www.tiktok.com/@spoolpilot.app",
+        "https://www.youtube.com/@spoolpilot",
+        "https://www.facebook.com/spoolpilot"
       ],
       "founder": {
         "@id": "https://spoolpilot.app/#founder"
@@ -169,21 +179,21 @@
       By an Etsy seller with 3,000+ sales
     </p>
     <p class="lede">The profit on a print is <strong>what the buyer paid, minus the fees the platform actually charged on that order, minus what it cost you to make and ship it</strong>. The formula is one line. The work is in the word <em>actually</em>: pricing uses estimates, but profit has to use the numbers that really happened, and for most sellers the gap between the two is the difference between a shop that feels profitable and one that is.</p>
-    <p class="fine">By Sean, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised September&nbsp;25,&nbsp;2026.</p>
+    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised October&nbsp;2,&nbsp;2026.</p>
 
-    <h2>Gross, net, and the number that matters</h2>
-    <p>&ldquo;I sold $3,000 this month&rdquo; is gross revenue. It is the number Etsy&rsquo;s dashboard shows and the one people quote, and it says nothing about whether the month made money. Net profit is what is left after fees and costs, and the version that tells you what to do next is <strong>net profit per order</strong>, added up per product. A month can be net positive while two of your products are quietly losing money on every sale; you cannot see that from the monthly total.</p>
+    <h2>What is the difference between revenue and net profit?</h2>
+    <p>Revenue is what buyers paid; net profit is what is left after the platform&rsquo;s fees and your costs. &ldquo;I sold $3,000 this month&rdquo; is gross revenue. It is the number Etsy&rsquo;s dashboard shows and the one people quote, and it says nothing about whether the month made money. Net profit is what is left after fees and costs, and the version that tells you what to do next is <strong>net profit per order</strong>, added up per product. A month can be net positive while two of your products lose money on every sale; you cannot see that from the monthly total.</p>
     <p>This page is about the after-the-sale number. If you are still deciding what to charge, start with <a href="/resources/3d-printing-pricing-calculator">how to price your prints</a>; the two use the same cost lines but different fee numbers.</p>
 
-    <h2>Reconstruct one order from the payment account</h2>
-    <p>The only trustworthy source for an order&rsquo;s fees is the ledger the platform keeps for your money. On Etsy that is the payment account, downloadable as a monthly CSV. Take one real order and build it up line by line.</p>
+    <h2>How do you calculate the profit on one order?</h2>
+    <p>Rebuild the order line by line from the payment account: what the buyer paid, minus each fee Etsy posted, minus the label and the cost to make and pack. The ledger is the only trustworthy source for an order&rsquo;s fees. On Etsy that is the payment account, downloadable as a monthly CSV, and the same entries are what Etsy&rsquo;s API returns as <a href="https://developers.etsy.com/documentation/reference/#tag/Ledger-Entry">payment account ledger entries</a>.</p>
     <div class="tbl">
       <table style="min-width:520px">
         <thead><tr><th>Line</th><th>Amount</th><th>Where it comes from</th></tr></thead>
         <tbody>
           <tr><td>Item price</td><td>$24.00</td><td>Order</td></tr>
           <tr><td>Buyer-paid shipping</td><td>$4.50</td><td>Order. Revenue, but not yours to keep</td></tr>
-          <tr><td>Transaction fee</td><td>−$1.85</td><td>Ledger. 6.5% of $28.50, because it applies to shipping too</td></tr>
+          <tr><td>Transaction fee</td><td>−$1.85</td><td>Ledger. 6.5% of $28.50, because it applies to shipping too (<a href="https://www.etsy.com/legal/fees/">Etsy&rsquo;s fee policy</a>)</td></tr>
           <tr><td>Payment processing</td><td>−$1.11</td><td>Ledger. 3% of $28.50 plus $0.25</td></tr>
           <tr><td>Listing fee</td><td>−$0.20</td><td>Ledger</td></tr>
           <tr><td>Shipping label</td><td>−$4.95</td><td>Your label purchase</td></tr>
@@ -199,7 +209,7 @@
     <ul>
       <li><strong>Failed and prototype prints</strong> become a failure-rate multiplier on the product they were attempts at. A product that fails one in ten carries 11% extra material and machine cost on every success. Log the failures, or the multiplier is a guess.</li>
       <li><strong>Packaging bought in bulk</strong> becomes a per-unit cost: $56 for 200 mailers is $0.28 each.</li>
-      <li><strong>Electricity and machine wear</strong> become a per-hour rate applied to each print&rsquo;s hours.</li>
+      <li><strong>Electricity and machine wear</strong> become a per-hour rate applied to each print&rsquo;s hours. Your rate per kWh is on the power bill; <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a">EIA publishes the average by state</a> if you want a check.</li>
       <li><strong>Overhead</strong> that fits none of those (a subscription, a table at a market) is a monthly line on the P&amp;L, not smeared across orders. Keep it visible instead of hidden.</li>
     </ul>
 
@@ -207,8 +217,12 @@
     <p>Once every order has a real profit figure, sort by product. This is the view that changes decisions. Two products with the same sales count can have opposite margins once packaging and labor are in, and the one that &ldquo;sells great&rdquo; is sometimes the one paying for the privilege. Bundles are the usual hiding place: a three-piece set sold at a discount costs three prints, three finishing passes, and a bigger box, and it is common to find that it nets less than one of its parts sold alone.</p>
     <p>Look at profit per product for the month and for the last few months. Prune or reprice the bottom of the list. That single habit does more for a small shop than any amount of new listings.</p>
 
-    <h2>The monthly P&amp;L</h2>
+    <h2>How do you calculate monthly profit?</h2>
     <p>Revenue, minus the fees actually charged, minus cost of goods (the per-order costs added up), minus the overhead lines, equals net profit for the month. Compare it to last month and to the same month last year if you have it. Two rules keep it honest: count revenue when the order was paid, not when it was listed or shipped, and subtract refunds and cancellations in the month they happened.</p>
+    <figure class="shot tall">
+      <img src="/shot-finances.webp?v=15" width="1290" height="2796" loading="lazy" decoding="async" alt="SpoolPilot Finances screen for one month of a demo shop: revenue $3,124.00, cost of materials $516.46, gross profit $2,607.54, operating expenses $1,133.52, net profit $1,474.02 at a 47% margin, a six-month revenue chart, and where the costs went: filament $516.46, labor and finishing $505.47, shipping and packaging $283.50, seller fees $273.90, electricity $70.65.">
+      <figcaption>The monthly P&amp;L in SpoolPilot (demo shop): revenue down to net profit, and where the costs went.</figcaption>
+    </figure>
 
     <h2>Common mistakes</h2>
     <ul>
@@ -220,9 +234,11 @@
       <li><strong>Looking only at the monthly total</strong> and missing the two products dragging it down.</li>
     </ul>
 
-    <h2>Doing this in a spreadsheet</h2>
-    <p>Under roughly twenty orders a month, a spreadsheet with one row per order works, and it is worth doing by hand at least once so you understand your own numbers. The step that breaks it is the fee lines. To get them you download the payment account CSV, match its rows to orders, and type the amounts in, every month, for every order. Almost everyone stops by the second month and goes back to estimates, at which point the sheet is a pricing tool wearing a profit tool&rsquo;s clothes.</p>
-    <p>That step is what SpoolPilot automates. Link an Etsy shop with read-only access and the app pulls in your orders, back through your full history if you want it, then attaches to each one the fee lines Etsy posted for it in the payment ledger, read directly through Etsy&rsquo;s API rather than estimated from the rate card. Etsy grants that kind of API access only after reviewing an app; SpoolPilot holds it, and most tools that advertise &ldquo;real profit&rdquo; do not, so check which kind you are looking at. With a cost recipe on each product, every order shows an itemized figure like the table above. If the money on an order doesn&rsquo;t add up to Etsy&rsquo;s total, the app says so and marks the figure as an estimate rather than showing a confident wrong number. The free tier includes ten synced orders a month, each with its real fees and what you kept. Profit per product, the monthly P&amp;L, and every order past ten are Pro. Market and in-person sales are logged by hand in two taps and get the same treatment. If you are weighing it against a spreadsheet or another tool, <a href="/3d-printing-business-software">the software guide</a> lays out the options and covers everything a shop tracks.</p>
+    <h2>Can you track 3D print profit in a spreadsheet?</h2>
+    <p>Yes, under roughly twenty orders a month: a spreadsheet with one row per order works, and it is worth doing by hand at least once so you understand your own numbers. The step that breaks it is the fee lines. To get them you download the payment account CSV, match its rows to orders, and type the amounts in, every month, for every order. Almost everyone stops by the second month and goes back to estimates, at which point the sheet can price a print but can&rsquo;t tell you what one made.</p>
+    <p>That step is what SpoolPilot automates. Link an Etsy shop with read-only access and the app pulls in your orders, back through your full history if you want it, then attaches to each one the fee lines Etsy posted for it in the payment ledger, read directly through Etsy&rsquo;s API rather than estimated from the rate card. Etsy grants that kind of API access only after reviewing an app; SpoolPilot holds it, and most tools that advertise &ldquo;real profit&rdquo; do not, so check which kind you are looking at.</p>
+    <p>With a cost recipe on each product, every order shows an itemized figure like the table above. If the money on an order doesn&rsquo;t add up to Etsy&rsquo;s total, the app says so and marks the figure as an estimate rather than showing a confident wrong number.</p>
+    <p>The free tier includes ten synced orders a month, each with its real fees and what you kept. Profit per product, the monthly P&amp;L, and every order past ten are Pro. Market and in-person sales are logged by hand in two taps and get the same treatment. If you are weighing it against a spreadsheet or another tool, <a href="/3d-printing-business-software">the software guide</a> lays out the options and covers everything a shop tracks.</p>
     <div class="cta">
       <h2>See the real profit on every order</h2>
       <p>SpoolPilot reads the fees Etsy actually charged on each synced order and subtracts your real cost of goods. Free for iPhone, with profit on 10 synced orders a month; every order and the P&amp;L are part of Pro.</p>
@@ -238,6 +254,6 @@
       <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
     </div>
   </footer>
-  <script src="/waitlist.js?v=6066016"></script>
+  <script src="/waitlist.js?v=7apptap"></script>
 </body>
 </html>
