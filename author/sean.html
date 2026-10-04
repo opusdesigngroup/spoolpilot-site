@@ -113,6 +113,61 @@
   ]
 }
   </script>
+  <style>
+    /* Author page only. Sizes, colors and space are the shared tokens; nothing here adds a
+       size or a hue. One layout idea, used three times: a label rail beside a content column,
+       ruled like the fee lines the app reads. */
+    .doc{--rail:140px}
+    .doc :focus-visible{outline:2px solid var(--cta);outline-offset:2px;border-radius:4px}
+
+    /* ---- label rail + value column: the shop facts, and the profile links ---- */
+    .rows{margin:var(--s6) 0 0;border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
+    h2 + .rows{margin-top:var(--s4)}
+    .rows > div{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:var(--s5);align-items:baseline;padding:var(--s3) 0}
+    .rows > div + div{border-top:1px solid var(--rule)}
+    .rows dt{font-size:var(--fs-ui);color:var(--muted)}
+    .rows dd{margin:0;color:var(--body);text-wrap:pretty}
+    .rows + .fine{margin:var(--s3) 0 0}
+    /* A dd sits outside article.css's in-copy link rule, so the same link is restated here. */
+    .rows dd > a{color:var(--cta);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;
+      text-underline-offset:.18em;text-decoration-color:color-mix(in srgb,var(--cta) 40%,transparent)}
+    .rows dd > a:hover{color:var(--cta-hover);text-decoration-color:currentColor}
+    /* 44px press areas that don't grow the row: inline padding widens the target, not the line. */
+    .rows dd > a{padding:11px 0}
+    .links{list-style:none;margin:-10px 0;padding:0;display:flex;flex-wrap:wrap;column-gap:var(--s5)}
+    .links li{margin:0}
+    .links a{display:inline-block;padding:10px 0}
+
+    /* ---- his words: the one first-person passage on the page, a step up and in full ink ---- */
+    .said{margin:var(--s7) 0 0}
+    .said blockquote{margin:0;font-size:var(--fs-sub);line-height:1.4;letter-spacing:var(--ls-title);color:var(--ink);
+      text-indent:-.42em} /* hangs the opening quote mark in the margin so the text edge stays straight */
+    .said figcaption{margin-top:var(--s3);font-size:var(--fs-ui);color:var(--muted)}
+
+    /* ---- the writing index: group name in the rail, each title over its one-line description ---- */
+    .works{margin:var(--s5) 0 0;border-bottom:1px solid var(--rule-2)}
+    .works > div{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:var(--s5);align-items:baseline;
+      padding:var(--s5) 0;border-top:1px solid var(--rule)}
+    .works > div:first-child{border-top-color:var(--rule-2)}
+    .works h3{margin:0}
+    .works ul{list-style:none;margin:0;padding:0}
+    .works li{position:relative;margin:0;line-height:1.4}
+    .works li + li{margin-top:var(--s4)}
+    .works li a::after{content:"";position:absolute;inset:-8px 0} /* the whole entry is the press area */
+    .works li p{margin:2px 0 0;font-size:var(--fs-ui);line-height:1.5;color:var(--body)}
+    .works + p{margin-top:var(--s4)}
+
+    .cta p:last-child{margin-bottom:0}
+
+    @media (max-width:600px){
+      .doc{--rail:76px}
+      .rows > div,.links{column-gap:var(--s4)}
+      .said blockquote{font-size:var(--fs-lede);line-height:var(--lh-lede)}
+      .works > div{display:block}
+      .works h3{margin-bottom:var(--s3)}
+    }
+    @media (max-width:380px){.cta{padding:var(--s5) 20px}}
+  </style>
 </head>
 <body>
   <header>
@@ -133,38 +188,70 @@
 
   <main class="doc">
     <p class="crumb"><a href="/">SpoolPilot</a></p>
-    <h1>Sean</h1>
-    <p class="lede">Sean runs <a href="https://opusdesigncompany.etsy.com">Opus Design Company</a>, a 3D-print shop on Etsy with more than 3,000 sales, and built SpoolPilot to see what each of those orders actually made. Every guide on this site is what that shop tracks and why.</p>
+    <h1>I&rsquo;m Sean. I sell 3D prints on Etsy, and I built SpoolPilot.</h1>
+    <p class="lede">I could never get a straight answer on what an order actually made after Etsy&rsquo;s fees, filament, and my time. Spreadsheets fell behind, and every other tool wanted a desktop. So I built the one I wanted: real profit, in my pocket, right at the printer.</p>
 
-    <h2>The shop</h2>
-    <p>Opus Design Company sells 3D-printed coffee gear on Etsy: dosing stands for grinders, filter holders and brewer accessories, printed on a few printers in a spare room. As of October&nbsp;2026 the shop shows 3,100+ sales and a 4.8-star rating from more than 700 reviews.</p>
-    <p>The guides on this site come out of running that shop: the fees Opus Design Company pays on each order, the way it prices a new listing, and the way it keeps count of sealed spools.</p>
-
-    <h2>Why SpoolPilot exists</h2>
-    <p>In Sean&rsquo;s words: &ldquo;I could never get a straight answer on what an order actually made after Etsy&rsquo;s fees, filament, and my time. Spreadsheets fell behind, and every other tool wanted a desktop. So I built the one I wanted: real profit, in my pocket, right at the printer.&rdquo;</p>
-    <p>SpoolPilot is an iPhone app published by Opus Design Group LLC. It reads the fees Etsy charged on each order, subtracts filament, electricity and packaging, and shows the profit per sale, per product and per month.</p>
+    <dl class="rows">
+      <div><dt>My shop</dt><dd><a href="https://opusdesigncompany.etsy.com" aria-label="Opus Design Company on Etsy">Opus Design Company</a></dd></div>
+      <div><dt>Sales</dt><dd><strong class="num">3,100+</strong></dd></div>
+      <div><dt>Rating</dt><dd><strong class="num">4.8 stars</strong> from more than 700 reviews</dd></div>
+      <div><dt>What I sell</dt><dd>3D-printed coffee gear: dosing stands for grinders, filter holders and brewer accessories</dd></div>
+      <div><dt>I print on</dt><dd>A few printers in a spare room</dd></div>
+    </dl>
+    <p class="fine">Sales and rating as of October&nbsp;2026.</p>
 
     <h2>Writing on this site</h2>
-    <ul>
-      <li><a href="/resources/3d-printing-pricing-calculator">How to price 3D prints</a>. Cost, fees and margin, solved for a price, with a worked example.</li>
-      <li><a href="/resources/3d-printing-profit-calculator">How to calculate the real profit on a 3D print</a>. One order rebuilt from the payment account, then a month.</li>
-      <li><a href="/resources/etsy-fees-3d-printing">Etsy fees for 3D print sellers</a>. The four fees on a US sale, and an order with shipping run all the way through.</li>
-      <li><a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a>. Five places the formula and the ledger disagree, and a ten-minute check.</li>
-      <li><a href="/resources/filament-inventory-management">How to track filament inventory for a 3D printing business</a>. Sealed spool counts, usage rate and weeks of stock.</li>
-      <li><a href="/3d-printing-business-software">What software does a 3D printing business actually need?</a>. The four numbers a small shop has to trust, and which tools give them.</li>
-      <li><a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a>. Pricing a print before you make it, and what it made after it sold.</li>
-      <li><a href="/craftybase-alternative.html">A Craftybase alternative built for 3D print shops</a>. Handmade bookkeeping next to a tool that knows what a spool is.</li>
-      <li><a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a>. Grams left on a spool, or money made by the shop.</li>
-      <li><a href="/what-spoolpilot-reads-from-etsy.html">What SpoolPilot reads from Etsy</a>. Every field the app reads, and what it never touches.</li>
-    </ul>
-    <p>He also built the <a href="/etsy-fee-calculator.html">free 3D print cost and price calculator</a>.</p>
+    <p>The guides come out of running my shop: the fees I pay on each order, the way I price a new listing, and the way I keep count of sealed spools.</p>
+    <div class="works">
+      <div>
+        <h3>Guides</h3>
+        <ul>
+          <li><a href="/resources/3d-printing-pricing-calculator">How to price 3D prints</a><p>Cost, fees and margin, solved for a price, with a worked example.</p></li>
+          <li><a href="/resources/3d-printing-profit-calculator">How to calculate the real profit on a 3D print</a><p>One order rebuilt from the payment account, then a month.</p></li>
+          <li><a href="/resources/etsy-fees-3d-printing">Etsy fees for 3D print sellers</a><p>The four fees on a US sale, and an order with shipping run all the way through.</p></li>
+          <li><a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a><p>Five places the formula and the ledger disagree, and a ten-minute check.</p></li>
+          <li><a href="/resources/filament-inventory-management">How to track filament inventory for a 3D printing business</a><p>Sealed spool counts, usage rate and weeks of stock.</p></li>
+          <li><a href="/3d-printing-business-software">What software does a 3D printing business actually need?</a><p>The four numbers a small shop has to trust, and which tools give them.</p></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Comparisons</h3>
+        <ul>
+          <li><a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a><p>Pricing a print before you make it, and what it made after it sold.</p></li>
+          <li><a href="/craftybase-alternative.html">A Craftybase alternative built for 3D print shops</a><p>Handmade bookkeeping next to a tool that knows what a spool is.</p></li>
+          <li><a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a><p>Grams left on a spool, or money made by the shop.</p></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Reference</h3>
+        <ul>
+          <li><a href="/what-spoolpilot-reads-from-etsy.html">What SpoolPilot reads from Etsy</a><p>Every field the app reads, and what it never touches.</p></li>
+        </ul>
+      </div>
+    </div>
+    <p>I also built the <a href="/etsy-fee-calculator.html">free 3D print cost and price calculator</a>.</p>
 
     <h2>Elsewhere</h2>
-    <ul>
-      <li><a href="https://opusdesigncompany.etsy.com">Opus Design Company on Etsy</a></li>
-      <li>SpoolPilot on <a href="https://www.instagram.com/spoolpilot.app/">Instagram</a>, <a href="https://www.tiktok.com/@spoolpilot.app">TikTok</a>, <a href="https://www.youtube.com/@spoolpilot">YouTube</a> and <a href="https://www.facebook.com/spoolpilot">Facebook</a></li>
-      <li><a href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&amp;ct=site-author&amp;mt=8">SpoolPilot on the App Store</a></li>
-    </ul>
+    <dl class="rows">
+      <div><dt>Etsy shop</dt><dd><a href="https://opusdesigncompany.etsy.com" aria-label="Opus Design Company on Etsy">Opus Design Company</a></dd></div>
+      <div>
+        <dt>SpoolPilot</dt>
+        <dd>
+          <ul class="links">
+            <li><a href="https://www.instagram.com/spoolpilot.app/" aria-label="SpoolPilot on Instagram">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@spoolpilot.app" aria-label="SpoolPilot on TikTok">TikTok</a></li>
+            <li><a href="https://www.youtube.com/@spoolpilot" aria-label="SpoolPilot on YouTube">YouTube</a></li>
+            <li><a href="https://www.facebook.com/spoolpilot" aria-label="SpoolPilot on Facebook">Facebook</a></li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="cta">
+      <h2>See what each of your orders actually made</h2>
+      <p>SpoolPilot is an iPhone app published by Opus Design Group LLC. It reads the fees Etsy charged on each order, subtracts filament, electricity and packaging, and shows the profit per sale, per product and per month.</p>
+      <p><a class="btn-big" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&amp;ct=site-author&amp;mt=8"><span class="btnlabel-full">Download SpoolPilot on the App Store</span><span class="btnlabel-short">Download on the App Store</span></a></p>
+    </div>
   </main>
 
   <footer>
