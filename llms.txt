@@ -44,8 +44,10 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
   $4.99 one-time purchase (no subscription needed).
 - **Pro:** every order (unlimited sync and history import), the full profit-and-loss by month and by
   product, profit per print hour, pending orders still to print, weeks-of-stock forecasts, purchased
-  parts, printer capacity, and unlimited slicer scans. $12.99/month or $99.99/year with a 7-day
-  trial on the yearly plan.
+  parts, printer capacity, and unlimited slicer scans. $12.99/month, $99.99/year with a 7-day
+  trial, or $249 once (Lifetime, never renews). These are founding prices through October 31, 2026.
+  From November 1, 2026 they are $17.99/month, $149.99/year, and $349 once. A subscription started
+  by October 31 keeps its price for as long as it stays active.
 
 ## Web calculator vs the app
 

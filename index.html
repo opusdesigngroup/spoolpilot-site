@@ -140,6 +140,15 @@
           "priceValidUntil": "2026-10-31",
           "url": "https://apps.apple.com/app/id6796133961",
           "description": "Same as monthly, billed yearly, with a 7-day free trial"
+        },
+        {
+          "@type": "Offer",
+          "name": "SpoolPilot Pro, Lifetime",
+          "price": "249",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-10-31",
+          "url": "https://apps.apple.com/app/id6796133961",
+          "description": "Every Pro feature, paid once. Never renews."
         }
       ],
       "author": {
@@ -210,7 +219,7 @@
       "name": "What does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan. That founding price holds until October 31, 2026, and stays locked for anyone subscribed by then."
+        "text": "SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month, $99.99 a year with a 7-day free trial, or $249 once for Lifetime. Those founding prices hold through October 31, 2026. From November 1 they are $17.99, $149.99, and $349, and a subscription started by October 31 keeps its price for as long as it stays active."
       }
     },
     {
@@ -652,10 +661,76 @@
     /* four shipped items read as a 2×2, not a 3-column grid with an orphan */
     .road.two{grid-template-columns:repeat(2,1fr)}
     @media (max-width:760px){.road.two{grid-template-columns:1fr}}
+
+    /* ---- FOUNDING DEADLINE (remove after Oct 31, 2026) ----
+       One quiet line above the header, shown only while the founding price is still on (the
+       script beside the markup decides). It is a link to the price list, nothing else. */
+    .ribbon{display:block;padding:10px 24px;background:var(--bg-alt);border-bottom:1px solid var(--rule);
+      text-align:center;text-decoration:none;font-size:var(--fs-ui);line-height:1.45;color:var(--body)}
+    .ribbon[hidden]{display:none}
+    .ribbon b{font-weight:600;color:var(--ink);white-space:nowrap}
+    .rb-go{margin-left:6px;color:var(--cta);font-weight:600;white-space:nowrap;text-decoration:underline;
+      text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:color-mix(in srgb,var(--cta) 40%,transparent)}
+    .ribbon:hover .rb-go{color:var(--cta-hover);text-decoration-color:currentColor}
+    .ribbon:focus-visible{outline:2px solid var(--cta);outline-offset:-3px}
+    .rb-short{display:none}
+    @media (max-width:640px){
+      .ribbon{padding:12px 16px}
+      .rb-full{display:none}
+      .rb-short{display:inline}
+    }
+
+    /* ---- prices: the plans as a receipt, today's price beside the one that replaces it ----
+       A real table, so the two dates are column headers a screen reader announces. Dates are
+       written out, never "now": the page is static and has to stay true whenever it is read. */
+    .prices{table-layout:fixed}
+    .prices th,.prices td{padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:var(--fs-ui)}
+    .prices tbody tr:last-child :is(th,td){border-bottom:0}
+    .prices thead th{width:86px;padding:8px 0 9px;text-align:right;vertical-align:bottom;line-height:1.3;border-bottom-color:var(--rule-2)}
+    .prices thead th:first-child{width:auto}
+    .prices thead th.now{color:var(--ink)}
+    .prices tbody th{font-weight:600;color:var(--ink);text-align:left}
+    .prices tbody th small{display:block;margin-top:1px;font-size:var(--fs-meta);font-weight:400;color:var(--muted)}
+    .prices td{text-align:right;font-variant-numeric:tabular-nums}
+    .prices td.now{font-weight:600;color:var(--ink)}
+    .prices td.then{color:var(--muted)}
+    .prices .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+    @media (max-width:420px){.prices thead th{width:74px}}
+    .price-note{margin:36px auto 0;font-size:var(--fs-body);line-height:1.55;color:var(--body);max-width:46ch}
+    #pricing .fine{margin-top:14px}
+    /* Once Oct 31 has passed (the script sets this), the section stops talking about a deadline
+       and the Nov 1 column is simply the price. The Nov 1 push replaces all of it. */
+    #pricing .post{display:none}
+    [data-founding="over"] #pricing .pre,[data-founding="over"] .prices .now{display:none}
+    [data-founding="over"] #pricing .post{display:inline}
+    [data-founding="over"] .prices td.then{font-weight:600;color:var(--ink)}
   </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.6l2.55 5.2 5.75.84-4.16 4.05.98 5.72L10 14.71l-5.12 2.7.98-5.72L1.7 7.64l5.75-.84z"/></symbol></svg>
+
+  <!-- FOUNDING DEADLINE (remove after Oct 31, 2026). Hidden until the script below shows it. -->
+  <a class="ribbon" id="founding-ribbon" href="#pricing" hidden><span class="rb-full"></span><span class="rb-short"></span><span class="rb-go">See prices</span></a>
+  <script>
+  /* The founding price ends when October 31 does, in the visitor's own time zone: the app's rule.
+     Days left count the way the app counts them (today is a founding day), so the two agree. */
+  (function () {
+    var end = new Date(2026, 10, 1), now = new Date(), root = document.documentElement;
+    if (now >= end) { root.setAttribute('data-founding', 'over'); return; }
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.max(Math.round((end - today) / 864e5) - 1, 0);
+    var left = days === 0 ? 'Last day' : days === 1 ? '1 day left' : days + ' days left';
+    var bar = document.getElementById('founding-ribbon');
+    bar.querySelector('.rb-full').innerHTML = 'SpoolPilot Pro is $12.99 a month through ' + (days === 0 ? 'today' : 'October 31') + ', then $17.99. <b>' + left + '.</b>';
+    bar.querySelector('.rb-short').innerHTML = 'Pro is $12.99 a month through ' + (days === 0 ? 'today' : 'Oct 31') + '. <b>' + left + '.</b>';
+    bar.hidden = false;
+    root.setAttribute('data-founding', 'on');
+    document.addEventListener('DOMContentLoaded', function () {
+      var slots = document.querySelectorAll('[data-founding-days]');
+      for (var i = 0; i < slots.length; i++) slots[i].textContent = days === 0 ? 'Today is the last day.' : left + '.';
+    });
+  })();
+  </script>
 
   <header>
     <div class="bar">
@@ -901,7 +976,33 @@
     </div>
   </section>
 
-  <section class="stage" id="faq">
+  <section class="stage" id="pricing">
+    <div class="wrap narrow">
+      <h2 class="reveal"><span class="pre">Prices go up on November&nbsp;1.</span><span class="post">What SpoolPilot costs</span></h2>
+      <p class="reveal pre">Subscribe by October&nbsp;31 and you keep today&rsquo;s price for as long as you stay subscribed. <strong data-founding-days></strong></p>
+      <div class="proof reveal">
+        <div class="proof-hd"><span>SpoolPilot prices</span><span>US dollars</span></div>
+        <div class="proof-body">
+          <table class="prices">
+            <thead>
+              <tr><th scope="col"><span class="sr">Plan</span></th><th scope="col" class="now">Through<br>Oct&nbsp;31</th><th scope="col">From<br>Nov&nbsp;1</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Free</th><td class="now">$0</td><td class="then">$0</td></tr>
+              <tr><th scope="row">Pro monthly</th><td class="now">$12.99</td><td class="then">$17.99</td></tr>
+              <tr><th scope="row">Pro yearly <small>7 days free first</small></th><td class="now">$99.99</td><td class="then">$149.99</td></tr>
+              <tr><th scope="row">Pro Lifetime <small>Paid once</small></th><td class="now">$249</td><td class="then">$349</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="price-note reveal">Free covers spools, the calculator, and the exact Etsy fees on 10 orders a month. Pro brings in every order, with the full profit and loss and profit per print hour.</p>
+      <p class="fine reveal">Plans are bought inside the app. Lifetime is one payment and never renews. Outside the US, the App Store shows your local price, and it changes the same day.</p>
+      <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-pricing&mt=8">Download SpoolPilot free &rarr;</a>
+    </div>
+  </section>
+
+  <section class="stage tint" id="faq">
     <div class="wrap narrow">
       <h2 class="reveal">Questions makers ask</h2>
       <div class="faq reveal">
@@ -931,7 +1032,7 @@
         </details>
         <details>
           <summary>What does it cost?</summary>
-          <p>SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month or $99.99 a year, with a 7-day free trial on the yearly plan. That founding price holds until October&nbsp;31,&nbsp;2026, and stays locked for anyone subscribed by then.</p>
+          <p>SpoolPilot is free to download. Filament inventory, the pricing calculator, and manual tracking are free with no limit, and so are ten synced Etsy orders a month, each with the exact fees Etsy charged and what you kept. The slicer scan is free for three scans, then a one-time $4.99 unlocks it for good. Pro brings in every order and adds the full profit-and-loss, profit per print hour, weeks-of-stock forecasts, purchased parts, and printer capacity, $12.99 a month, $99.99 a year with a 7-day free trial, or $249 once for Lifetime. Those founding prices hold through October&nbsp;31,&nbsp;2026. From November&nbsp;1 they are $17.99, $149.99, and $349, and a subscription started by October&nbsp;31 keeps its price for as long as it stays active.</p>
         </details>
         <details>
           <summary>Is my shop and customer data private?</summary>
@@ -949,7 +1050,7 @@
     </div>
   </section>
 
-  <section class="stage tint" id="get-updates">
+  <section class="stage" id="get-updates">
     <div class="wrap">
       <h2>See the profit on your next print.</h2>
       <div class="cta-stack">

@@ -203,10 +203,52 @@
     .labor-hint{margin:0;font-size:var(--fs-meta);color:var(--muted);line-height:1.5}
     .hourly{margin:10px 0 0;font-size:var(--fs-ui);font-weight:600;color:var(--ink);line-height:1.5}
     @media (prefers-reduced-motion:reduce){.scan-drop{transition:none}}
+
+    /* ---- FOUNDING DEADLINE (remove after Oct 31, 2026) ----
+       One quiet line above the header, shown only while the founding price is still on (the
+       script beside the markup decides). It is a link to the price list, nothing else. */
+    .ribbon{display:block;padding:10px 24px;background:var(--bg-alt);border-bottom:1px solid var(--rule);
+      text-align:center;text-decoration:none;font-size:var(--fs-ui);line-height:1.45;color:var(--body)}
+    .ribbon[hidden]{display:none}
+    .ribbon b{font-weight:600;color:var(--ink);white-space:nowrap}
+    .rb-go{margin-left:6px;color:var(--cta);font-weight:600;white-space:nowrap;text-decoration:underline;
+      text-decoration-thickness:1px;text-underline-offset:.18em;text-decoration-color:color-mix(in srgb,var(--cta) 40%,transparent)}
+    .ribbon:hover .rb-go{color:var(--cta-hover);text-decoration-color:currentColor}
+    .ribbon:focus-visible{outline:2px solid var(--cta);outline-offset:-3px}
+    .rb-short{display:none}
+    @media (max-width:640px){
+      .ribbon{padding:12px 16px}
+      .rb-full{display:none}
+      .rb-short{display:inline}
+    }
   </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.6l2.55 5.2 5.75.84-4.16 4.05.98 5.72L10 14.71l-5.12 2.7.98-5.72L1.7 7.64l5.75-.84z"/></symbol></svg>
+
+  <!-- FOUNDING DEADLINE (remove after Oct 31, 2026). Hidden until the script below shows it. -->
+  <a class="ribbon" id="founding-ribbon" href="/#pricing" hidden><span class="rb-full"></span><span class="rb-short"></span><span class="rb-go">See prices</span></a>
+  <script>
+  /* The founding price ends when October 31 does, in the visitor's own time zone: the app's rule.
+     Days left count the way the app counts them (today is a founding day), so the two agree. */
+  (function () {
+    var end = new Date(2026, 10, 1), now = new Date(), root = document.documentElement;
+    if (now >= end) { root.setAttribute('data-founding', 'over'); return; }
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.max(Math.round((end - today) / 864e5) - 1, 0);
+    var left = days === 0 ? 'Last day' : days === 1 ? '1 day left' : days + ' days left';
+    var bar = document.getElementById('founding-ribbon');
+    bar.querySelector('.rb-full').innerHTML = 'SpoolPilot Pro is $12.99 a month through ' + (days === 0 ? 'today' : 'October 31') + ', then $17.99. <b>' + left + '.</b>';
+    bar.querySelector('.rb-short').innerHTML = 'Pro is $12.99 a month through ' + (days === 0 ? 'today' : 'Oct 31') + '. <b>' + left + '.</b>';
+    bar.hidden = false;
+    root.setAttribute('data-founding', 'on');
+    document.addEventListener('DOMContentLoaded', function () {
+      var slots = document.querySelectorAll('[data-founding-days]');
+      for (var i = 0; i < slots.length; i++) slots[i].textContent = days === 0 ? 'Today is the last day.' : left + '.';
+    });
+  })();
+  </script>
+
   <header>
     <div class="bar">
       <a class="brand" href="/">
