@@ -408,8 +408,12 @@
     .waitlist-hint{margin:12px auto 0;font-size:var(--fs-ui);color:var(--body);text-align:center}
     .waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:600;color:var(--cta);cursor:pointer;text-decoration:underline}
 
-    /* Keyboard focus is a state, not an accident */
-    :focus-visible{outline:2px solid var(--cta);outline-offset:2px;border-radius:4px}
+    /* Keyboard focus is a state, not an accident. The ring follows the control's own shape: only
+       things with no shape of their own (a text link, a text button) get the 4px corner, and
+       :where() keeps that weak enough for any component's radius to win. The corner used to sit
+       on the ring rule itself, which squared off a focused pill. */
+    :focus-visible{outline:2px solid var(--cta);outline-offset:2px}
+    :where(:focus-visible){border-radius:4px}
     .waitlist input[type=email]:focus-visible{outline:none}
     .waitlist-success{max-width:440px;margin:0 auto;padding:20px 22px;border:1px solid var(--rule);border-radius:18px;background:var(--bg-alt);text-align:center}
     .waitlist-success h3{margin:0 0 5px;font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title)}
@@ -621,7 +625,7 @@
       padding:9px 6px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:color .2s,background-color .2s,box-shadow .2s}
     .tabs button:hover{color:var(--ink)}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14),0 0 0 .5px rgba(17,16,16,.06)}
-    .tabs button:focus-visible{outline:2px solid var(--orange);outline-offset:1px}
+    .tabs button:focus-visible{outline:2px solid var(--cta);outline-offset:1px}
     @media (max-width:420px){.tabs button{font-size:var(--fs-meta);padding:9px 4px}}
     @media (prefers-reduced-motion:reduce){.hero-device img,.tabs button{transition:none}}
     .floor-cap{margin:14px auto 0;font-size:var(--fs-meta);line-height:1.5;color:var(--muted);max-width:38ch;min-height:3em;text-align:center}

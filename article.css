@@ -32,6 +32,13 @@ a{color:inherit}
 :is(p,li,td,blockquote) a:not([class]):hover{color:var(--cta-hover);text-decoration-color:currentColor}
 ::selection{background:rgba(249,115,22,.16)}
 
+/* Keyboard focus is a state, not an accident: the same ring on every page. It follows the
+   control's own shape. Only things with no shape of their own (a text link, a text button) get
+   the 4px corner, and :where() keeps that weak enough for any component's radius to win.
+   Fields keep their own treatment further down: an orange border and a soft ring. */
+:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
+:where(:focus-visible){border-radius:4px}
+
 /* ---------- nav ---------- */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--rule)}
 header .bar{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;max-width:1000px;margin:0 auto}
@@ -234,6 +241,8 @@ footer a:hover{color:var(--ink)}
   padding:9px 12px;border-radius:980px;cursor:pointer;transition:background .16s ease,color .16s ease;min-height:40px}
 .mode:hover{color:var(--ink)}
 .mode.on{background:var(--ink);color:#fff}
+/* The ring sits inside the track, as it does on the home page's tabs. */
+.mode:focus-visible{outline-offset:1px}
 
 /* The answer in price mode — the one number the whole page exists to produce. */
 .suggest{display:flex;flex-direction:column;gap:2px;padding:16px 18px;margin:0 0 14px;

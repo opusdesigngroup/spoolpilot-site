@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
-  <link rel="stylesheet" href="/article.css?v=11">
+  <link rel="stylesheet" href="/article.css?v=12">
   <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
        paint; autocapture handles pageviews, clicks and route changes from here on. The project
        key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
@@ -155,7 +155,7 @@
        focus-within rule below was dead CSS. Clip the input instead of removing it. */
     .scan-input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
     .scan-drop{position:relative}
-    .scan-drop:focus-within{border-color:var(--orange);outline:2px solid var(--orange);outline-offset:2px}
+    .scan-drop:focus-within{border-color:var(--orange);outline:2px solid var(--cta);outline-offset:2px}
     /* A field the scan filled, until the person types in it. A misread must not look typed. */
     .scanned{border-color:var(--orange)!important;background:color-mix(in srgb, var(--orange) 7%, #fff)!important}
     /* Hours and minutes side by side; the unit sits outside the input so the number stays clean. */
@@ -171,7 +171,6 @@
     .livebar-v.loss{color:#F2877F}
     .livebar-m{font-size:var(--fs-meta);color:rgba(255,255,255,.72);font-variant-numeric:tabular-nums}
     .livebar-go{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:var(--fs-meta);font-weight:600;color:#fff}
-    .livebar:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
     @media (min-width:701px){.livebar{display:none!important}}
     .out-cta{margin-top:20px;padding:18px 20px 16px;background:#fff;border:1px solid var(--rule-2);border-radius:16px}
     .out-cta-text{margin:0 0 14px;font-size:var(--fs-body);line-height:1.55;color:var(--ink)}
