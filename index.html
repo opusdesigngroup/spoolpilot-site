@@ -484,9 +484,17 @@
     .road b{display:block;font-size:var(--fs-body);font-weight:600;margin-bottom:5px}
     .road span{font-size:var(--fs-body);color:var(--body);line-height:1.55}
 
-    footer{border-top:1px solid var(--rule);padding:34px 0 50px;color:var(--muted);font-size:var(--fs-meta);text-align:center}
-    footer a{color:var(--muted);text-decoration:none}
-    footer a:hover{color:var(--ink)}
+    /* The footer is also a .wrap, and .wrap's `padding` shorthand outranks a bare `footer` rule.
+       As `footer{padding:34px 0 50px}` the 34px and 50px never applied, so the first line sat on
+       the hairline and the Etsy notice ran to the bottom edge of the page. The footer now sets
+       only its top and bottom, on a selector that wins, and .wrap keeps the side gutters. */
+    footer{border-top:1px solid var(--rule);color:var(--muted);font-size:var(--fs-meta);text-align:center}
+    footer.wrap{padding-top:34px;padding-bottom:50px}
+    /* Footer links stay quiet. The list of guides sits in a paragraph, where the in-copy link rule
+       near the top outranks a bare `footer a` and turned all eleven orange, bold and underlined.
+       The second selector is specific enough to win there. */
+    footer a,footer.wrap p a:not([class]){color:var(--muted);font-weight:400;text-decoration:none}
+    footer a:hover,footer.wrap p a:not([class]):hover{color:var(--ink)}
     .fine{margin:12px auto 0;font-size:var(--fs-meta);line-height:1.55;max-width:64ch;color:var(--muted)}
 
     @media (prefers-reduced-motion:no-preference){
