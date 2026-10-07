@@ -143,8 +143,8 @@
   <style>
     /* Scan drop zone. Tokens only — no literal colors or sizes. */
     .scan{margin:0 0 18px}
-    /* This page loads article.css, whose tokens are --rule/--rule-2/--bg — not style.css's
-       --line/--card. An undefined var() invalidates the whole `border` shorthand at computed-value
+    /* This page loads article.css, whose tokens are --rule/--rule-2/--bg, not the
+       --line/--card of the stylesheet this page used before. An undefined var() invalidates the whole `border` shorthand at computed-value
        time, so the dashed outline below had never rendered on any version of this block. */
     .scan-drop{display:flex;flex-direction:column;gap:4px;padding:18px;border:1.5px dashed var(--rule-2);
       border-color:color-mix(in srgb, var(--orange) 40%, transparent);

@@ -393,7 +393,7 @@
     .waitlist{display:flex;gap:9px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
     .waitlist input[type=email]{
       flex:1 1 210px;min-width:0;padding:13px 17px;font:inherit;font-size:var(--fs-ui);
-      border:1px solid rgba(17,16,16,.16);border-radius:980px;background:#fff;color:var(--ink);text-align:center;
+      border:1px solid var(--rule-2);border-radius:980px;background:#fff;color:var(--ink);text-align:center;
       transition:border-color .16s ease,box-shadow .16s ease;
     }
     .waitlist input[type=email]::placeholder{color:var(--muted)}
@@ -404,7 +404,7 @@
     }
     .waitlist button:hover{background:var(--cta-fill-hover)}
     .note{margin:16px auto 0;font-size:var(--fs-meta);color:var(--muted);max-width:46ch}
-    .waitlist-error{margin:12px auto 0;font-size:var(--fs-ui);font-weight:600;color:#B4231B;text-align:center}
+    .waitlist-error{margin:12px auto 0;font-size:var(--fs-ui);font-weight:600;color:var(--loss);text-align:center}
     .waitlist-hint{margin:12px auto 0;font-size:var(--fs-ui);color:var(--body);text-align:center}
     .waitlist-hint button{border:0;background:none;padding:0;font:inherit;font-weight:600;color:var(--cta);cursor:pointer;text-decoration:underline}
 
@@ -439,8 +439,6 @@
       font-size:var(--fs-lede);font-weight:400;color:var(--cta);line-height:1}
     .faq details[open] summary::after{content:"\2212"}
     .faq details p{margin:0 0 22px;font-size:var(--fs-body);line-height:1.62;color:var(--body);max-width:none}
-    .stage .device{margin:60px auto 0;max-width:296px}
-    .stage .device img{border-radius:32px;box-shadow:0 36px 70px -38px rgba(17,16,16,.4), 0 0 0 1px rgba(17,16,16,.07)}
 
     /* the one place data is shown flat, because it is the claim */
     .proof{
@@ -453,7 +451,7 @@
     .pl{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:var(--fs-ui)}
     .pl + .pl{border-top:1px solid var(--rule)}
     .pl.child{padding-left:16px;color:var(--muted);font-size:var(--fs-meta);border-top:0;padding-top:3px;padding-bottom:3px}
-    .pl.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:8px;padding-top:13px;font-weight:600;align-items:center}
+    .pl.sum{border-top:1px solid var(--rule-2);margin-top:8px;padding-top:13px;font-weight:600;align-items:center}
     .pl.sum b{font-size:var(--fs-figure);font-weight:700;letter-spacing:-.03em;color:var(--profit)}
     .pl-note{margin-top:10px;font-size:var(--fs-ui);font-weight:600;line-height:1.4;text-wrap:balance}
     /* A deduction is plain text with a true minus, as in the app: orange is for things you tap. */
@@ -652,7 +650,7 @@
     .vs .b{color:var(--profit);font-weight:600;text-align:right}
     .vs.vs-hd{padding-bottom:4px;font-size:var(--fs-meta);font-weight:600;color:var(--muted)}
     .vs.vs-hd .b{color:var(--ink)}
-    .vs.sum{border-top:1px solid rgba(17,16,16,.16);margin-top:6px;padding-top:12px;font-weight:600}
+    .vs.sum{border-top:1px solid var(--rule-2);margin-top:6px;padding-top:12px;font-weight:600}
     .vs.sum .a{text-decoration:line-through;text-decoration-color:var(--loss)}
     .vs.sum .b{font-size:var(--fs-ui)}
     @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:var(--fs-ui);gap:0 8px}}
