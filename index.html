@@ -102,7 +102,7 @@
         "https://spoolpilot.app/shot-finances.png",
         "https://spoolpilot.app/shot-filament.png"
       ],
-      "softwareVersion": "1.2.5",
+      "softwareVersion": "1.3",
       "featureList": [
         "Slicer scan: reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura",
         "Print pricing calculator that solves for a target margin after Etsy fees",
@@ -111,6 +111,7 @@
         "Profit per order, per product, and monthly profit and loss",
         "Filament inventory by sealed-spool barcode scan with weeks-of-stock forecasts",
         "Made-to-order and stocked products, bundles, print-next queue",
+        "Home Screen and Lock Screen widgets for the print-next queue, and a Lock Screen scan button",
         "Manual and in-person sales",
         "Local-first, no account, no analytics in the app"
       ],
@@ -130,7 +131,7 @@
           "priceCurrency": "USD",
           "priceValidUntil": "2026-10-31",
           "url": "https://apps.apple.com/app/id6796133961",
-          "description": "Every order synced with the fees Etsy charged, profit and loss, forecasts, unlimited slicer scans"
+          "description": "Every order synced with the fees Etsy charged, profit and loss, forecasts, unlimited slicer scans, Home Screen and Lock Screen widgets"
         },
         {
           "@type": "Offer",
@@ -628,6 +629,14 @@
     .tabs button:focus-visible{outline:2px solid var(--cta);outline-offset:1px}
     @media (max-width:420px){.tabs button{font-size:var(--fs-meta);padding:9px 4px}}
     @media (prefers-reduced-motion:reduce){.hero-device img,.tabs button{transition:none}}
+    /* A real Home Screen, shown like the hero phone: same width, proportional corner and Device
+       shadow, faded out under the icon row so it reads as a glimpse of a phone, not a boxed image.
+       The box is wider than the phone so the shadow has room inside the mask. */
+    .homescreen{--pw:min(400px,80vw);margin:56px auto 0}
+    .hs-screen{padding-top:2px;-webkit-mask-image:linear-gradient(var(--ink) 88%,transparent);mask-image:linear-gradient(var(--ink) 88%,transparent)}
+    .homescreen img{display:block;width:var(--pw);height:auto;margin:0 auto;border-radius:calc(var(--pw)*.105) calc(var(--pw)*.105) 0 0;
+      box-shadow:0 50px 100px -40px rgba(23,19,15,.42),0 14px 30px -16px rgba(23,19,15,.22),0 0 0 1px rgba(23,19,15,.06)}
+    .homescreen figcaption{margin:14px auto 0;font-size:var(--fs-meta);line-height:1.5;color:var(--muted);text-align:center}
     .floor-cap{margin:14px auto 0;font-size:var(--fs-meta);line-height:1.5;color:var(--muted);max-width:38ch;min-height:3em;text-align:center}
     @media (min-width:1040px){
       .hero-grid{grid-template-columns:minmax(0,1fr) 400px;gap:72px;align-items:center}
@@ -893,7 +902,7 @@
   </section>
 
 
-  <section class="stage tint">
+  <section class="stage">
     <div class="wrap">
       <h2 class="reveal">The busywork it takes off you.</h2>
       <div class="facts reveal">
@@ -906,6 +915,17 @@
         <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
         <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales. I run my business off of 3 printers and this function allows me to optimize my usage before purchasing another printer&hellip;&rdquo;</blockquote>
         <cite>Elisabeth G.S <span>&middot; App Store review</span></cite>
+      </figure>
+    </div>
+  </section>
+
+  <section class="stage tint" id="widgets">
+    <div class="wrap">
+      <h2 class="reveal">See what to print next without opening the app.</h2>
+      <p class="reveal">Widgets for your Home Screen and Lock Screen, including a Scan button for slicer screens and spools. Part of Pro.</p>
+      <figure class="homescreen reveal">
+        <div class="hs-screen"><img src="shot-widget-home.webp?v=2" width="1320" height="1380" loading="lazy" alt="An iPhone Home Screen with the SpoolPilot Print next widget: Geometric Planter, ships tomorrow, three to print, with its photo, and Headphone Stand next, two to print, first ships Monday."></div>
+        <figcaption>The demo shop, on iOS 27.</figcaption>
       </figure>
     </div>
   </section>
@@ -1006,7 +1026,7 @@
           </table>
         </div>
       </div>
-      <p class="price-note reveal">Free covers spools, the calculator, and the exact Etsy fees on 10 orders a month. Pro brings in every order, with the full profit and loss and profit per print hour.</p>
+      <p class="price-note reveal">Free covers spools, the calculator, and the exact Etsy fees on 10 orders a month. Pro brings in every order, with the full profit and loss, profit per print hour, and the widgets.</p>
       <p class="fine reveal">Plans are bought inside the app. Lifetime is one payment and never renews. Outside the US, the App Store shows your local price, and it changes the same day.</p>
       <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-pricing&mt=8">Download SpoolPilot free &rarr;</a>
     </div>
