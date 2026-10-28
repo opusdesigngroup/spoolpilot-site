@@ -140,7 +140,7 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated September&nbsp;4,&nbsp;2026</p>
+    <p class="updated">Last updated October&nbsp;28,&nbsp;2026</p>
 
     <div >
       <p>SpoolPilot is built to keep your shop&rsquo;s data on your device.</p>
@@ -157,7 +157,8 @@
       <h2 id="signin-service">The sign-in service</h2>
       <p>Talking to a sales channel needs one thing that can&rsquo;t ship inside an app: the channel gives developers a secret key, and anything inside an app can be pulled back out of it, so the key can&rsquo;t live on your phone. SpoolPilot runs a single small relay service that holds that key instead.</p>
       <p>For Etsy, your phone&rsquo;s requests travel through that relay. It first checks the request comes from a genuine, unmodified copy of SpoolPilot (using Apple&rsquo;s App Attest, which only real Apple hardware can pass), then adds the key, forwards the request to Etsy, and streams Etsy&rsquo;s answer straight back to your phone. It stores nothing and logs nothing: no tokens, no orders, no record of which shop asked. The moment a response is delivered, the relay holds nothing at all.</p>
-      <p>For any other channel, the relay is used only to complete sign-in: a one-time code goes in, an access token comes back, and it keeps neither. After that your phone talks to the channel directly.</p>
+      <p>For any other channel, the relay is used only for sign-in: a one-time code goes in and an access token comes back, and when a channel&rsquo;s sign-in expires (some last only a couple of hours), the renewal passes through the same way. It keeps none of them. Your orders and fees never pass through it: your phone fetches them from the channel directly.</p>
+      <p>If you close your account on a sales channel, that channel may notify SpoolPilot so your data can be deleted. Because your shop data lives only on your phone, there is nothing on our side to delete.</p>
 
       <h2>Camera</h2>
       <p>SpoolPilot uses your device&rsquo;s camera two ways, both entirely on-device: to read spool barcodes, and to read the print time and weight off a slicer screen. No camera images or video are stored or sent anywhere.</p>
