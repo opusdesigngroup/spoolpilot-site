@@ -12,11 +12,11 @@
   <meta property="og:title" content="Spoolman vs SpoolPilot: Grams, or Actual Profit?">
   <meta property="og:description" content="Spoolman tracks how much plastic is left. SpoolPilot tracks what your shop earned: exact Etsy fees, real COGS, profit per sale. An honest comparison.">
   <meta property="og:url" content="https://spoolpilot.app/spoolman-alternative.html">
-  <meta property="og:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta property="og:image" content="https://spoolpilot.app/og-image-v3.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Spoolman vs SpoolPilot: Grams, or Actual Profit?">
   <meta name="twitter:description" content="Spoolman tracks how much plastic is left. SpoolPilot tracks what your shop earned: exact Etsy fees, real COGS, profit per sale. An honest comparison.">
-  <meta name="twitter:image" content="https://spoolpilot.app/og-image-v2.png">
+  <meta name="twitter:image" content="https://spoolpilot.app/og-image-v3.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -80,7 +80,7 @@
         "@type": "WebPage",
         "@id": "https://spoolpilot.app/spoolman-alternative.html"
       },
-      "image": "https://spoolpilot.app/og-image-v2.png",
+      "image": "https://spoolpilot.app/og-image-v3.png",
       "datePublished": "2026-09-04",
       "dateModified": "2026-10-02",
       "author": {
@@ -159,7 +159,7 @@
     <h1>Spoolman vs SpoolPilot: two different questions</h1>
       <p class="credential">
         <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.6l2.4 1.75 2.96-.02.9 2.82 2.4 1.73-.92 2.82.92 2.82-2.4 1.73-.9 2.82-2.96-.02L10 19.8l-2.4-1.75-2.96.02-.9-2.82-2.4-1.73.92-2.82-.92-2.82 2.4-1.73.9-2.82 2.96.02L10 1.6z" fill="currentColor" opacity=".13"/><path d="M6.6 10.3l2.3 2.3 4.5-4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Built by an Etsy seller with 3,000+ sales
+        Built by a 3D print seller with 3,000+ sales
       </p>
     <p class="lede">Spoolman asks <em>how much plastic is left on each spool</em>. SpoolPilot asks <strong>how much money the shop made</strong>. If you sell what you print, you might want both, but you should know which is which.</p>
 
@@ -177,7 +177,7 @@
 
     <h2>What sellers need that grams can&rsquo;t answer</h2>
     <p>A shop owner&rsquo;s daily questions are different: what did that $28 order actually net after Etsy&rsquo;s four separate fees? Which product loses money on every sale? How many sealed spools are on the shelf, and how many weeks will they last at the current sales pace? What should I print next?</p>
-    <p>Those are money-and-time questions, and they need sales data, <em>not a scale</em>. SpoolPilot connects to your Etsy shop, imports your sales (your whole history with Pro), reads the exact fees Etsy charged on each order, and treats filament the way a busy shop does: count sealed spools by scanning the barcode, let sales infer the rest.</p>
+    <p>Those are money-and-time questions, and they need sales data, <em>not a scale</em>. SpoolPilot connects to your Etsy or eBay shop, imports your sales (your whole history with Pro), reads the real fees each shop charged on each order, and treats filament the way a busy shop does: count sealed spools by scanning the barcode, let sales infer the rest.</p>
     <p>An example: a product uses 47 g of black PLA and sold 30 units last month, so that product alone used 1.4 kg. Spoolman can tell you the open spool of black has 400 g left. Spoolman can&rsquo;t tell you that this product will need another 1.4 kg this month, or what each of those 30 sales kept after Etsy&rsquo;s fees. Both answers come from the sales, not the spool.</p>
 
     <h2>What does each cost to run?</h2>
@@ -190,9 +190,9 @@
         <tbody>
           <tr><td>Core question</td><td>Grams remaining per spool</td><td class="sp">Net profit per sale</td></tr>
           <tr><td>Runs on</td><td>Your own server (Docker)</td><td class="sp">Your iPhone</td></tr>
-          <tr><td>Setup</td><td>Host it, then hand-build the database</td><td class="sp">Connect Etsy, scan a spool, minutes</td></tr>
+          <tr><td>Setup</td><td>Host it, then hand-build the database</td><td class="sp">Connect your shop, scan a spool, minutes</td></tr>
           <tr><td>Filament model</td><td>Per-gram weights via printer integrations</td><td class="sp">Sealed-spool counts + weeks-of-stock forecast</td></tr>
-          <tr><td>Sales &amp; fees</td><td>Not tracked</td><td class="sp">Etsy orders with exact fees itemized, whole history with Pro</td></tr>
+          <tr><td>Sales &amp; fees</td><td>Not tracked</td><td class="sp">Etsy and eBay orders with fees itemized, whole history with Pro</td></tr>
           <tr><td>Price</td><td>Free, open source</td><td class="sp">Free tier + Pro</td></tr>
           <tr><td>Best for</td><td>Klipper tinkerers &amp; gram-accuracy fans</td><td class="sp">People selling what they print</td></tr>
         </tbody>
@@ -204,7 +204,7 @@
     <p>Spoolman and SpoolPilot don&rsquo;t sync with each other, so split the jobs cleanly. Let Spoolman own the grams on the spools that are open and on a printer. Let SpoolPilot own the sealed spools on the shelf and the money: scan a box in when it arrives, and the reorder date comes from your sales pace rather than from a scale.</p>
   <div class="cta">
     <h2>See your real profit in minutes</h2>
-    <p>SpoolPilot syncs your Etsy orders, itemizes the exact fees Etsy charged on each one, and shows the net profit per sale. Free on iPhone for 10 orders a month; Pro brings in every order and your whole history.</p>
+    <p>SpoolPilot syncs your Etsy and eBay orders, itemizes the fees charged on each one, and shows the net profit per sale. Free on iPhone for 10 orders a month; Pro brings in every order and your whole history.</p>
     <form class="waitlist" action="https://assets.mailerlite.com/jsonp/2509296/forms/192973568885130690/subscribe" method="post" target="_blank">
       <input type="email" name="fields[email]" placeholder="you@yourshop.com" autocomplete="email" aria-label="Email address" required>
       <input type="hidden" name="ml-submit" value="1">
