@@ -140,13 +140,13 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated November&nbsp;1,&nbsp;2026</p>
+    <p class="updated">Last updated November&nbsp;2,&nbsp;2026</p>
 
     <div >
       <p>SpoolPilot is built to keep your shop&rsquo;s data on your device.</p>
 
       <h2>Where your data is stored</h2>
-      <p>Your filament, product, production, and sales records are stored locally on your device using Apple&rsquo;s on-device SwiftData storage. None of it is uploaded to us. We don&rsquo;t run a server that stores your shop data, and we can&rsquo;t see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in talking to a sales channel, described under <a href="#signin-service">The sign-in service</a>; it stores none of your data and keeps no logs.</p>
+      <p>Your filament, product, production, and sales records are stored locally on your device using Apple&rsquo;s on-device SwiftData storage. None of it is uploaded to us. We don&rsquo;t run a server that stores your shop data, and we can&rsquo;t see it. A copy can be backed up to your own iCloud, which is described under <a href="#backups">Backups</a> below. There is one small service involved in talking to a sales channel, described under <a href="#signin-service">The sign-in service</a>; it stores none of your shop data and keeps no logs.</p>
 
       <h2>Etsy sync</h2>
       <p>When you connect your Etsy shop, SpoolPilot uses Etsy&rsquo;s official sign-in flow to get permission to read your own shop&rsquo;s listings and orders. It reads only the parts of an order that decide profit: the items sold, their quantities and prices, any discounts, the shipping charged, the currency, the date, and the fee entries Etsy recorded for that order in your payment account.</p>
@@ -156,7 +156,7 @@
 
       <h2 id="signin-service">The sign-in service</h2>
       <p>Talking to a sales channel needs one thing that can&rsquo;t ship inside an app: the channel gives developers a secret key, and anything inside an app can be pulled back out of it, so the key can&rsquo;t live on your phone. SpoolPilot runs a single small relay service that holds that key instead.</p>
-      <p>For Etsy, your phone&rsquo;s requests travel through that relay. It first checks the request comes from a genuine, unmodified copy of SpoolPilot (using Apple&rsquo;s App Attest, which only real Apple hardware can pass), then adds the key, forwards the request to Etsy, and streams Etsy&rsquo;s answer straight back to your phone. It stores nothing and logs nothing: no tokens, no orders, no record of which shop asked. The moment a response is delivered, the relay holds nothing at all.</p>
+      <p>For Etsy, your phone&rsquo;s requests travel through that relay. It first checks the request comes from a genuine, unmodified copy of SpoolPilot (using Apple&rsquo;s App Attest, which only real Apple hardware can pass), then adds the key, forwards the request to Etsy, and streams Etsy&rsquo;s answer straight back to your phone. It stores no shop data and logs nothing: no tokens, no orders, no record of which shop asked. The one thing it keeps is the App Attest key for your copy of the app, so it can recognize that copy next time. The moment a response is delivered, the relay holds nothing at all.</p>
       <p>For any other channel, the relay is used only for sign-in: a one-time code goes in and an access token comes back, and when a channel&rsquo;s sign-in expires (some last only a couple of hours), the renewal passes through the same way. It keeps none of them. Your orders and fees never pass through it: your phone fetches them from the channel directly.</p>
       <p>If you close your account on a sales channel, that channel may notify SpoolPilot so your data can be deleted. Because your shop data lives only on your phone, there is nothing on our side to delete.</p>
 
@@ -167,7 +167,7 @@
       <p>Scanning a spool can look up its barcode in SpoolPilot&rsquo;s shared filament library so the spec fills in automatically. Only the barcode number is sent, nothing about you or your shop. If you opt in to sharing, specs you enter (brand, color, and weight, never your costs or sales) are added to the library for other makers. Contributions aren&rsquo;t shown with your name or any account details.</p>
 
       <h2>Notifications</h2>
-      <p>Low-stock alerts are local notifications generated on your device. They don&rsquo;t involve a push notification server or any data leaving your device.</p>
+      <p>Every notification SpoolPilot shows is generated on your device: low-stock and sold-out alerts, the daily summary of yesterday&rsquo;s sales, the weekly and monthly recaps, and reminders such as orders still to print or a trial about to end. For the daily summary, the app uses Background App Refresh to check your own shop for new sales overnight, the same read-only sync you run when you open the app. There is no push notification server, and nothing about your shop is sent to us to make a notification.</p>
 
       <h2>What we don&rsquo;t do</h2>
       <ul>
@@ -184,7 +184,7 @@
       <p>If you block analytics in your browser, or use a tracking blocker, everything on this site still works.</p>
 
       <h2 id="backups">Backups</h2>
-      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud: a single file, <code>SpoolPilot Auto-Backup.json</code>, in an iCloud Drive folder named SpoolPilot. It holds your settings, filament, products, and sales history.</p>
+      <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud, in an iCloud Drive folder named SpoolPilot. The main file, <code>SpoolPilot Auto-Backup.json</code>, sits beside a rolling week of dated copies, one a day, so a bad day can be undone. Each copy holds your settings, filament, products, and sales history.</p>
       <p>This happens on its own: once when the app opens and again when you leave it, and at most once a day unless something actually changed. It goes to your Apple account, not to us: we have no access to that folder and never receive a copy. If a fresh install finds a backup there, SpoolPilot offers to restore it and waits for you to say yes.</p>
       <p>To turn it off, switch SpoolPilot off under iCloud Drive in the iOS Settings app. The app has no separate toggle. It uses iCloud if you&rsquo;ve allowed it to.</p>
 

@@ -88,7 +88,7 @@
       "description": "iPhone app for people who run a small 3D-printing business. Prices a print by reading the slicer screen, syncs an Etsy or eBay shop and reads the fees actually charged on each order, shows profit per order and per product, counts filament spools by barcode with weeks of stock from sales pace, and ranks what to print next.",
       "audience": {
         "@type": "Audience",
-        "audienceType": "Small 3D-printing businesses and print farms selling on Etsy"
+        "audienceType": "Small 3D-printing businesses and print farms selling on Etsy and eBay"
       },
       "installUrl": "https://apps.apple.com/app/id6796133961",
       "downloadUrl": "https://apps.apple.com/app/id6796133961",
@@ -98,14 +98,14 @@
       "image": "https://spoolpilot.app/og-image-v3.png",
       "screenshot": [
         "https://spoolpilot.app/shot-home.png",
-        "https://spoolpilot.app/shot-scan.png",
         "https://spoolpilot.app/shot-finances.png",
-        "https://spoolpilot.app/shot-filament.png"
+        "https://spoolpilot.app/shot-filament.png",
+        "https://spoolpilot.app/shot-products.png"
       ],
       "softwareVersion": "1.4.4",
       "featureList": [
         "Slicer scan: reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura",
-        "Print pricing calculator that solves for a target margin after Etsy fees",
+        "Print pricing calculator that solves for a target margin after Etsy, eBay or other fees",
         "Etsy order sync with full history (read-only)",
         "eBay order sync with fees and Promoted Listings ad charges (read-only)",
         "Actual Etsy fees per order, read from the Etsy payment ledger",
@@ -114,6 +114,12 @@
         "Made-to-order and stocked products, bundles, print-next queue",
         "Home Screen and Lock Screen widgets for the print-next queue, and a Lock Screen scan button",
         "Manual and in-person sales",
+        "Fees filled in at each place's rate for sales on eBay, Facebook Marketplace, a card reader, or cash",
+        "Compare slices: scan a new slicer estimate and compare its profit against the current one",
+        "Purchased parts and packaging costed into each product (Pro)",
+        "Printer capacity forecast (Pro)",
+        "Real postage read from eBay shipping labels",
+        "Available in English, Spanish, and German",
         "Local-first, no account, no analytics in the app"
       ],
       "offers": [
@@ -148,6 +154,14 @@
           "priceCurrency": "USD",
           "url": "https://apps.apple.com/app/id6796133961",
           "description": "Every Pro feature, paid once. Never renews."
+        },
+        {
+          "@type": "Offer",
+          "name": "Unlimited slicer scans",
+          "price": "4.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/app/id6796133961",
+          "description": "Unlimited slicer scans on the free plan, paid once"
         }
       ],
       "author": {
@@ -202,7 +216,7 @@
       "name": "Is this the same SpoolPilot as spoolpilot.com?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC for people who sell 3D prints on Etsy; spoolpilot.com was a separate web filament tracker that has been discontinued, and the SpoolPilot hardware project on GitHub is unrelated. This app has no web dashboard, no public API, and no hardware."
+        "text": "No. SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC for people who sell 3D prints on Etsy and eBay; spoolpilot.com was a separate web filament tracker that has been discontinued, and the SpoolPilot hardware project on GitHub is unrelated. This app has no web dashboard, no public API, and no hardware."
       }
     },
     {
@@ -210,7 +224,7 @@
       "name": "How does SpoolPilot calculate profit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What’s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
+        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy or eBay charged on that order (transaction, payment processing, listing, and Offsite Ads or Promoted Listings ad fees, read from the shop’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What’s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
       }
     },
     {
@@ -256,7 +270,7 @@
   ]
 }
   </script>
-  <link rel="preload" as="image" href="/shot-home.webp?v=15" type="image/webp">
+  <link rel="preload" as="image" href="/shot-home.webp?v=16" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -719,7 +733,7 @@
     @media (max-width:420px){.vs{grid-template-columns:1.05fr .8fr .9fr;font-size:var(--fs-ui);gap:0 8px}}
 
 
-    /* four shipped items read as a 2×2, not a 3-column grid with an orphan */
+    /* shipped items read as an even two-column grid, not a 3-column grid with an orphan */
     .road.two{grid-template-columns:repeat(2,1fr)}
     @media (max-width:760px){.road.two{grid-template-columns:1fr}}
 
@@ -804,10 +818,10 @@
         <button type="button" role="tab" id="ft3" aria-selected="false" aria-controls="floorView" tabindex="-1" data-i="3">Finances</button>
       </div>
       <figure class="hero-device" id="floorView" role="tabpanel" aria-labelledby="ft0">
-        <img class="active" data-i="0" src="shot-home.webp?v=15" width="1290" height="2796" fetchpriority="high" alt="SpoolPilot Home: orders today, September profit, profit per print hour, the revenue chart, and recent sales with what each one kept.">
-        <img data-i="1" src="shot-filament.webp?v=15" width="1290" height="2796" loading="lazy" alt="Materials: sealed spool counts by color, with weeks of stock left at your sales pace.">
-        <img data-i="2" src="shot-products.webp?v=15" width="1290" height="2796" loading="lazy" alt="Products: units in stock, stock value, estimated shelf profit, and each product&rsquo;s profit and margin.">
-        <img data-i="3" src="shot-finances.webp?v=15" width="1290" height="2796" loading="lazy" alt="Finances: September&rsquo;s profit and loss, from revenue to a $1,474.02 net profit, and where the costs go.">
+        <img class="active" data-i="0" src="shot-home.webp?v=16" width="1290" height="2796" fetchpriority="high" alt="SpoolPilot Home: orders today, the month&rsquo;s profit, profit per print hour, the revenue chart, and recent sales with what each one kept.">
+        <img data-i="1" src="shot-filament.webp?v=16" width="1290" height="2796" loading="lazy" alt="Materials: sealed spool counts by color, with weeks of stock left at your sales pace.">
+        <img data-i="2" src="shot-products.webp?v=16" width="1290" height="2796" loading="lazy" alt="Products: units in stock, stock value, estimated shelf profit, and each product&rsquo;s profit and margin.">
+        <img data-i="3" src="shot-finances.webp?v=16" width="1290" height="2796" loading="lazy" alt="Finances: the month&rsquo;s profit and loss, from revenue to a $1,479.14 net profit, and where the costs go.">
       </figure>
       <p class="floor-cap" id="floorCap" aria-live="polite">Between prints: today&rsquo;s take and the month&rsquo;s profit at a glance.</p>
     </div>
@@ -999,10 +1013,11 @@
       <p class="roadlabel reveal">Shipped</p>
       <div class="road two reveal" style="margin-bottom:34px">
         <div><b>eBay sales and fees</b><span>Orders, the fees eBay charged, and the Promoted Listings ad fee, synced like Etsy.</span></div>
-        <div><b>Real fees on the free plan</b><span>Ten synced orders a month, each with its real fees and what you kept.</span></div>
-        <div><b>Orders waiting to print</b><span>Open orders you haven&rsquo;t printed yet sit at the top of Print next.</span></div>
-        <div><b>Parts and packing</b><span>Magnets, inserts, and boxes costed into each product and restocked by barcode.</span></div>
-        <div><b>Spanish and German</b><span>The whole app, not just the listing.</span></div>
+        <div><b>Orders waiting to print (Pro)</b><span>Open orders you haven&rsquo;t printed yet sit at the top of Print next.</span></div>
+        <div><b>Parts and packing (Pro)</b><span>Magnets, inserts, and boxes costed into each product and restocked by barcode.</span></div>
+        <div><b>Home Screen widgets (Pro)</b><span>What to print next on your Home Screen and Lock Screen, and a Scan button, without opening the app.</span></div>
+        <div><b>Sales anywhere</b><span>Markets, Facebook Marketplace, a card reader or cash, each with that place&rsquo;s fees filled in.</span></div>
+        <div><b>Compare a new slice</b><span>Scan a reslice and see which one earns more.</span></div>
       </div>
       <p class="roadlabel reveal">Next</p>
       <div class="road two reveal">
@@ -1110,11 +1125,11 @@
         </details>
         <details>
           <summary>Is this the same SpoolPilot as spoolpilot.com?</summary>
-          <p>No. SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC for people who sell 3D prints on Etsy; spoolpilot.com was a separate web filament tracker that has been discontinued, and the SpoolPilot hardware project on GitHub is unrelated. This app has no web dashboard, no public API, and no hardware.</p>
+          <p>No. SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC for people who sell 3D prints on Etsy and eBay; spoolpilot.com was a separate web filament tracker that has been discontinued, and the SpoolPilot hardware project on GitHub is unrelated. This app has no web dashboard, no public API, and no hardware.</p>
         </details>
         <details>
           <summary>How does SpoolPilot calculate profit?</summary>
-          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy charged on that order (transaction, payment processing, listing, and Offsite Ads, read from Etsy&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What&rsquo;s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
+          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy or eBay charged on that order (transaction, payment processing, listing, and Offsite Ads or Promoted Listings ad fees, read from the shop&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What&rsquo;s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>

@@ -275,7 +275,7 @@
           <div class="field" id="f-laborrate" hidden><label for="c-laborrate">Their rate ($/hour)</label><input id="c-laborrate" type="number" inputmode="decimal" value="" min="0" step="0.01" placeholder="0.00"></div>
           <p class="labor-hint" id="labor-hint"></p>
         </div>
-        <div class="check"><input id="c-osa" type="checkbox"><label for="c-osa" style="margin:0">Order came from an Offsite Ad (15% fee)</label></div>
+        <div class="check"><input id="c-osa" type="checkbox"><label for="c-osa" style="margin:0">Order came from an Offsite Ad (15% fee, capped at $100)</label></div>
       </div>
       <div class="out" aria-live="polite">
         <div class="suggest" id="suggest" style="display:none">
@@ -287,7 +287,7 @@
         <div class="orow child"><span>Transaction fee (6.5%)</span><span class="v neg" id="o-txn">−$0.00</span></div>
         <div class="orow child"><span>Payment processing (3% + $0.25)</span><span class="v neg" id="o-proc">−$0.00</span></div>
         <div class="orow child"><span>Listing fee</span><span class="v neg" id="o-list">−$0.20</span></div>
-        <div class="orow child" id="row-osa" style="display:none"><span>Offsite Ads (15%)</span><span class="v neg" id="o-osa">−$0.00</span></div>
+        <div class="orow child" id="row-osa" style="display:none"><span>Offsite Ads (15%, max $100)</span><span class="v neg" id="o-osa">−$0.00</span></div>
         <div class="orow"><span>Estimated Etsy fees</span><span class="v neg" id="o-fees">−$0.00</span></div>
         <div class="orow"><span>Filament</span><span class="v neg" id="o-fil">−$0.00</span></div>
         <div class="orow"><span>Electricity</span><span class="v neg" id="o-el">−$0.00</span></div>
@@ -324,7 +324,7 @@
           <button type="submit">Count me in</button>
         </form>
       </div>
-      <p class="note">Shipping is left out: what the buyer pays for postage goes to the label. Etsy also takes its percentage on shipping, so real fees run a little higher than shown. Rates are Etsy&rsquo;s published US rates, checked September 2026 (6.5% transaction, 3% + $0.25 processing, $0.20 listing, Offsite Ads 15%). Sales tax excluded.</p>
+      <p class="note">Shipping is left out: what the buyer pays for postage goes to the label. Etsy also takes its percentage on shipping, so real fees run a little higher than shown. Rates are Etsy&rsquo;s published US rates, checked November 2026 (6.5% transaction, 3% + $0.25 processing, $0.20 listing, Offsite Ads 15% up to $100 an order). Sales tax excluded.</p>
       <!-- Phones only: the answer stays in view while the fields are being edited. On a phone the
            result sits one to two screens below the inputs, so every change used to update a number
            nobody could see. Tapping it goes to the breakdown and the app card under it. -->
@@ -337,7 +337,7 @@
     </div>
 
     <h2>This is an estimate</h2>
-    <p>Real orders drift from the rate card. Coupons change the base the percentages apply to. Offsite Ads only hits some orders, at 12% or 15%. Processing rates differ by country. Some regions add regulatory fees.</p>
+    <p>Real orders drift from the rate card. Coupons change the base the percentages apply to. Offsite Ads only hits some orders, at 12% or 15%, capped at $100 an order. Processing rates differ by country. Some regions add regulatory fees.</p>
     <p>In the app, synced orders skip the estimate. SpoolPilot reads the fees Etsy charged on each one, line by line.</p>
     <figure class="shot">
       <img src="/shot-sale-receipt.webp?v=2" width="1290" height="2049" loading="lazy" decoding="async" alt="SpoolPilot sale detail for a $28 Desk Organizer sold on Etsy with $5.62 shipping collected: $7.68 in Etsy fees marked Read from Etsy, itemized as Offsite Ads $4.03, transaction fee $1.82, payment processing $1.26, transaction fee on shipping $0.37 and listing fee $0.20; $11.13 product cost; net profit $9.19 at a 33% margin.">
@@ -419,7 +419,7 @@
         </tbody>
       </table>
     </div>
-    <p class="fine">Item price only, no shipping or sales tax. US published rates, checked September 2026: 6.5% transaction fee, 3% + $0.25 payment processing, $0.20 listing fee, each rounded to the cent. Offsite Ads adds 15% of the price (12% for higher-revenue shops). Your payment account shows what Etsy actually charged.</p>
+    <p class="fine">Item price only, no shipping or sales tax. US published rates, checked November 2026: 6.5% transaction fee, 3% + $0.25 payment processing, $0.20 listing fee, each rounded to the cent. Offsite Ads adds 15% of the price (12% for higher-revenue shops), capped at $100 an order. Your payment account shows what Etsy actually charged.</p>
 
     <h2>Questions about Etsy fees</h2>
     <h3>How much does Etsy take from a $20 sale?</h3>
@@ -480,17 +480,29 @@
       // page prices the ITEM. The one thing given up is that Etsy also charges its
       // percentage on shipping you collect, so fees here run slightly under a real
       // paid-shipping order. The caveat section says so rather than adding a field back.
-      function pctRate() { return 0.065 + 0.03 + ($('c-osa').checked ? 0.15 : 0); }
+      // Offsite Ads is 15% of the order, but Etsy caps that fee at $100 per order.
+      var OSA_RATE = 0.15, OSA_CAP = 100;
+      function osaFee(base) { return $('c-osa').checked ? Math.min(c(base * OSA_RATE), OSA_CAP) : 0; }
 
       // Solve for the item price leaving a target margin. Rearranged from
       //   margin = (P - fees(P) - costs) / P
       // giving  P = (costs + fixed) / (1 - pct - margin).
       // The denominator approaches zero as fees + margin approach 100%, where no finite price
       // works — reported honestly rather than printing a fantasy number.
-      function solvePrice(costs, pct, margin) {
+      // With Offsite Ads on, the fee is either 15% of the price or the flat $100 cap, so solve
+      // both ways and keep the answer that lands on its own side of the cap.
+      function solveWith(costs, pct, flat, margin) {
         var denom = 1 - pct - margin;
         if (denom <= 0.02) return null;
-        return (costs + 0.25 + 0.20) / denom;
+        return (costs + 0.25 + 0.20 + flat) / denom;
+      }
+      function solvePrice(costs, margin) {
+        var base = 0.065 + 0.03;
+        if (!$('c-osa').checked) return solveWith(costs, base, 0, margin);
+        var p = solveWith(costs, base + OSA_RATE, 0, margin);
+        if (p !== null && p * OSA_RATE <= OSA_CAP) return p;
+        p = solveWith(costs, base, OSA_CAP, margin);
+        return p !== null && p * OSA_RATE >= OSA_CAP ? p : null;
       }
 
       // Inputs that survive a round trip through an email. Kept short so the URL stays
@@ -516,12 +528,11 @@
 
       function recalc() {
         var costs = productCosts();
-        var pct = pctRate();
         var unreachable = false;
 
         if (priceMode) {
           var target = Math.min(Math.max(num('c-margin'), 0), 95) / 100;
-          var solved = solvePrice(costs, pct, target);
+          var solved = solvePrice(costs, target);
           if (solved === null || solved <= 0) {
             unreachable = true;
             $('o-suggest').textContent = '\u2014';
@@ -540,7 +551,7 @@
         var txn = c(base * 0.065);
         var proc = base > 0 ? c(base * 0.03 + 0.25) : 0;
         var list = base > 0 ? 0.20 : 0;
-        var osa = $('c-osa').checked ? c(base * 0.15) : 0;
+        var osa = osaFee(base);
         var fees = c(txn + proc + list + osa);
 
         var fil = c(num('c-grams') / 1000 * num('c-kg'));

@@ -83,7 +83,7 @@
       },
       "image": "https://spoolpilot.app/og-image-v3.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-10-02",
+      "dateModified": "2026-11-02",
       "author": {
         "@type": "Person",
         "@id": "https://spoolpilot.app/#founder",
@@ -179,7 +179,7 @@
       By a 3D print seller with 3,000+ sales
     </p>
     <p class="lede">The profit on a print is <strong>what the buyer paid, minus the fees the platform actually charged on that order, minus what it cost you to make and ship it</strong>. The formula is one line. The work is in the word <em>actually</em>: pricing uses estimates, but profit has to use the numbers that really happened, and for most sellers the gap between the two is the difference between a shop that feels profitable and one that is.</p>
-    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised October&nbsp;2,&nbsp;2026.</p>
+    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised November&nbsp;2,&nbsp;2026.</p>
 
     <h2>What is the difference between revenue and net profit?</h2>
     <p>Revenue is what buyers paid; net profit is what is left after the platform&rsquo;s fees and your costs. &ldquo;I sold $3,000 this month&rdquo; is gross revenue. It is the number Etsy&rsquo;s dashboard shows and the one people quote, and it says nothing about whether the month made money. Net profit is what is left after fees and costs, and the version that tells you what to do next is <strong>net profit per order</strong>, added up per product. A month can be net positive while two of your products lose money on every sale; you cannot see that from the monthly total.</p>
@@ -220,7 +220,7 @@
     <h2>How do you calculate monthly profit?</h2>
     <p>Revenue, minus the fees actually charged, minus cost of goods (the per-order costs added up), minus the overhead lines, equals net profit for the month. Compare it to last month and to the same month last year if you have it. Two rules keep it honest: count revenue when the order was paid, not when it was listed or shipped, and subtract refunds and cancellations in the month they happened.</p>
     <figure class="shot tall">
-      <img src="/shot-finances.webp?v=15" width="1290" height="2796" loading="lazy" decoding="async" alt="SpoolPilot Finances screen for one month of a demo shop: revenue $3,124.00, cost of materials $516.46, gross profit $2,607.54, operating expenses $1,133.52, net profit $1,474.02 at a 47% margin, a six-month revenue chart, and where the costs went: filament $516.46, labor and finishing $505.47, shipping and packaging $283.50, seller fees $273.90, electricity $70.65.">
+      <img src="/shot-finances.webp?v=16" width="1290" height="2796" loading="lazy" decoding="async" alt="SpoolPilot Finances screen for one month of a demo shop: revenue $3,146.00, cost of materials $446.68, gross profit $2,699.32, operating expenses $991.07, advertising $229.11, net profit $1,479.14 at a 47% margin, a six-month revenue chart, and where the costs went, led by filament $446.68, labor and finishing $439.90, shipping and packaging $252.17, and seller fees $237.61.">
       <figcaption>The monthly P&amp;L in SpoolPilot (demo shop): revenue down to net profit, and where the costs went.</figcaption>
     </figure>
 
@@ -236,8 +236,8 @@
 
     <h2>Can you track 3D print profit in a spreadsheet?</h2>
     <p>Yes, under roughly twenty orders a month: a spreadsheet with one row per order works, and it is worth doing by hand at least once so you understand your own numbers. The step that breaks it is the fee lines. To get them you download the payment account CSV, match its rows to orders, and type the amounts in, every month, for every order. Almost everyone stops by the second month and goes back to estimates, at which point the sheet can price a print but can&rsquo;t tell you what one made.</p>
-    <p>That step is what SpoolPilot automates. Link an Etsy shop with read-only access and the app pulls in your orders, back through your full history if you want it, then attaches to each one the fee lines Etsy posted for it in the payment ledger, read directly through Etsy&rsquo;s API rather than estimated from the rate card. Etsy grants that kind of API access only after reviewing an app; SpoolPilot holds it, and most tools that advertise &ldquo;real profit&rdquo; do not, so check which kind you are looking at.</p>
-    <p>With a cost recipe on each product, every order shows an itemized figure like the table above. If the money on an order doesn&rsquo;t add up to Etsy&rsquo;s total, the app says so and marks the figure as an estimate rather than showing a confident wrong number.</p>
+    <p>That step is what SpoolPilot automates. Link an Etsy shop with read-only access and the app pulls in your orders, back through your full history if you want it, then attaches to each one the fee lines Etsy posted for it in the payment ledger, read directly through Etsy&rsquo;s API rather than estimated from the rate card. Etsy grants that kind of API access only after reviewing an app; SpoolPilot holds it, while tools that work from the rate card are estimating, so check which kind you are looking at.</p>
+    <p>With a cost recipe on each product, every order shows an itemized figure built the same way (buyer-paid shipping passes through). One difference from the table: the app doesn&rsquo;t subtract a label on an order where the buyer paid for shipping. Postage counts on free-shipping orders, at the amount you set, and an eBay order shipped on an eBay label uses the real label cost. If the money on an order doesn&rsquo;t add up to Etsy&rsquo;s total, the app says so and marks the figure as an estimate rather than showing a confident wrong number.</p>
     <p>The free tier includes ten synced orders a month, each with its real fees and what you kept. Profit per product, the monthly P&amp;L, and every order past ten are Pro. Market and in-person sales are logged by hand in two taps and get the same treatment. If you are weighing it against a spreadsheet or another tool, <a href="/3d-printing-business-software">the software guide</a> lays out the options and covers everything a shop tracks.</p>
     <div class="cta">
       <h2>See the real profit on every order</h2>

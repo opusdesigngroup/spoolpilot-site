@@ -83,7 +83,7 @@
       },
       "image": "https://spoolpilot.app/og-image-v3.png",
       "datePublished": "2026-09-12",
-      "dateModified": "2026-10-02",
+      "dateModified": "2026-11-02",
       "author": {
         "@type": "Person",
         "@id": "https://spoolpilot.app/#founder",
@@ -179,7 +179,7 @@
       By a 3D print seller with 3,000+ sales
     </p>
     <p class="lede">On a US Etsy sale there are four fees: a 6.5% <strong>transaction fee</strong> on the item and its shipping, 3% plus $0.25 for <strong>payment processing</strong>, a $0.20 <strong>listing fee</strong>, and a 12% or 15% <strong>Offsite Ads fee</strong> on orders Etsy&rsquo;s ads brought in. A $24 print with $4.50 shipping pays $3.16 in fees, or $7.44 with an ad.</p>
-    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised October&nbsp;2,&nbsp;2026.</p>
+    <p class="fine">By <a href="/author/sean">Sean</a>, who runs Opus Design Company on Etsy: five years, 3,000+ sales. Last revised November&nbsp;2,&nbsp;2026.</p>
     <p>To know your real profit on an Etsy sale, take what the buyer paid, subtract those fees as they appear in your payment account (not as a calculator predicts them), subtract the shipping label, and subtract what the print cost to make. This page walks through each fee, an order with shipping, and why the ledger and a calculator often disagree.</p>
 
     <h2>What fees does Etsy charge on a sale?</h2>
@@ -222,12 +222,12 @@
 
     <h2>Where do you find the fees Etsy actually charged?</h2>
     <p>In Shop Manager, under Finances, then Payment account: each order shows its fee lines, and a monthly statement can be downloaded as a CSV. For one order it is a minute. For a month of orders it is the chore that makes sellers give up and go back to guessing, which is why this app exists.</p>
-    <p>SpoolPilot connects to an Etsy shop read-only and reads the fee entries Etsy actually charged on each synced order (transaction, processing, listing, Offsite Ads) directly from the payment ledger, through Etsy&rsquo;s API (the <a href="https://developers.etsy.com/documentation/reference/#tag/Ledger-Entry">ledger entries</a> it documents). Nothing on that screen is computed from a rate card. Each order shows its fees itemized against what the buyer paid, with buyer-paid shipping treated as a pass-through and your label and cost of goods subtracted. When an order&rsquo;s money doesn&rsquo;t reconcile to Etsy&rsquo;s total, the app labels the figure an estimate instead of pretending. The free tier reads real fees on up to ten orders a month; Pro reads them on every order.</p>
+    <p>SpoolPilot connects to an Etsy shop read-only and reads the fee entries Etsy actually charged on each synced order (transaction, processing, listing, Offsite Ads) directly from the payment ledger, through Etsy&rsquo;s API (the <a href="https://developers.etsy.com/documentation/reference/#tag/Ledger-Entry">ledger entries</a> it documents). Nothing on that screen is computed from a rate card. Each order shows its fees itemized against what the buyer paid, with buyer-paid shipping treated as a pass-through, postage counted on free-shipping orders, and your cost of goods subtracted. When an order&rsquo;s money doesn&rsquo;t reconcile to Etsy&rsquo;s total, the app labels the figure an estimate instead of pretending. The free tier reads real fees on up to ten orders a month; Pro reads them on every order.</p>
     <figure class="shot">
       <img src="/shot-sale-receipt.webp?v=2" width="1290" height="2049" loading="lazy" decoding="async" alt="SpoolPilot sale detail for a $28 Desk Organizer sold on Etsy, $5.62 shipping collected as a pass-through: $7.68 in Etsy fees marked Read from Etsy and itemized as Offsite Ads $4.03, transaction fee $1.82, payment processing $1.26, transaction fee on shipping $0.37 and listing fee $0.20; $11.13 product cost; net profit $9.19 at a 33% margin.">
       <figcaption>The fee lines for one order (demo shop), as SpoolPilot reads them from the Etsy payment account. This order came through an Offsite Ad.</figcaption>
     </figure>
-    <p>Reading a shop&rsquo;s payment ledger through the Etsy API requires Etsy&rsquo;s approval, which Etsy grants after reviewing what an app does and how it handles a seller&rsquo;s data. SpoolPilot went through that review and holds commercial API access. That is the difference between reading the fee lines Etsy posted for an order and estimating them from the published rate card, which is what most tools that promise &ldquo;real profit&rdquo; actually do. (The approval covers API access; Etsy does not endorse or certify the app.)</p>
+    <p>Reading a shop&rsquo;s payment ledger through the Etsy API requires Etsy&rsquo;s approval, which Etsy grants after reviewing what an app does and how it handles a seller&rsquo;s data. SpoolPilot went through that review and holds commercial API access. That is the difference between reading the fee lines Etsy posted for an order and estimating them from the published rate card, which is what tools that work from the rate card are doing when they promise &ldquo;real profit.&rdquo; (The approval covers API access; Etsy does not endorse or certify the app.)</p>
 
     <h2>Common mistakes</h2>
     <ul>
