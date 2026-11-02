@@ -500,6 +500,35 @@
        the hairline and the Etsy notice ran to the bottom edge of the page. The footer now sets
        only its top and bottom, on a selector that wins, and .wrap keeps the side gutters. */
     footer{border-top:1px solid var(--rule);color:var(--muted);font-size:var(--fs-meta);text-align:center}
+    /* The filament line: one line from the first price to the next printer. The cards are real
+       captures; a script draws the line between them, and the section reads fine without it. */
+    .grow-run{position:relative;max-width:760px;margin:64px auto 0;padding:0;list-style:none;text-align:left}
+    .grow-stop{width:640px;max-width:100%;margin:120px 0 0 44px}
+    .grow-stop:first-child{margin-top:0}
+    .grow-stop:nth-child(even){margin-left:76px}
+    .grow-stop:last-child{margin-left:60px}
+    .grow-stop h3{margin:0;font-size:var(--fs-lede);line-height:var(--lh-title);font-weight:600;letter-spacing:var(--ls-title);color:var(--ink)}
+    .grow-stop p{margin:var(--s1) 0 0;font-size:var(--fs-body);line-height:1.5;color:var(--body);max-width:none}
+    .grow-card{display:grid;gap:var(--s2);margin-top:16px}
+    .grow-card img{display:block;width:100%;height:auto;border:1px solid var(--rule);border-radius:18px;box-shadow:0 14px 32px rgba(17,16,16,.07)}
+    .grow-card img.slip{border:0;border-radius:27px}
+    .grow-line{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+    .grow-line path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .grow-line .g0{stroke:var(--rule-2);stroke-width:3}
+    .grow-line .g1{stroke:#C9590B;stroke-width:9}
+    .grow-line .g2{stroke:var(--orange);stroke-width:6.5;transform:translate(-.6px,-.8px)}
+    .grow-line .g3{stroke:#FFC9A0;stroke-width:1.6;opacity:.8;transform:translate(-1.6px,-2.1px)}
+    .grow-line circle{fill:#fff;stroke:var(--ink);stroke-width:3.5}
+    .grow-note{margin-top:56px;font-size:var(--fs-ui);color:var(--muted)}
+    @media (max-width:700px){
+      .grow-run{margin-top:44px;padding-left:30px}
+      .grow-stop,.grow-stop:nth-child(even),.grow-stop:last-child{width:auto;margin-left:0}
+      .grow-stop{margin-top:56px}
+      .grow-card img{border-radius:14px}
+      .grow-line .g1{stroke-width:7}
+      .grow-line .g2{stroke-width:5}
+      .grow-note{margin-top:40px}
+    }
     footer.wrap{padding-top:34px;padding-bottom:50px}
     /* Footer links stay quiet. The list of guides sits in a paragraph, where the in-copy link rule
        near the top outranks a bare `footer a` and turned all eleven orange, bold and underlined.
@@ -968,7 +997,45 @@
     </div>
   </section>
 
-  <section class="stage" id="pricing">
+  <section class="stage" id="grows">
+    <div class="wrap">
+      <h2 class="reveal">Use it for one print or your whole shop.</h2>
+      <p class="reveal">Skip any of it. Slicer scans work on their own.</p>
+      <ol class="grow-run" id="growRun">
+        <li class="grow-stop">
+          <h3>Scan your slicer and get a price</h3>
+          <p>The camera reads the print time and grams, then tells you what to list it at.</p>
+          <div class="grow-card"><img src="grow-price.webp" width="1164" height="453" loading="lazy" alt="The pricing calculator: list it at $22.95 and keep $14.69."></div>
+        </li>
+        <li class="grow-stop">
+          <h3>A/B test your slices</h3>
+          <p>Change one setting, scan again, and see which slice earns more.</p>
+          <div class="grow-card"><img src="grow-compare.webp" width="1175" height="292" loading="lazy" alt="Compare slices: the new slice keeps $0.85 more each and $1.96 more per print hour."></div>
+        </li>
+        <li class="grow-stop">
+          <h3>Orders sync from Etsy and eBay</h3>
+          <p>Each order comes in with its fees and what you kept.</p>
+          <div class="grow-card"><img src="grow-orders.webp" width="1175" height="376" loading="lazy" alt="Recent sales: a $22 eBay order that kept $5.12 and a $28 Etsy order that kept $5.71."></div>
+        </li>
+        <li class="grow-stop">
+          <h3>Know when to reorder</h3>
+          <p>Spools and parts get an order-by date from your real sales pace.</p>
+          <div class="grow-card">
+            <img src="grow-spool.webp" width="1175" height="182" loading="lazy" alt="Matte Black PLA: 26 spools, order by Thursday.">
+            <img src="grow-part.webp" width="1175" height="218" loading="lazy" alt="Kraft mailers: 260 on hand, used in 7 products, order by Tuesday.">
+          </div>
+        </li>
+        <li class="grow-stop">
+          <h3>Another printer? The numbers decide.</h3>
+          <p>The Printer Permission Slip tells you when your shop has earned one.</p>
+          <div class="grow-card"><img class="slip" src="grow-slip.webp" width="1078" height="1343" loading="lazy" alt="The Printer Permission Slip, stamped approved: the shop runs at 114% of its print hours and a $600 printer pays for itself in 11 weeks."></div>
+        </li>
+      </ol>
+      <p class="grow-note reveal">Free includes 3 slicer scans and 10 synced orders a month. Reorder dates, parts and the Permission Slip come with Pro. Screens from the demo shop.</p>
+    </div>
+  </section>
+
+  <section class="stage tint" id="pricing">
     <div class="wrap narrow">
       <h2 class="reveal">What SpoolPilot costs</h2>
       <div class="proof reveal">
@@ -990,7 +1057,7 @@
     </div>
   </section>
 
-  <section class="stage tint" id="faq">
+  <section class="stage" id="faq">
     <div class="wrap narrow">
       <h2 class="reveal">Questions makers ask</h2>
       <div class="faq reveal">
@@ -1042,7 +1109,7 @@
     </div>
   </section>
 
-  <section class="stage" id="get-updates">
+  <section class="stage tint" id="get-updates">
     <div class="wrap">
       <h2>See the profit on your next print.</h2>
       <div class="cta-stack">
@@ -1140,6 +1207,120 @@
           if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
           x0 = null;
         }, { passive: true });
+      }
+
+      // The filament line. It runs from the first price to the Permission Slip, and its tip
+      // follows the reader down the section over a faint track that is always there.
+      var growRun = document.getElementById('growRun');
+      if (growRun) {
+        var svgNS = 'http://www.w3.org/2000/svg';
+        var growSvg = document.createElementNS(svgNS, 'svg');
+        growSvg.setAttribute('class', 'grow-line');
+        growSvg.setAttribute('aria-hidden', 'true');
+        var growPath = function (cls) {
+          var p = document.createElementNS(svgNS, 'path');
+          p.setAttribute('class', cls);
+          growSvg.appendChild(p);
+          return p;
+        };
+        var growGhost = growPath('g0');
+        var growTube = ['g1', 'g2', 'g3'].map(growPath);
+        var growDots = [0, 1, 2, 3, 4].map(function () {
+          var c = document.createElementNS(svgNS, 'circle');
+          c.setAttribute('r', '7');
+          growSvg.appendChild(c);
+          return c;
+        });
+        growRun.appendChild(growSvg);
+        var growCards = Array.prototype.slice.call(growRun.querySelectorAll('.grow-card'));
+        var growStops = Array.prototype.slice.call(growRun.querySelectorAll('.grow-stop'));
+        var growBox = function (el) {
+          var a = el.getBoundingClientRect(), o = growRun.getBoundingClientRect();
+          return { l: a.left - o.left, r: a.right - o.left, t: a.top - o.top, b: a.bottom - o.top, w: a.width, h: a.height };
+        };
+        // Catmull-Rom through the points, written as cubic curves.
+        var growSpline = function (p) {
+          var d = 'M' + p[0][0] + ' ' + p[0][1];
+          for (var i = 0; i < p.length - 1; i++) {
+            var a = p[Math.max(i - 1, 0)], b = p[i], c = p[i + 1], e = p[Math.min(i + 2, p.length - 1)];
+            d += 'C' + (b[0] + (c[0] - a[0]) / 6) + ' ' + (b[1] + (c[1] - a[1]) / 6) + ' ' +
+              (c[0] - (e[0] - b[0]) / 6) + ' ' + (c[1] - (e[1] - b[1]) / 6) + ' ' + c[0] + ' ' + c[1];
+          }
+          return d;
+        };
+        var growLUT = [], growLen = 0;
+        var growTrace = function () {
+          var w = growRun.clientWidth, c = growCards.map(growBox), s = growStops.map(growBox), dots, d;
+          if (w < 640) {
+            // A phone has no room to sweep across, so the line wanders down the left edge.
+            dots = c.map(function (b, i) { return [10, s[i].t + 12]; });
+            var pts = [];
+            dots.forEach(function (o, i) {
+              pts.push(o);
+              if (dots[i + 1]) pts.push([i % 2 ? 4 : 18, (o[1] + dots[i + 1][1]) / 2]);
+            });
+            d = growSpline(pts);
+          } else {
+            var L = 24, R = w - 24, r = 64;
+            var mid = function (i) { return (c[i].t + c[i].b) / 2; };
+            var gap = function (i) { return (c[i].b + s[i + 1].t) / 2; };
+            var start = [c[0].l + c[0].w * .702, c[0].t + c[0].h * .37];
+            var end = [c[4].l + c[4].w * .43, c[4].t + c[4].h * .752];
+            dots = [start, [L, mid(1)], [R, mid(2)], [L, mid(3)], end];
+            // Down one side with a slight wander.
+            var fall = function (x, y0, y1, k) {
+              var h = y1 - y0;
+              return 'C' + (x + k) + ' ' + (y0 + h * .33) + ' ' + (x - k) + ' ' + (y0 + h * .66) + ' ' + x + ' ' + y1;
+            };
+            // Across the gap under card i: a wide corner, a long run, a wide corner. Ends at y + 10 + r.
+            var sweep = function (i, x0, x1) {
+              var y = gap(i), k = x1 > x0 ? 1 : -1, a = x0 + k * r, b = x1 - k * r, m = (b - a) * .34;
+              return 'C' + x0 + ' ' + (y - r * .42) + ' ' + (x0 + k * r * .42) + ' ' + y + ' ' + a + ' ' + y +
+                'C' + (a + m) + ' ' + (y + 12) + ' ' + (b - m) + ' ' + (y - 4) + ' ' + b + ' ' + (y + 10) +
+                'C' + (x1 - k * r * .42) + ' ' + (y + 10) + ' ' + x1 + ' ' + (y + 10 + r * .58) + ' ' + x1 + ' ' + (y + 10 + r);
+            };
+            var below = function (i) { return gap(i) + 10 + r; };
+            var y0 = c[0].t + c[0].h * .7;
+            d = 'M' + start[0] + ' ' + start[1] +
+              'C' + (start[0] + (R - start[0]) * .62) + ' ' + (start[1] + 10) + ' ' + R + ' ' + (start[1] + 24) + ' ' + R + ' ' + y0 +
+              fall(R, y0, gap(0) - r, 4) + sweep(0, R, L) + fall(L, below(0), mid(1), -5) +
+              fall(L, mid(1), gap(1) - r, 5) + sweep(1, L, R) + fall(R, below(1), mid(2), 5) +
+              fall(R, mid(2), gap(2) - r, -5) + sweep(2, R, L) + fall(L, below(2), mid(3), -5) +
+              fall(L, mid(3), end[1] - r, 6) +
+              'C' + L + ' ' + (end[1] - r * .42) + ' ' + (L + r * .42) + ' ' + end[1] + ' ' + (L + r) + ' ' + end[1] +
+              'L' + end[0] + ' ' + end[1];
+          }
+          growGhost.setAttribute('d', d);
+          growTube.forEach(function (p) { p.setAttribute('d', d); });
+          growDots.forEach(function (o, i) { o.setAttribute('cx', dots[i][0]); o.setAttribute('cy', dots[i][1]); });
+          growLen = growGhost.getTotalLength();
+          growLUT = [];
+          for (var i = 0, top = -1; i <= 240; i++) {
+            var l = growLen * i / 240, y = growGhost.getPointAtLength(l).y;
+            if (y > top) { top = y; growLUT.push([y, l]); }
+          }
+          growTube.forEach(function (p) { p.style.strokeDasharray = growLen + ' ' + growLen; });
+          growTip();
+        };
+        var growStill = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var growTip = function () {
+          var drawn = growLen;
+          if (!growStill) {
+            var y = window.innerHeight * .7 - growRun.getBoundingClientRect().top;
+            drawn = 0;
+            for (var i = 0; i < growLUT.length && growLUT[i][0] <= y; i++) drawn = growLUT[i][1];
+            if (growLUT.length && y >= growLUT[growLUT.length - 1][0]) drawn = growLen;
+          }
+          growTube.forEach(function (p) { p.style.strokeDashoffset = growLen - drawn; });
+        };
+        var growTicking = false;
+        window.addEventListener('scroll', function () {
+          if (growTicking) return;
+          growTicking = true;
+          requestAnimationFrame(function () { growTicking = false; growTip(); });
+        }, { passive: true });
+        if (window.ResizeObserver) new ResizeObserver(growTrace).observe(growRun);
+        growTrace();
       }
 
       // A CTA that lands on the form should hand you the keyboard, not just the view —
