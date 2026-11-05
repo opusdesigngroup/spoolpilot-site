@@ -16,7 +16,7 @@ project on GitHub. No web dashboard, no public API, no hardware.
 People who sell what they print, from one printer to a small print farm, mostly on Etsy and eBay. It is not a
 hobbyist filament tracker, not a print-farm controller, and not general bookkeeping.
 
-## What it does (shipping today, version 1.4.5)
+## What it does (shipping today, version 1.5)
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
@@ -31,8 +31,9 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
   and are labeled estimated. One product can sell on both Etsy and eBay.
 - **Profit.** Net profit per order, per product, and per month, with buyer-paid shipping treated as
   a pass-through. When an order does not reconcile to Etsy's total the figure is labeled an estimate.
-- **Filament inventory.** Sealed spools counted by barcode scan, weeks of stock from real sales pace,
-  low-stock only for materials that sell through.
+- **Filament inventory.** Sealed spools counted by barcode scan: each scan of a box counts one, then
+  one tap adds the batch to the shelf or takes it off, with one Undo. Weeks of stock from real sales
+  pace, low-stock only for materials that sell through.
 - **Products.** Made-to-order by default, stock tracking where wanted, bundles built from your own products, and a
   print-next queue ranked by how soon each product runs out.
 - **Manual sales** for markets and in-person selling, with the same cost and profit treatment. A
@@ -57,12 +58,13 @@ hobbyist filament tracker, not a print-farm controller, and not general bookkeep
   to ten synced orders a month from Etsy or eBay (shared between them). Each of those orders shows its
   real fees and what was kept after costs. Unlimited slicer scans are a $4.99 one-time purchase (no
   subscription needed).
-- **Pro:** every order (unlimited sync and history import), the full profit-and-loss by month and by
-  product, profit per print hour, pending orders still to print, weeks-of-stock forecasts, purchased
-  parts and packaging, printer capacity, Home Screen and Lock Screen widgets, the Print next quick
-  action, and unlimited slicer scans. $17.99/month (the first month is $7.99),
-  $149.99/year, or $349 once (Lifetime, never renews). A subscription started at a founding price
-  (before November 1, 2026) keeps that price for as long as it stays active.
+- **Pro:** every order (unlimited sync and history import), the full profit-and-loss by month, by
+  product, and by shop (Etsy and eBay side by side), profit per print hour, pending orders still to
+  print, weeks-of-stock forecasts, purchased parts and packaging, printer capacity, Home Screen and
+  Lock Screen widgets, the Print next quick action, and unlimited slicer scans. $17.99/month (the
+  first month is $7.99), $149.99/year, or $349 once (Lifetime, never renews). A subscription
+  started at a founding price (before November 1, 2026) keeps that price for as long as it stays
+  active.
 
 ## Web calculator vs the app
 
