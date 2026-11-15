@@ -20,13 +20,6 @@
     var body = form.dataset.successBody || 'Occasional product updates, nothing else. Unsubscribe any time.';
     box.innerHTML = '<h3>' + esc(title) + '</h3><p>' + esc(body) + '</p>';
     form.replaceWith(box);
-    // The only business outcome on this site, and the browser is the only place that learns it —
-    // MailerLite answers the client directly, no server of ours is in the path. Reported after
-    // MailerLite confirms success, never on submit. The form's own id tells signup points apart.
-    // No email or name is sent: this is a count, not an identity.
-    if (window.spoolpilotTrack) {
-      window.spoolpilotTrack('waitlist_signup', { form: form.id || form.dataset.successTitle || 'default' });
-    }
   }
   function clearError(form) {
     var next = form.nextElementSibling;
@@ -123,14 +116,6 @@
         });
     });
   });
-  // The site's real outcome since launch: a tap through to the App Store. Counted with the link's
-  // campaign tag (ct) and the page, so a funnel can end on it. No identity, just a count.
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href*="apps.apple.com"]') : null;
-    if (!a || !window.spoolpilotTrack) return;
-    var ct = (a.getAttribute('href').match(/[?&]ct=([^&#]+)/) || [])[1] || 'untagged';
-    window.spoolpilotTrack('app_store_tap', { link: ct, page: location.pathname });
-  }, true);
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 })();

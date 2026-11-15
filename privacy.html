@@ -26,26 +26,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
   <link rel="stylesheet" href="/article.css?v=12">
-  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
-       paint; autocapture handles pageviews, clicks and route changes from here on. The project
-       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
-       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
-       code, and a pageview would send it to a third party. -->
-  <script type="module">
-    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
-
-    analytics.init({
-      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
-      install: {
-        framework: 'web',
-        agent: 'claude-code',
-      },
-    });
-
-    // Bridge for waitlist.js, which is a classic script and cannot import a module. Only a
-    // business outcome goes through here — UI events are autocaptured and must not be doubled.
-    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
-  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -140,7 +120,7 @@
   <main class="doc">
 
     <h1>Privacy policy</h1>
-    <p class="updated">Last updated November&nbsp;2,&nbsp;2026</p>
+    <p class="updated">Last updated November&nbsp;15,&nbsp;2026</p>
 
     <div >
       <p>SpoolPilot is built to keep your shop&rsquo;s data on your device.</p>
@@ -177,11 +157,10 @@
       </ul>
 
       <h2 id="website">This website</h2>
-      <p>Everything above is about the app. This website is separate, and it does use analytics, a product called <a href="https://heycatch.ai" rel="noopener">HeyCatch</a>, to count visits and show which pages people actually read.</p>
-      <p>What it records is ordinary web analytics: the page you&rsquo;re on, the link that brought you here, clicks on the page, and what your browser reports about itself. It keeps an anonymous identifier in your browser so a second visit isn&rsquo;t counted as a second person. It does not know your name, and we don&rsquo;t try to work out who you are from it.</p>
+      <p>Everything above is about the app. This website is separate, and it has no analytics: no visit counting, no tracking cookies, no tracking scripts.</p>
+      <p>Like any website, it reaches you through a host. It&rsquo;s hosted on GitHub Pages, and some pages load their typeface from Google Fonts, so those two services see the requests your browser makes to them.</p>
       <p><strong>It never receives anything from the app.</strong> Your filament, products, sales, costs, and any Etsy or eBay data stay on your phone and never pass through this website. The two are not connected.</p>
-      <p>If you join the email list, the site records that a signup happened and which form it came from, but not your address. Your email goes to the mailing-list provider so we can send you the emails you asked for.</p>
-      <p>If you block analytics in your browser, or use a tracking blocker, everything on this site still works.</p>
+      <p>If you join the email list, your email goes to the mailing-list provider so we can send you the emails you asked for.</p>
 
       <h2 id="backups">Backups</h2>
       <p>If iCloud Drive is switched on for SpoolPilot, the app keeps a backup of your shop in <em>your own</em> iCloud, in an iCloud Drive folder named SpoolPilot. The main file, <code>SpoolPilot Auto-Backup.json</code>, sits beside a rolling week of dated copies, one a day, so a bad day can be undone. Each copy holds your settings, filament, products, and sales history.</p>

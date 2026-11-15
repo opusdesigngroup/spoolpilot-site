@@ -16,7 +16,7 @@ project on GitHub. No web dashboard, no public API, no hardware.
 People who sell what they print, from one printer to a small print farm, mostly on Etsy and eBay. It is not a
 hobbyist filament tracker, not a print-farm controller, and not general bookkeeping.
 
-## What it does (shipping today, version 1.5)
+## What it does (shipping today, version 1.5.1)
 
 - **Slicer scan.** Point the iPhone camera at Bambu Studio, OrcaSlicer, PrusaSlicer, or Ultimaker
   Cura and it reads print time and grams, then prices the print with filament, electricity,
@@ -83,8 +83,8 @@ orders, replaces the estimate with the fees Etsy actually charged.
 
 Data lives on the user's iPhone and their own iCloud. No account, nothing uploaded to the developer,
 no analytics or tracking SDKs in the app. Etsy and eBay connections are read-only and read only the seller's
-own shop numbers, never buyers' personal details. The website uses analytics to count visits and is
-unconnected to the app. See https://spoolpilot.app/privacy.html
+own shop numbers, never buyers' personal details. The website has no analytics and is unconnected
+to the app. See https://spoolpilot.app/privacy.html
 
 ## Key pages
 

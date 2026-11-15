@@ -97,8 +97,8 @@
 
   /* Progress from the engine, in the person's words. The first scan on a phone downloads the
      reader and its language data, several megabytes on mobile data, and for that stretch the
-     old copy said only "Reading…" while the box sat dimmed. HeyCatch showed people tapping the
-     box eight times in a row: nothing they could see was happening. Now the line moves. */
+     old copy said only "Reading…" while the box sat dimmed, and people tapped the box again and
+     again: nothing they could see was happening. Now the line moves. */
   function progress(m) {
     if (!m || !m.status) return;
     var pct = typeof m.progress === 'number' ? Math.round(m.progress * 100) : null;

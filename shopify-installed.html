@@ -16,26 +16,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tokens.css?v=1">
   <link rel="stylesheet" href="/article.css?v=12">
-  <!-- HeyCatch analytics. Static module import at head scope so it runs on every page before
-       paint; autocapture handles pageviews, clicks and route changes from here on. The project
-       key is publishable. Version pinned deliberately: an unpinned esm.sh URL re-resolves on
-       every load. Deliberately NOT on shopify-callback.html — that URL carries a Shopify OAuth
-       code, and a pageview would send it to a third party. -->
-  <script type="module">
-    import { analytics } from 'https://esm.sh/@heycatch/sdk@0.7.0';
-
-    analytics.init({
-      projectKey: 'hck_pk_txh70OXeB73EvzOem-Xix_hbLuoEhhEQ',
-      install: {
-        framework: 'web',
-        agent: 'claude-code',
-      },
-    });
-
-    // Bridge for waitlist.js, which is a classic script and cannot import a module. Only a
-    // business outcome goes through here — UI events are autocaptured and must not be doubled.
-    window.spoolpilotTrack = (name, props) => analytics.trackEvent(name, props);
-  </script>
   <style>
     /* On this page the App Store link is the primary action and the email form the fallback,
        so the site's accent goes to Download; site-wide the form's button is the orange one. */
