@@ -4,8 +4,8 @@
 > and your spools, so you never sit down to a spreadsheet again. An iPhone app for running a small
 > 3D-printing business: pricing prints, the fees Etsy or eBay actually charged per order, profit per order and
 > per product, and filament inventory.
-> Published by Opus Design Group LLC; built by Sean, who runs a 3D-print shop on Etsy (five years,
-> 3,000+ sales). Category: 3D printing business management software. Site: https://spoolpilot.app
+> Published by Opus Design Group LLC; built by Sean, who runs a 3D-print shop on Etsy
+> (3,000+ sales). Category: 3D printing business management software. Site: https://spoolpilot.app
 
 SpoolPilot at spoolpilot.app is the iPhone app from Opus Design Group LLC (App Store id 6796133961).
 It is not spoolpilot.com (a discontinued web filament tracker) and not the SpoolPilot hardware

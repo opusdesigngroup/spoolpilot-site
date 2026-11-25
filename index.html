@@ -54,7 +54,7 @@
         "https://opusdesigncompany.etsy.com"
       ],
       "jobTitle": "Founder, SpoolPilot",
-      "description": "Runs Opus Design Company, a 3D-print shop on Etsy, for five years and over 3,000 sales. Built SpoolPilot for that shop.",
+      "description": "Runs Opus Design Company, a 3D-print shop on Etsy with over 3,000 sales. Built SpoolPilot for that shop.",
       "worksFor": {
         "@id": "https://spoolpilot.app/#organization"
       },
@@ -106,7 +106,7 @@
       "featureList": [
         "Slicer scan: reads print time and grams from Bambu Studio, OrcaSlicer, PrusaSlicer, and Cura",
         "Print pricing calculator that solves for a target margin after Etsy, eBay or other fees",
-        "Etsy order sync with full history (read-only)",
+        "Etsy order sync (read-only)",
         "eBay order sync with fees and Promoted Listings ad charges (read-only)",
         "Actual Etsy fees per order, read from the Etsy payment ledger",
         "Profit per order, per product, and monthly profit and loss",
@@ -224,7 +224,7 @@
       "name": "How does SpoolPilot calculate profit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy or eBay charged on that order (transaction, payment processing, listing, and Offsite Ads or Promoted Listings ad fees, read from the shop’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What’s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
+        "text": "It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy or eBay charged on that order (transaction, payment processing, listing, and Offsite Ads or Promoted Listings ad fees, read from the shop’s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and any cost you add to a product yourself, like paid finishing work. What’s left is the profit on that order. Your own time is not subtracted unless you add it as a cost, like the Labor & finishing line on the receipt above: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven’t sold yet the calculator estimates the fees instead, and anything estimated is marked with a “~”."
       }
     },
     {
@@ -248,7 +248,7 @@
       "name": "Is my shop and customer data private?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Your data lives on your iPhone and your own iCloud. Nothing is uploaded to us, there is no account, and the app contains no analytics or tracking SDKs. SpoolPilot connects to Etsy and eBay read-only (it can’t change your shop), and it only ever reads your shop’s numbers, never your buyers’ personal details. This website does count visits, so we know which pages people read; it never receives anything from the app. More in the privacy policy."
+        "text": "Yes. Your data lives on your iPhone and your own iCloud. Nothing is stored on our servers, there is no account, and the app contains no analytics or tracking SDKs. SpoolPilot connects to Etsy and eBay read-only (it can’t change your shop), and it only ever reads your shop’s numbers, never your buyers’ personal details. This website has no analytics and no tracking cookies. More in the privacy policy."
       }
     },
     {
@@ -363,9 +363,6 @@
     @media (max-width:380px){.btn-big{font-size:var(--fs-ui);padding:13px 20px}.midcta{font-size:var(--fs-ui);padding:12px 20px}}
 
     /* ---- hero: centred, the device large ---- */
-    /* padding-bottom lifts the differentiator strip off the next section's tint edge —
-       without it the last strip item ("Native on iPhone") sits flush against the color
-       change and reads as crowded, most visibly on mobile where the strip is stacked. */
     .hero{text-align:center;padding-top:72px;padding-bottom:52px}
     /* Two columns from 1040px: the pitch and the product share the first screen instead of
        stacking — the whole reason the phone lives in the hero is to be seen before a scroll. */
@@ -471,7 +468,7 @@
     @media (prefers-reduced-motion:reduce){.receipts .proof{transition:none}}
 
     /* ---- three quiet facts ---- */
-    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;text-align:left;padding:20px 0 0}
+    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 56px;max-width:760px;margin:0 auto;text-align:left;padding:20px 0 0}
     .facts h3{margin:0 0 var(--s2);font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title);line-height:var(--lh-title)}
     .facts p{margin:0;font-size:var(--fs-body);color:var(--body);line-height:1.55;max-width:none}
 
@@ -589,11 +586,15 @@
     .lede strong,.stage p strong,.facts p strong,.road span strong{color:var(--ink);font-weight:600}
     .lede em,.stage p em,.facts p em,.road span em{font-style:italic;color:var(--ink)}
 
-    /* ---- differentiator strip (under the hero) ---- */
-    .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:72px auto 0;padding-top:44px;border-top:1px solid var(--rule);text-align:left}
-    .strip h2{margin:0 0 var(--s2);font-size:var(--fs-lede);font-weight:600;letter-spacing:var(--ls-title);line-height:var(--lh-title)}
-    .strip p{margin:0;font-size:var(--fs-body);line-height:1.55;color:var(--body)}
-    @media (max-width:760px){.strip{grid-template-columns:1fr;gap:28px;margin-top:56px;text-align:center}}
+    /* Scan section: the clip and the card from the same scan, side by side. */
+    .scan-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,430px);justify-content:center;align-items:center;gap:56px;margin:56px auto 0}
+    .scan-grid .proof{margin:0;width:100%}
+    .scan-clip{margin:0;position:relative}
+    .scan-clip video{display:block;width:100%;height:auto;aspect-ratio:640/1290;border-radius:30px;background:#e9e7e2;
+      border:1px solid var(--rule);box-shadow:0 26px 52px -34px rgba(17,16,16,.34)}
+    .scan-clip figcaption{position:absolute;left:0;right:0;top:100%;margin-top:12px;font-size:var(--fs-meta);color:var(--muted);text-align:center}
+    .scan-terms{margin-top:64px}
+    @media (max-width:760px){.scan-grid{grid-template-columns:minmax(0,430px);gap:72px}.scan-clip{width:min(260px,72%);margin:0 auto}}
     /* ---- App Store reviews carry their stars; the beta-tester quote doesn't, it isn't a rating ---- */
     .stars{display:flex;gap:2px;margin:0 0 10px;color:var(--ink)}
     .stars svg{width:13px;height:13px;display:block}
@@ -660,6 +661,14 @@
       padding:3px;background:var(--bg-alt);border:1px solid var(--rule);border-radius:999px}
     .tabs button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:var(--fs-ui);font-weight:600;
       padding:9px 6px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:color .2s,background-color .2s,box-shadow .2s}
+    .math-check,.privacy-fine{margin-top:22px}
+    .widget-line{margin-top:56px}
+    .road-lede{margin-bottom:36px}
+    .foot-links{margin:0 0 10px}
+    .foot-links a{white-space:nowrap}
+    .tabs button{min-height:44px}
+    .proof .pl > :last-child{white-space:nowrap}
+    .mailtoggle button{padding:12px 4px;margin:-12px -4px}
     .tabs button:hover{color:var(--ink)}
     .tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(17,16,16,.14),0 0 0 .5px rgba(17,16,16,.06)}
     .tabs button:focus-visible{outline:2px solid var(--cta);outline-offset:1px}
@@ -690,7 +699,7 @@
     .fc-price{display:flex;justify-content:space-between;align-items:baseline}
     .fc-price span{font-size:var(--fs-ui);font-weight:600}
     .fc-price b{font-size:var(--fs-figure);font-weight:700;letter-spacing:-.03em}
-    .feecalc input[type=range]{width:100%;margin:15px 0 5px;accent-color:var(--orange);cursor:pointer}
+    .feecalc input[type=range]{width:100%;height:28px;margin:9px 0 0;accent-color:var(--orange);cursor:pointer}
     .fc-ends{display:flex;justify-content:space-between;font-size:var(--fs-meta);color:var(--muted)}
     .fc-ads{display:flex;align-items:center;gap:9px;margin-top:17px;font-size:var(--fs-ui);color:var(--body);cursor:pointer}
     .fc-ads input{width:17px;height:17px;accent-color:var(--orange);cursor:pointer}
@@ -788,7 +797,7 @@
       <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales.&rdquo;</blockquote>
       <cite>Elisabeth G.S &middot; App Store review</cite>
     </figure>
-    <p class="reach">Downloaded by makers in 50+ countries</p>
+    <p class="reach">Downloaded in 80 countries &middot; 200+ Etsy shops connected</p>
     </div>
     <div class="hero-stage">
       <div class="tabs" id="floorTabs" role="tablist" aria-label="App screens">
@@ -806,26 +815,43 @@
       <p class="floor-cap" id="floorCap" aria-live="polite">Between prints: today&rsquo;s take and the month&rsquo;s profit at a glance.</p>
     </div>
    </div>
-    <div class="strip reveal">
-      <div><h2>Point it at the slicer</h2><p>The camera reads print time and grams off the slicer screen, then <a href="/resources/3d-printing-pricing-calculator">prices the print</a>, fees included, and shows what it pays you an hour.</p></div>
-      <div><h2>Scan spools by barcode</h2><p>Sealed spools counted on the shelf, no weighing, with <a href="/resources/filament-inventory-management">weeks of stock from your real sales pace</a>.</p></div>
-      <div><h2>On your phone, not a desk</h2><p>The sale, the print, the empty spool: they happen away from a computer. A native iPhone app catches them right there, so &ldquo;I&rsquo;ll log it later&rdquo; never turns into never.</p></div>
-    </div>
-    <figure class="quote reveal">
-      <blockquote>&ldquo;Overall, I really enjoyed testing the app! It feels very convenient and intuitive, and everything is easy to understand without much explanation. I especially liked that you can choose any color and connect your slicer &mdash; those features are really useful for 3D printing.&rdquo;</blockquote>
-      <cite>Angelina <span>&middot; Gumi Print House on Etsy</span></cite>
-    </figure>
   </div>
 
-  <section class="stage tint">
+  <section class="stage tint" id="scan">
+    <div class="wrap">
+      <h2 class="reveal">Point your phone at the slicer. Get the price.</h2>
+      <p class="reveal">It reads print time and grams off Bambu Studio, OrcaSlicer, PrusaSlicer or Cura and splits a full plate into a price per piece. Your slicer only counts the plastic. <strong>SpoolPilot prices everything else.</strong></p>
+      <div class="scan-grid reveal">
+        <figure class="scan-clip">
+          <video id="scanClip" src="scan-real.mp4?v=2" poster="scan-real.webp?v=2" width="640" height="1290" muted loop playsinline preload="none" aria-label="Screen recording: the phone camera reads 4 h 44 m and 206.81 g off a Bambu Studio estimate, the plate is set to 4 pieces, the target margin goes to 70%, and the calculator lists each piece at $15.67 with filament, electricity, printer wear, packaging and Etsy fees itemized."></video>
+          <figcaption>A real scan of a Bambu Studio estimate. Only the margin typing is cut.</figcaption>
+        </figure>
+        <div class="proof">
+          <div class="proof-hd"><span>The scan in the video</span><span>Priced per piece</span></div>
+          <div class="proof-body">
+            <div class="pl"><span>Read off the slicer</span><span>4h 44m · 206.81 g</span></div>
+            <div class="pl"><span>Each of 4 on the plate</span><span>1h 11m · 51.7 g</span></div>
+            <div class="pl"><span>Filament · PLA at $10/kg</span><span class="n">−$0.52</span></div>
+            <div class="pl"><span>Electricity</span><span class="n">−$0.02</span></div>
+            <div class="pl"><span>Printer wear</span><span class="n">−$0.22</span></div>
+            <div class="pl"><span>Packaging</span><span class="n">−$2.00</span></div>
+            <div class="pl"><span>Etsy fees at this price</span><span class="n">−$1.94</span></div>
+            <div class="pl sum"><span>List it at · keeps 70%</span><b>$15.67</b></div>
+            <div class="pl thru"><span>If an Offsite Ad sells it</span><span>keeps $8.62 · 55%</span></div>
+            <div class="pl-note">Earns $9.27 per print hour</div>
+          </div>
+        </div>
+      </div>
+      <p class="fine reveal scan-terms">Add your labor, the parts you buy and extras like a thank-you card, then price it for Etsy, eBay, Facebook Marketplace or a card reader.</p>
+      <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-scan&mt=8">Download SpoolPilot and scan a print &rarr;</a>
+      <p class="fine reveal">3 free scans to start. Unlimited scans are $4.99, paid once.</p>
+    </div>
+  </section>
+
+  <section class="stage">
     <div class="wrap">
       <h2 class="reveal">&ldquo;But my spreadsheet works.&rdquo;</h2>
       <p class="reveal">It does, on the numbers you remember to type. SpoolPilot logs the sale, the real fee, and the grams <strong>the moment they happen</strong>. Nothing to enter, nothing to reconcile.</p>
-      <figure class="quote reveal">
-        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
-        <blockquote>&ldquo;No more running back to my computer to update my spreadsheet.&rdquo;</blockquote>
-        <cite>Rested Tea <span>&middot; App Store review</span></cite>
-      </figure>
       <div class="proof reveal">
         <div class="proof-hd"><span>The same job, both ways</span><span>Side by side</span></div>
         <div class="proof-body">
@@ -840,7 +866,7 @@
     </div>
   </section>
 
-  <section class="stage">
+  <section class="stage tint">
     <div class="wrap">
       <h2 class="reveal">Every fee Etsy and eBay charged. No estimating.</h2>
       <p class="reveal">Read order by order from your own accounts. Etsy&rsquo;s come from your payment ledger and are reconciled against <strong>what Etsy actually deposits</strong>. eBay&rsquo;s come with the Promoted Listings ad fee and the label you bought on eBay. <a href="/resources/etsy-fees-3d-printing">The four Etsy fees, explained</a>.</p>
@@ -850,22 +876,21 @@
       </div>
       <div class="receipts reveal">
       <div class="proof active" id="feeEtsy" role="tabpanel" aria-labelledby="fee0">
-        <div class="proof-hd"><span>Desk Organizer · Jul 27</span><span>Reconciled</span></div>
+        <div class="proof-hd"><span>Desk Organizer · Nov 2</span><span>Demo shop</span></div>
         <div class="proof-body">
           <div class="pl"><span>Sold · 1 × $28.00</span><span>$28.00</span></div>
-          <div class="pl thru"><span>Shipping collected · pass-through</span><span>$5.62</span></div>
-          <div class="pl"><span>Etsy fees (actual)</span><span class="n">−$8.69</span></div>
-          <div class="pl child"><span>Offsite Ads</span><span>−$5.04</span></div>
-          <div class="pl child"><span>Transaction fee</span><span>−$1.82</span></div>
-          <div class="pl child"><span>Payment processing</span><span>−$1.26</span></div>
-          <div class="pl child"><span>Transaction fee (shipping)</span><span>−$0.37</span></div>
+          <div class="pl"><span>Postage · free shipping</span><span class="n">−$9.86</span></div>
+          <div class="pl"><span>Etsy fees (actual)</span><span class="n">−$6.53</span></div>
+          <div class="pl child"><span>Offsite Ads · 12%</span><span>−$3.36</span></div>
+          <div class="pl child"><span>Transaction fee · 6.5%</span><span>−$1.82</span></div>
+          <div class="pl child"><span>Processing · on $30.03 with tax</span><span>−$1.15</span></div>
           <div class="pl child"><span>Listing fee</span><span>−$0.20</span></div>
-          <div class="pl"><span>Product cost</span><span class="n">−$11.13</span></div>
-          <div class="pl child"><span>Filament</span><span>−$4.18</span></div>
-          <div class="pl child"><span>Electricity</span><span>−$0.60</span></div>
-          <div class="pl child"><span>Shipping &amp; packaging</span><span>−$1.95</span></div>
-          <div class="pl child"><span>Labor &amp; finishing</span><span>−$4.40</span></div>
-          <div class="pl sum"><span>Net profit · 29% margin</span><b>$8.18</b></div>
+          <div class="pl"><span>Product cost</span><span class="n">−$5.90</span></div>
+          <div class="pl child"><span>Filament</span><span>−$2.41</span></div>
+          <div class="pl child"><span>Electricity</span><span>−$0.34</span></div>
+          <div class="pl child"><span>Packaging</span><span>−$1.10</span></div>
+          <div class="pl child"><span>Labor &amp; finishing</span><span>−$2.05</span></div>
+          <div class="pl sum"><span>Net profit · 20% margin</span><b>$5.71</b></div>
         </div>
       </div>
       <div class="proof" id="feeEbay" role="tabpanel" aria-labelledby="fee1">
@@ -880,63 +905,55 @@
           <div class="pl"><span>Product cost</span><span class="n">−$6.48</span></div>
           <div class="pl child"><span>Filament</span><span>−$1.38</span></div>
           <div class="pl child"><span>Electricity</span><span>−$0.37</span></div>
-          <div class="pl child"><span>Packaging</span><span>−$1.66</span></div>
+          <div class="pl child"><span>Packaging</span><span>−$1.65</span></div>
           <div class="pl child"><span>Labor &amp; finishing</span><span>−$3.08</span></div>
           <div class="pl sum"><span>Net profit · 23% margin</span><b>$5.12</b></div>
         </div>
       </div>
       </div>
-      <p class="fine reveal" style="margin-top:22px">Want to check the math by hand? <a href="/resources/3d-printing-profit-calculator">One order rebuilt from the payment ledger</a>, line by line.</p>
+      <p class="fine reveal math-check">Want to check the math by hand? <a href="/resources/3d-printing-profit-calculator">Another order rebuilt from the payment ledger</a>, line by line.</p>
       <figure class="quote reveal">
-        <blockquote>&ldquo;I rely on SpoolPilot to keep my Etsy shop profitable and efficient after 5 years and 3,000 sales. If one of its numbers is wrong, I&rsquo;d be the first shop it affects.&rdquo;</blockquote>
+        <blockquote>&ldquo;I run my own Etsy shop on SpoolPilot, over 3,000 sales of 3D prints. If one of its numbers is wrong, I&rsquo;m the first shop it costs.&rdquo;</blockquote>
         <cite>Sean <span>&middot; SpoolPilot founder</span></cite>
       </figure>
       <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-mid&mt=8">Download SpoolPilot and see yours &rarr;</a>
     </div>
   </section>
 
-  <section class="stage tint">
+  <section class="stage">
     <div class="wrap">
-      <h2 class="reveal">Your slicer only counts the plastic.</h2>
-      <p class="reveal">It has no idea what your electricity and packaging cost, or what Etsy takes. <strong>Scan the slicer screen and SpoolPilot adds all three, tells you what to list the print at, and what that pays you for your time.</strong></p>
-      <div class="proof reveal">
-        <div class="proof-hd"><span>Dice Tower · slicer scan</span><span>Read from your screen</span></div>
-        <div class="proof-body">
-          <div class="pl"><span>Print time</span><span>3h 24m</span></div>
-          <div class="pl"><span>Filament used</span><span>47 g</span></div>
-          <div class="pl"><span>Filament · Polymaker PLA at $22/kg</span><span class="n">−$1.03</span></div>
-          <div class="pl"><span>Electricity · 3h 24m</span><span class="n">−$0.71</span></div>
-          <div class="pl"><span>Packaging</span><span class="n">−$0.50</span></div>
-          <div class="pl"><span>Etsy fees at this price</span><span class="n">−$1.29</span></div>
-          <div class="pl sum"><span>List it at · keeps 60%</span><b>$8.82</b></div>
-          <div class="pl-note">Pays you $32 an hour for 10 minutes of work</div>
+      <h2 class="reveal">The rate card is a guess.</h2>
+      <p class="reveal">Slide the price to see what Etsy&rsquo;s published US rates predict. At $28 they say Etsy takes $3.11. On the Desk Organizer order above, Etsy took <strong>$6.53</strong>: an Offsite Ads fee the rate card can&rsquo;t tell you is coming, and processing charged on the sales tax too. Shops past $10,000 a year pay 12% on ad orders, smaller shops 15%.</p>
+      <div class="feecalc reveal">
+        <div class="fc-top">
+          <div class="fc-price"><span>Sale price</span><b id="fcPrice">$28</b></div>
+          <input type="range" id="fcRange" min="5" max="120" step="1" value="28" aria-label="Sale price">
+          <div class="fc-ends"><span>$5</span><span>$120</span></div>
+          <label class="fc-ads"><input type="checkbox" id="fcAds"> Sale came from an Offsite Ad (15%)</label>
         </div>
+        <div class="fc-body" aria-live="polite">
+          <div class="pl"><span>Transaction fee · 6.5%</span><span class="n" id="fcTx">−$1.82</span></div>
+          <div class="pl"><span>Payment processing · 3% + 25¢</span><span class="n" id="fcPr">−$1.09</span></div>
+          <div class="pl"><span>Listing fee</span><span class="n" id="fcLs">−$0.20</span></div>
+          <div class="pl" id="fcAdsRow" hidden><span>Offsite Ads · 15%</span><span class="n" id="fcAd">−$4.20</span></div>
+          <div class="pl sum"><span>You keep · <span id="fcPct">89%</span></span><b id="fcKeep">$24.89</b></div>
+        </div>
+        <p class="fc-note">That&rsquo;s the guess. The app reads the real fees from your payment account, order by order. <a href="/etsy-fees-vs-rate-card.html">Why the two differ</a> · <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
       </div>
     </div>
   </section>
 
 
-  <section class="stage">
+  <section class="stage tint" id="widgets">
     <div class="wrap">
       <h2 class="reveal">The busywork it takes off you.</h2>
       <div class="facts reveal">
         <div><h3>Made to order</h3><p><strong>No forced stock counts.</strong> Low-stock flags appear only where you actually shelve inventory.</p></div>
         <div><h3>Print next</h3><p>A queue of what&rsquo;s about to run out, ranked by your real sales pace. Tap a row to log the run.</p></div>
+        <div><h3>Spools by barcode</h3><p>Scan the sealed spools on the shelf. No weighing, and <a href="/resources/filament-inventory-management">weeks of stock from your real sales pace</a>.</p></div>
         <div><h3>Bundles</h3><p>Kits sell from pre-assembled stock first, then <strong>assemble from the products inside them</strong>, with the cost itemized live.</p></div>
       </div>
-
-      <figure class="quote reveal">
-        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
-        <blockquote>&ldquo;My favorite feature of the app is how it predicts what products I need to print next based on my product sales. I run my business off of 3 printers and this function allows me to optimize my usage before purchasing another printer&hellip;&rdquo;</blockquote>
-        <cite>Elisabeth G.S <span>&middot; App Store review</span></cite>
-      </figure>
-    </div>
-  </section>
-
-  <section class="stage tint" id="widgets">
-    <div class="wrap">
-      <h2 class="reveal">See what to print next without opening the app.</h2>
-      <p class="reveal">Widgets for your Home Screen and Lock Screen, including a Scan button for slicer screens and spools. Part of Pro.</p>
+      <p class="reveal widget-line">Print next also lives on your Home Screen and Lock Screen, with a Scan button for slicer screens and spools. Widgets are part of Pro.</p>
       <figure class="homescreen reveal">
         <div class="hs-screen"><img src="shot-widget-home.webp?v=2" width="1320" height="1380" loading="lazy" alt="An iPhone Home Screen with the SpoolPilot Print next widget: Geometric Planter, ships tomorrow, three to print, with its photo, and Headphone Stand next, two to print, first ships Monday."></div>
         <figcaption>The demo shop, on iOS 27.</figcaption>
@@ -944,86 +961,36 @@
     </div>
   </section>
 
-  <section class="stage">
-    <div class="wrap">
-      <h2 class="reveal">Most tools stop at how much plastic is left.</h2>
-      <p class="reveal" style="margin-bottom:44px">SpoolPilot counts the money.</p>
-      <div class="tbl reveal">
-        <table>
-          <thead><tr><th></th><th class="sp">SpoolPilot</th><th>Filament trackers</th><th>Craftybase / spreadsheets</th></tr></thead>
-          <tbody>
-            <tr><td>Primary focus</td><td class="sp">3D-print business profit</td><td>Remaining filament weight</td><td>General handmade tracking</td></tr>
-            <tr><td>Data entry</td><td class="sp">Automatic Etsy and eBay order sync</td><td>Manual or local print server</td><td>Manual spreadsheet typing</td></tr>
-            <tr><td>Form factor</td><td class="sp">Native iOS, shop-floor mobile</td><td>Desktop / local web</td><td>Desktop web</td></tr>
-            <tr><td>Seller fees</td><td class="sp">The real fees each shop charged, itemized per order</td><td>Not tracked</td><td>Estimated percentages</td></tr>
-            <tr><td>Financials</td><td class="sp">Full P&amp;L, any month, whole history</td><td>None</td><td>Basic manual COGS</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
 
-  <section class="stage tint">
-    <div class="wrap">
-      <h2 class="reveal">Slide your price. See Etsy&rsquo;s cut.</h2>
-      <p class="reveal">Etsy&rsquo;s published US fees, computed live. In the app the fees aren&rsquo;t computed at all. They&rsquo;re <strong>read from your payment account, order by order</strong>, with materials and packaging subtracted too.</p>
-      <div class="feecalc reveal">
-        <div class="fc-top">
-          <div class="fc-price"><span>Sale price</span><b id="fcPrice">$32</b></div>
-          <input type="range" id="fcRange" min="5" max="120" step="1" value="32" aria-label="Sale price">
-          <div class="fc-ends"><span>$5</span><span>$120</span></div>
-          <label class="fc-ads"><input type="checkbox" id="fcAds"> Sale came from an Offsite Ad (15%)</label>
-        </div>
-        <div class="fc-body" aria-live="polite">
-          <div class="pl"><span>Transaction fee · 6.5%</span><span class="n" id="fcTx">−$2.08</span></div>
-          <div class="pl"><span>Payment processing · 3% + 25¢</span><span class="n" id="fcPr">−$1.21</span></div>
-          <div class="pl"><span>Listing fee</span><span class="n" id="fcLs">−$0.20</span></div>
-          <div class="pl" id="fcAdsRow" hidden><span>Offsite Ads · 15%</span><span class="n" id="fcAd">−$4.80</span></div>
-          <div class="pl sum"><span>You keep · <span id="fcPct">89%</span></span><b id="fcKeep">$28.51</b></div>
-        </div>
-        <p class="fc-note">Before filament, electricity, and packaging. The app subtracts those too, after the real fees from your ledger. <a href="/etsy-fee-calculator.html">Full calculator →</a></p>
-      </div>
-    </div>
-  </section>
 
-  <section class="stage">
+
+
+
+
+  <section class="stage" id="pricing">
     <div class="wrap narrow">
-      <h2 class="reveal">Where it&rsquo;s going</h2>
-      <p class="reveal" style="margin-bottom:36px">Everything above <strong>ships today</strong>. Here&rsquo;s what landed recently, and what&rsquo;s next.</p>
-      <p class="roadlabel reveal">Shipped</p>
-      <div class="road two reveal" style="margin-bottom:34px">
-        <div><b>eBay sales and fees</b><span>Orders, the fees eBay charged, and the Promoted Listings ad fee, synced like Etsy.</span></div>
-        <div><b>Orders waiting to print (Pro)</b><span>Open orders you haven&rsquo;t printed yet sit at the top of Print next.</span></div>
-        <div><b>Parts and packing (Pro)</b><span>Magnets, inserts, and boxes costed into each product and restocked by barcode.</span></div>
-        <div><b>Home Screen widgets (Pro)</b><span>What to print next on your Home Screen and Lock Screen, and a Scan button, without opening the app.</span></div>
-        <div><b>Sales anywhere</b><span>Markets, Facebook Marketplace, a card reader or cash, each with that place&rsquo;s fees filled in.</span></div>
-        <div><b>Compare a new slice</b><span>Scan a reslice and see which one earns more.</span></div>
+      <h2 class="reveal">What SpoolPilot costs</h2>
+      <div class="proof reveal">
+        <div class="proof-hd"><span>SpoolPilot prices</span><span>US dollars</span></div>
+        <div class="proof-body">
+          <table class="prices">
+            <tbody>
+              <tr><th scope="row">Free <small>10 synced orders a month, plus 3 slicer scans</small></th><td class="now">$0</td></tr>
+              <tr><th scope="row">Unlimited slicer scans <small>Paid once, works on Free</small></th><td class="now">$4.99</td></tr>
+              <tr><th scope="row">Pro monthly <small>First month $7.99</small></th><td class="now">$17.99</td></tr>
+              <tr><th scope="row">Pro yearly <small>$12.50 a month, billed yearly</small></th><td class="now">$149.99</td></tr>
+              <tr><th scope="row">Pro Lifetime <small>Paid once</small></th><td class="now">$349</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <p class="roadlabel reveal">Next</p>
-      <div class="road two reveal">
-        <div><b>Grams on open spools</b><span>Built, and held back until a print farm confirms the model survives a mid-print filament swap.</span></div>
-        <div><b>On your computer</b><span>The same numbers on a bigger screen, for the days you do the books at a desk.</span></div>
-      </div>
+      <p class="price-note reveal">Free covers spools, the calculator, and real fees on 10 orders a month. Pro brings in every order, with the full profit and loss, profit per print hour, weeks-of-stock forecasts, parts, printer capacity, unlimited slicer scans and the widgets.</p>
+      <p class="fine reveal">Plans are bought inside the app. Lifetime is one payment and never renews. Outside the US, the App Store shows your local price. Subscribed at a founding price? You keep it for as long as your subscription stays active.</p>
+      <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-pricing&mt=8">Download SpoolPilot free &rarr;</a>
     </div>
   </section>
 
-
-  <section class="stage tint" id="privacy">
-    <div class="wrap narrow">
-      <h2 class="reveal">Your shop&rsquo;s numbers never leave your phone.</h2>
-      <p class="reveal">No account to create. Nothing uploaded. Shop connections are read-only and you approve them on Etsy&rsquo;s or eBay&rsquo;s own site, so your password never reaches us, and we never see a single order. Apple&rsquo;s privacy label on the App Store listing reads <strong>Data Not Collected</strong>, and Apple holds us to it.</p>
-
-      <figure class="quote reveal">
-        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
-        <blockquote>&ldquo;I love that they never see any of my data. That makes me feel safe syncing orders. In a world full of apps trying to sell data, this makes me feel at ease.&rdquo;</blockquote>
-        <cite>Rested Tea <span>&middot; App Store review</span></cite>
-      </figure>
-
-      <p class="fine reveal" style="margin-top:22px">The one thing that does leave: this website counts visits, so we know which pages people read. It never receives anything from the app. <a href="/privacy.html">The privacy policy spells out all of it</a>, and <a href="/what-spoolpilot-reads-from-etsy.html">what SpoolPilot reads from Etsy</a> lists every field the app touches.</p>
-    </div>
-  </section>
-
-  <section class="stage" id="grows">
+  <section class="stage tint" id="grows">
     <div class="wrap">
       <h2 class="reveal">Use it for one print or your whole shop.</h2>
       <p class="reveal">Skip any of it. Slicer scans work on their own.</p>
@@ -1057,29 +1024,34 @@
           <div class="grow-card"><img class="slip" src="grow-slip.webp" width="1078" height="1343" loading="lazy" alt="The Printer Permission Slip, stamped approved: the shop runs at 114% of its print hours and a $600 printer pays for itself in 11 weeks."></div>
         </li>
       </ol>
-      <p class="grow-note reveal">Free includes 3 slicer scans and 10 synced orders a month. Reorder dates, parts and the Permission Slip come with Pro. Screens from the demo shop.</p>
+      <p class="grow-note reveal">Reorder dates, parts and the Permission Slip come with Pro. Screens from the demo shop.</p>
     </div>
   </section>
 
-  <section class="stage tint" id="pricing">
+
+  <section class="stage" id="privacy">
     <div class="wrap narrow">
-      <h2 class="reveal">What SpoolPilot costs</h2>
-      <div class="proof reveal">
-        <div class="proof-hd"><span>SpoolPilot prices</span><span>US dollars</span></div>
-        <div class="proof-body">
-          <table class="prices">
-            <tbody>
-              <tr><th scope="row">Free</th><td class="now">$0</td></tr>
-              <tr><th scope="row">Pro monthly <small>First month $7.99</small></th><td class="now">$17.99</td></tr>
-              <tr><th scope="row">Pro yearly <small>$12.50 a month, billed yearly</small></th><td class="now">$149.99</td></tr>
-              <tr><th scope="row">Pro Lifetime <small>Paid once</small></th><td class="now">$349</td></tr>
-            </tbody>
-          </table>
-        </div>
+      <h2 class="reveal">Your shop&rsquo;s numbers never leave your phone.</h2>
+      <p class="reveal">No account to create. Nothing uploaded. Shop connections are read-only and you approve them on Etsy&rsquo;s or eBay&rsquo;s own site, so your password never reaches us. Etsy orders pass through our relay on the way to your phone, and it keeps none of them. Apple&rsquo;s privacy label on the App Store listing reads <strong>Data Not Collected</strong>, and Apple holds us to it.</p>
+
+      <figure class="quote reveal">
+        <span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></span>
+        <blockquote>&ldquo;I love that they never see any of my data. That makes me feel safe syncing orders. In a world full of apps trying to sell data, this makes me feel at ease.&rdquo;</blockquote>
+        <cite>Rested Tea <span>&middot; App Store review</span></cite>
+      </figure>
+
+      <p class="fine reveal privacy-fine">This website doesn&rsquo;t count you either: no analytics, no tracking cookies. <a href="/privacy.html">The privacy policy spells out all of it</a>, and <a href="/what-spoolpilot-reads-from-etsy.html">what SpoolPilot reads from Etsy</a> lists every field the app touches.</p>
+    </div>
+  </section>
+
+  <section class="stage tint" id="next">
+    <div class="wrap narrow">
+      <h2 class="reveal">What&rsquo;s next</h2>
+      <p class="reveal road-lede">Everything above <strong>ships today</strong>. These two don&rsquo;t yet.</p>
+      <div class="road two reveal">
+        <div><b>Grams on open spools</b><span>Built, and held back until a print farm confirms the model survives a mid-print filament swap.</span></div>
+        <div><b>On your computer</b><span>The same numbers on a bigger screen, for the days you do the books at a desk.</span></div>
       </div>
-      <p class="price-note reveal">Free covers spools, the calculator, and real fees on 10 orders a month. Pro brings in every order, with the full profit and loss, profit per print hour, and the widgets.</p>
-      <p class="fine reveal">Plans are bought inside the app. Lifetime is one payment and never renews. Outside the US, the App Store shows your local price. Subscribed at a founding price? You keep it for as long as your subscription stays active.</p>
-      <a class="midcta reveal" href="https://apps.apple.com/app/apple-store/id6796133961?pt=129235298&ct=site-pricing&mt=8">Download SpoolPilot free &rarr;</a>
     </div>
   </section>
 
@@ -1109,7 +1081,7 @@
         </details>
         <details>
           <summary>How does SpoolPilot calculate profit?</summary>
-          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy or eBay charged on that order (transaction, payment processing, listing, and Offsite Ads or Promoted Listings ad fees, read from the shop&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and the wage of anyone you pay to help. What&rsquo;s left is the profit on that order. Your own time is not subtracted: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
+          <p>It starts with what the buyer actually paid, then subtracts the real costs one by one: the exact fees Etsy or eBay charged on that order (transaction, payment processing, listing, and Offsite Ads or Promoted Listings ad fees, read from the shop&rsquo;s own ledger, not estimated), then the filament by grams at your price per kilo, the electricity for the print time, printer wear, packaging, and any cost you add to a product yourself, like paid finishing work. What&rsquo;s left is the profit on that order. Your own time is not subtracted unless you add it as a cost, like the Labor &amp; finishing line on the receipt above: when you price a print, the app shows what the sale pays you an hour for your hands-on minutes instead. For a print you haven&rsquo;t sold yet the calculator <em>estimates</em> the fees instead, and anything estimated is marked with a &ldquo;~&rdquo;.</p>
         </details>
         <details>
           <summary>How is SpoolPilot different from Craftybase or a spreadsheet?</summary>
@@ -1121,7 +1093,7 @@
         </details>
         <details>
           <summary>Is my shop and customer data private?</summary>
-          <p>Yes. Your data lives on your iPhone and your own iCloud. Nothing is uploaded to us, there is no account, and the app contains no analytics or tracking SDKs. SpoolPilot connects to Etsy and eBay read-only (it can&rsquo;t change your shop), and it only ever reads <em>your</em> shop&rsquo;s numbers, never your buyers&rsquo; personal details. This website does count visits, so we know which pages people read; it never receives anything from the app. <a href="/privacy.html#website">More in the privacy policy</a>.</p>
+          <p>Yes. Your data lives on your iPhone and your own iCloud. Nothing is stored on our servers, there is no account, and the app contains no analytics or tracking SDKs. SpoolPilot connects to Etsy and eBay read-only (it can&rsquo;t change your shop), and it only ever reads <em>your</em> shop&rsquo;s numbers, never your buyers&rsquo; personal details. This website has no analytics and no tracking cookies. <a href="/privacy.html#website">More in the privacy policy</a>.</p>
         </details>
         <details>
           <summary>Which slicers and platforms does it work with?</summary>
@@ -1158,8 +1130,7 @@
   </main>
 
   <footer class="wrap">
-    <p style="margin:0 0 14px;color:var(--body);font-weight:600">No customer data collected. SpoolPilot only ever reads your own shop&rsquo;s numbers.</p>
-    <p style="margin:0 0 10px"><a href="/resources/">Resources for print businesses</a> · <a href="/resources/3d-printing-pricing-calculator">How to price 3D prints</a> · <a href="/resources/3d-printing-profit-calculator">Real profit on a 3D print</a> · <a href="/resources/etsy-fees-3d-printing">Etsy fees for 3D print sellers</a> · <a href="/resources/filament-inventory-management">Filament inventory for a print business</a> · <a href="/3d-printing-business-software">What software a 3D printing business needs</a> · <a href="/etsy-fee-calculator.html">Free 3D print cost calculator</a> · <a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a> · <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html">Craftybase alternative</a></p>
+    <p class="foot-links"><a href="/resources/">Resources for print businesses</a> · <a href="/resources/3d-printing-pricing-calculator">How to price 3D prints</a> · <a href="/resources/3d-printing-profit-calculator">Real profit on a 3D print</a> · <a href="/resources/etsy-fees-3d-printing">Etsy fees for 3D print sellers</a> · <a href="/resources/filament-inventory-management">Filament inventory for a print business</a> · <a href="/3d-printing-business-software">What software a 3D printing business needs</a> · <a href="/etsy-fee-calculator.html">Free 3D print cost calculator</a> · <a href="/etsy-fees-vs-rate-card.html">Why Etsy takes more than the rate card says</a> · <a href="/3dpcc-alternative.html">3DPCC vs SpoolPilot</a> · <a href="/spoolman-alternative.html">Spoolman vs SpoolPilot</a> · <a href="/craftybase-alternative.html">Craftybase alternative</a></p>
     &copy; <span id="year"></span> Opus Design Group LLC · <a href="/resources/">Resources</a> · <a href="/support.html">Support</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
     <p class="fine">The term &ldquo;Etsy&rdquo; is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.</p>
   </footer>
@@ -1422,6 +1393,19 @@
         range.addEventListener('input', recalc);
         ads.addEventListener('change', recalc);
         recalc();
+      }
+
+      // The scan clip loops only while it's on screen. With reduced motion it waits on its
+      // poster with controls, so the visitor starts it.
+      const clip = document.getElementById('scanClip');
+      if (clip) {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          clip.removeAttribute('autoplay'); clip.pause(); clip.controls = true;
+        } else if ('IntersectionObserver' in window) {
+          new IntersectionObserver(([e]) => {
+            if (e.isIntersecting) { const p = clip.play(); if (p) p.catch(() => {}); } else clip.pause();
+          }, { threshold: 0.25 }).observe(clip);
+        } else { clip.preload = 'auto'; const p = clip.play(); if (p) p.catch(() => {}); }
       }
     })();
   </script>
